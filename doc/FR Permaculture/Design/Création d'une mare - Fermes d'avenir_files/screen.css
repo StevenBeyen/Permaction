@@ -1,0 +1,320 @@
+/*
+Theme Name : Fermes d'Avenir
+*/
+
+
+
+/* =Responsive Structure
+----------------------------------------------- */
+@media screen and (min-width:1171px)  {
+
+	#header-mobile { display:none;}
+	#home-autresFermes .no-padding-right { padding-right:0; }
+	#home-autresFermes .no-padding-left { padding-left: 0; }
+	#home-autresFermes .picture-mobile { display:none; }
+}
+
+@media screen and (max-width: 1170px)   {
+    /* header */
+	#header-mobile { display:none;}
+	#header nav ul { max-width: 970px; }
+	#header nav ul li a {  font-size: 17px; padding: 0 9px;  }
+	#header #menu-menu-bourdaisiere .header-branding { bottom:-50px; left: -15px;}
+	#header #menu-menu-social .header-branding { bottom:-50px; left: -18px;}
+	#header nav.menu-menu-bourdaisiere-container ul { text-align:center; }
+	header nav.menu-menu-social-container ul { padding-left: 30px;  }
+
+	/* content */
+	.slider-pager, #bloc-facebook, #bloc-contact  { display:none; }
+	#home-boiteOutils { border-right:2px solid #7fc79d;; border-left:2px solid #7fc79d; }
+	.mode-liste-infos { width: 42.4%; }
+	#journal aside .block .title p { background:url("../img/journal-title-768.png") no-repeat center; }
+	#fiche-boite-outils aside .block .title p { background:url("../img/title-grey-768.png") no-repeat center;}
+	#fiche-boite-outils .breadcrumb, #journal .breadcrumb, #liste-boite-outils .breadcrumb, #boite-outils .breadcrumb, #autres-fermes .breadcrumb, .breadcrumb { float:none; margin-top: 10px; position:relative;}
+	#boite-outils .breadcrumb { top:20px;}
+	#boite-outils .dossiers-thematiques, #boite-outils .fiches-techniques, #boite-outils .cas-pratiques, #boite-outils .fiches-culture, #boite-outils .outillage, #boite-outils .notre-design, #boite-outils .bibliographie, #boite-outils .liens-pratiques { float:none; width:90%; margin:40px auto !important;}
+	/*#liste-boite-outils .boite-outils .primary { float:none; width:90%; }*/
+
+	#formulaire .primary, #formulaire .secondary { float:none; width:100%; }
+	#formulaire input[type=text], textarea, #formulaire input[type=email] {  width: 97.5%; }
+	#autres-fermes #map { float: none; width: 100%;}
+	#autres-fermes ul { width: 92%; float: none; margin-left: 0;}
+	#journal-slider { padding: 20px 0; }
+	#journal-slider-picture ul li { margin: 0 15px; }
+	#fiche-boite-outils aside .block-picture a, #journal aside .block-picture a { width:42%; }
+	.loupe {   background: url("../img/loupe-plus.png") no-repeat center 29px; }
+	#home-autresFermes .no-padding-right { padding-right:0; }
+	#home-autresFermes .no-padding-left { padding-left: 0; }
+  #home-autresFermes #reseau { top: 35px; right: 112px;}
+
+	/* footer */
+	.tree01, .tree02 { display:none; }
+	footer #keywords { float: none;  width: 100%; margin: 25px auto; clear:both;  }
+	footer .right {  width: 90%;  margin: 0 auto;   float: none; }
+	#footer-infos .top .searchform { width:100%; }
+	#footer-infos .top .secondary { float:none; }
+
+}
+
+@media screen and (max-width: 992px)   {
+
+	#header, #presentation { display: none;  }
+	#header-mobile { display:block;}
+	header nav.menu-menu-social-container ul { padding-left:0;}
+
+	#home-autresFermes li { margin-bottom:20px; }
+	#home-autresFermes .no-padding-right  { padding-right: 15px; }
+	#home-autresFermes .no-padding-left  { padding-left: 15px; }
+	#home-autresFermes .picture-mobile { display:block; }
+	#home-autresFermes #reseau {  position: absolute;  top: 53px; right: 160px; }
+	#home-actualites, .btn-annonce { margin-bottom: 15px;}
+	#home-autresFermes .bx-wrapper .bx-viewport li { height:auto; }
+	/*#home-autresFermes .reseau-actu .txt, #home-autresFermes .reseau-actu img { float:left; }
+	#home-autresFermes .reseau-actu .txt { width:60%;  }*/
+
+	#home.bourdaisiere .annonces,#home.bourdaisiere #home-projet { margin-bottom:30px; }
+	#home-facebook { display:none; }
+	#home .bloc-plateforme .primary { float:none; }
+	#home-boiteOutils { margin-top:0; }
+	.social .annonces  { margin-bottom:30px; }
+	.btn-agenda { float:left; margin-bottom:15px;}
+	#liste-boite-outils .boite-outils .primary { float:none; width:90%; }
+
+	.gallery-columns-5 .gallery-item {width: 33%; }
+	/*.video, .iframe{width: 100%;}*/
+
+}
+
+
+@media screen and (max-width: 767px)   {
+	 /* header */
+
+
+
+	/* content */
+	#content { overflow: hidden; }
+	.slider-pager, #bloc-facebook, #bloc-contact , #bloc-journal-bord p { display:none; }
+	#bloc-journal-bord { position: absolute; top: -196px; width: 100%; height: 132px; padding:15px; }
+	#home-journal-bord h1 { font-size:20px; }
+	#home-projet{ float:none;   }
+	#home-projet, #home-autresFermes  { width:100%;   }
+	#home-actualites {  margin: 25px 0 0 0 ;}
+	#home-chantier { float:right; clear:none; width: 47%;  margin: 25px 0 ; }
+	#help { margin-bottom:25px; }
+	#home-autresFermes { margin:0 0 25px 0; height:auto;}
+	#home-microferme {width: 47.6%; }
+	#home-actualites .home-infos h2, #home-chantier .home-infos h2 { padding-top:10px;}
+	#home-autresFermes #reseau h2 { padding:0; font-size: 20px; letter-spacing: 1px; line-height: 28px;}
+	#home-autresFermes #reseau .btn-decouvrir a { font-size: 16px; letter-spacing: 0px; padding: 5px 10px; }
+	#home-boiteOutils { background:url("../img/home-boiteOutils-768.png") no-repeat center; border-right:2px solid #7fc79d;; border-left:2px solid #7fc79d;  }
+	#home-facebook { display: none;}
+	.chantiers { float: right; clear: none;}
+	.benevolat { float: left; clear: both; margin-right: 25px; margin-left: 0;}
+	.formations { }
+	.mode-liste-picture, .mode-liste-infos  { float:none; width:auto; height:auto; display: block; }
+	.mode-fiche .mode-fiche-picture, .mode-fiche .mode-fiche-infos { float:none;  width:auto; max-height:none;}
+	/*.mode-fiche .mode-fiche-infos { margin: 30px 0 0 30px;}*/
+
+	#journal section  { float:none; width:auto; margin-bottom: 30px;  }
+	#journal section .mode-fiche-picture {width:auto;   }
+	#journal .mode-fiche-infos { float:left; margin-left:0; border:none; }
+
+	#journal aside .block .title p { background:url("../img/journal-title-768.png") no-repeat center; }
+	#journal aside { width: 100%; }
+	/*#fiche-boite-outils aside .block-picture a, #journal aside .block-picture a { width: 100%;}*/
+
+	#fiche-boite-outils aside .block .title p { background:url("../img/title-grey-768.png") no-repeat center;}
+	#fiche-boite-outils .breadcrumb, #journal .breadcrumb, #liste-boite-outils .breadcrumb, #boite-outils .breadcrumb, #autres-fermes .breadcrumb, .breadcrumb { float:none; margin-top: 0; position:relative; top:0; }
+	#boite-outils .breadcrumb { top:20px;}
+	#boite-outils .dossiers-thematiques, #boite-outils .fiches-techniques, #boite-outils .cas-pratiques, #boite-outils .fiches-culture, #boite-outils .outillage, #boite-outils .notre-design, #boite-outils .bibliographie, #boite-outils .liens-pratiques { float:none; width:90%; margin:40px auto !important;}
+	#liste-boite-outils .boite-outils .primary { float:none; width:90%; }
+
+	#formulaire .primary, #formulaire .secondary { float:none; width:100%; }
+	#formulaire input[type=text], textarea, #formulaire input[type=email] {  width: 97.5%; }
+	#journal-slider { display: none;}
+    #fiche-boite-outils aside .block-picture a, #journal aside .block-picture a { width:42%; }
+	#map, #autres-fermes #map { float: none; width: 100%;}
+	#autres-fermes ul { width: 92%; float: none; margin-left: 0;}
+
+	#map-social .search-map .checkbox { text-align:left;}
+	.social .annonces { margin-bottom:30px;  }
+	.social { margin-top:50px; }
+	#help label, #help input[type="submit"]  { width: 100%; }
+	#help label::after {right: -1px; top: -1px; padding: 10px;}
+	#page-social #buddypress ul.item-list li { float:none; width:100%; }
+	#buddypress div#item-header #item-header-cover-image #item-header-content { margin-top:0;}
+
+
+	/* footer */
+	footer .branding { float: none; margin-right:0; }
+	footer .branding img {margin:0 auto;}
+	footer nav {  margin:24px auto 0 auto; }
+	.tree01, .tree02 { display:none; }
+	footer #keywords { float: none;  width: 100%; margin: 25px auto;  }
+	footer .right {  width: 90%;  margin: 0 auto;   float: none; }
+	footer .menu-footer { float:none; }
+
+}
+
+@media screen and (max-width: 600px)   {
+
+ 	/* header */
+	#header, #presentation  { display: none;  }
+	#header-mobile .nav-site a.vert-fda, #header-mobile .nav-site a.orange-bourdaisiere, #header-mobile .nav-site a.bleu-social { font-size:12px; padding: 11px;}
+    #content { overflow: hidden; }
+
+	/* content */
+	#home-slider, #home-journal-bord { display:none; }
+	#home.bourdaisiere #home-projet, #help { margin-top:30px; }
+	h1 { font-size:20px; line-height: 25px; }
+	.block-title h1 span { padding: 0; }
+	#slider-control, .slider-pager, #bloc-facebook, #bloc-contact , #bloc-journal-bord p { display:none; }
+	#bloc-journal-bord { position: absolute; top: -156px; width: 100%; height: 112px; padding:15px 15px 10px 15px; }
+	#bloc-journal-bord h2 { font-size: 15px; line-height: 20px; }
+	#home-journal-bord { margin:  5px 0 20px 0; }
+	#home-journal-bord h1 { font-size:20px; }
+	.bx-wrapper { position: relative; margin: 0 auto 20px !important; }
+	#home-projet{ float:none;  }
+	#home-projet .middle-green { height: auto; padding: 15px;  }
+	#home-projet p { display: none;}
+	#home-projet h2 { margin: 25px 0 10px 0; }
+	#home-projet, #home-autresFermes  { width:100%;   }
+	#home-actualites { width: 100%; float:none;  margin: 25px 0 ;}
+	#home-chantier { float:none; clear:none; width: 100%;  margin: 25px 0 ; }
+	#home-autresFermes { margin:0 0 0 0; height:auto; }
+	#home-microferme {width:100%; }
+	.chantiers { float: none; clear: none;}
+	.benevolat { float: none; margin-left: 0;}
+	.formations { }
+	#home-actualites .home-infos h2, #home-chantier .home-infos h2 { padding-top:10px;}
+	#home-facebook { display: none;}
+	#home-autresFermes .home-infos  { width:45%; max-width:50%;  }
+	#home-autresFermes .home-infos p { display:none;}
+	#home-autresFermes #reseau { top: 23px; right: 87px;}
+	#home-autresFermes .reseau-actu { float:none; width:100%; }
+	.btn-decouvrir a { font-size: 20px; }
+	#home-boiteOutils { background:url("../img/home-boiteOutils-600.png") no-repeat center; border-right:2px solid #7fc79d;; border-left:2px solid #7fc79d; }
+	#home-boiteOutils h1, .boite-outils h1 { background:url("../img/boiteOutils-title-600.png") no-repeat center; }
+	#home-boiteOutils h1 { padding-top: 8px; font-size: 30px;}
+	.boite-outils h1  { padding-top:21px; }
+	#home-boiteOutils .line {  margin: 10px auto; }
+	#home-boiteOutils p { font-size:16px; margin:0 5px;}
+	#home-poles { margin-top: 30px; }
+
+	.mode-liste-picture, .mode-liste-infos  { float:none; width:auto; height:auto; display: block; }
+	.mode-fiche .mode-fiche-picture, .mode-fiche .mode-fiche-infos { float:none;  width:auto; }
+
+
+	.block-title h1, .block-title h1 span, .block-title .title-cat { margin-left:0; margin-bottom: 5px;}
+	.block-title {  margin: 35px 0 20px 0; }
+	.block-title h2 { font-size: 23px; margin: 22px 0 0 0; }
+	#journal section, #journal .autres-fermes  { float:none; width:auto; margin-bottom: 30px;  }
+	#journal section .mode-fiche-picture {width:auto; float:none;   }
+	#journal .mode-fiche-infos, #journal .mode-fiche { float:none; width:auto; margin-left:0; border:none; }
+
+	#fiche-boite-outils .breadcrumb, #journal .breadcrumb, #liste-boite-outils .breadcrumb, #boite-outils .breadcrumb, #autres-fermes .breadcrumb, .breadcrumb { float:none; margin-top: 0; position:relative;}
+	#boite-outils .breadcrumb { top:20px;}
+	#journal aside, #fiche-boite-outils aside, #fiche-boite-outils section { width:auto; float:none; }
+	#journal-slider { display:none; }
+
+	#boite-outils .dossiers-thematiques, #boite-outils .fiches-techniques, #boite-outils .cas-pratiques, #boite-outils .fiches-culture, #boite-outils .outillage, #boite-outils .notre-design, #boite-outils .bibliographie, #boite-outils .liens-pratiques { float:none; width:auto; margin:40px auto !important;}
+	#liste-boite-outils .boite-outils .primary { float:none; width:auto; }
+	#liste-boite-outils .txt-intro { width:auto;}
+
+	#formulaire { padding: 60px 30px; }
+	#formulaire .primary, #formulaire .secondary { float:none; width:100%; }
+	#formulaire input[type=text], textarea {  width: 97.5%; }
+	#map { float: none; width: 100%;}
+	#autres-fermes #map {display: none;}
+	#autres-fermes ul { width: 92%; float: none; margin-left: 0;}
+	#fiche-boite-outils aside .block-picture a, #journal aside .block-picture a { width:42%; }
+	#help label, #help input[type="submit"]  { width: 100%; }
+	#help label::after {right: -5px; top:4px; padding: 6px 10px 7px 10px;}
+	.block-title, #liste-boite-outils .block-title, #fiche-boite-outils .block-title, .block-title span, .block-title span h1 { background:none; }
+	.block-title span, .block-title span h1 { padding:0; }
+
+	.breadcrumb {  margin-top: 0;   padding: 0 0 0 5px; }
+	#buddypress #members-list li { float:none; width:100%; }
+
+	.gallery-columns-5 .gallery-item { width: 100%; }
+
+	/* footer */
+	footer .branding { float: none; margin-right:0; }
+	footer .branding img {margin:0 auto;}
+	footer nav {  margin:24px auto 0 auto; }
+	/*footer .primary, footer .secondary { float:none; } */
+	.tree01, .tree02 { display:none; }
+	footer #keywords { margin-top:20px; }
+	footer nav ul li a {  font-size: 17px; }
+	footer #keywords { float: none;  width: 100%; margin: 25px auto;  }
+	footer .right {  width: 90%;  margin: 0 auto;   float: none; }
+
+
+}
+
+
+@media screen and (max-width: 370px)   {
+
+	#header-mobile a.orange-bourdaisiere { padding:5px; line-height:14px; }
+	#home-autresFermes #reseau {  top: -5px;  left: 30px; }
+	#home-autresFermes #reseau h2 { font-size:15px; }
+
+
+}
+
+
+@media screen and (max-width: 319px)   {
+
+ 	/* header */
+	#header, #presentation { display: none;  }
+	#header-mobile a.orange-bourdaisiere { padding:5px; line-height:14px; }
+
+
+	/* content */
+	#slider-control, .slider-pager, #bloc-facebook, #bloc-contact , #bloc-journal-bord p { display:none; }
+	#bloc-journal-bord { position: absolute; top: -110px; width: 100%; height: 132px; padding:15px; }
+	#home-journal-bord h1 { font-size:20px; }
+
+	#home-projet, #home-chantier, #home-actualites { float:none;   }
+	#home-projet, #home-autresFermes  { width:100%;   }
+	#home-actualites { width: 100%;  margin: 25px 0 ;}
+	#home-chantier {  clear:none; width: 100%;  margin: 25px 0 ; }
+	#home-autresFermes { margin:0 0 25px 0;}
+	#home-actualites .home-infos h1, #home-chantier .home-infos h1 { margin-left: -80px; width: 140px; font-size: 17px;}
+	#home-facebook { display: none;}
+	#home-autresFermes h2 { padding-top: 20px; }
+	#home-autresFermes .home-infos  { width:45%; max-width:50%;  }
+	#home-autresFermes .home-infos p { display:none;}
+	.btn-decouvrir a { font-size: 20px; }
+	#home-boiteOutils { background:url("../img/home-boiteOutils-600.png") no-repeat center; border-right:2px solid #7fc79d;; border-left:2px solid #7fc79d;  }
+	#home.bourdaisiere #home-projet .home-infos { position:inherit;}
+	.mode-liste-picture, .mode-liste-infos  { float:none; width:auto; height:auto; display: block; }
+	.mode-fiche .mode-fiche-picture, .mode-fiche .mode-fiche-infos { float:none;  width:auto; }
+	.mode-fiche .mode-fiche-infos { margin: 30px 0 0 30px;}
+
+	.block-title { margin: 50px 0 30px 0; }
+	.block-title h2 { font-size: 23px; margin: 22px 0 0 0; }
+
+	#boite-outils .dossiers-thematiques, #boite-outils .fiches-techniques, #boite-outils .cas-pratiques, #boite-outils .fiches-culture, #boite-outils .outillage, #boite-outils .notre-design, #boite-outils .bibliographie, #boite-outils .liens-pratiques { float:none; width:auto; margin:40px auto !important;}
+	#liste-boite-outils .boite-outils .primary { float:none; width:auto; }
+	#liste-boite-outils .txt-intro { width:auto;}
+
+	#formulaire { padding: 60px 30px; }
+	#formulaire .primary, #formulaire .secondary { float:none; width:100%; }
+	#formulaire input[type=text], textarea {  width: 97.5%; }
+	#map, #autres-fermes #map { float: none; width: 100%;}
+	#autres-fermes ul { width: 92%; float: none; margin-left: 0; }
+
+
+
+	/* footer */
+	.tree01, .tree02 { display:none; }
+	footer .branding { float: none; margin-right:0; }
+	footer .branding img {margin:0 auto;}
+	footer nav {  margin:24px auto 0 auto; }
+	footer .primary, footer .secondary { float:none; }
+	.tree01, .tree02 { display:none; }
+	footer .right {  width: 90%;  margin: 0 auto;   float: none; }
+
+
+}

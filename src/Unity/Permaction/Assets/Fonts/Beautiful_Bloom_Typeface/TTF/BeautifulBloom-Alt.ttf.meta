@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: c7baa06fe041ec3dab19b1e9701799d5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Beautiful Bloom
+  fontNames:
+  - Beautiful Bloom
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c02eac4a25744ecba8780685d979f4e7, type: 3}
+  - {fileID: 12800000, guid: 09e4912b0478c0c73bf291d29ca5fdcd, type: 3}
+  - {fileID: 12800000, guid: 3806b6ef42576ad5bafa47f1b04f3f98, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
