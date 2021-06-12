@@ -86,3 +86,13 @@ delete from binary_interaction where id = 180;
 
 update element set default_size = '6-6' where default_size = '6';
 
+
+
+
+delete from element where id = 36;
+delete from element where id = 76;
+
+delete from binary_interaction where id = 76;
+delete from binary_interaction where id = 77;
+delete from binary_interaction where id = 126;
+delete from binary_interaction where id = 127;
