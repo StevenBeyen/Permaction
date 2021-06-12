@@ -53,7 +53,7 @@ The public version of the project would then add the remaining features in order
 - allowing selection of multiple instances of the same element ;
 - relevant suggestions made on the demo version.
 
-## Version française
+## *Version française*
 
 ### Description générale
 
