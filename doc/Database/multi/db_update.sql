@@ -96,3 +96,4 @@ delete from binary_interaction where id = 76;
 delete from binary_interaction where id = 77;
 delete from binary_interaction where id = 126;
 delete from binary_interaction where id = 127;
+
