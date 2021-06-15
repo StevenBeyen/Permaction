@@ -54,6 +54,8 @@ public class MetaData
         prefab_mapping.Add(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         prefab_mapping.Add(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         prefab_mapping.Add(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
+        prefab_mapping.Add(25, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Path_Straight_01");
+        prefab_mapping.Add(28, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Road_Straight_01");
         prefab_mapping.Add(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         prefab_mapping.Add(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
         // French
@@ -66,8 +68,12 @@ public class MetaData
         prefab_mapping.Add(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         prefab_mapping.Add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         prefab_mapping.Add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
+        prefab_mapping.Add(65, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Path_Straight_01");
+        prefab_mapping.Add(68, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Road_Straight_01");
         prefab_mapping.Add(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         prefab_mapping.Add(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
+
+        // TODO Add overlay for path and road re-generation
 
         // Adding size of fixed objects since they have to be copied to fill given size, and not stretched.
         prefab_fixed_size_values = new Dictionary<int, int>();
