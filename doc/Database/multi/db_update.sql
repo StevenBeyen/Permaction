@@ -88,7 +88,6 @@ update element set default_size = '6-6' where default_size = '6';
 
 
 
-
 delete from element where id = 36;
 delete from element where id = 76;
 
@@ -96,4 +95,24 @@ delete from binary_interaction where id = 76;
 delete from binary_interaction where id = 77;
 delete from binary_interaction where id = 126;
 delete from binary_interaction where id = 127;
+
+
+
+update category set name = 'Batiments' where id = 9;
+update element set name = 'Batiments' where id = 45;
+update element set name = 'Toilettes seches' where id = 48;
+update element set name = 'Foret nourriciere pour la volaille' where id = 49;
+update element set name = 'Foret' where id = 52;
+update element set name = 'Veranda' where id = 55;
+update element set name = 'Abri herisson' where id = 56;
+update element set name = 'Plantes medicinales' where id = 62;
+update element set name = 'Sentier' where id = 65;
+update element set name = 'Phytoepuration' where id = 66;
+update element set name = 'Route' where id = 68;
+update element set name = 'Remise a outils' where id = 72;
+update element set name = 'Vue indesirable' where id = 74;
+update element set name = 'Etang' where id = 77;
+
+
+
 

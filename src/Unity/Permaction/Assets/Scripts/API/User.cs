@@ -8,8 +8,8 @@ namespace API
     [System.Serializable]
     public class User : API
     {
-        private const string TEST_USERNAME = "testuser_en";
-        private const string TEST_PASSWORD = "testuser_en";
+        private const string TEST_USERNAME = "testuser_fr";
+        private const string TEST_PASSWORD = "testuser_fr";
 
         private const string USER_LOGIN_URI = API_URI + "/login";
         private const string USER_SIGNUP_URI = API_URI + "/signup";

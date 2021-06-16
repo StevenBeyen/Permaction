@@ -103,7 +103,6 @@ public class MetaData
         icon_mapping.Add("Sunroom", ICONS_RESOURCES_PATH + "sunroom");
         icon_mapping.Add("Terrace", ICONS_RESOURCES_PATH + "terrace");
         icon_mapping.Add("Tool shed", ICONS_RESOURCES_PATH + "gardening-tools");
-        icon_mapping.Add("Wall", ICONS_RESOURCES_PATH + "brick");
         icon_mapping.Add("Workshop", ICONS_RESOURCES_PATH + "tools");
         icon_mapping.Add("Tree", ICONS_RESOURCES_PATH + "tree");
         icon_mapping.Add("Feed forest for the poultry", ICONS_RESOURCES_PATH + "forest");
@@ -122,5 +121,42 @@ public class MetaData
         icon_mapping.Add("Vegetable garden", ICONS_RESOURCES_PATH + "sow");
         icon_mapping.Add("Phytopurification", ICONS_RESOURCES_PATH + "water-cycle");
         icon_mapping.Add("Pond", ICONS_RESOURCES_PATH + "park");
+        // Categories FR
+        icon_mapping.Add("Abris pour animaux", ICONS_RESOURCES_PATH + "dog-house");
+        icon_mapping.Add("Batiments", ICONS_RESOURCES_PATH + "barn");
+        icon_mapping.Add("Chemins", ICONS_RESOURCES_PATH + "road");
+        icon_mapping.Add("Plantes", ICONS_RESOURCES_PATH + "seedling");
+        icon_mapping.Add("Arbres & arbustes", ICONS_RESOURCES_PATH + "trees");
+        icon_mapping.Add("Points d’eau", ICONS_RESOURCES_PATH + "lake");
+        // Elements FR
+        icon_mapping.Add("Ruche", ICONS_RESOURCES_PATH + "beehive");
+        icon_mapping.Add("Abri herisson", ICONS_RESOURCES_PATH + "hedgehog");
+        icon_mapping.Add("Poulailler", ICONS_RESOURCES_PATH + "chick");
+        icon_mapping.Add("Grange", ICONS_RESOURCES_PATH + "barn");
+        icon_mapping.Add("Toilettes seches", ICONS_RESOURCES_PATH + "toilet");
+        icon_mapping.Add("Serre", ICONS_RESOURCES_PATH + "greenhouse");
+        icon_mapping.Add("Habitation", ICONS_RESOURCES_PATH + "house");
+        icon_mapping.Add("Place principale", ICONS_RESOURCES_PATH + "weathercock");
+        icon_mapping.Add("Veranda", ICONS_RESOURCES_PATH + "sunroom");
+        icon_mapping.Add("Terrasse", ICONS_RESOURCES_PATH + "terrace");
+        icon_mapping.Add("Remise a outils", ICONS_RESOURCES_PATH + "gardening-tools");
+        icon_mapping.Add("Atelier", ICONS_RESOURCES_PATH + "tools");
+        icon_mapping.Add("Arbre", ICONS_RESOURCES_PATH + "tree");
+        icon_mapping.Add("Foret nourriciere pour la volaille", ICONS_RESOURCES_PATH + "forest");
+        icon_mapping.Add("Foret", ICONS_RESOURCES_PATH + "trees");
+        icon_mapping.Add("Haie", ICONS_RESOURCES_PATH + "hedge");
+        icon_mapping.Add("Verger", ICONS_RESOURCES_PATH + "fruits");
+        icon_mapping.Add("Pins", ICONS_RESOURCES_PATH + "pine-forest");
+        icon_mapping.Add("Couloir sauvage", ICONS_RESOURCES_PATH + "nature");
+        icon_mapping.Add("Sentier", ICONS_RESOURCES_PATH + "walking");
+        icon_mapping.Add("Route", ICONS_RESOURCES_PATH + "road");
+        icon_mapping.Add("Plantes aromatiques", ICONS_RESOURCES_PATH + "plant");
+        icon_mapping.Add("Composteur", ICONS_RESOURCES_PATH + "ground");
+        icon_mapping.Add("Prairie fleurie", ICONS_RESOURCES_PATH + "flowers");
+        icon_mapping.Add("Jardin", ICONS_RESOURCES_PATH + "field");
+        icon_mapping.Add("Plantes medicinales", ICONS_RESOURCES_PATH + "leaves");
+        icon_mapping.Add("Potager", ICONS_RESOURCES_PATH + "sow");
+        icon_mapping.Add("Phytoepuration", ICONS_RESOURCES_PATH + "water-cycle");
+        icon_mapping.Add("Etang", ICONS_RESOURCES_PATH + "park");
     }
 }
