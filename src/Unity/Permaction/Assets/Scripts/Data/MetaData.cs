@@ -77,9 +77,7 @@ public class MetaData
 
         // Adding size of fixed objects since they have to be copied to fill given size, and not stretched.
         prefab_fixed_size_values = new Dictionary<int, int>();
-        prefab_fixed_size_values.Add(02, 1);
         prefab_fixed_size_values.Add(04, 1);
-        prefab_fixed_size_values.Add(42, 1);
         prefab_fixed_size_values.Add(44, 1);
 
         // Mapping category names to the icons
