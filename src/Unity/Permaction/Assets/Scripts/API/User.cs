@@ -21,6 +21,7 @@ namespace API
 
         public User(string username = null, string password = null, int id_locale = -1, string cookie = null)
         {
+            // TODO Remove once login/signup is implemented
             if((username == null) && (password == null))
             {
                 this.username = TEST_USERNAME;

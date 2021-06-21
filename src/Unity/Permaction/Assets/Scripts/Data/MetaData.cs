@@ -19,6 +19,8 @@ public class MetaData
     public GameObject[] demoLives = new GameObject[DEMO_MAX_NB_ELEMENTS];
     public int currentActiveDemoLives = DEMO_MAX_NB_ELEMENTS;
 
+    public Dictionary<int, string> id_locale_mapping;
+
     public List<string> prefab_grass;
     public List<string> prefab_rocks;
 
@@ -31,6 +33,10 @@ public class MetaData
 
     public MetaData()
     {
+        // ID locale
+        id_locale_mapping = new Dictionary<int, string>();
+        id_locale_mapping.Add(1, "en");
+        id_locale_mapping.Add(2, "fr");
         // Prefab grass & rocks
         prefab_grass = new List<string>();
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_01");

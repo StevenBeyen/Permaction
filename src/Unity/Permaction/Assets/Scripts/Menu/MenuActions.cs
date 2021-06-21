@@ -9,31 +9,72 @@ using API;
 public class MenuActions : MonoBehaviour
 {
     public GameObject mainTitle;
-    public GameObject playButton;
-    public GameObject quitButton;
+    public GameObject playButtonEN;
+    public GameObject playButtonFR;
+    public GameObject quitButtonEN;
+    public GameObject quitButtonFR;
     public GameObject quitCross;
     public GameObject demoLivesGrid;
-    public GameObject categoriesTitle;
+    public GameObject categoriesTitleEN;
+    public GameObject categoriesTitleFR;
     public GameObject categoriesGrid;
-    public GameObject renderButton;
+    public GameObject renderButtonEN;
+    public GameObject renderButtonFR;
 
-    private void Start()
+    private int id_locale = -1;
+
+    private IEnumerator Start()
     {
-        playButton.GetComponent<Button>().onClick.AddListener(
-            () => playButtonAction()
+        // Waiting for ID locale
+        yield return StartCoroutine(WaitForIDLocale());
+
+        // Creating language-dependent menu actions
+        if (id_locale == 1) // EN
+        {
+            playButtonEN.GetComponent<Button>().onClick.AddListener(
+                () => playButtonAction(playButtonEN, quitButtonEN, categoriesTitleEN, renderButtonEN)
+            );
+            StartCoroutine(fadeIn(playButtonEN));
+            StartCoroutine(fadeIn(quitButtonEN));
+        } else if (id_locale == 2) // FR
+        {
+            playButtonFR.GetComponent<Button>().onClick.AddListener(
+                () => playButtonAction(playButtonFR, quitButtonFR, categoriesTitleFR, renderButtonFR)
+            );
+            StartCoroutine(fadeIn(playButtonFR));
+            StartCoroutine(fadeIn(quitButtonFR));
+        } else // ERROR
+        {
+            Debug.Log("MENU ACTIONS EMPTY ID LOCALE");
+        }
+
+        // Creating language-independent menu actions
+        quitButtonEN.GetComponent<Button>().onClick.AddListener(
+            () => quitButtonAction()
         );
-        renderButton.GetComponent<Button>().onClick.AddListener(
+        quitButtonFR.GetComponent<Button>().onClick.AddListener(
+            () => quitButtonAction()
+        );
+        renderButtonEN.GetComponent<Button>().onClick.AddListener(
             () => renderButtonAction()
         );
-        quitButton.GetComponent<Button>().onClick.AddListener(
-            () => quitButtonAction()
+        renderButtonFR.GetComponent<Button>().onClick.AddListener(
+            () => renderButtonAction()
         );
         quitCross.GetComponent<Button>().onClick.AddListener(
             () => quitButtonAction()
         );
     }
 
-    private void playButtonAction()
+    private IEnumerator WaitForIDLocale()
+    {
+        while (UserData.user == null || UserData.user.id_locale == -1) {
+            yield return new WaitForSeconds(0.1f);
+        }
+        id_locale = UserData.user.id_locale;
+    }
+
+    private void playButtonAction(GameObject playButton, GameObject quitButton, GameObject categoriesTitle, GameObject renderButton)
     {
         StartCoroutine(fadeOut(mainTitle));
         StartCoroutine(fadeOut(playButton));
@@ -42,7 +83,7 @@ public class MenuActions : MonoBehaviour
         StartCoroutine(fadeIn(demoLivesGrid));
         StartCoroutine(fadeIn(categoriesTitle));
         StartCoroutine(fadeIn(categoriesGrid));
-        StartCoroutine(renderButtonFadeIn());
+        StartCoroutine(renderButtonFadeIn(renderButton));
     }
 
     private void renderButtonAction()
@@ -83,7 +124,7 @@ public class MenuActions : MonoBehaviour
         SceneManager.LoadScene(MetaData.DEMO_TERRAIN_SCENE);
     }
 
-    private IEnumerator renderButtonFadeIn()
+    private IEnumerator renderButtonFadeIn(GameObject renderButton)
         {
             if (UserData.selectedElements.Count > 0)
             {
