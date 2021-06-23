@@ -76,6 +76,8 @@ namespace Menu {
             UserData.user = new User();
             yield return StartCoroutine(UserData.user.PostWebRequest(UserData.user.GetUserLoginURI(), JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
             
+            // TODO Add switch case to generate and manage buttons and titles correctly depending on language
+
             // Getting all physical elements
             menu_elements = new PhysicalElements();
             yield return StartCoroutine(menu_elements.GetWebRequest(menu_elements.GetPhysicalElementsURI(), menu_elements.PhysicalElementsCallback, UserData.user.cookie));

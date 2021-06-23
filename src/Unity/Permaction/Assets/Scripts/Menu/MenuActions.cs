@@ -46,6 +46,7 @@ public class MenuActions : MonoBehaviour
         } else // ERROR
         {
             Debug.Log("MENU ACTIONS EMPTY ID LOCALE");
+            Debug.Log(id_locale);
         }
 
         // Creating language-independent menu actions
@@ -68,7 +69,7 @@ public class MenuActions : MonoBehaviour
 
     private IEnumerator WaitForIDLocale()
     {
-        while (UserData.user == null || UserData.user.id_locale == -1) {
+        while (UserData.user == null || UserData.user.id_locale == 0) {
             yield return new WaitForSeconds(0.1f);
         }
         id_locale = UserData.user.id_locale;
