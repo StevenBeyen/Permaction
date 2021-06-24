@@ -29,14 +29,14 @@ public class MenuActions : MonoBehaviour
         yield return StartCoroutine(WaitForIDLocale());
 
         // Creating language-dependent menu actions
-        if (id_locale == 1) // EN
+        if (id_locale == UserData.meta_data.id_locale_mapping["en"]) // English
         {
             playButtonEN.GetComponent<Button>().onClick.AddListener(
                 () => playButtonAction(playButtonEN, quitButtonEN, categoriesTitleEN, renderButtonEN)
             );
             StartCoroutine(fadeIn(playButtonEN));
             StartCoroutine(fadeIn(quitButtonEN));
-        } else if (id_locale == 2) // FR
+        } else if (id_locale == UserData.meta_data.id_locale_mapping["fr"]) // French
         {
             playButtonFR.GetComponent<Button>().onClick.AddListener(
                 () => playButtonAction(playButtonFR, quitButtonFR, categoriesTitleFR, renderButtonFR)
@@ -45,8 +45,8 @@ public class MenuActions : MonoBehaviour
             StartCoroutine(fadeIn(quitButtonFR));
         } else // ERROR
         {
-            Debug.Log("MENU ACTIONS EMPTY ID LOCALE");
-            Debug.Log(id_locale);
+            Debug.Log("[Menu Actions] No ID locale?");
+            // TODO Add locale selection routine
         }
 
         // Creating language-independent menu actions

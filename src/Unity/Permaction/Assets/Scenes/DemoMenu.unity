@@ -4190,15 +4190,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 544621319}
   categoriesGrid: {fileID: 563814482}
-  categoriesTitle: {fileID: 1144694341}
-  renderButton: {fileID: 886364971}
+  categoriesTitle: {fileID: 0}
+  renderButton: {fileID: 0}
+  categoriesTitleEN: {fileID: 1144694341}
+  categoriesTitleFR: {fileID: 42642179}
+  renderButtonEN: {fileID: 886364971}
+  renderButtonFR: {fileID: 8912316}
   categoryButton: {fileID: 5441418917233326767, guid: 576cbb7c43073bfaaab1511724c62775,
     type: 3}
   elementsTitle: {fileID: 1998726225045791279, guid: dbe99dad74ad739e494741fbcd8055b7,
     type: 3}
   elementsGrid: {fileID: 4132094148826435843, guid: 2431ec48fb385f271b7822f1e28555d0,
     type: 3}
-  elementsBackButton: {fileID: 4794102147279859437, guid: ace990a5a62fbc67c916d83eca67e71c,
+  elementsBackButton: {fileID: 0}
+  elementsBackButtonEN: {fileID: 4794102147279859437, guid: ace990a5a62fbc67c916d83eca67e71c,
+    type: 3}
+  elementsBackButtonFR: {fileID: 7068460717574215842, guid: 02c784b581cb402ada4f190917be66e7,
     type: 3}
   elementToggle: {fileID: 192244441094716578, guid: e784971c242775a189a1f72735d5825b,
     type: 3}

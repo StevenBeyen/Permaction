@@ -12,14 +12,22 @@ namespace Menu {
         public GameObject background;
 
         public GameObject categoriesGrid;
-        public GameObject categoriesTitle;
-        public GameObject renderButton;
+        private GameObject categoriesTitle;
+        private GameObject renderButton;
+
+        public GameObject categoriesTitleEN;
+        public GameObject categoriesTitleFR;
+        public GameObject renderButtonEN;
+        public GameObject renderButtonFR;
 
         public GameObject categoryButton;
         
         public GameObject elementsTitle;
         public GameObject elementsGrid;
-        public GameObject elementsBackButton;
+        private GameObject elementsBackButton;
+
+        public GameObject elementsBackButtonEN;
+        public GameObject elementsBackButtonFR;
 
         public GameObject elementToggle;
         public GameObject elementTitleContainer;
@@ -77,6 +85,21 @@ namespace Menu {
             yield return StartCoroutine(UserData.user.PostWebRequest(UserData.user.GetUserLoginURI(), JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
             
             // TODO Add switch case to generate and manage buttons and titles correctly depending on language
+            if (UserData.user.id_locale == UserData.meta_data.id_locale_mapping["en"]) // English
+            {
+                categoriesTitle = categoriesTitleEN;
+                renderButton = renderButtonEN;
+                elementsBackButton = elementsBackButtonEN;
+            } else if (UserData.user.id_locale == UserData.meta_data.id_locale_mapping["fr"]) // English
+            {
+                categoriesTitle = categoriesTitleFR;
+                renderButton = renderButtonFR;
+                elementsBackButton = elementsBackButtonFR;
+            } else
+            {
+                Debug.Log("[Menu Elements Creation] No ID locale?");
+                // TODO Add locale selection routine
+            }
 
             // Getting all physical elements
             menu_elements = new PhysicalElements();
