@@ -5,6 +5,7 @@ using System;
 
 public class InitTerrainElements : MonoBehaviour
 {
+    public Terrain terrain;
     public float elementsPerSquareMeter = 0.05f;
     public float randomScaleOffset = 0.25f;
     public float randomScaleRange = 1.5f;
@@ -16,7 +17,7 @@ public class InitTerrainElements : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Terrain terrain = Terrain.activeTerrain;
+        //Terrain terrain = Terrain.activeTerrain;
         Vector3 terrain_size = terrain.terrainData.size;
         int width = (int)terrain_size.x; // terrain width
         int length = (int)terrain_size.z; // terrain length

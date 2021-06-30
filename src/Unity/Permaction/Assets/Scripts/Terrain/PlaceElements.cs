@@ -7,6 +7,7 @@ using Graphical;
 
 public class PlaceElements : MonoBehaviour
 {
+    public Terrain terrain;
     public GameObject billboard;
     public GameObject arcLink;
 
@@ -28,8 +29,8 @@ public class PlaceElements : MonoBehaviour
 
     void CloneTerrain()
     {
-        Terrain.activeTerrain.terrainData = TerrainDataCloner.Clone(Terrain.activeTerrain.terrainData);
-        Terrain.activeTerrain.GetComponent<TerrainCollider>().terrainData = Terrain.activeTerrain.terrainData; // Don't forget to update the TerrainCollider as well
+        terrain.terrainData = TerrainDataCloner.Clone(terrain.terrainData);
+        terrain.GetComponent<TerrainCollider>().terrainData = terrain.terrainData; // Don't forget to update the TerrainCollider as well
     }
 
     void LoadElements()
@@ -45,7 +46,7 @@ public class PlaceElements : MonoBehaviour
         foreach(Element e in UserData.reply.result)
         {
             GameObject instantiatedGOContainer = new GameObject(e.name); // TODO Check on server-side if name is sent back (probably not)
-            instantiatedGOContainer.transform.SetParent(Terrain.activeTerrain.transform);
+            instantiatedGOContainer.transform.SetParent(terrain.transform);
             instantiatedGOContainer.AddComponent<Graphical.GraphicalElement>();
             BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
             e.Sync();
@@ -54,9 +55,9 @@ public class PlaceElements : MonoBehaviour
             prefab = Resources.Load(prefab_name) as GameObject;
             base_position = e.GetPosition();
             // Postprocessing: converting base position height (0,1 value) in terrain height
-            base_position = new Vector3(base_position.x, base_position.y * Terrain.activeTerrain.terrainData.size.y, base_position.z);
+            base_position = new Vector3(base_position.x, base_position.y * terrain.terrainData.size.y, base_position.z);
             // Flattening terrain on the area where the element will be placed
-            Terrain.activeTerrain.terrainData.SetHeights((int) base_position.x, (int) base_position.z, e.GetHeights());
+            terrain.terrainData.SetHeights((int) base_position.x, (int) base_position.z, e.GetHeights());
             // Switch case depending on type of prefab object: stretched or copied
             // Case 1: element that has to be copied to cover the given terrain coordinates
             if (UserData.meta_data.prefab_fixed_size_values.TryGetValue(e.id, out prefab_fixed_size_value))

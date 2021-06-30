@@ -10466,6 +10466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27fea44ca900c6e9ab9c98fcfcd5027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: {fileID: 2018008809}
   billboard: {fileID: 7521197314847124003, guid: d483adfc813b6139ba478f3dcada6d2a,
     type: 3}
   arcLink: {fileID: 6296845455605155384, guid: fa01a2761927fae088128c79c7432aee, type: 3}
@@ -10481,6 +10482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06285e0bcbf9a8deb4c2ecce1b52a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: {fileID: 2018008809}
 --- !u!114 &2018008813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10493,7 +10495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdad9f1adaff4360a16a5842fb94b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementsPerSquareMeter: 0.035
+  terrain: {fileID: 2018008809}
+  elementsPerSquareMeter: 0.025
   randomScaleOffset: 0.25
   randomScaleRange: 1.5
   grassToRocksRatio: 0.7

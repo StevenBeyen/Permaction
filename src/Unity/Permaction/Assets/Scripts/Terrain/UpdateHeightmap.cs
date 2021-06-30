@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UpdateHeightmap : MonoBehaviour
 {
+    public Terrain terrain;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +17,8 @@ public class UpdateHeightmap : MonoBehaviour
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
             string[][] heightmap;
-            int heightmapResolution = Terrain.activeTerrain.terrainData.heightmapResolution;
-            float[,] rawHeightmap = Terrain.activeTerrain.terrainData.GetHeights(0,0,heightmapResolution,heightmapResolution); // y,x to convert to x,z !
+            int heightmapResolution = terrain.terrainData.heightmapResolution;
+            float[,] rawHeightmap = terrain.terrainData.GetHeights(0,0,heightmapResolution,heightmapResolution); // y,x to convert to x,z !
             heightmap = new string[heightmapResolution][];
             for (int x=0; x<heightmapResolution; ++x)
             {
