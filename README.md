@@ -43,7 +43,11 @@ Any contribution or suggestion is very welcome and will be appreciated!
 ### Open suggestions
 
 Here is a list of the suggestions that have been made and that are yet to be discussed or thought before being included to the project:
-- adding possibility to move 3D elements with dynamic update of fitness score.
+- possibility to move 3D elements with dynamic update of fitness score ;
+- extraction of detailed plans (topography, distances, ...) ;
+- selection of interaction priorities between elements, in an advanced user mode ;
+- possibility to parameter permaculture sectors (hot/cold winds, fire risk, undesirable view, ...) during land selection on map ;
+- adding temporal maintenance notion in order to follow land evolution and attention points.
 
 ### Definitive version
 
@@ -83,7 +87,7 @@ Le travail restant afin de terminer le prototype inclut:
 - la génération des routes et chemins ;
 - le transfert du service d'IA vers un service de calcul dans le cloud ou vers un serveur avec de meilleures capacités de calcul ;
 - l'achèvement du lien visuel entre un élément sélectionné et ceux avec lesquels il interagit ;
-- l'ajout d'une 'sidebar' sur l'affichage 3D final ;
+- l'ajout d'une barre latérale sur l'affichage 3D final ;
 - l'ajout de diverses améliorations visuelles afin d'obtenir un résultat de meilleure qualité graphique ;
 - l'ajout de la gestion des comptes utilisateur ;
 - l'ajout de la gestion multilingue (actuellement français et anglais, d'autres langues sont évidemment les bienvenues) ;
@@ -94,7 +98,11 @@ Toute contribution ou suggestion est la bienvenue et sera appréciée !
 ### Suggestions ouvertes
 
 Voici une liste des suggestions qui ont actuellement été faites et qui doivent encore être discutées avant d'être incluses au projet:
-- l'ajout de la possibilité de déplacer les éléments 3D avec mise à jour dynamique du score de placement.
+- la possibilité de déplacer les éléments 3D avec mise à jour dynamique du score de placement ;
+- l'extraction de plans/schémas détaillés (coupes de terrain, distances, ...) ;
+- la sélection de priorités d'interaction entre les éléments, dans un mode d'utilisation avancé ;
+- la possibilité de paramétrer les différents secteurs (vents chauds/froids, risque d'incendie, vue indésirable, ...) lors de la sélection du terrain ;
+- l'ajout d'une notion de maintenance temporelle afin de suivre l'évolution du terrain et les points d'attention.
 
 ### Version définitive
 
