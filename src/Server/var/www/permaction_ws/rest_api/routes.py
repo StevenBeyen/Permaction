@@ -34,6 +34,13 @@ def get_physical_elements():
     return jsonify(physical_elements_dict)
 
 
+@app.route(binary_interactions_route)
+@login_required
+def binary_interactions():
+	binary_interactions = BinaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
+	return jsonify(binary_interactions)
+
+
 @app.route(placement_request_route, methods = [POST_method])
 @login_required
 def placement_request():
