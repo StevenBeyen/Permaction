@@ -11,6 +11,7 @@ login_route = '/login'
 signup_route = '/signup'
 logout_route = '/logout'
 physical_elements_route = '/physical_elements'
+binary_interactions_route = '/binary_interactions'
 placement_request_route = '/placement_request'
 # Route methods
 POST_method = 'POST'
