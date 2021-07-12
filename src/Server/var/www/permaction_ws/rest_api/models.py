@@ -176,6 +176,18 @@ class BinaryInteraction(db.Model):
     interaction_level = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
     
+    @property
+    def serialize(self):
+        """Return object data in easily serializable format."""
+        return {
+            'id': self.id,
+            'id_locale': self.id_locale,
+            'element1_id': self.element1_id,
+            'element2_id': self.element2_id,
+            'interaction_level': self.interaction_level,
+            'description': self.description
+        }
+    
     def __repr__(self):
         return '<Binary interaction {}>'.format(self.id)
 

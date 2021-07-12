@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from flask import request, redirect, jsonify
 from flask_login import login_required, current_user
 from flask import current_app as app
-from .models import db, Element, Category
+from .models import db, Element, Category, BinaryInteraction
 
 from parameters import *
 from .utils import *
@@ -38,7 +38,7 @@ def get_physical_elements():
 @login_required
 def binary_interactions():
 	binary_interactions = BinaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
-	return jsonify(binary_interactions)
+	return jsonify({binary_interactions_tag: [binary_interaction.serialize for binary_interaction in binary_interactions]})
 
 
 @app.route(placement_request_route, methods = [POST_method])

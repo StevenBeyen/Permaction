@@ -29,6 +29,8 @@ physical_elements_tag = 'physical_elements'
 id_tag = 'id'
 name_tag = 'name'
 category_tag = 'category'
+# JSON binary interactions tags
+binary_interactions_tag = 'binary_interactions'
 # JSON placement request tags
 terrain_data_tag = 'terrain_data'
 elements_data_tag = 'elements_data'
