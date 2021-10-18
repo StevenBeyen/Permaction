@@ -1,4 +1,4 @@
-# Permaction
+# Permaland
 
 *(Version française ci-dessous.)*
 
@@ -6,7 +6,7 @@
 
 ### General description
 
-Permaction is a website project to help designing lands using general permaculture principles, meant for both isolated people and communities in the countryside. 
+Permaland is a website project to help designing lands using general permaculture principles, meant for both isolated people and communities in the countryside. 
 
 The main goal of this project is to provide an easy-to-use graphical interface as well as graphical, 'cartoonish' results for easy visualisation. Users would only have to delimit their lands on a world map and select the elements they want to place (house, vegetable garden, henhouse, tool shed, composting toilet, ...), as well as fixed (existing or desired) elements.
 The service then proposes an optimised placement of requested elements regarding to their characteristics and positive and negative interactions.
@@ -61,7 +61,7 @@ The public version of the project would then add the remaining features in order
 
 ### Description générale
 
-Permaction est un projet de site web d'aide au design de terrains en permaculture, destiné aux personnes isolées et au communautés vivant à la campagne.
+Permaland est un projet de site web d'aide au design de terrains en permaculture, destiné aux personnes isolées et au communautés vivant à la campagne.
 
 L'objectif principal de ce projet est de fournir une interface graphique facile d'utilisation, ainsi qu'un résultat graphique, type 'cartoon', pour une visualisation aisée du résultat. Les utilisateurs auraient seulement à délimiter leur terrain sur une carte du monde et à sélectionner les éléments qu'ils désirent placer (habitation, potager, poulailler, remise à outils, toilette sèche, ...), ainsi que des éléments fixes (existants ou souhaités).
 Le service proposerait ensuite un placement optimisé de ces éléments en fonction de leurs caractéristiques et leurs interactions positives et négatives.
