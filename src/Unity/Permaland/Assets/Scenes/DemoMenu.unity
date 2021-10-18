@@ -2640,7 +2640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Permaction
+  m_Text: Permaland
 --- !u!222 &1095872666
 CanvasRenderer:
   m_ObjectHideFlags: 0
