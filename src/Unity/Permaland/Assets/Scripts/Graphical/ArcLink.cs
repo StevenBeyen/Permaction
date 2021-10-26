@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Graphical {
     public class ArcLink
     {
-        private float angle = 60;
+        private float angle = 45;
         private int resolution = 100;
 
         private float gravity = Mathf.Abs(Physics.gravity.y);
