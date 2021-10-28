@@ -10469,7 +10469,10 @@ MonoBehaviour:
   terrain: {fileID: 2018008809}
   billboard: {fileID: 7521197314847124003, guid: d483adfc813b6139ba478f3dcada6d2a,
     type: 3}
-  arcLink: {fileID: 2971266950148213792, guid: e83e4616564b383ad85f242214cd696e, type: 3}
+  greenArcLink: {fileID: 2971266950148213792, guid: e83e4616564b383ad85f242214cd696e,
+    type: 3}
+  redArcLink: {fileID: 2971266950148213792, guid: 1e31374324c9bb6e0b07f875aab735e0,
+    type: 3}
 --- !u!114 &2018008812
 MonoBehaviour:
   m_ObjectHideFlags: 0

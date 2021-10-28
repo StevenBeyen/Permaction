@@ -9,7 +9,8 @@ public class PlaceElements : MonoBehaviour
 {
     public Terrain terrain;
     public GameObject billboard;
-    public GameObject arcLink;
+    public GameObject greenArcLink;
+    public GameObject redArcLink;
 
     // Start is called before the first frame update
     void Start()
@@ -97,7 +98,7 @@ public class PlaceElements : MonoBehaviour
             GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
             arcLinkContainer.transform.SetParent(instantiatedGOContainer.transform);
             // TODO V0.1 Update this with list of actual links
-            new ArcLink(Instantiate(arcLink, base_position, Quaternion.identity, arcLinkContainer.transform), base_position + rotation_offset, new Vector3(0,0,100));
+            new ArcLink(Instantiate(greenArcLink, base_position, Quaternion.identity, arcLinkContainer.transform), base_position + rotation_offset, new Vector3(0,0,100));
             arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
         }
         UserData.elements_loaded = true;
