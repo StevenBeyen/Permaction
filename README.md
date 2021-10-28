@@ -33,7 +33,7 @@ The remaining work to finish the demo includes:
 - transferring AI service to a computing cloud or a server with better computational capabilities ;
 - finishing visual link between selected element and the ones it interacts with ;
 - adding sidebar on end result visualisation ;
-- adding random visual improvements to better overall quality of visual effect ;
+- adding several visual improvements to better overall quality of visual effect ;
 - adding user account management ;
 - adding multilingual management (currently french and english, other languages are of course welcome) ;
 - asking for feedback on user experience using a small form.
