@@ -83,11 +83,6 @@ namespace Menu {
             // TODO remove once login / user account creation is implemented
             UserData.user = new User();
             yield return StartCoroutine(UserData.user.PostWebRequest(UserData.user.GetUserLoginURI(), JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
-            // TMP BINARY INTERACTIONS GET TEST
-            //BinaryInteractions binary_interactions = new BinaryInteractions();
-            //yield return StartCoroutine(binary_interactions.GetWebRequest(binary_interactions.GetBinaryInteractionsURI(), binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
-            //Debug.Log(binary_interactions);
-
 
             // TODO Add switch case to generate and manage buttons and titles correctly depending on language
             if (UserData.user.id_locale == UserData.meta_data.id_locale_mapping["en"]) // English

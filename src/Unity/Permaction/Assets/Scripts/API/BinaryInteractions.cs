@@ -19,8 +19,7 @@ namespace API
 
         public void BinaryInteractionsCallback(UnityWebRequest webRequest)
         {
-            Debug.Log(webRequest.downloadHandler.text);
-            //this.binary_interactions = JsonUtility.FromJson<BinaryInteractions>(webRequest.downloadHandler.text).binary_interactions;
+            this.binary_interactions = JsonUtility.FromJson<BinaryInteractions>(webRequest.downloadHandler.text).binary_interactions;
         }
 
         public string GetBinaryInteractionsURI()

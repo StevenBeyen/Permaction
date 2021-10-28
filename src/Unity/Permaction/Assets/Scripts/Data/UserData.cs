@@ -16,4 +16,5 @@ public static class UserData
     public static PlacementReply reply;
     public static bool elements_loaded = false;
     public static GraphicalElement selectedElement = null;
+    public static BinaryInteractions binaryInteractions = null;
 }

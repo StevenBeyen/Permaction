@@ -100,9 +100,17 @@ public class MenuActions : MonoBehaviour
 
     private IEnumerator RenderRoutine()
     {
+        yield return StartCoroutine(GetBinaryInteractions());
         yield return StartCoroutine(SetTerrainHeightmap());
         yield return StartCoroutine(RenderElements());
         ShowResult();
+    }
+
+    private IEnumerator GetBinaryInteractions()
+    {
+        BinaryInteractions binary_interactions = new BinaryInteractions();
+        yield return StartCoroutine(binary_interactions.GetWebRequest(binary_interactions.GetBinaryInteractionsURI(), binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
+        UserData.binaryInteractions = binary_interactions;
     }
 
     private IEnumerator SetTerrainHeightmap()

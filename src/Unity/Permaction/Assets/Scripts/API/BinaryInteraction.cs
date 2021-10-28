@@ -9,6 +9,7 @@ namespace API
     public class BinaryInteraction
     {
         public int id;
+        public int id_locale;
         public int element1_id;
         public int element2_id;
         public int interaction_level;
@@ -21,7 +22,7 @@ namespace API
 
         public override string ToString()
         {
-            return "id: " + id + ", element1_id: " + element1_id + ", element2_id: " + element2_id + ", interaction_level: " + interaction_level; 
+            return "id: " + id + ", element1_id: " + element1_id + ", element2_id: " + element2_id + ", description: " + description; 
         }
     }
 }
