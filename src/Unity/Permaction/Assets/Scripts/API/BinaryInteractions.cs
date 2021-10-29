@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 namespace API
 {
     [System.Serializable]
-    public class BinaryInteractions : API
+    public class BinaryInteractions : API, IEnumerable
     {
         private const string BINARY_INTERACTIONS_URI = API_URI + "/binary_interactions";
 
@@ -25,6 +25,11 @@ namespace API
         public string GetBinaryInteractionsURI()
         {
             return BINARY_INTERACTIONS_URI;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return binary_interactions.GetEnumerator();
         }
 
         public override string ToString()

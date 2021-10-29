@@ -17,4 +17,5 @@ public static class UserData
     public static bool elements_loaded = false;
     public static GraphicalElement selectedElement = null;
     public static BinaryInteractions binaryInteractions = null;
+    public static List<PhysicalElement> physicalElements = new List<PhysicalElement>();
 }

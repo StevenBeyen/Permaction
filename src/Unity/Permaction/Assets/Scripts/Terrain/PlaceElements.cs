@@ -92,15 +92,56 @@ public class PlaceElements : MonoBehaviour
                 boxCollider.size = renderer.bounds.size;
             }
             // Billboard
-            GameObject instanciatedBillboard = Instantiate(billboard, base_position, Quaternion.identity, instantiatedGOContainer.transform);
-            instanciatedBillboard.transform.localScale = scale;
-            // Arc Links
-            GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
-            arcLinkContainer.transform.SetParent(instantiatedGOContainer.transform);
-            // TODO V0.1 Update this with list of actual links
-            new ArcLink(Instantiate(greenArcLink, base_position, Quaternion.identity, arcLinkContainer.transform), base_position + rotation_offset, new Vector3(0,0,100));
-            arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
+            GameObject instantiatedBillboard = Instantiate(billboard, base_position, Quaternion.identity, instantiatedGOContainer.transform);
+            instantiatedBillboard.transform.localScale = scale;
+            // Saving elements for arc link creation
+            UserData.physicalElements.Add(new PhysicalElement(e.id, instantiatedGOContainer, base_position + rotation_offset));
+        }
+        // And now creating the arc links
+        GameObject arcLink;
+        foreach(BinaryInteraction binaryInteraction in UserData.binaryInteractions)
+        {
+            foreach(PhysicalElement firstElement in UserData.physicalElements)
+            {
+                if (binaryInteraction.element1_id == firstElement.id)
+                {
+                    foreach(PhysicalElement secondElement in UserData.physicalElements)
+                    {
+                        if (binaryInteraction.element2_id == secondElement.id)
+                        {
+                            if (binaryInteraction.interaction_level > 0)
+                            {
+                                arcLink = greenArcLink;
+                            } else if (binaryInteraction.interaction_level < 0)
+                            {
+                                arcLink = redArcLink;
+                            } else // Neutral interaction... should not happen because should not exist in the database!
+                            {
+                                Debug.Log("Neutral interaction??");
+                                break;
+                            }
+                            createArcLink(firstElement, secondElement, arcLink);
+                        }
+                    }
+                }
+            }
         }
         UserData.elements_loaded = true;
+    }
+
+    // TODO Add description associated with arc link, and check if exists to avoid creating multiple instances on multiple interactions!
+    void createArcLink(PhysicalElement firstElement, PhysicalElement secondElement, GameObject arcLink)
+    {
+        // Forced to make two arc links since they can only have one parent.
+        // First arc link : firstElement -> secondElement
+        GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
+        arcLinkContainer.transform.SetParent(firstElement.gameObject.transform);
+        new ArcLink(Instantiate(arcLink, firstElement.position, Quaternion.identity, arcLinkContainer.transform), firstElement.position, secondElement.position);
+        arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
+        // And now secondElement -> firstElement
+        arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
+        arcLinkContainer.transform.SetParent(secondElement.gameObject.transform);
+        new ArcLink(Instantiate(arcLink, secondElement.position, Quaternion.identity, arcLinkContainer.transform), secondElement.position, firstElement.position);
+        arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
     }
 }
