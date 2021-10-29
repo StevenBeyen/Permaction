@@ -118,9 +118,11 @@ public class PlaceElements : MonoBehaviour
                             } else // Neutral interaction... should not happen because should not exist in the database!
                             {
                                 Debug.Log("Neutral interaction??");
-                                break;
+                                arcLink = null;
                             }
+                            // Create arc link in two directions since each arc is linked to one element only (they can only have one parent!).
                             createArcLink(firstElement, secondElement, arcLink);
+                            createArcLink(secondElement, firstElement, arcLink);
                         }
                     }
                 }
@@ -129,19 +131,16 @@ public class PlaceElements : MonoBehaviour
         UserData.elements_loaded = true;
     }
 
-    // TODO Add description associated with arc link, and check if exists to avoid creating multiple instances on multiple interactions!
+    // TODO Add description associated with arc link
     void createArcLink(PhysicalElement firstElement, PhysicalElement secondElement, GameObject arcLink)
     {
-        // Forced to make two arc links since they can only have one parent.
-        // First arc link : firstElement -> secondElement
-        GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
-        arcLinkContainer.transform.SetParent(firstElement.gameObject.transform);
-        new ArcLink(Instantiate(arcLink, firstElement.position, Quaternion.identity, arcLinkContainer.transform), firstElement.position, secondElement.position);
-        arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
-        // And now secondElement -> firstElement
-        arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
-        arcLinkContainer.transform.SetParent(secondElement.gameObject.transform);
-        new ArcLink(Instantiate(arcLink, secondElement.position, Quaternion.identity, arcLinkContainer.transform), secondElement.position, firstElement.position);
-        arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
+        if (!firstElement.associated_ids.Contains(secondElement.id))
+        {
+            GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
+            arcLinkContainer.transform.SetParent(firstElement.gameObject.transform);
+            new ArcLink(Instantiate(arcLink, firstElement.position, Quaternion.identity, arcLinkContainer.transform), firstElement.position, secondElement.position);
+            arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
+            firstElement.associated_ids.Add(secondElement.id);
+        }
     }
 }
