@@ -46,7 +46,7 @@ public class PlaceElements : MonoBehaviour
         float rotation;
         foreach(Element e in UserData.reply.result)
         {
-            GameObject instantiatedGOContainer = new GameObject(e.name); // TODO Check on server-side if name is sent back (probably not)
+            GameObject instantiatedGOContainer = new GameObject(e.id.ToString());
             instantiatedGOContainer.transform.SetParent(terrain.transform);
             instantiatedGOContainer.AddComponent<Graphical.GraphicalElement>();
             BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
@@ -117,7 +117,7 @@ public class PlaceElements : MonoBehaviour
                                 arcLink = redArcLink;
                             } else // Neutral interaction... should not happen because should not exist in the database!
                             {
-                                Debug.Log("Neutral interaction??");
+                                Debug.Log("[Place Elements] Neutral interaction??");
                                 arcLink = null;
                             }
                             // Create arc link in two directions since each arc is linked to one element only (they can only have one parent!).
