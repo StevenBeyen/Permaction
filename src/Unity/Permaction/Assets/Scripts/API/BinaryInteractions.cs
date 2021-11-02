@@ -8,8 +8,6 @@ namespace API
     [System.Serializable]
     public class BinaryInteractions : API, IEnumerable
     {
-        private const string BINARY_INTERACTIONS_URI = API_URI + "/binary_interactions";
-
         public BinaryInteraction[] binary_interactions;
 
         public BinaryInteractions()
@@ -20,11 +18,6 @@ namespace API
         public void BinaryInteractionsCallback(UnityWebRequest webRequest)
         {
             this.binary_interactions = JsonUtility.FromJson<BinaryInteractions>(webRequest.downloadHandler.text).binary_interactions;
-        }
-
-        public string GetBinaryInteractionsURI()
-        {
-            return BINARY_INTERACTIONS_URI;
         }
 
         public IEnumerator GetEnumerator()

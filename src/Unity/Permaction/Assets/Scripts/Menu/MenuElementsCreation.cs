@@ -82,7 +82,7 @@ namespace Menu {
             // TMP Login Demo User
             // TODO remove once login / user account creation is implemented
             UserData.user = new User();
-            yield return StartCoroutine(UserData.user.PostWebRequest(UserData.user.GetUserLoginURI(), JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
+            yield return StartCoroutine(UserData.user.PostWebRequest(MetaData.USER_LOGIN_URI, JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
 
             // TODO Add switch case to generate and manage buttons and titles correctly depending on language
             if (UserData.user.id_locale == UserData.meta_data.id_locale_mapping["en"]) // English
@@ -103,7 +103,7 @@ namespace Menu {
 
             // Getting all physical elements
             menu_elements = new PhysicalElements();
-            yield return StartCoroutine(menu_elements.GetWebRequest(menu_elements.GetPhysicalElementsURI(), menu_elements.PhysicalElementsCallback, UserData.user.cookie));
+            yield return StartCoroutine(menu_elements.GetWebRequest(MetaData.PHYSICAL_ELEMENTS_URI, menu_elements.PhysicalElementsCallback, UserData.user.cookie));
 
             // First we store the elements and categories differently for menu creation purposes
             List<Element> elements;

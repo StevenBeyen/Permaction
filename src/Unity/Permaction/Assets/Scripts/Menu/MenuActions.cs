@@ -109,7 +109,7 @@ public class MenuActions : MonoBehaviour
     private IEnumerator GetBinaryInteractions()
     {
         BinaryInteractions binary_interactions = new BinaryInteractions();
-        yield return StartCoroutine(binary_interactions.GetWebRequest(binary_interactions.GetBinaryInteractionsURI(), binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
+        yield return StartCoroutine(binary_interactions.GetWebRequest(MetaData.BINARY_INTERACTIONS_URI, binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
         UserData.binaryInteractions = binary_interactions;
     }
 
@@ -123,7 +123,7 @@ public class MenuActions : MonoBehaviour
     private IEnumerator RenderElements()
     {
         PlacementRequest placement_request = new PlacementRequest(UserData.terrain_heightmap, UserData.selectedElements.ToArray());
-        yield return StartCoroutine(placement_request.PostWebRequest(placement_request.GetPlacementRequestURI(), JsonUtility.ToJson(placement_request), placement_request.APIRendererCallback, UserData.user.cookie));
+        yield return StartCoroutine(placement_request.PostWebRequest(MetaData.PLACEMENT_REQUEST_URI, JsonUtility.ToJson(placement_request), placement_request.APIRendererCallback, UserData.user.cookie));
         UserData.reply = placement_request.GetReply();
     }
 

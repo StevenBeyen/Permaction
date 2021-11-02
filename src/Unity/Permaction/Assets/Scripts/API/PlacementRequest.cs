@@ -8,7 +8,6 @@ namespace API
     [System.Serializable]
     public class PlacementRequest : API
     {
-        private const string PLACEMENT_REQUEST_URI = API_URI + "/placement_request";
         public TerrainLine[] terrain_data;
         public Element[] elements_data;
         private PlacementReply reply;
@@ -28,11 +27,6 @@ namespace API
             // TODO Add management of error messages
             this.reply = JsonUtility.FromJson<PlacementReply>(webRequest.downloadHandler.text);
             Debug.Log(webRequest.downloadHandler.text);
-        }
-
-        public string GetPlacementRequestURI()
-        {
-            return PLACEMENT_REQUEST_URI;
         }
 
         public PlacementReply GetReply()

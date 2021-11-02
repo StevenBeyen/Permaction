@@ -11,9 +11,6 @@ namespace API
         private const string TEST_USERNAME = "testuser_fr";
         private const string TEST_PASSWORD = "testuser_fr";
 
-        private const string USER_LOGIN_URI = API_URI + "/login";
-        private const string USER_SIGNUP_URI = API_URI + "/signup";
-
         public string username;
         public string password;
         public int id_locale;
@@ -45,11 +42,6 @@ namespace API
         {
             cookie = webRequest.GetResponseHeader("Set-Cookie");
             id_locale = JsonUtility.FromJson<User>(webRequest.downloadHandler.text).id_locale;
-        }
-
-        public string GetUserLoginURI()
-        {
-            return USER_LOGIN_URI;
         }
     }
 }

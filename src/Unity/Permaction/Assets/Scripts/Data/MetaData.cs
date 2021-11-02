@@ -4,39 +4,45 @@ using UnityEngine;
 
 public class MetaData
 {
+    // Server
+    public const string API_URI = "permaction.com:13731";
+    public const string BINARY_INTERACTIONS_URI = API_URI + "/binary_interactions";
+    public const string USER_LOGIN_URI = API_URI + "/login";
+    public const string PHYSICAL_ELEMENTS_URI = API_URI + "/physical_elements";
+    public const string PLACEMENT_REQUEST_URI = API_URI + "/placement_request";
+    public const string USER_SIGNUP_URI = API_URI + "/signup";
+    // Demo
     public const int DEMO_MAX_NB_ELEMENTS = 10;
     public const string DEMO_TERRAIN_SCENE = "DemoTerrain";
-
+    public GameObject[] demoLives = new GameObject[DEMO_MAX_NB_ELEMENTS];
+    public int currentActiveDemoLives = DEMO_MAX_NB_ELEMENTS;
+    // Prefabs
     private const string STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH = "Prefabs/StretchableOneMeterTerrainObjects/";
     private const string FIXED_SIZE_TERRAIN_OBJECTS = "Prefabs/FixedSizeTerrainObjects/";
-
+    public Dictionary<int, string> prefab_mapping;
+    public Dictionary<int, int> prefab_fixed_size_values;
+    // Menu
     public const string BG_TAG = "Background";
     public const string ICON_TAG = "Icon";
     public const string COUNTER_TAG = "Counter";
     public const string SECOND_COUNTER_TAG = "Counter2";
     private const string ICONS_RESOURCES_PATH = "Icons/";
-
-    public GameObject[] demoLives = new GameObject[DEMO_MAX_NB_ELEMENTS];
-    public int currentActiveDemoLives = DEMO_MAX_NB_ELEMENTS;
-
+    public Dictionary<string, string> icon_mapping;
+    // Locale
     public Dictionary<string, int> id_locale_mapping;
-
+    // Terrain
     public List<string> prefab_grass;
     public List<string> prefab_rocks;
-
-    public Dictionary<int, string> prefab_mapping;
-    public Dictionary<int, int> prefab_fixed_size_values;
-
-    public Dictionary<string, string> icon_mapping;
-
     public const string ARC_LINK_CONTAINER = "ArcLinkContainer";
 
     public MetaData()
     {
-        // ID locale
+        // 1. ID locale
         id_locale_mapping = new Dictionary<string, int>();
         id_locale_mapping.Add("en", 1);
         id_locale_mapping.Add("fr", 2);
+
+        // 2. Prefabs
         // Prefab grass & rocks
         prefab_grass = new List<string>();
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_01");
@@ -86,6 +92,7 @@ public class MetaData
         prefab_fixed_size_values.Add(04, 1);
         prefab_fixed_size_values.Add(44, 1);
 
+        // 3. Icons
         // Mapping category names to the icons
         icon_mapping = new Dictionary<string, string>();
         // Categories EN

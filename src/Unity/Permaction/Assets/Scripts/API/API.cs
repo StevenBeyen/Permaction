@@ -8,8 +8,6 @@ namespace API {
 
     public class API
     {
-        protected const string API_URI = "permaction.com:13731";
-
         public IEnumerator GetWebRequest(string url, Action<UnityWebRequest> callback = null, string cookie = null)
         {
             UnityWebRequest webRequest = UnityWebRequest.Get(url);

@@ -8,8 +8,6 @@ namespace API
     [System.Serializable]
     public class PhysicalElements : API
     {
-        private const string PHYSICAL_ELEMENTS_URI = API_URI + "/physical_elements";
-
         public Element[] physical_elements;
 
         public PhysicalElements()
@@ -26,11 +24,6 @@ namespace API
         public void Sort()
         {
             System.Array.Sort(physical_elements);
-        }
-
-        public string GetPhysicalElementsURI()
-        {
-            return PHYSICAL_ELEMENTS_URI;
         }
 
         public override string ToString()
