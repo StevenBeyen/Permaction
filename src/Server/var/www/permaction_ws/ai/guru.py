@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from rest_api.models import BinaryInteraction, TernaryInteraction
+from rest_api.models import BinaryInteraction, TernaryInteraction, Element, Category
+from sqlalchemy.orm.exc import NoResultFound#, MultipleResultsFound Should not be necessary at the moment
 from random import choice, randint, random
 
 from .individual import Individual
@@ -82,6 +83,39 @@ class Guru:
                     self.fitness_dict[key2] += biotope_intersection
                 else:
                     self.fitness_dict[key2] = biotope_intersection
+        # Step 3: category interactions to element interactions
+        for i in range(len(self.elements) - 1):
+            for j in range(i + 1, len(self.elements)):
+                e1 = self.elements[i]
+                e2 = self.elements[j]
+                element1_category_id = Element.query.filter_by(id=e1.id).one().category_id
+                element1_category_element_id = Category.query.filter_by(id=element1_category_id).one().element_id
+                element2_category_id = Element.query.filter_by(id=e2.id).one().category_id
+                element2_category_element_id = Category.query.filter_by(id=element2_category_id).one().element_id
+                added_value = 0
+                try:
+                    added_value += self.fitness_dict[(element1_category_element_id, e2.id)]
+                except KeyError:
+                    pass
+                try:
+                    added_value += self.fitness_dict[(element2_category_element_id, e1.id)]
+                except KeyError:
+                    pass
+                try:
+                    added_value += self.fitness_dict[(element1_category_element_id, element2_category_element_id)]
+                except KeyError:
+                    pass
+                if (added_value != 0):
+                    key1 = (e1.id, e2.id)
+                    if key1 in self.fitness_dict:
+                        self.fitness_dict[key1] += added_value
+                    else:
+                        self.fitness_dict[key1] = added_value
+                    key2 = (e2.id, e1.id)
+                    if key2 in self.fitness_dict:
+                        self.fitness_dict[key2] += added_value
+                    else:
+                        self.fitness_dict[key2] = added_value
     
     def init_ternary_fitness_dict(self):
         ternary_interactions = TernaryInteraction.query.filter_by(id_locale=self.id_locale).all()

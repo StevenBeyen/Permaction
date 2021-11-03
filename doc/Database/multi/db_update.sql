@@ -116,3 +116,9 @@ update element set name = 'Etang' where id = 77;
 
 
 
+alter table category add element_id tinyint;
+update category set element_id = 1 where id = 1;
+update category set element_id = 5 where id = 3;
+update category set element_id = 41 where id = 7;
+update category set element_id = 45 where id = 9;
+

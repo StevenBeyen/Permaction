@@ -32,6 +32,7 @@ class Category(db.Model):
     id_locale = db.Column(db.Integer, db.ForeignKey(locale_table_id), nullable=False)
     name = db.Column(db.Text, nullable=False)
     physical_category = db.Column(db.Boolean, nullable=False)
+    element_id = db.Column(db.Integer)
     
     def __repr__(self):
         return '<Category {}>'.format(self.name)
