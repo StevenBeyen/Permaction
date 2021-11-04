@@ -74,3 +74,6 @@ Challenge/
 
 # Compiled Python files
 *.pyc
+
+# Open ods files
+*.ods#
