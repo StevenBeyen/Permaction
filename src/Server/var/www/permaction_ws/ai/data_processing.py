@@ -76,7 +76,7 @@ class Preprocessing:
         if (max_elements_size <= terrain_square_meters):
             self.average_element_ratio = 1.0
         else: # Otherwise, let's compute a ratio of all the elements' sizes so that they can all fit inside the terrain.
-            self.average_element_ratio = min((terrain_square_meters/max_elements_size), max_filled_terrain_ratio)
+            self.average_element_ratio = min((terrain_square_meters/max_elements_size*max_filled_terrain_ratio), max_filled_terrain_ratio)
     
     def create_element(self, id, biotope_values, size = None, width = None, coordinates = None):
         if (size is not None):
