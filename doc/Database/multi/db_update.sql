@@ -128,3 +128,16 @@ update element set default_size = '400-2000' where id = 77;
 update element set default_size = '15-250' where id = 20;
 update element set default_size = '15-250' where id = 60;
 
+insert into binary_interaction values (72, 1, 25, 20, 10, 'The path provides access to the housing.');
+insert into binary_interaction values (76, 2, 65, 60, 10, 'Le sentier fournit un accès à l’habitation.');
+
+update binary_interaction set description = 'La route sert de coupe-feu.' where id = 98;
+update binary_interaction set description = 'La route fournit un accès à la grange.' where id = 99;
+update binary_interaction set description = 'La route fournit un accès à l’habitation.' where id = 100;
+update binary_interaction set description = 'Le sentier fournit un accès à l’abri animal.' where id = 101;
+update binary_interaction set description = 'Le sentier fournit un accès à l’atelier.' where id = 102;
+update binary_interaction set description = 'Le sentier fournit un accès au point d’eau.' where id = 103;
+update binary_interaction set description = 'Le sentier fournit un accès au potager.' where id = 104;
+update binary_interaction set description = 'Le sentier fournit un accès aux toilettes sèches.' where id = 105;
+update binary_interaction set description = 'Le sentier fournit un accès au verger.' where id = 106;
+
