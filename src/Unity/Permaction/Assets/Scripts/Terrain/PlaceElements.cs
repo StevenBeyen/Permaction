@@ -83,7 +83,7 @@ public class PlaceElements : MonoBehaviour
                 // Object itself
                 rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
                 rotation = Random.Range(0,2) * 180;
-                GameObject instantiatedGO = Instantiate(prefab, base_position, Quaternion.identity, instantiatedGOContainer.transform);
+                GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
                 instantiatedGO.transform.localScale = scale;
                 //instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation);
                 // Box collider on container
@@ -92,7 +92,7 @@ public class PlaceElements : MonoBehaviour
                 boxCollider.size = renderer.bounds.size;
             }
             // Billboard
-            GameObject instantiatedBillboard = Instantiate(billboard, base_position, Quaternion.identity, instantiatedGOContainer.transform);
+            GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
             instantiatedBillboard.transform.localScale = scale;
             // Saving elements for arc link creation
             UserData.physicalElements.Add(new PhysicalElement(e.id, instantiatedGOContainer, base_position + rotation_offset));

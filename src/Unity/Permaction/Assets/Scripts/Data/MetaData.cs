@@ -66,8 +66,8 @@ public class MetaData
         prefab_mapping.Add(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         prefab_mapping.Add(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         prefab_mapping.Add(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        prefab_mapping.Add(25, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Path_Straight_01");
-        prefab_mapping.Add(28, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Road_Straight_01");
+        prefab_mapping.Add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        prefab_mapping.Add(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
         prefab_mapping.Add(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         prefab_mapping.Add(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
         // French
@@ -80,8 +80,8 @@ public class MetaData
         prefab_mapping.Add(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         prefab_mapping.Add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         prefab_mapping.Add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        prefab_mapping.Add(65, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Path_Straight_01");
-        prefab_mapping.Add(68, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Road_Straight_01");
+        prefab_mapping.Add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        prefab_mapping.Add(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
         prefab_mapping.Add(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         prefab_mapping.Add(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
 
@@ -90,7 +90,11 @@ public class MetaData
         // Adding size of fixed objects since they have to be copied to fill given size, and not stretched.
         prefab_fixed_size_values = new Dictionary<int, int>();
         prefab_fixed_size_values.Add(04, 1);
+        prefab_fixed_size_values.Add(25, 1);
+        prefab_fixed_size_values.Add(28, 3);
         prefab_fixed_size_values.Add(44, 1);
+        prefab_fixed_size_values.Add(65, 1);
+        prefab_fixed_size_values.Add(68, 3);
 
         // 3. Icons
         // Mapping category names to the icons

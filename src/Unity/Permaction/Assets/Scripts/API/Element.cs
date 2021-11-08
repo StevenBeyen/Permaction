@@ -52,6 +52,13 @@ namespace API
                     maxY = height;
             }
             midY = minY + (maxY - minY) / 2;
+
+            // TMP Print to look for shift origin...
+            //Debug.Log("ID : " + this.id);
+            //Debug.Log("Min X : " + minX + ", Mid Y : " + midY + ", Min Z : " + minZ);
+            //Debug.Log("Position : " + this.GetPosition());
+            //Debug.Log("Scale : " + this.GetScale());
+            //Debug.Log("Heights : " + this.GetHeights());
         }
 
         public Vector3 GetPosition()
@@ -67,8 +74,8 @@ namespace API
 
         public float[,] GetHeights()
         {
-            int xRange = maxX - minX + 2;
-            int zRange = maxZ - minZ + 2;
+            int xRange = maxX - minX + 1;
+            int zRange = maxZ - minZ + 1;
             float[,] heights = new float[zRange,xRange];
             for (int z = 0; z < zRange; ++z)
             {
