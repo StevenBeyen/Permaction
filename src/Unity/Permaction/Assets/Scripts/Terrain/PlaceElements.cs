@@ -43,6 +43,7 @@ public class PlaceElements : MonoBehaviour
         Vector3 real_position;
         Vector3 rotation_offset;
         Vector3 scale;
+        Vector3 billboard_scale = new Vector3(7, 7, 7);
         float rotation;
         foreach(Element e in UserData.reply.result)
         {
@@ -58,34 +59,47 @@ public class PlaceElements : MonoBehaviour
             // Postprocessing: converting base position height (0,1 value) in terrain height
             base_position = new Vector3(base_position.x, base_position.y * terrain.terrainData.size.y, base_position.z);
             // Flattening terrain on the area where the element will be placed
-            terrain.terrainData.SetHeights((int) base_position.x, (int) base_position.z, e.GetHeights());
+            terrain.terrainData.SetHeights((int) base_position.x - 1, (int) base_position.z - 1, e.GetHeights());
             // Switch case depending on type of prefab object: stretched or copied
             // Case 1: element that has to be copied to cover the given terrain coordinates
             if (UserData.meta_data.prefab_fixed_size_values.TryGetValue(e.id, out prefab_fixed_size_value))
             {
+                // Rotation & rotation offset
+                if (prefab_fixed_size_value == scale.z) // Horizontal (x ranged) element
+                {
+                    rotation = 0;
+                    rotation_offset = new Vector3(0, 0, scale.z/2.0f);
+                } else // Vertical (z ranged) element
+                {
+                    rotation = 90;
+                    rotation_offset = new Vector3(scale.x/2.0f, 0, 0);
+                }
                 // Objects
-                rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
-                //rotation_offset = new Vector3(prefab_fixed_size_value/2.0f, 0, prefab_fixed_size_value/2.0f);
                 for (int x=0; (x+prefab_fixed_size_value-1)<scale.x; x+=prefab_fixed_size_value) {
                     for (int z=0; (z+prefab_fixed_size_value-1)<scale.z; z+=prefab_fixed_size_value) {
-                        real_position = base_position + new Vector3(x,0,z);
-                        //rotation = Random.Range(-2,2) * 90;
+                        real_position = base_position + rotation_offset + new Vector3(x,0,z);
                         GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, instantiatedGOContainer.transform);
-                        //instantiatedGO.transform.RotateAround(real_position + rotation_offset, Vector3.up, rotation);
+                        instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
                     }
                 }
-                Vector3 center = base_position + new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
+                // Changing rotation offset for box collider and billboard
+                rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
+                Vector3 center = base_position + rotation_offset;
                 // Box collider on container
                 boxCollider.center = center;
-                boxCollider.size = scale;
+                boxCollider.size = new Vector3(scale.x, 1, scale.z);
             } else // Case 2: stretchable terrain object
             {
                 // Object itself
                 rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
-                rotation = Random.Range(0,2) * 180;
+                rotation = Random.Range(0,4) * 90;
+                Debug.Log(rotation);
                 GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
-                instantiatedGO.transform.localScale = scale;
-                //instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation);
+                instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation + Random.Range(-10, 10));
+                if(rotation%180 == 0)
+                    instantiatedGO.transform.localScale = scale;
+                else
+                    instantiatedGO.transform.localScale = new Vector3(scale.z, scale.y, scale.x);
                 // Box collider on container
                 MeshRenderer renderer = instantiatedGO.GetComponentInChildren<MeshRenderer>();
                 boxCollider.center = renderer.bounds.center;
@@ -93,7 +107,7 @@ public class PlaceElements : MonoBehaviour
             }
             // Billboard
             GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
-            instantiatedBillboard.transform.localScale = scale;
+            instantiatedBillboard.transform.localScale = billboard_scale;
             // Saving elements for arc link creation
             UserData.physicalElements.Add(new PhysicalElement(e.id, instantiatedGOContainer, base_position + rotation_offset));
         }

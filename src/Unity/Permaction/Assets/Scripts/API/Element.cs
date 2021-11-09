@@ -16,7 +16,7 @@ namespace API
         public int counter;
         // TODO Use coordinates array as fixed elements data
 
-        private int minX, minZ, maxX, maxZ;
+        private int minX, minZ, maxX, maxZ, xRange, zRange;
         private float minY, maxY;
         private float midY;
 
@@ -52,6 +52,8 @@ namespace API
                     maxY = height;
             }
             midY = minY + (maxY - minY) / 2;
+            xRange = maxX - minX + 1;
+            zRange = maxZ - minZ + 1; 
 
             // TMP Print to look for shift origin...
             //Debug.Log("ID : " + this.id);
@@ -68,18 +70,22 @@ namespace API
 
         public Vector3 GetScale()
         {
-            float heightScale = ((maxX - minX + 1) + (maxZ - minZ + 1)) / 2;
-            return new Vector3((maxX - minX + 1), heightScale, (maxZ - minZ + 1));
+            float heightScale = (xRange + zRange) / 2;
+            return new Vector3(xRange, heightScale, zRange);
         }
 
+        /*
+        ** Used to flatten terrain before placing the element.
+        ** For visual purposes, a value of 2 is added to the ranges so that there is an overlay of 1 on each side.
+        */
         public float[,] GetHeights()
         {
-            int xRange = maxX - minX + 1;
-            int zRange = maxZ - minZ + 1;
-            float[,] heights = new float[zRange,xRange];
-            for (int z = 0; z < zRange; ++z)
+            int extendedXRange = xRange + 2;
+            int extendedZRange = zRange + 2;
+            float[,] heights = new float[extendedZRange, extendedXRange];
+            for (int z = 0; z < extendedZRange; ++z)
             {
-                for (int x = 0; x < xRange; ++x)
+                for (int x = 0; x < extendedXRange; ++x)
                 {
                     heights[z,x] = midY;
                 }
