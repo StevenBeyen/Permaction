@@ -333,16 +333,26 @@ class LinearElement(AbstractElement):
                     pass
         self.position = (length_pos, width_pos)
         
+        # Dividing max length and width by max_linear_element_ratio for new length computation
+        max_length *= max_linear_element_ratio
+        max_width *= max_linear_element_ratio
+        
         # length
         if (random() <= ga_mutation_rate):
             if (self.horizontal):
                 try:
-                    length = randint(1, max_length - self.position[0])
+                    if (self.id in road_path_ids):
+                        length = road_path_length_multiple * randint(1, round((max_length - self.position[0])/road_path_length_multiple))
+                    else:
+                        length = randint(1, max_length - self.position[0])
                 except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                     pass
             else: # Vertical
                 try:
-                    length = randint(1, max_width - self.position[1])
+                    if (self.id in road_path_ids):
+                        length = road_path_length_multiple * randint(1, round((max_width - self.position[1])/road_path_length_multiple))
+                    else:
+                        length = randint(1, max_width - self.position[1])
                 except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                     pass
         
