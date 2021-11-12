@@ -19,8 +19,10 @@ public class MetaData
     // Prefabs
     private const string STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH = "Prefabs/StretchableOneMeterTerrainObjects/";
     private const string FIXED_SIZE_TERRAIN_OBJECTS = "Prefabs/FixedSizeTerrainObjects/";
-    public Dictionary<int, string> prefab_mapping;
-    public Dictionary<int, int> prefab_fixed_size_values;
+    public Dictionary<int, List<string>> prefab_mapping;
+    public Dictionary<int, int> prefab_fixed_size_widths;
+    public Dictionary<int, int> prefab_fixed_size_lengths;
+    public const int PREFAB_FIXED_SIZE_DEFAULT_LENGTH = 1;
     // Menu
     public const string BG_TAG = "Background";
     public const string ICON_TAG = "Icon";
@@ -55,46 +57,58 @@ public class MetaData
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_04");
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_05");
         // Mapping of prefab objects to their ID.
-        prefab_mapping = new Dictionary<int, string>();
+        prefab_mapping = new Dictionary<int, List<string>>();
         // English
-        prefab_mapping.Add(02, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
-        prefab_mapping.Add(03, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
-        prefab_mapping.Add(04, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
-        prefab_mapping.Add(07, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
-        prefab_mapping.Add(08, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
-        prefab_mapping.Add(14, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
-        prefab_mapping.Add(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
-        prefab_mapping.Add(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
-        prefab_mapping.Add(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        prefab_mapping.Add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
-        prefab_mapping.Add(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
-        prefab_mapping.Add(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
-        prefab_mapping.Add(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
+        prefab_mapping_add(02, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
+        prefab_mapping_add(03, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
+        prefab_mapping_add(04, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
+        prefab_mapping_add(07, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
+        prefab_mapping_add(08, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        prefab_mapping_add(14, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
+        prefab_mapping_add(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
+        prefab_mapping_add(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
+        prefab_mapping_add(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
+        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
+        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
+        prefab_mapping_add(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
+        prefab_mapping_add(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        prefab_mapping_add(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
         // French
-        prefab_mapping.Add(42, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
-        prefab_mapping.Add(43, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
-        prefab_mapping.Add(44, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
-        prefab_mapping.Add(47, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
-        prefab_mapping.Add(48, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
-        prefab_mapping.Add(54, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
-        prefab_mapping.Add(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
-        prefab_mapping.Add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
-        prefab_mapping.Add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        prefab_mapping.Add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
-        prefab_mapping.Add(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
-        prefab_mapping.Add(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
-        prefab_mapping.Add(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
+        prefab_mapping_add(42, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
+        prefab_mapping_add(43, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
+        prefab_mapping_add(44, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
+        prefab_mapping_add(47, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
+        prefab_mapping_add(48, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        prefab_mapping_add(54, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
+        prefab_mapping_add(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
+        prefab_mapping_add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
+        prefab_mapping_add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
+        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
+        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
+        prefab_mapping_add(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
+        prefab_mapping_add(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        prefab_mapping_add(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
 
         // TODO Add overlay for path and road re-generation
 
-        // Adding size of fixed objects since they have to be copied to fill given size, and not stretched.
-        prefab_fixed_size_values = new Dictionary<int, int>();
-        prefab_fixed_size_values.Add(04, 1);
-        prefab_fixed_size_values.Add(25, 1);
-        prefab_fixed_size_values.Add(28, 3);
-        prefab_fixed_size_values.Add(44, 1);
-        prefab_fixed_size_values.Add(65, 1);
-        prefab_fixed_size_values.Add(68, 3);
+        // Adding sizes of fixed objects since they have to be copied to fill given size, and not stretched.
+        prefab_fixed_size_widths = new Dictionary<int, int>();
+        prefab_fixed_size_widths.Add(04, 1);
+        prefab_fixed_size_widths.Add(25, 1);
+        prefab_fixed_size_widths.Add(28, 3);
+        prefab_fixed_size_widths.Add(44, 1);
+        prefab_fixed_size_widths.Add(65, 1);
+        prefab_fixed_size_widths.Add(68, 3);
+
+        prefab_fixed_size_lengths = new Dictionary<int, int>();
+        prefab_fixed_size_lengths.Add(25, 4);
+        prefab_fixed_size_lengths.Add(28, 4);
+        prefab_fixed_size_lengths.Add(65, 4);
+        prefab_fixed_size_lengths.Add(68, 4);
 
         // 3. Icons
         // Mapping category names to the icons
@@ -173,5 +187,17 @@ public class MetaData
         icon_mapping.Add("Potager", ICONS_RESOURCES_PATH + "sow");
         icon_mapping.Add("Phytoepuration", ICONS_RESOURCES_PATH + "water-cycle");
         icon_mapping.Add("Etang", ICONS_RESOURCES_PATH + "park");
+    }
+
+    public void prefab_mapping_add(int id, string value)
+    {
+        List<string> values;
+
+        if (!prefab_mapping.TryGetValue(id, out values))
+        {
+            values = new List<string>();
+            prefab_mapping.Add(id, values);
+        }
+        values.Add(value);
     }
 }

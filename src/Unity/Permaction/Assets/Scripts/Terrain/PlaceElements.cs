@@ -36,13 +36,10 @@ public class PlaceElements : MonoBehaviour
 
     void LoadElements()
     {
-        string prefab_name;
-        int prefab_fixed_size_value;
+        List<string> prefab_names;
+        int prefab_fixed_size_width, prefab_fixed_size_length, x_step, z_step;
         GameObject prefab;
-        Vector3 base_position;
-        Vector3 real_position;
-        Vector3 rotation_offset;
-        Vector3 scale;
+        Vector3 base_position, real_position, rotation_offset, scale;
         Vector3 billboard_scale = new Vector3(7, 7, 7);
         float rotation;
         foreach(Element e in UserData.reply.result)
@@ -53,8 +50,7 @@ public class PlaceElements : MonoBehaviour
             BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
             e.Sync();
             scale = e.GetScale();
-            UserData.meta_data.prefab_mapping.TryGetValue(e.id, out prefab_name);
-            prefab = Resources.Load(prefab_name) as GameObject;
+            UserData.meta_data.prefab_mapping.TryGetValue(e.id, out prefab_names);
             base_position = e.GetPosition();
             // Postprocessing: converting base position height (0,1 value) in terrain height
             base_position = new Vector3(base_position.x, base_position.y * terrain.terrainData.size.y, base_position.z);
@@ -62,21 +58,35 @@ public class PlaceElements : MonoBehaviour
             terrain.terrainData.SetHeights((int) base_position.x - 1, (int) base_position.z - 1, e.GetHeights());
             // Switch case depending on type of prefab object: stretched or copied
             // Case 1: element that has to be copied to cover the given terrain coordinates
-            if (UserData.meta_data.prefab_fixed_size_values.TryGetValue(e.id, out prefab_fixed_size_value))
+            if (UserData.meta_data.prefab_fixed_size_widths.TryGetValue(e.id, out prefab_fixed_size_width))
             {
-                // Rotation & rotation offset
-                if (prefab_fixed_size_value == scale.z) // Horizontal (x ranged) element
+                // Getting element length, or default if it has none
+                if (!UserData.meta_data.prefab_fixed_size_lengths.TryGetValue(e.id, out prefab_fixed_size_length))
+                    prefab_fixed_size_length = MetaData.PREFAB_FIXED_SIZE_DEFAULT_LENGTH;
+                // Rotation, rotation offset & steps
+                if (prefab_fixed_size_width == scale.z) // Horizontal (x ranged) element
                 {
                     rotation = 0;
-                    rotation_offset = new Vector3(0, 0, scale.z/2.0f);
-                } else // Vertical (z ranged) element
+                    rotation_offset = new Vector3(prefab_fixed_size_length/2.0f, 0, prefab_fixed_size_width/2.0f);
+                    x_step = prefab_fixed_size_length;
+                    z_step = prefab_fixed_size_width;
+                } else if (prefab_fixed_size_width == scale.x) // Vertical (z ranged) element
                 {
                     rotation = 90;
-                    rotation_offset = new Vector3(scale.x/2.0f, 0, 0);
+                    rotation_offset = new Vector3(prefab_fixed_size_width/2.0f, 0, prefab_fixed_size_length/2.0f);
+                    x_step = prefab_fixed_size_width;
+                    z_step = prefab_fixed_size_length;
+                } else // Non linear element
+                {
+                    rotation = 0;
+                    rotation_offset = new Vector3(prefab_fixed_size_width/2.0f, 0, 0);
+                    x_step = prefab_fixed_size_width;
+                    z_step = prefab_fixed_size_length;
                 }
                 // Objects
-                for (int x=0; (x+prefab_fixed_size_value-1)<scale.x; x+=prefab_fixed_size_value) {
-                    for (int z=0; (z+prefab_fixed_size_value-1)<scale.z; z+=prefab_fixed_size_value) {
+                for (int x=0; (x+x_step)<=scale.x; x+=x_step) {
+                    for (int z=0; (z+z_step)<=scale.z; z+=z_step) {
+                        prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                         real_position = base_position + rotation_offset + new Vector3(x,0,z);
                         GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, instantiatedGOContainer.transform);
                         instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
@@ -91,9 +101,9 @@ public class PlaceElements : MonoBehaviour
             } else // Case 2: stretchable terrain object
             {
                 // Object itself
+                prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                 rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
                 rotation = Random.Range(0,4) * 90;
-                Debug.Log(rotation);
                 GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
                 instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation + Random.Range(-10, 10));
                 if(rotation%180 == 0)
