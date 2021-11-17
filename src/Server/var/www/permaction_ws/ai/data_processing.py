@@ -82,7 +82,10 @@ class Preprocessing:
         if (size is not None):
             return RectangleElement(id, biotope_values, size)
         elif (width is not None):
-            return LinearElement(id, biotope_values, width)
+            if (id in road_path_ids):
+                return RoadPathElement(id, biotope_values, width)
+            else:
+                return LinearElement(id, biotope_values, width)
         elif (coordinates is not None):
             pass # TODO Add fixed elements creation
     

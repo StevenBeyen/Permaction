@@ -27,6 +27,26 @@ class AbstractElement:
     def apply_mutation(self):
         raise NotImplementedError
     
+    def get_minmax_coordinates(self):
+    
+        """ Return min & max X & Y values : (min_x, min_y, max_x, max_y).
+        """
+        
+        min_x = float('inf')
+        max_x = float('-inf')
+        min_y = float('inf')
+        max_y = float('-inf')
+        for c in self.get_edges():
+            if (c[0] < min_x):
+                min_x = c[0]
+            if (c[0] > max_x):
+                max_x = c[0]
+            if (c[1] < min_y):
+                min_y = c[1]
+            if (c[1] > max_y):
+                max_y = c[1]
+        return (min_x, min_y, max_x, max_y)
+    
     def is_neighbour(self, element):
         """ Neighbouring based on Manhattan distance: if distance between two coordinates is less than max Manhattan distance,
         we consider the two elements to be neighbours.
@@ -156,6 +176,7 @@ class AbstractElement:
                         element_width_range = range(element_west_limit, element_east_limit)
                         return ternary_interaction_added_value * len(set(self_width_range).intersection(element_width_range)) / len(self_width_range)
 
+
 class FixedElement(AbstractElement):
     
     """Fixed element class based on its coordinates."""
@@ -214,7 +235,8 @@ class ZoneElement(FixedElement):
     
     def get_used_coordinates(self):
         return []
-    
+
+
 class LinearElement(AbstractElement):
     
     """Linear element class based on width. Length is variable."""
@@ -333,32 +355,87 @@ class LinearElement(AbstractElement):
                     pass
         self.position = (length_pos, width_pos)
         
-        # Dividing max length and width by max_linear_element_ratio for new length computation
+        # Multiplying max length and width by max_linear_element_ratio for new length computation
         max_length *= max_linear_element_ratio
         max_width *= max_linear_element_ratio
         
         # length
+        self.length_mutation(max_length, max_width)
+        
+        # Update at the end to make sure all parameters are correct
+        self.update()
+    
+    def length_mutation(self, max_length, max_width):
         if (random() <= ga_mutation_rate):
             if (self.horizontal):
                 try:
-                    if (self.id in road_path_ids):
-                        length = road_path_length_multiple * randint(1, round((max_length - self.position[0])/road_path_length_multiple))
-                    else:
-                        length = randint(1, max_length - self.position[0])
+                    length = randint(1, max_length - self.position[0])
                 except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                     pass
             else: # Vertical
                 try:
-                    if (self.id in road_path_ids):
-                        length = road_path_length_multiple * randint(1, round((max_width - self.position[1])/road_path_length_multiple))
-                    else:
-                        length = randint(1, max_width - self.position[1])
+                    length = randint(1, max_width - self.position[1])
                 except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                     pass
-        
-        # Update at the end to make sure all parameters are correct
-        self.update()
 
+
+class RoadPathElement(LinearElement):
+    
+    """Road & path elements class, adding specific logic for those particular cases."""
+    
+    def __init__(self, id, biotope_values, width):
+        super().__init__(id, biotope_values, width)
+        self.connected_counter = 0 # Number of roads/paths this road/path is connected to. Resets at every generation with the mutation.
+    
+    def copy(self):
+        copy = RoadPathElement(self.id, self.biotope_values, self.width)
+        copy.position = self.position
+        copy.length = self.length
+        copy.edges = None if self.edges is None else list(self.edges)
+        copy.coordinates = None if self.coordinates is None else list(self.coordinates)
+        copy.horizontal = self.horizontal
+        copy.connected_counter = self.connected_counter
+        return copy
+    
+    def is_neighbour(self, element):
+        """neighbour = super().is_neighbour(element)
+        if (neighbour and self.id == element.id):
+            self.connected_counter += 1
+            element.connected_counter += 1
+        return neighbour"""
+        if (self.id != element.id):
+            return super().is_neighbour(element)
+        elif (self.horizontal != element.horizontal): # Only considering two roads or paths connected if their extremities are correctly connected
+            (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
+            (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
+            if ((abs(self_min_x - element_max_x) <= road_path_max_distance or abs(self_max_x - element_min_x) <= road_path_max_distance) and (abs(self_max_y - element_min_y) <= road_path_max_distance or abs(self_min_y - element_max_y) <= road_path_max_distance)):
+                # It's a match!
+                self.connected_counter += 1
+                element.connected_counter += 1
+                return True
+            return False
+    
+    def is_connected(self):
+        return (self.connected_counter > 0)
+                        
+    def apply_mutation(self, max_length, max_width):
+        super().apply_mutation(max_length, max_width)
+        # Little trick to reset connected counter between two generations.
+        self.connected_counter = 0
+            
+
+    def length_mutation(self, max_length, max_width):
+        if (random() <= ga_mutation_rate):
+            if (self.horizontal):
+                try:
+                    length = road_path_length_multiple * randint(1, round((max_length - self.position[0])/road_path_length_multiple))
+                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
+                    pass
+            else: # Vertical
+                try:
+                    length = road_path_length_multiple * randint(1, round((max_width - self.position[1])/road_path_length_multiple))
+                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
+                    pass
 
 class RectangleElement(AbstractElement):
 

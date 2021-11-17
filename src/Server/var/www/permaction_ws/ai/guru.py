@@ -23,6 +23,10 @@ class Guru:
         self.terrain = terrain
         self.fitness_dict = {}
         self.ternary_fitness_dict = {}
+        self.road_sections = []
+        self.multiple_roads = False
+        self.path_sections = []
+        self.multiple_paths = False
         self.max_fitness = 0
         self.fixed_element_indexes = []
         self.terrain_element_ids = []
@@ -35,6 +39,7 @@ class Guru:
     def run(self):
         self.init_fixed_element_indexes()
         self.fitness_preprocessing()
+        self.add_road_path_sections()
         self.init_terrain_element_ids()
         self.create_population()
         self.genetic_algorithm_routine()
@@ -116,6 +121,9 @@ class Guru:
                         self.fitness_dict[key2] += added_value
                     else:
                         self.fitness_dict[key2] = added_value
+        # Step 4: connect road and path parts with themselves
+        for road_path_id in road_path_ids:
+            self.fitness_dict[(road_path_id, road_path_id)] = biotope_enhancer_value
     
     def init_ternary_fitness_dict(self):
         ternary_interactions = TernaryInteraction.query.filter_by(id_locale=self.id_locale).all()
@@ -135,8 +143,43 @@ class Guru:
                     fitness = self.fitness_dict[(e1.id, e2.id)]
                     if (fitness > 0):
                         self.max_fitness += fitness
+                        if (e1.id in road_ids):
+                            if (not self.road_sections):
+                                self.road_sections = [e1]
+                            else:
+                                self.road_sections += [e1.copy()]
+                                self.multiple_roads = True
+                                self.max_fitness += fitness
+                        elif (e2.id in road_ids):
+                            if (not self.road_sections):
+                                self.road_sections = [e2]
+                            else:
+                                self.road_sections += [e2.copy()]
+                                self.multiple_roads = True
+                                self.max_fitness += fitness
+                        if (e1.id in path_ids):
+                            if (not self.path_sections):
+                                self.path_sections = [e1]
+                            else:
+                                self.path_sections += [e1.copy()]
+                                self.multiple_paths = True
+                                self.max_fitness += fitness
+                        elif (e2.id in path_ids):
+                            if (not self.path_sections):
+                                self.path_sections = [e2]
+                            else:
+                                self.path_sections += [e2.copy()]
+                                self.multiple_paths = True
+                                self.max_fitness += fitness
                 except KeyError:
                     pass
+    
+    def add_road_path_sections(self):
+        # Ignoring first element since it's already in list of elements, only adding duplicates
+        for road in self.road_sections[1:]:
+            self.elements.append(road)
+        for path in self.path_sections[1:]:
+            self.elements.append(path)
 
     def init_terrain_element_ids(self):
         global unallowed_height
@@ -149,7 +192,7 @@ class Guru:
     def create_population(self):
         global ga_population_size
         for i in range(ga_population_size):
-            individual = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.terrain_element_ids)
+            individual = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.terrain_element_ids, self.multiple_roads, self.multiple_paths)
             individual.init_elements()
             self.population += [individual]
     
@@ -160,7 +203,7 @@ class Guru:
     
     def update_stop_condition(self):
         global ga_stop_nb_gen_no_improvement, ai_search_stop
-        if (self.best_fitness == self.max_fitness):
+        if (self.best_fitness >= self.max_fitness):
             ai_search_stop = True
         self.stop_condition = (ai_search_stop or (self.stuck_counter == ga_stop_nb_gen_no_improvement))
     

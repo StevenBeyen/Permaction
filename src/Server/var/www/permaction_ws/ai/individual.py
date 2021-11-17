@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from threading import Thread
 from random import uniform, randint, random
 
-from .element import RectangleElement, LinearElement
+from .element import RectangleElement, LinearElement, RoadPathElement
 
 from parameters import *
 
@@ -14,7 +14,7 @@ class Individual(Thread):
     """Genetic algorithm base class: placement of elements on given terrain.
     Evolution of individual based on given rules of selection, mutation and crossover."""
 
-    def __init__(self, elements, terrain, fitness_dict, ternary_fitness_dict, fixed_element_indexes, init_terrain_element_ids):
+    def __init__(self, elements, terrain, fitness_dict, ternary_fitness_dict, fixed_element_indexes, init_terrain_element_ids, multiple_roads, multiple_paths):
         Thread.__init__(self)
         self.elements = [element.copy() for element in elements]
         self.fixed_element_indexes = fixed_element_indexes
@@ -24,12 +24,15 @@ class Individual(Thread):
         self.init_terrain_element_ids = init_terrain_element_ids
         self.fitness_dict = fitness_dict
         self.ternary_fitness_dict = ternary_fitness_dict
+        self.multiple_roads = multiple_roads
+        self.multiple_paths = multiple_paths
         self.terrain_element_ids = None
         self.nb_terrain_overlaps = 0
+        self.nb_disconnected_roads_paths = 0
         self.fitness = 0
     
     def copy(self):
-        copy = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids)
+        copy = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids, self.multiple_roads, self.multiple_paths)
         return copy
     
     def init_elements(self):
@@ -105,8 +108,13 @@ class Individual(Thread):
                     self.fitness += e1.ternary_fitness_level(e2, self.ternary_fitness_dict[key1], self.terrain)
                 elif key2 in self.ternary_fitness_dict:
                     self.fitness += e2.ternary_fitness_level(e1, self.ternary_fitness_dict[key2], self.terrain)
-        # Dividing the fitness by the number of element overlaps +1 to prevent them.
-        self.fitness = self.fitness / (self.nb_terrain_overlaps + 1)
+        # Disconnected roads and paths counter
+        for e in self.elements:
+            if (isinstance(e, RoadPathElement) and not e.is_connected()):
+                if ((self.multiple_roads and e.id in road_ids) or (self.multiple_paths and e.id in path_ids)):
+                    self.nb_disconnected_roads_paths += 1
+        # Dividing the fitness by the number of element overlaps and disconnected roads and paths +1 to prevent them.
+        self.fitness = self.fitness / (self.nb_terrain_overlaps + self.nb_disconnected_roads_paths + 1)
     
     def fight(self, individual):
         global ga_tournament_rate
@@ -129,8 +137,8 @@ class Individual(Thread):
                 ind2_elements += [individual.elements[i]]
             else:
                 ind2_elements += [self.elements[i]]
-        ind1 = Individual(ind1_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids)
-        ind2 = Individual(ind2_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids)
+        ind1 = Individual(ind1_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids, self.multiple_roads, self.multiple_paths)
+        ind2 = Individual(ind2_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids, self.multiple_roads, self.multiple_paths)
         return [ind1, ind2]
     
     def apply_mutation(self):

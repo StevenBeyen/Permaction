@@ -119,6 +119,8 @@ fr_road_id = 68
 fr_path_id = 65
 # Roads mapping for generic use
 road_path_ids = [en_road_id, en_path_id, fr_road_id, fr_path_id]
+road_ids = [en_road_id, fr_road_id]
+path_ids = [en_path_id, fr_path_id]
 roads_mapping = {}
 roads_mapping[locale_en] = {road_tag: en_road_id, path_tag: en_path_id}
 roads_mapping[locale_fr] = {road_tag: fr_road_id, path_tag: fr_path_id}
@@ -166,4 +168,6 @@ class NotEnoughSpaceException(Exception):
 max_linear_element_ratio = 0.33
 # Road and path length generation multiple
 road_path_length_multiple = 4
+# Maximum distance for road and path neighbour computation. Recommended value is 2.
+road_path_max_distance = 1
 
