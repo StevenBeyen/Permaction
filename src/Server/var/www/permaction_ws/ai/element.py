@@ -394,7 +394,8 @@ class RoadPathElement(LinearElement):
     
     def __init__(self, id, biotope_values, width):
         super().__init__(id, biotope_values, width)
-        self.connected_counter = 0 # Number of roads/paths this road/path is connected to. Resets at every generation with the mutation.
+        self.connected_roads_paths_counter = 0 # Number of roads/paths this road/path is connected to. Resets at every generation with the mutation.
+        self.physical_element_connection = False
     
     def copy(self):
         copy = RoadPathElement(self.id, self.biotope_values, self.width)
@@ -403,43 +404,40 @@ class RoadPathElement(LinearElement):
         copy.edges = None if self.edges is None else list(self.edges)
         copy.coordinates = None if self.coordinates is None else list(self.coordinates)
         copy.horizontal = self.horizontal
-        copy.connected_counter = self.connected_counter
+        copy.connected_roads_paths_counter = self.connected_roads_paths_counter
+        copy.physical_element_connection = self.physical_element_connection
         return copy
         
     def fitness_level(self, element, fitness):
-        if (isinstance(element, ZoneElement) or isinstance(element, RectangleElement)):
+        if (isinstance(element, ZoneElement) or isinstance(element, RectangleElement)): # Warning: all physical elements should be called like this
             return element.fitness_level(self, fitness)
         else:
             return super().fitness_level(element, fitness)
     
     def is_neighbour(self, element):
-        """neighbour = super().is_neighbour(element)
-        if (neighbour and self.id == element.id):
-            self.connected_counter += 1
-            element.connected_counter += 1
-        return neighbour"""
         if (self.id != element.id):
             return super().is_neighbour(element)
         elif (self.horizontal != element.horizontal): # Prettier to alternate horizontal and vertical road/path sections
+        #else:
             (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
             (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
             distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
             distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
             if (distance <= road_path_max_manhattan_distance):
-            #if ((abs(self_min_x - element_max_x) <= road_path_max_distance or abs(self_max_x - element_min_x) <= road_path_max_distance) and (abs(self_max_y - element_min_y) <= road_path_max_distance or abs(self_min_y - element_max_y) <= road_path_max_distance)):
                 # It's a match!
-                self.connected_counter += 1
-                element.connected_counter += 1
+                self.connected_roads_paths_counter += 1
+                element.connected_roads_paths_counter += 1
                 return True
         return False
     
-    def is_connected(self):
-        return (self.connected_counter > 0)
+    def disconnected_road_path(self):
+        return (self.connected_roads_paths_counter == 0)
                         
     def apply_mutation(self, max_length, max_width):
         super().apply_mutation(max_length, max_width)
-        # Little trick to reset connected counter between two generations.
-        self.connected_counter = 0
+        # Little trick to reset connected roads/paths counter and physical element access between two generations.
+        self.connected_roads_paths_counter = 0
+        self.physical_element_connection = False
             
 
     def length_mutation(self, max_length, max_width):
@@ -498,22 +496,24 @@ class RectangleElement(AbstractElement):
         elif (not isinstance(element, RoadPathElement)):
             return super().fitness_level(element, fitness)
         elif (element.id in road_ids):
-            if (self.road_access):
+            if (self.road_access or element.physical_element_connection):
                 return 0
             else:
                 if (self.is_neighbour(element)):
                     self.road_access = True
+                    element.physical_element_connection = True
                     return fitness
                 return 0
         elif (element.id in path_ids):
-            if (self.path_access):
+            if (self.path_access or element.physical_element_connection):
                 return 0
             else:
                 if (self.is_neighbour(element)):
                     self.path_access = True
+                    element.physical_element_connection = True
                     return fitness
                 return 0
-        else: # Not a road nor a path, so we raise a value error
+        else: # Not a road or a path, so we raise a value error
             raise ValueError
     
     def is_fixed(self):

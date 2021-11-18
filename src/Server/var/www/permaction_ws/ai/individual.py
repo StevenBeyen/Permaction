@@ -110,7 +110,7 @@ class Individual(Thread):
                     self.fitness += e2.ternary_fitness_level(e1, self.ternary_fitness_dict[key2], self.terrain)
         # Disconnected roads and paths counter
         for e in self.elements:
-            if (isinstance(e, RoadPathElement) and not e.is_connected()):
+            if (isinstance(e, RoadPathElement) and e.disconnected_road_path()):
                 if ((self.multiple_roads and e.id in road_ids) or (self.multiple_paths and e.id in path_ids)):
                     self.nb_disconnected_roads_paths += 1
         # Dividing the fitness by the number of element overlaps and disconnected roads and paths +1 to prevent them.

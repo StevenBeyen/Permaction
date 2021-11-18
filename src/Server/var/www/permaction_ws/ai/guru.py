@@ -144,29 +144,41 @@ class Guru:
                     if (fitness > 0):
                         self.max_fitness += fitness
                         if (e1.id in road_ids):
-                            self.road_sections += [e1.copy()]
-                            self.multiple_roads = True
-                            self.max_fitness += fitness
+                            if (not self.road_sections):
+                                self.road_sections = [e1]
+                            else:
+                                self.road_sections += [e1.copy()]
+                                self.multiple_roads = True
+                                self.max_fitness += fitness
                         elif (e2.id in road_ids):
-                            self.road_sections += [e2.copy()]
-                            self.multiple_roads = True
-                            self.max_fitness += fitness
+                            if (not self.road_sections):
+                                self.road_sections = [e2]
+                            else:
+                                self.road_sections += [e2.copy()]
+                                self.multiple_roads = True
+                                self.max_fitness += fitness
                         if (e1.id in path_ids):
-                            self.path_sections += [e1.copy()]
-                            self.multiple_paths = True
-                            self.max_fitness += fitness
+                            if (not self.path_sections):
+                                self.path_sections = [e1]
+                            else:
+                                self.path_sections += [e1.copy()]
+                                self.multiple_paths = True
+                                self.max_fitness += fitness
                         elif (e2.id in path_ids):
-                            self.path_sections += [e2.copy()]
-                            self.multiple_paths = True
-                            self.max_fitness += fitness
+                            if (not self.path_sections):
+                                self.path_sections = [e2]
+                            else:
+                                self.path_sections += [e2.copy()]
+                                self.multiple_paths = True
+                                self.max_fitness += fitness
                 except KeyError:
                     pass
     
     def add_road_path_sections(self):
         # Ignoring first element since it's already in list of elements, only adding duplicates
-        for road in self.road_sections:
+        for road in self.road_sections[1:]:
             self.elements.append(road)
-        for path in self.path_sections:
+        for path in self.path_sections[1:]:
             self.elements.append(path)
 
     def init_terrain_element_ids(self):
