@@ -417,8 +417,8 @@ class RoadPathElement(LinearElement):
     def is_neighbour(self, element):
         if (self.id != element.id):
             return super().is_neighbour(element)
-        elif (self.horizontal != element.horizontal): # Prettier to alternate horizontal and vertical road/path sections
-        #else:
+        #elif (self.horizontal != element.horizontal): # Prettier to alternate horizontal and vertical road/path sections
+        else:
             (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
             (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
             distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
