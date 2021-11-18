@@ -168,6 +168,6 @@ class NotEnoughSpaceException(Exception):
 max_linear_element_ratio = 0.33
 # Road and path length generation multiple
 road_path_length_multiple = 4
-# Maximum distance for road and path neighbour computation. Recommended value is 2.
-road_path_max_distance = 1
+# Maximum distance for road and path neighbour computation.
+road_path_max_manhattan_distance = 1
 

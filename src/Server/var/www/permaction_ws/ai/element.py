@@ -78,15 +78,6 @@ class AbstractElement:
     
     def fitness_level(self, element, fitness):
         """Generic method for elements interaction."""
-        # Two Zone elements cannot interact together
-        if (isinstance(self, ZoneElement) and isinstance(element, ZoneElement)):
-            return 0
-        # If one of the elements is a zone and the other is a physical one, we check if the physical element's coordinates are inside the zone's coordinates
-        elif (isinstance(self, ZoneElement)):
-            return (len(set(element.get_used_coordinates()).intersection(self.get_zone_coordinates())) / len(element.get_used_coordinates())) * fitness
-        elif (isinstance(element, ZoneElement)):
-            return (len(set(element.get_zone_coordinates()).intersection(self.get_used_coordinates())) / len(element.get_used_coordinates())) * fitness
-        # Otherwise, let's assume we can default to a neighbouring check
         return fitness if self.is_neighbour(element) else 0
     
     def is_equal(self, element):
@@ -199,6 +190,12 @@ class FixedElement(AbstractElement):
         self.coordinates = coordinates
         self.size = len(coordinates) * squared_square_size
     
+    def fitness_level(self, element, fitness):
+        if (isinstance(element, ZoneElement)):
+            return element.fitness_level(self, fitness)
+        else:
+            return super().fitness_level(element, fitness)
+    
     def copy(self):
         # No need to copy this type of element since it's always the same
         return self
@@ -225,7 +222,13 @@ class ZoneElement(FixedElement):
     """Zone element class for non-physical fixed elements like height zones.
     Behaves in the same way as a fixed element, but it should be able to overlap with other elements. Therefore the 
     get_used_coordinates() method returns an empty list."""
-    # TODO Change default method to add fitness: is_neighbour should evolve into something more generic based on the actual elements.
+    
+    def fitness_level(self, element, fitness):
+        # Two Zone elements cannot interact together
+        if (isinstance(element, ZoneElement)):
+            return 0
+        else: # Default : we check if the physical element's coordinates are inside the zone's coordinates
+            return (len(set(element.get_used_coordinates()).intersection(self.get_zone_coordinates())) / len(element.get_used_coordinates())) * fitness
     
     def get_zone_coordinates(self):
         return self.coordinates
@@ -268,6 +271,12 @@ class LinearElement(AbstractElement):
         copy.coordinates = None if self.coordinates is None else list(self.coordinates)
         copy.horizontal = self.horizontal
         return copy
+    
+    def fitness_level(self, element, fitness):
+        if (isinstance(element, ZoneElement)):
+            return element.fitness_level(self, fitness)
+        else:
+            return super().fitness_level(element, fitness)
         
     def is_fixed(self):
         return False
@@ -396,6 +405,12 @@ class RoadPathElement(LinearElement):
         copy.horizontal = self.horizontal
         copy.connected_counter = self.connected_counter
         return copy
+        
+    def fitness_level(self, element, fitness):
+        if (isinstance(element, ZoneElement) or isinstance(element, RectangleElement)):
+            return element.fitness_level(self, fitness)
+        else:
+            return super().fitness_level(element, fitness)
     
     def is_neighbour(self, element):
         """neighbour = super().is_neighbour(element)
@@ -405,15 +420,18 @@ class RoadPathElement(LinearElement):
         return neighbour"""
         if (self.id != element.id):
             return super().is_neighbour(element)
-        elif (self.horizontal != element.horizontal): # Only considering two roads or paths connected if their extremities are correctly connected
+        elif (self.horizontal != element.horizontal): # Prettier to alternate horizontal and vertical road/path sections
             (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
             (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
-            if ((abs(self_min_x - element_max_x) <= road_path_max_distance or abs(self_max_x - element_min_x) <= road_path_max_distance) and (abs(self_max_y - element_min_y) <= road_path_max_distance or abs(self_min_y - element_max_y) <= road_path_max_distance)):
+            distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
+            distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
+            if (distance <= road_path_max_manhattan_distance):
+            #if ((abs(self_min_x - element_max_x) <= road_path_max_distance or abs(self_max_x - element_min_x) <= road_path_max_distance) and (abs(self_max_y - element_min_y) <= road_path_max_distance or abs(self_min_y - element_max_y) <= road_path_max_distance)):
                 # It's a match!
                 self.connected_counter += 1
                 element.connected_counter += 1
                 return True
-            return False
+        return False
     
     def is_connected(self):
         return (self.connected_counter > 0)
@@ -459,6 +477,8 @@ class RectangleElement(AbstractElement):
         self.width = phi_ratio_values[size][1]
         self.edges = None
         self.coordinates = None
+        self.road_access = False
+        self.path_access = False
     
     def copy(self):
         copy = RectangleElement(self.id, self.biotope_values, self.size)
@@ -467,7 +487,34 @@ class RectangleElement(AbstractElement):
         copy.width = self.width
         copy.edges = None if self.edges is None else list(self.edges)
         copy.coordinates = None if self.coordinates is None else list(self.coordinates)
+        copy.road_access = self.road_access
+        copy.path_access = self.path_access
         return copy
+    
+    def fitness_level(self, element, fitness):
+        # Method override to avoid multiple road and path accesses
+        if (isinstance(element, ZoneElement)):
+            return element.fitness_level(self, fitness)
+        elif (not isinstance(element, RoadPathElement)):
+            return super().fitness_level(element, fitness)
+        elif (element.id in road_ids):
+            if (self.road_access):
+                return 0
+            else:
+                if (self.is_neighbour(element)):
+                    self.road_access = True
+                    return fitness
+                return 0
+        elif (element.id in path_ids):
+            if (self.path_access):
+                return 0
+            else:
+                if (self.is_neighbour(element)):
+                    self.path_access = True
+                    return fitness
+                return 0
+        else: # Not a road nor a path, so we raise a value error
+            raise ValueError
     
     def is_fixed(self):
         return False
@@ -539,6 +586,10 @@ class RectangleElement(AbstractElement):
             except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                 pass
         self.position = (length_pos, width_pos)
+        
+        # Finally, let's reset road and path access variables
+        self.road_access = False
+        self.path_access = False
         
         # Update at the end to make sure all parameters are correct
         self.update()
