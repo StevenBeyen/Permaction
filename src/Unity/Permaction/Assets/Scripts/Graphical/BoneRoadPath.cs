@@ -52,7 +52,19 @@ public class BoneRoadPath : MonoBehaviour
         Softbody.AddCollider(ref Y2);
         Softbody.AddCollider(ref Y3);
         Softbody.AddCollider(ref Y4);
-        
+
+        // Root
+        Softbody.AddSpring(ref X0, ref Root);
+        Softbody.AddSpring(ref X1, ref Root);
+        Softbody.AddSpring(ref X2, ref Root);
+        Softbody.AddSpring(ref X3, ref Root);
+        Softbody.AddSpring(ref X4, ref Root);
+        Softbody.AddSpring(ref Y0, ref Root);
+        Softbody.AddSpring(ref Y1, ref Root);
+        Softbody.AddSpring(ref Y2, ref Root);
+        Softbody.AddSpring(ref Y3, ref Root);
+        Softbody.AddSpring(ref Y4, ref Root);
+
         // Horizontal
         Softbody.AddSpring(ref X0, ref X1);
         Softbody.AddSpring(ref X1, ref X2);
@@ -66,8 +78,7 @@ public class BoneRoadPath : MonoBehaviour
         // Vertical
         Softbody.AddSpring(ref X0, ref Y0);
         Softbody.AddSpring(ref X1, ref Y1);
-        Softbody.AddSpring(ref X2, ref Root);
-        Softbody.AddSpring(ref Root, ref Y2);
+        Softbody.AddSpring(ref X2, ref Y2);
         Softbody.AddSpring(ref X3, ref Y3);
         Softbody.AddSpring(ref X4, ref Y4);
 
