@@ -7,7 +7,7 @@ public class PinchAndZoom : MonoBehaviour
     float MouseZoomSpeed = 15.0f;
     float TouchZoomSpeed = 0.1f;
     float ZoomMinBound = 30f;
-    float ZoomMaxBound = 100f;
+    float ZoomMaxBound = 75f;
     Camera cam;
 
     // Use this for initialization
