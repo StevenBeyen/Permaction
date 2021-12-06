@@ -33,6 +33,7 @@ class Category(db.Model):
     name = db.Column(db.Text, nullable=False)
     physical_category = db.Column(db.Boolean, nullable=False)
     element_id = db.Column(db.Integer)
+    terrain_flattening = db.Column(db.Integer, nullable=False)
     
     def __repr__(self):
         return '<Category {}>'.format(self.name)
@@ -56,7 +57,8 @@ class Element(db.Model):
     def to_dict(self, category = None):
         reply = {id_tag: self.id, name_tag: self.name}
         if (category is not None):
-            reply[category_tag] = category
+            reply[category_tag] = category.name
+            reply[terrain_flattening_tag] = category.terrain_flattening
         return reply
     
     def __repr__(self):

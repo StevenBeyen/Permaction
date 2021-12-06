@@ -29,8 +29,8 @@ def get_physical_elements():
     physical_elements_dict = {physical_elements_tag: []}
     for element in physical_elements:
         if (element.name not in physical_category_names and element.category_id in physical_category_ids):
-            category_name = physical_category_names[physical_category_ids.index(element.category_id)]
-            physical_elements_dict[physical_elements_tag] += [element.to_dict(category_name)]
+            category = physical_categories[physical_category_ids.index(element.category_id)]
+            physical_elements_dict[physical_elements_tag] += [element.to_dict(category)]
     return jsonify(physical_elements_dict)
 
 

@@ -123,3 +123,6 @@ curl -b 'session=.eJwljztuQzEMBO-iOoVIiRTlyzxQ_CBGADt4tqvAd4-CdIstdmZ_ypFnPD7L5X
 {"index":99,"terrain_line_data":["0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0"]}
 ],"elements_data":[{"id":42, "counter":1},{"id":43, "counter":1},{"id":44, "counter":1},{"id":47, "counter":1},{"id":48, "counter":1},{"id":77, "counter":1},{"id":59, "counter":1},{"id":60, "counter":1},{"id":62, "counter":1}]}' http://127.0.0.1:13731/placement_request
 
+
+curl -b 'session=.eJwljztuQzEMBO-iOoVIiRTlyzxQ_CBGADt4tqvAd4-CdIstdmZ_ypFnPD7L5Xm-4qMcVy-X0gcCO6EBEIsbj66Z7r0pckBOBpLZBYBnVAkXH0CQtDCkNojKE5C1VraotssxRc3F3HL1NMyGmToXc-ZOLi1MNs-MtEbZIt966u1-9eN5_4rblkKdCTOGBq8upOJRk3tPbj57N-iWMt0Uh9PGL1JswKnkWJH0b_T1iPP_YivvX-WdSN4.Ya3wiw.fNHotSnVk_jgZoykIrwjBcJqLiE' -i localhost:13731/physical_elements
+

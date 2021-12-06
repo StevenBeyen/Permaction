@@ -138,6 +138,19 @@ update binary_interaction set description = 'Le sentier fournit un accès à l�
 update binary_interaction set description = 'Le sentier fournit un accès à l’atelier.' where id = 102;
 update binary_interaction set description = 'Le sentier fournit un accès au point d’eau.' where id = 103;
 update binary_interaction set description = 'Le sentier fournit un accès au potager.' where id = 104;
+
+
+
 update binary_interaction set description = 'Le sentier fournit un accès aux toilettes sèches.' where id = 105;
 update binary_interaction set description = 'Le sentier fournit un accès au verger.' where id = 106;
+
+
+
+alter table category add terrain_flattening tinyint not null default 0;
+update category set terrain_flattening = 1 where id = 1;
+update category set terrain_flattening = 1 where id = 3;
+update category set terrain_flattening = 1 where id = 7;
+update category set terrain_flattening = 1 where id = 9;
+update category set terrain_flattening = 1 where id = 15;
+update category set terrain_flattening = 1 where id = 16;
 
