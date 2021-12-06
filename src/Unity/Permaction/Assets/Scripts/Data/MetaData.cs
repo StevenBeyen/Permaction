@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using API;
+
 public class MetaData
 {
     // Server
@@ -30,6 +32,7 @@ public class MetaData
     public const string SECOND_COUNTER_TAG = "Counter2";
     private const string ICONS_RESOURCES_PATH = "Icons/";
     public Dictionary<string, string> icon_mapping;
+    public Element[] physical_elements;
     // Locale
     public Dictionary<string, int> id_locale_mapping;
     // Terrain
