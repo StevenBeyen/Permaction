@@ -19,7 +19,7 @@ namespace API
 
         private int minX, minZ, maxX, maxZ, xRange, zRange;
         private float minY, maxY;
-        private float midY;
+        private float YValue;
 
         public Element(int id)
         {
@@ -52,21 +52,17 @@ namespace API
                 if (height > maxY)
                     maxY = height;
             }
-            midY = minY + (maxY - minY) / 2;
+            if (terrain_flattening)
+                YValue = minY + (maxY - minY) / 2;
+            else
+                YValue = maxY;
             xRange = maxX - minX + 1;
             zRange = maxZ - minZ + 1; 
-
-            // TMP Print to look for shift origin...
-            //Debug.Log("ID : " + this.id);
-            //Debug.Log("Min X : " + minX + ", Mid Y : " + midY + ", Min Z : " + minZ);
-            //Debug.Log("Position : " + this.GetPosition());
-            //Debug.Log("Scale : " + this.GetScale());
-            //Debug.Log("Heights : " + this.GetHeights());
         }
 
         public Vector3 GetPosition()
         {
-            return new Vector3(minX, midY, minZ);
+            return new Vector3(minX, YValue, minZ);
         }
 
         public Vector3 GetScale()
@@ -88,7 +84,7 @@ namespace API
             {
                 for (int x = 0; x < extendedXRange; ++x)
                 {
-                    heights[z,x] = midY;
+                    heights[z,x] = YValue;
                 }
             }
             return heights;

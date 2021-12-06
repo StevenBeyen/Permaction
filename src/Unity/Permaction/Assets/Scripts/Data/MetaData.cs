@@ -32,7 +32,8 @@ public class MetaData
     public const string SECOND_COUNTER_TAG = "Counter2";
     private const string ICONS_RESOURCES_PATH = "Icons/";
     public Dictionary<string, string> icon_mapping;
-    public Element[] physical_elements;
+    public Dictionary<int, string> terrain_flattening_elements;
+    public Dictionary<int, string> non_terrain_flattening_elements;
     // Locale
     public Dictionary<string, int> id_locale_mapping;
     // Terrain
@@ -89,9 +90,9 @@ public class MetaData
         prefab_mapping_add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         prefab_mapping_add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
         prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
-        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
-        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
-        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
+        //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
+        //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
         prefab_mapping_add(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
         prefab_mapping_add(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         prefab_mapping_add(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
@@ -192,7 +193,7 @@ public class MetaData
         icon_mapping.Add("Etang", ICONS_RESOURCES_PATH + "park");
     }
 
-    public void prefab_mapping_add(int id, string value)
+    private void prefab_mapping_add(int id, string value)
     {
         List<string> values;
 
@@ -202,5 +203,18 @@ public class MetaData
             prefab_mapping.Add(id, values);
         }
         values.Add(value);
+    }
+
+    public void extract_terrain_flattening(Element[] physical_elements)
+    {
+        terrain_flattening_elements = new Dictionary<int, string>();
+        non_terrain_flattening_elements = new Dictionary<int, string>();
+        foreach(Element element in physical_elements)
+        {
+            if (element.terrain_flattening)
+                terrain_flattening_elements.Add(element.id, element.name);
+            else
+                non_terrain_flattening_elements.Add(element.id, element.name);
+        }
     }
 }

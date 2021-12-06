@@ -42,12 +42,24 @@ public class PlaceElements : MonoBehaviour
         Vector3 base_position, real_position, rotation_offset, scale;
         Vector3 billboard_scale = new Vector3(7, 7, 7);
         float rotation;
+        string element_name;
+
         foreach(Element e in UserData.reply.result)
         {
-            GameObject instantiatedGOContainer = new GameObject(e.id.ToString());
+            // First of all, let's grab the element's name and whether or not this element needs terrain flattening
+            if (UserData.meta_data.terrain_flattening_elements.TryGetValue(e.id, out element_name))
+            {
+                e.terrain_flattening = true;
+            } else
+            {
+                e.terrain_flattening = false;
+                UserData.meta_data.non_terrain_flattening_elements.TryGetValue(e.id, out element_name);
+            }
+            GameObject instantiatedGOContainer = new GameObject(element_name);
             instantiatedGOContainer.transform.SetParent(terrain.transform);
             instantiatedGOContainer.AddComponent<Graphical.GraphicalElement>();
             BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
+            //Rigidbody rigidBody = instantiatedGOContainer.AddComponent<Rigidbody>();
             e.Sync();
             scale = e.GetScale();
             UserData.meta_data.prefab_mapping.TryGetValue(e.id, out prefab_names);
@@ -55,7 +67,8 @@ public class PlaceElements : MonoBehaviour
             // Postprocessing: converting base position height (0,1 value) in terrain height
             base_position = new Vector3(base_position.x, base_position.y * terrain.terrainData.size.y, base_position.z);
             // Flattening terrain on the area where the element will be placed
-            terrain.terrainData.SetHeights((int) base_position.x - 1, (int) base_position.z - 1, e.GetHeights());
+            if (e.terrain_flattening)
+                terrain.terrainData.SetHeights((int) base_position.x - 1, (int) base_position.z - 1, e.GetHeights());
             // Switch case depending on type of prefab object: stretched or copied
             // Case 1: element that has to be copied to cover the given terrain coordinates
             if (UserData.meta_data.prefab_fixed_size_widths.TryGetValue(e.id, out prefab_fixed_size_width))
