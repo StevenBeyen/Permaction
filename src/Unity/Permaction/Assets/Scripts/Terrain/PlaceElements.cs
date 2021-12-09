@@ -42,21 +42,14 @@ public class PlaceElements : MonoBehaviour
         Vector3 base_position, real_position, rotation_offset, scale;
         Vector3 billboard_scale = new Vector3(7, 7, 7);
         float rotation;
-        string element_name;
 
         foreach(Element e in UserData.reply.result)
         {
-            // First of all, let's grab the element's name and whether or not this element needs terrain flattening
-            if (UserData.meta_data.terrain_flattening_elements.TryGetValue(e.id, out element_name))
-            {
-                e.terrain_flattening = true;
-            } else
-            {
-                e.terrain_flattening = false;
-                UserData.meta_data.non_terrain_flattening_elements.TryGetValue(e.id, out element_name);
-            }
-            //GameObject instantiatedGOContainer = new GameObject(element_name);
-            //instantiatedGOContainer.transform.SetParent(terrain.transform);
+            // TODO Rework all this stuff into clean functions, right now it's a bit of a mess...
+            // First of all, let's extract the information we stored : name, terrain flattening and show interactions
+            enhance_element(e);
+            GameObject instantiatedGOContainer = new GameObject(e.name);
+            instantiatedGOContainer.transform.SetParent(terrain.transform);
             //instantiatedGOContainer.AddComponent<Graphical.GraphicalElement>();
             //BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
             //Rigidbody rigidBody = instantiatedGOContainer.AddComponent<Rigidbody>();
@@ -101,8 +94,9 @@ public class PlaceElements : MonoBehaviour
                     for (int z=0; (z+z_step)<=scale.z; z+=z_step) {
                         prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                         real_position = base_position + rotation_offset + new Vector3(x,0,z);
-                        //GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, instantiatedGOContainer.transform);
-                        GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, terrain.transform);
+                        GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, instantiatedGOContainer.transform);
+                        instantiatedGO.transform.GetChild(0).gameObject.AddComponent<Graphical.GraphicalElement>();
+                        //GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, terrain.transform);
                         instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
                     }
                 }
@@ -118,8 +112,9 @@ public class PlaceElements : MonoBehaviour
                 prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                 rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
                 rotation = Random.Range(0,4) * 90;
-                //GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
-                GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, terrain.transform);
+                GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
+                instantiatedGO.transform.GetChild(0).gameObject.AddComponent<Graphical.GraphicalElement>();
+                //GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, terrain.transform);
                 instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation + Random.Range(-10, 10));
                 if(rotation%180 == 0)
                     instantiatedGO.transform.localScale = scale;
@@ -131,7 +126,7 @@ public class PlaceElements : MonoBehaviour
                 //boxCollider.size = renderer.bounds.size;
             }
             // Billboard
-            GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, terrain.transform);
+            GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
             instantiatedBillboard.transform.localScale = billboard_scale;
             // Saving elements for arc link creation
             //UserData.physicalElements.Add(new PhysicalElement(e.id, instantiatedGOContainer, base_position + rotation_offset));
@@ -181,5 +176,12 @@ public class PlaceElements : MonoBehaviour
             arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
             firstElement.associated_ids.Add(secondElement.id);
         }
+    }
+
+    private void enhance_element(Element e)
+    {
+        UserData.meta_data.element_name_data.TryGetValue(e.id, out e.name);
+        UserData.meta_data.terrain_flattening_data.TryGetValue(e.id, out e.terrain_flattening);
+        UserData.meta_data.show_interactions_data.TryGetValue(e.id, out e.show_interactions);
     }
 }

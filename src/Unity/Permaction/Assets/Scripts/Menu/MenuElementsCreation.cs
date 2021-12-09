@@ -104,8 +104,8 @@ namespace Menu {
             // Getting all physical elements
             menu_elements = new PhysicalElements();
             yield return StartCoroutine(menu_elements.GetWebRequest(MetaData.PHYSICAL_ELEMENTS_URI, menu_elements.PhysicalElementsCallback, UserData.user.cookie));
-            // Let's store this list for the end result
-            UserData.meta_data.extract_terrain_flattening(menu_elements.physical_elements);
+            // Let's store some data for the end visual result
+            UserData.meta_data.extract_data(menu_elements.physical_elements);
 
             // First we store the elements and categories differently for menu creation purposes
             List<Element> elements;

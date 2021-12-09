@@ -32,9 +32,10 @@ public class MetaData
     public const string SECOND_COUNTER_TAG = "Counter2";
     private const string ICONS_RESOURCES_PATH = "Icons/";
     public Dictionary<string, string> icon_mapping;
-    public Dictionary<int, string> terrain_flattening_elements;
-    public Dictionary<int, string> non_terrain_flattening_elements;
+    public Dictionary<int, string> element_name_data;
+    public Dictionary<int, bool> terrain_flattening_data;
     public const float non_flattening_height_margin = 1.05f;
+    public Dictionary<int, bool> show_interactions_data;
     // Locale
     public Dictionary<string, int> id_locale_mapping;
     // Terrain
@@ -206,16 +207,31 @@ public class MetaData
         values.Add(value);
     }
 
-    public void extract_terrain_flattening(Element[] physical_elements)
+    public void extract_data(Element[] elements)
     {
-        terrain_flattening_elements = new Dictionary<int, string>();
-        non_terrain_flattening_elements = new Dictionary<int, string>();
-        foreach(Element element in physical_elements)
-        {
-            if (element.terrain_flattening)
-                terrain_flattening_elements.Add(element.id, element.name);
-            else
-                non_terrain_flattening_elements.Add(element.id, element.name);
-        }
+        extract_element_name(elements);
+        extract_terrain_flattening(elements);
+        extract_show_interactions(elements);
+    }
+
+    private void extract_element_name(Element[] elements)
+    {
+        element_name_data = new Dictionary<int, string>();
+        foreach(Element element in elements)
+            element_name_data.Add(element.id, element.name);
+    }
+
+    private void extract_terrain_flattening(Element[] elements)
+    {
+        terrain_flattening_data = new Dictionary<int, bool>();
+        foreach(Element element in elements)
+            terrain_flattening_data.Add(element.id, element.terrain_flattening);
+    }
+
+    private void extract_show_interactions(Element[] elements)
+    {
+        show_interactions_data = new Dictionary<int, bool>();
+        foreach (Element element in elements)
+            show_interactions_data.Add(element.id, element.show_interactions);
     }
 }

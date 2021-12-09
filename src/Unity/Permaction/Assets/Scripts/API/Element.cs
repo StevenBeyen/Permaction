@@ -13,6 +13,7 @@ namespace API
         public string name;
         public string category;
         public bool terrain_flattening;
+        public bool show_interactions;
         public Coordinate[] coordinates;
         public int counter;
         // TODO Use coordinates array as fixed elements data

@@ -19,8 +19,8 @@ namespace Graphical
         public void select()
         {
             //getChildGameObject(gameObject, MetaData.ARC_LINK_CONTAINER).SetActive(true);
-            GetComponentInChildren<SpriteRenderer>().enabled = true;
-            foreach (LineRenderer lr in GetComponentsInChildren<LineRenderer>())
+            transform.parent.parent.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            foreach (LineRenderer lr in transform.parent.parent.GetComponentsInChildren<LineRenderer>())
             {
                 lr.enabled = true;
             }
@@ -30,11 +30,11 @@ namespace Graphical
         public void unselect()
         {
             UserData.selectedElement = null;
-            foreach (LineRenderer lr in GetComponentsInChildren<LineRenderer>())
+            foreach (LineRenderer lr in transform.parent.parent.GetComponentsInChildren<LineRenderer>())
             {
                 lr.enabled = false;
             }
-            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            transform.parent.parent.GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
 
         static public GameObject getChildGameObject(GameObject fromGameObject, string withName) {
