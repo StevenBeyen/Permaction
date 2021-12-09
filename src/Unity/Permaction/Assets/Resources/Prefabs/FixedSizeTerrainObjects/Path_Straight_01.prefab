@@ -24,10 +24,10 @@ MonoBehaviour:
   Y3: {fileID: 7167626288422988712}
   Y4: {fileID: 8308154021905629830}
   Spring: 1000
-  Damper: 1000
+  Damper: 0.5
   Shape: 0
-  ColliderSize: 0.0025
-  RigidbodyMass: 1
+  ColliderSize: 0.003
+  RigidbodyMass: 1e+11
 --- !u!1 &9177775455358506958
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,11 +156,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 82b68593932961049b55634cf00f0b3c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.085
+      value: 1.0805817
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 82b68593932961049b55634cf00f0b3c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.94161
+      value: 0.6469246
       objectReference: {fileID: 0}
     - target: {fileID: 7117651921990213215, guid: 82b68593932961049b55634cf00f0b3c,
         type: 3}

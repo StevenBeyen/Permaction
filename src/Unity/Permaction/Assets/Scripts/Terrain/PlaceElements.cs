@@ -55,10 +55,10 @@ public class PlaceElements : MonoBehaviour
                 e.terrain_flattening = false;
                 UserData.meta_data.non_terrain_flattening_elements.TryGetValue(e.id, out element_name);
             }
-            GameObject instantiatedGOContainer = new GameObject(element_name);
-            instantiatedGOContainer.transform.SetParent(terrain.transform);
-            instantiatedGOContainer.AddComponent<Graphical.GraphicalElement>();
-            BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
+            //GameObject instantiatedGOContainer = new GameObject(element_name);
+            //instantiatedGOContainer.transform.SetParent(terrain.transform);
+            //instantiatedGOContainer.AddComponent<Graphical.GraphicalElement>();
+            //BoxCollider boxCollider = instantiatedGOContainer.AddComponent<BoxCollider>();
             //Rigidbody rigidBody = instantiatedGOContainer.AddComponent<Rigidbody>();
             e.Sync();
             scale = e.GetScale();
@@ -101,39 +101,41 @@ public class PlaceElements : MonoBehaviour
                     for (int z=0; (z+z_step)<=scale.z; z+=z_step) {
                         prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                         real_position = base_position + rotation_offset + new Vector3(x,0,z);
-                        GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, instantiatedGOContainer.transform);
+                        //GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, instantiatedGOContainer.transform);
+                        GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, terrain.transform);
                         instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
                     }
                 }
                 // Changing rotation offset for box collider and billboard
                 rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
-                Vector3 center = base_position + rotation_offset;
+                //Vector3 center = base_position + rotation_offset;
                 // Box collider on container
-                boxCollider.center = center;
-                boxCollider.size = new Vector3(scale.x, 1, scale.z);
+                //boxCollider.center = center;
+                //boxCollider.size = new Vector3(scale.x, 1, scale.z);
             } else // Case 2: stretchable terrain object
             {
                 // Object itself
                 prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                 rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
                 rotation = Random.Range(0,4) * 90;
-                GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
+                //GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
+                GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, terrain.transform);
                 instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation + Random.Range(-10, 10));
                 if(rotation%180 == 0)
                     instantiatedGO.transform.localScale = scale;
                 else
                     instantiatedGO.transform.localScale = new Vector3(scale.z, scale.y, scale.x);
                 // Box collider on container
-                MeshRenderer renderer = instantiatedGO.GetComponentInChildren<MeshRenderer>();
-                boxCollider.center = renderer.bounds.center;
-                boxCollider.size = renderer.bounds.size;
+                //MeshRenderer renderer = instantiatedGO.GetComponentInChildren<MeshRenderer>();
+                //boxCollider.center = renderer.bounds.center;
+                //boxCollider.size = renderer.bounds.size;
             }
             // Billboard
-            GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, instantiatedGOContainer.transform);
+            GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, terrain.transform);
             instantiatedBillboard.transform.localScale = billboard_scale;
             // Saving elements for arc link creation
-            UserData.physicalElements.Add(new PhysicalElement(e.id, instantiatedGOContainer, base_position + rotation_offset));
-        }
+            //UserData.physicalElements.Add(new PhysicalElement(e.id, instantiatedGOContainer, base_position + rotation_offset));
+        }/*
         // And now creating the arc links
         GameObject arcLink;
         foreach(BinaryInteraction binaryInteraction in UserData.binaryInteractions)
@@ -164,7 +166,7 @@ public class PlaceElements : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
         UserData.elements_loaded = true;
     }
 

@@ -39,7 +39,7 @@ public class BoneRoadPath : MonoBehaviour
 
     private void Start()
     {
-        Softbody.Init(Shape, ColliderSize, RigidbodyMass, Spring, Damper, RigidbodyConstraints.None);
+        Softbody.Init(Shape, ColliderSize, RigidbodyMass, Spring, Damper, RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
         Softbody.AddCollider(ref Root);
         Softbody.AddCollider(ref X0);

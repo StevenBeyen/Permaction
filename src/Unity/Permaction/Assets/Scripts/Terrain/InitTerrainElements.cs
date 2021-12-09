@@ -7,8 +7,8 @@ public class InitTerrainElements : MonoBehaviour
 {
     public Terrain terrain;
     public float elementsPerSquareMeter = 0.05f;
-    public float randomScaleOffset = 0.25f;
-    public float randomScaleRange = 1.5f;
+    public float randomScaleOffset = 0.125f;
+    public float randomScaleRange = 0.75f;
     public double grassToRocksRatio = 0.7;
     public int borderProtection = 5;
 

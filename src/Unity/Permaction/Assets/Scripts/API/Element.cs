@@ -55,7 +55,7 @@ namespace API
             if (terrain_flattening)
                 YValue = minY + (maxY - minY) / 2;
             else
-                YValue = maxY;
+                YValue = maxY * MetaData.non_flattening_height_margin;
             xRange = maxX - minX + 1;
             zRange = maxZ - minZ + 1; 
         }

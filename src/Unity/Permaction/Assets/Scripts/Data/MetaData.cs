@@ -34,6 +34,7 @@ public class MetaData
     public Dictionary<string, string> icon_mapping;
     public Dictionary<int, string> terrain_flattening_elements;
     public Dictionary<int, string> non_terrain_flattening_elements;
+    public const float non_flattening_height_margin = 1.05f;
     // Locale
     public Dictionary<string, int> id_locale_mapping;
     // Terrain
@@ -90,7 +91,7 @@ public class MetaData
         prefab_mapping_add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         prefab_mapping_add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
         prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
-        //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
+        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
         //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
         prefab_mapping_add(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
