@@ -30,6 +30,7 @@ id_tag = 'id'
 name_tag = 'name'
 category_tag = 'category'
 terrain_flattening_tag = 'terrain_flattening'
+show_interactions_tag = 'show_interactions'
 # JSON binary interactions tags
 binary_interactions_tag = 'binary_interactions'
 # JSON placement request tags

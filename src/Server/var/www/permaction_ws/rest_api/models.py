@@ -34,6 +34,7 @@ class Category(db.Model):
     physical_category = db.Column(db.Boolean, nullable=False)
     element_id = db.Column(db.Integer)
     terrain_flattening = db.Column(db.Integer, nullable=False)
+    show_interactions = db.Column(db.Integer, nullable=False)
     
     def __repr__(self):
         return '<Category {}>'.format(self.name)
@@ -59,6 +60,7 @@ class Element(db.Model):
         if (category is not None):
             reply[category_tag] = category.name
             reply[terrain_flattening_tag] = category.terrain_flattening
+            reply[show_interactions_tag] = category.show_interactions
         return reply
     
     def __repr__(self):

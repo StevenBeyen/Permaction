@@ -154,3 +154,10 @@ update category set terrain_flattening = 1 where id = 9;
 update category set terrain_flattening = 1 where id = 15;
 update category set terrain_flattening = 1 where id = 16;
 
+
+
+alter table category add show_interactions tinyint not null default 1;
+update category set show_interactions = 0 where id = 5;
+update category set show_interactions = 0 where id = 11;
+update category set show_interactions = 0 where id = 17;
+
