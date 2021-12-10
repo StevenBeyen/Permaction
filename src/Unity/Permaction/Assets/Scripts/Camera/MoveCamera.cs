@@ -7,6 +7,7 @@ public class MoveCamera : MonoBehaviour
 	// VARIABLES
 	//
 	
+	public Terrain terrain;
 	public float turnSpeed = 4.0f;		// Speed of camera turning when mouse moves in along an axis
 	public float panSpeed = 3.0f;		// Speed of the camera when being panned
 	public float zoomSpeed = 3.0f;		// Speed of the camera going back and forth
@@ -26,7 +27,6 @@ public class MoveCamera : MonoBehaviour
 	
 	void Start()
 	{
-		Terrain terrain = Terrain.activeTerrain;
 		Vector3 terrainSize = terrain.terrainData.size;
 		xMinLimit = -cameraLimit;
 		xMaxLimit = terrainSize.x + cameraLimit;
@@ -75,8 +75,8 @@ public class MoveCamera : MonoBehaviour
 
 			// Camera height depending on terrain height
 			Vector3 camPos2 = transform.position;
-			float groundLevel = Terrain.activeTerrain.SampleHeight(camPos2);
-			camPos2.y = Mathf.Lerp(camPos2.y, groundLevel + cameraHeight, Time.deltaTime * responsiveness);
+			float groundLevel = terrain.SampleHeight(camPos2);
+			camPos2.y = groundLevel + cameraHeight;
 			transform.position = camPos2;
 		}
 

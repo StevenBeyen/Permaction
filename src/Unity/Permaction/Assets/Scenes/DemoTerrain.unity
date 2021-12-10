@@ -6147,6 +6147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c985f0d4a457a1eaf8481e69ce353cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: {fileID: 2018008809}
   turnSpeed: 4
   panSpeed: 3
   zoomSpeed: 3
