@@ -45,7 +45,7 @@ namespace Menu
             return null;
         }
 
-        void toggleSelection(bool value)
+        private void toggleSelection(bool value)
         {
             foreach (Image checkmarkImage in checkmarkImages)
             {

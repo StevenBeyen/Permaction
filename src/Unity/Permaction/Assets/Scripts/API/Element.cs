@@ -28,6 +28,13 @@ namespace API
             this.counter = 1;
         }
 
+        public void Enhance()
+        {
+            UserData.meta_data.element_name_data.TryGetValue(id, out name);
+            UserData.meta_data.terrain_flattening_data.TryGetValue(id, out terrain_flattening);
+            UserData.meta_data.show_interactions_data.TryGetValue(id, out show_interactions);
+        }
+
         public void Sync()
         {
             float height;

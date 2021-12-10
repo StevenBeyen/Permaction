@@ -21,8 +21,8 @@ namespace Graphical {
         private float y0;
         private float z0;
         private float y1;
-        private float xDirection = 1;
-        private float zDirection = 1;
+        private float x_direction = 1;
+        private float z_direction = 1;
 
         public ArcLink(GameObject arcLink, Vector3 source, Vector3 destination)
         {
@@ -38,9 +38,9 @@ namespace Graphical {
             y0 = source.y;
             z0 = source.z;
             if (source.x > destination.x)
-                xDirection = -1;
+                x_direction = -1;
             if  (source.z > destination.z)
-                zDirection = -1;
+                z_direction = -1;
             y1 = destination.y;
             RenderArc();
         }
@@ -66,9 +66,9 @@ namespace Graphical {
         private Vector3 ArcPoint(float t)
         {
             float currentDistance = t * distance;
-            float x = x0 + xDirection * currentDistance * xRatio;
+            float x = x0 + x_direction * currentDistance * xRatio;
             float y = y0 * (1 - t) + y1 * t + currentDistance * Mathf.Tan(radianAngle) - ((gravity * currentDistance * currentDistance)/(2 * velocity * velocity * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle)));
-            float z = z0 + zDirection * currentDistance * zRatio;
+            float z = z0 + z_direction * currentDistance * zRatio;
             return new Vector3(x, y, z);
         }
     }

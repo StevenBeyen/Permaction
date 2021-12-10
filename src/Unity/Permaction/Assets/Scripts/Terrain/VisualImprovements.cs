@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InitTerrainElements : MonoBehaviour
+public class VisualImprovements : MonoBehaviour
 {
     public Terrain terrain;
     public float elementsPerSquareMeter = 0.05f;
@@ -21,7 +21,7 @@ public class InitTerrainElements : MonoBehaviour
         Vector3 terrain_size = terrain.terrainData.size;
         int width = (int)terrain_size.x; // terrain width
         int length = (int)terrain_size.z; // terrain length
-        renderGrassAndRocks(terrain, width, length);
+        RenderGrassAndRocks(terrain, width, length);
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class InitTerrainElements : MonoBehaviour
         
     }
 
-    void renderGrassAndRocks(Terrain terrain, int width, int length)
+    void RenderGrassAndRocks(Terrain terrain, int width, int length)
     {
         System.Random random = new System.Random();
         string randomPrefabName;

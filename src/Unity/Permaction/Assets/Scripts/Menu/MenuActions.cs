@@ -34,15 +34,15 @@ public class MenuActions : MonoBehaviour
             playButtonEN.GetComponent<Button>().onClick.AddListener(
                 () => playButtonAction(playButtonEN, quitButtonEN, categoriesTitleEN, renderButtonEN)
             );
-            StartCoroutine(fadeIn(playButtonEN));
-            StartCoroutine(fadeIn(quitButtonEN));
+            StartCoroutine(FadeIn(playButtonEN));
+            StartCoroutine(FadeIn(quitButtonEN));
         } else if (id_locale == UserData.meta_data.id_locale_mapping["fr"]) // French
         {
             playButtonFR.GetComponent<Button>().onClick.AddListener(
                 () => playButtonAction(playButtonFR, quitButtonFR, categoriesTitleFR, renderButtonFR)
             );
-            StartCoroutine(fadeIn(playButtonFR));
-            StartCoroutine(fadeIn(quitButtonFR));
+            StartCoroutine(FadeIn(playButtonFR));
+            StartCoroutine(FadeIn(quitButtonFR));
         } else // ERROR
         {
             Debug.Log("[Menu Actions] No ID locale?");
@@ -77,14 +77,14 @@ public class MenuActions : MonoBehaviour
 
     private void playButtonAction(GameObject playButton, GameObject quitButton, GameObject categoriesTitle, GameObject renderButton)
     {
-        StartCoroutine(fadeOut(mainTitle));
-        StartCoroutine(fadeOut(playButton));
-        StartCoroutine(fadeOut(quitButton));
-        StartCoroutine(fadeIn(quitCross));
-        StartCoroutine(fadeIn(demoLivesGrid));
-        StartCoroutine(fadeIn(categoriesTitle));
-        StartCoroutine(fadeIn(categoriesGrid));
-        StartCoroutine(renderButtonFadeIn(renderButton));
+        StartCoroutine(FadeOut(mainTitle));
+        StartCoroutine(FadeOut(playButton));
+        StartCoroutine(FadeOut(quitButton));
+        StartCoroutine(FadeIn(quitCross));
+        StartCoroutine(FadeIn(demoLivesGrid));
+        StartCoroutine(FadeIn(categoriesTitle));
+        StartCoroutine(FadeIn(categoriesGrid));
+        StartCoroutine(RenderButtonFadeIn(renderButton));
     }
 
     private void renderButtonAction()
@@ -110,7 +110,7 @@ public class MenuActions : MonoBehaviour
     {
         BinaryInteractions binary_interactions = new BinaryInteractions();
         yield return StartCoroutine(binary_interactions.GetWebRequest(MetaData.BINARY_INTERACTIONS_URI, binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
-        UserData.binaryInteractions = binary_interactions;
+        UserData.binary_interactions = binary_interactions;
     }
 
     private IEnumerator SetTerrainHeightmap()
@@ -122,7 +122,7 @@ public class MenuActions : MonoBehaviour
 
     private IEnumerator RenderElements()
     {
-        PlacementRequest placement_request = new PlacementRequest(UserData.terrain_heightmap, UserData.selectedElements.ToArray());
+        PlacementRequest placement_request = new PlacementRequest(UserData.terrain_heightmap, UserData.selected_elements.ToArray());
         yield return StartCoroutine(placement_request.PostWebRequest(MetaData.PLACEMENT_REQUEST_URI, JsonUtility.ToJson(placement_request), placement_request.APIRendererCallback, UserData.user.cookie));
         UserData.reply = placement_request.GetReply();
     }
@@ -133,15 +133,15 @@ public class MenuActions : MonoBehaviour
         SceneManager.LoadScene(MetaData.DEMO_TERRAIN_SCENE);
     }
 
-    private IEnumerator renderButtonFadeIn(GameObject renderButton)
+    private IEnumerator RenderButtonFadeIn(GameObject renderButton)
         {
-            if (UserData.selectedElements.Count > 0)
+            if (UserData.selected_elements.Count > 0)
             {
                 renderButton.GetComponent<Button>().interactable = true;
-                StartCoroutine(fadeIn(renderButton));
+                StartCoroutine(FadeIn(renderButton));
             } else {
                 renderButton.GetComponent<Button>().interactable = false;
-                StartCoroutine(fadeIn(renderButton, 0f, 0.5f));
+                StartCoroutine(FadeIn(renderButton, 0f, 0.5f));
             }
             yield return null;
         }
@@ -150,7 +150,7 @@ public class MenuActions : MonoBehaviour
         Public static methods.
     */
 
-    public static IEnumerator fadeIn(GameObject gameObject, float startValue = 0.5f, float stopValue = 1f)
+    public static IEnumerator FadeIn(GameObject gameObject, float startValue = 0.5f, float stopValue = 1f)
         {
             yield return new WaitForSeconds(0.25f);
             gameObject.SetActive(true);
@@ -161,7 +161,7 @@ public class MenuActions : MonoBehaviour
             }
         }
 
-    public static IEnumerator fadeOut(GameObject gameObject, float startValue = 0.5f, float stopValue = 0.25f)
+    public static IEnumerator FadeOut(GameObject gameObject, float startValue = 0.5f, float stopValue = 0.25f)
     {
         for (float i = startValue; i >= stopValue; i -= Time.deltaTime)
         {

@@ -47,7 +47,7 @@ namespace Menu {
         private int fontsheet001_counter0 = 459;
         private int fontsheet001_counter9 = 468;
 
-        private Coroutine showElementTitleCoroutine;
+        private Coroutine ShowElementTitleCoroutine;
 
         private bool autoTrigger = false;
         private Coroutine outOfLivesWarningCoroutine;
@@ -57,8 +57,8 @@ namespace Menu {
         {
             fontsheet001_sprites = new List<Sprite>(Resources.LoadAll<Sprite>("fontsheet001"));
             fontsheet001_spaceIndex = char.ToUpper(' ') + fontsheet001_letterOffset;
-            instantiateDemoLives();
-            StartCoroutine(createMenuElements());
+            InstantiateDemoLives();
+            StartCoroutine(CreateMenuElements());
         }
 
         // Update is called once per frame
@@ -67,17 +67,17 @@ namespace Menu {
             
         }
 
-        private void instantiateDemoLives()
+        private void InstantiateDemoLives()
         {
             for(int i = 0; i < MetaData.DEMO_MAX_NB_ELEMENTS; ++i)
             {
                 GameObject instantiatedDemoLife = Instantiate(demoLife);
                 instantiatedDemoLife.transform.SetParent(demoLivesGrid.transform, false);
-                UserData.meta_data.demoLives[i] = instantiatedDemoLife;
+                UserData.meta_data.demo_lives[i] = instantiatedDemoLife;
             }
         }
 
-        IEnumerator createMenuElements()
+        IEnumerator CreateMenuElements()
         {
             // TMP Login Demo User
             // TODO remove once login / user account creation is implemented
@@ -105,7 +105,7 @@ namespace Menu {
             menu_elements = new PhysicalElements();
             yield return StartCoroutine(menu_elements.GetWebRequest(MetaData.PHYSICAL_ELEMENTS_URI, menu_elements.PhysicalElementsCallback, UserData.user.cookie));
             // Let's store some data for the end visual result
-            UserData.meta_data.extract_data(menu_elements.physical_elements);
+            UserData.meta_data.ExtractData(menu_elements.physical_elements);
 
             // First we store the elements and categories differently for menu creation purposes
             List<Element> elements;
@@ -126,14 +126,14 @@ namespace Menu {
             // Now we instantiate the categories and the elements
             foreach(string category in categoriesAndElementsDict.Keys)
             {
-                GameObject instantiatedCategoryButton = instantiateCategory(category);
-                GameObject instantiatedElementsTitle = instantiateElementsTitle(category, instantiatedCategoryButton);
-                GameObject instantiatedElements = instantiateElements(category, instantiatedCategoryButton);
-                GameObject instantiatedElementsBackButton = instantiateElementsBackButton(category, instantiatedCategoryButton, instantiatedElementsTitle, instantiatedElements);
+                GameObject instantiatedCategoryButton = InstantiateCategory(category);
+                GameObject instantiatedElementsTitle = InstantiateElementsTitle(category, instantiatedCategoryButton);
+                GameObject instantiatedElements = InstantiateElements(category, instantiatedCategoryButton);
+                GameObject instantiatedElementsBackButton = InstantiateElementsBackButton(category, instantiatedCategoryButton, instantiatedElementsTitle, instantiatedElements);
             }
         }
 
-        private void updateCategoryCounter(GameObject categoryButton, bool increment)
+        private void UpdateCategoryCounter(GameObject categoryButton, bool increment)
         {
             int currentSpriteIndex;
             if (increment)
@@ -200,17 +200,17 @@ namespace Menu {
             }
         }
 
-        private void updateSelectedElements(Element element, bool value)
+        private void UpdateSelectedElements(Element element, bool value)
         {
             if (value)
             {
-                UserData.selectedElements.Add(element);
+                UserData.selected_elements.Add(element);
             } else {
-                UserData.selectedElements.Remove(element);
+                UserData.selected_elements.Remove(element);
             }
         }
 
-        private GameObject instantiateCategory(string category)
+        private GameObject InstantiateCategory(string category)
         {
             // Creating the button
             string icon;
@@ -220,34 +220,34 @@ namespace Menu {
             instantiatedButton.transform.Find(MetaData.ICON_TAG).GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>(icon);
             // Adding the onclick behaviour (deactivate current menu elements)
             instantiatedButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeOut(categoriesGrid))
+                () => StartCoroutine(MenuActions.FadeOut(categoriesGrid))
             );
             instantiatedButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeOut(categoriesTitle))
+                () => StartCoroutine(MenuActions.FadeOut(categoriesTitle))
             );
             instantiatedButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(renderButtonFadeOut())
+                () => StartCoroutine(RenderButtonFadeOut())
             );
             return instantiatedButton;
         }
 
-        private GameObject instantiateElementsTitle(string category, GameObject instantiatedCategoryButton)
+        private GameObject InstantiateElementsTitle(string category, GameObject instantiatedCategoryButton)
         {
             GameObject instantiatedTitle = Instantiate(elementsTitle);
             instantiatedTitle.transform.SetParent(background.transform, false);
             instantiatedTitle.GetComponentInChildren<Text>().text = category;
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeIn(instantiatedTitle))
+                () => StartCoroutine(MenuActions.FadeIn(instantiatedTitle))
             );
             return instantiatedTitle;
         }
 
-        private GameObject instantiateElements(string category, GameObject instantiatedCategoryButton)
+        private GameObject InstantiateElements(string category, GameObject instantiatedCategoryButton)
         {
             GameObject instantiatedGrid = Instantiate(elementsGrid);
             instantiatedGrid.transform.SetParent(background.transform, false);
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeIn(instantiatedGrid))
+                () => StartCoroutine(MenuActions.FadeIn(instantiatedGrid))
             );
             List<Element> elements;
             string icon;
@@ -259,43 +259,43 @@ namespace Menu {
                 UserData.meta_data.icon_mapping.TryGetValue(element.name, out icon);
                 instantiatedElement.transform.Find(MetaData.BG_TAG + '/' + MetaData.ICON_TAG).GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>(icon);
                 instantiatedElement.GetComponent<Toggle>().onValueChanged.AddListener(
-                    (value) => showElementTitleRoutine(element.name, value)
+                    (value) => ShowElementTitleRoutine(element.name, value)
                 );
                 instantiatedElement.GetComponent<Toggle>().onValueChanged.AddListener(
-                    (value) => updateCategoryCounter(instantiatedCategoryButton, value)
+                    (value) => UpdateCategoryCounter(instantiatedCategoryButton, value)
                 );
                 instantiatedElement.GetComponent<Toggle>().onValueChanged.AddListener(
-                    (value) => StartCoroutine(updateDemoLives(value, instantiatedElement.GetComponent<Toggle>()))
+                    (value) => StartCoroutine(UpdateDemoLives(value, instantiatedElement.GetComponent<Toggle>()))
                 );
                 instantiatedElement.GetComponent<Toggle>().onValueChanged.AddListener(
-                    (value) => updateSelectedElements(element, value)
+                    (value) => UpdateSelectedElements(element, value)
                 );
             }
             return instantiatedGrid;
         }
 
-        private void showElementTitleRoutine(string title, bool value)
+        private void ShowElementTitleRoutine(string title, bool value)
         {
             if (value)
             {
-                if (showElementTitleCoroutine != null)
+                if (ShowElementTitleCoroutine != null)
                 {
-                    StopCoroutine(showElementTitleCoroutine);
+                    StopCoroutine(ShowElementTitleCoroutine);
                 }
-                showElementTitleCoroutine = StartCoroutine(showElementTitle(title));
+                ShowElementTitleCoroutine = StartCoroutine(ShowElementTitle(title));
             }
         }
 
-        private void hideElementTitle()
+        private void HideElementTitle()
         {
-            if (showElementTitleCoroutine != null)
+            if (ShowElementTitleCoroutine != null)
             {
-                StopCoroutine(showElementTitleCoroutine);
+                StopCoroutine(ShowElementTitleCoroutine);
             }
             elementTitleContainer.GetComponent<CanvasGroup>().alpha = 0f;
         }
 
-        private IEnumerator showElementTitle(string title)
+        private IEnumerator ShowElementTitle(string title)
         {
             elementTitleContainer.GetComponent<CanvasGroup>().alpha = 0f;
             // First we erase all existing text
@@ -331,65 +331,65 @@ namespace Menu {
             }
         }
 
-        private GameObject instantiateElementsBackButton(string category, GameObject instantiatedCategoryButton, GameObject instantiatedElementsTitle, GameObject instantiatedElements)
+        private GameObject InstantiateElementsBackButton(string category, GameObject instantiatedCategoryButton, GameObject instantiatedElementsTitle, GameObject instantiatedElements)
         {
             GameObject instantiatedBackButton = Instantiate(elementsBackButton);
             instantiatedBackButton.transform.SetParent(background.transform, false);
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeIn(instantiatedBackButton))
+                () => StartCoroutine(MenuActions.FadeIn(instantiatedBackButton))
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeOut(instantiatedElementsTitle))
+                () => StartCoroutine(MenuActions.FadeOut(instantiatedElementsTitle))
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => hideElementTitle()
+                () => HideElementTitle()
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeOut(instantiatedElements))
+                () => StartCoroutine(MenuActions.FadeOut(instantiatedElements))
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeOut(instantiatedBackButton))
+                () => StartCoroutine(MenuActions.FadeOut(instantiatedBackButton))
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeIn(categoriesGrid))
+                () => StartCoroutine(MenuActions.FadeIn(categoriesGrid))
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(MenuActions.fadeIn(categoriesTitle))
+                () => StartCoroutine(MenuActions.FadeIn(categoriesTitle))
             );
             instantiatedBackButton.GetComponent<Button>().onClick.AddListener(
-                () => StartCoroutine(renderButtonFadeIn())
+                () => StartCoroutine(RenderButtonFadeIn())
             );
             return instantiatedBackButton;
         }
 
-        private IEnumerator renderButtonFadeIn()
+        private IEnumerator RenderButtonFadeIn()
         {
-            if (UserData.selectedElements.Count > 0)
+            if (UserData.selected_elements.Count > 0)
             {
                 renderButton.GetComponent<Button>().interactable = true;
-                StartCoroutine(MenuActions.fadeIn(renderButton));
+                StartCoroutine(MenuActions.FadeIn(renderButton));
             } else {
                 renderButton.GetComponent<Button>().interactable = false;
-                StartCoroutine(MenuActions.fadeIn(renderButton, 0f, 0.5f));
+                StartCoroutine(MenuActions.FadeIn(renderButton, 0f, 0.5f));
             }
             yield return null;
         }
 
-        private IEnumerator renderButtonFadeOut()
+        private IEnumerator RenderButtonFadeOut()
         {
-            if (UserData.selectedElements.Count > 0)
+            if (UserData.selected_elements.Count > 0)
             {
                 renderButton.GetComponent<Button>().interactable = true;
-                StartCoroutine(MenuActions.fadeOut(renderButton));
+                StartCoroutine(MenuActions.FadeOut(renderButton));
             } else
             {
                 renderButton.GetComponent<Button>().interactable = false;
-                StartCoroutine(MenuActions.fadeOut(renderButton, 0.25f, 0f));
+                StartCoroutine(MenuActions.FadeOut(renderButton, 0.25f, 0f));
             }
             yield return null;
         }
 
-        private IEnumerator updateDemoLives(bool removeLife, Toggle elementToggle)
+        private IEnumerator UpdateDemoLives(bool removeLife, Toggle elementToggle)
         {
             if (autoTrigger) // Ugly way of bypassing the listener autocall on toggle.isOn value change.
             {
@@ -398,19 +398,19 @@ namespace Menu {
             {
                 if (removeLife)
                 {
-                    if (UserData.meta_data.currentActiveDemoLives == 0) // All lives have been used...
+                    if (UserData.meta_data.current_active_demo_lives == 0) // All lives have been used...
                     {
                         autoTrigger = true;
                         if (outOfLivesWarningCoroutine != null)
                         {
                             StopCoroutine(outOfLivesWarningCoroutine);
                         }
-                        outOfLivesWarningCoroutine = StartCoroutine(outOfDemoLivesWarning());
+                        outOfLivesWarningCoroutine = StartCoroutine(OutOfDemoLivesWarning());
                         elementToggle.isOn = false;
                     } else
                     {
-                        --UserData.meta_data.currentActiveDemoLives;
-                        GameObject currentLife = UserData.meta_data.demoLives[UserData.meta_data.currentActiveDemoLives];
+                        --UserData.meta_data.current_active_demo_lives;
+                        GameObject currentLife = UserData.meta_data.demo_lives[UserData.meta_data.current_active_demo_lives];
                         Image lifeImage = currentLife.GetComponent<Image>();
                         var color = lifeImage.color;
                         for (float i = 0.5f; i >= 0; i -= Time.deltaTime)
@@ -423,13 +423,13 @@ namespace Menu {
                     }
                 } else // Adding a life (deselecting an element)
                 {
-                    if (UserData.meta_data.currentActiveDemoLives == MetaData.DEMO_MAX_NB_ELEMENTS) // Should not happen !
+                    if (UserData.meta_data.current_active_demo_lives == MetaData.DEMO_MAX_NB_ELEMENTS) // Should not happen !
                     {
                         Debug.LogError("Cannot add a life since they are all there already.");
                     } else
                     {
-                        GameObject currentLife = UserData.meta_data.demoLives[UserData.meta_data.currentActiveDemoLives];
-                        ++UserData.meta_data.currentActiveDemoLives;
+                        GameObject currentLife = UserData.meta_data.demo_lives[UserData.meta_data.current_active_demo_lives];
+                        ++UserData.meta_data.current_active_demo_lives;
                         currentLife.SetActive(true);
                         Image lifeImage = currentLife.GetComponent<Image>();
                         var color = lifeImage.color;
@@ -444,7 +444,7 @@ namespace Menu {
             }
         }
 
-        private IEnumerator outOfDemoLivesWarning()
+        private IEnumerator OutOfDemoLivesWarning()
         {
             demoOutOfLives.GetComponent<Image>().enabled = true;
             for (float i = 0.5f; i >= 0.25f; i -= Time.deltaTime)

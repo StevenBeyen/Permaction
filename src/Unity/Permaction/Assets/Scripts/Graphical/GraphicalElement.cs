@@ -6,41 +6,32 @@ namespace Graphical
 {
     public class GraphicalElement : MonoBehaviour
     {
-        //Shader initialShader;
-
         private void OnMouseUpAsButton()
         {
-            if (UserData.selectedElement != null && UserData.selectedElement != this)
-                UserData.selectedElement.unselect();
-            if (UserData.selectedElement != this)
+            if (UserData.selected_element != null && UserData.selected_element != this)
+                UserData.selected_element.unselect();
+            if (UserData.selected_element != this)
                 select();
         }
 
         public void select()
         {
-            //getChildGameObject(gameObject, MetaData.ARC_LINK_CONTAINER).SetActive(true);
-            transform.parent.parent.GetComponentInChildren<SpriteRenderer>().enabled = true;
-            foreach (LineRenderer lr in transform.parent.parent.GetComponentsInChildren<LineRenderer>())
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            foreach (LineRenderer lr in transform.GetComponentsInChildren<LineRenderer>())
             {
                 lr.enabled = true;
             }
-            UserData.selectedElement = this;
+            UserData.selected_element = this;
         }
 
         public void unselect()
         {
-            UserData.selectedElement = null;
-            foreach (LineRenderer lr in transform.parent.parent.GetComponentsInChildren<LineRenderer>())
+            UserData.selected_element = null;
+            foreach (LineRenderer lr in transform.GetComponentsInChildren<LineRenderer>())
             {
                 lr.enabled = false;
             }
-            transform.parent.parent.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        }
-
-        static public GameObject getChildGameObject(GameObject fromGameObject, string withName) {
-            Transform[] ts = fromGameObject.transform.GetComponentsInChildren<Transform>();
-            foreach (Transform t in ts) if (t.gameObject.name == withName) return t.gameObject;
-            return null;
+            transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
     }
 }

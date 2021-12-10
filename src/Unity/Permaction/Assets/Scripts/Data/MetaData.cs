@@ -16,8 +16,8 @@ public class MetaData
     // Demo
     public const int DEMO_MAX_NB_ELEMENTS = 10;
     public const string DEMO_TERRAIN_SCENE = "DemoTerrain";
-    public GameObject[] demoLives = new GameObject[DEMO_MAX_NB_ELEMENTS];
-    public int currentActiveDemoLives = DEMO_MAX_NB_ELEMENTS;
+    public GameObject[] demo_lives = new GameObject[DEMO_MAX_NB_ELEMENTS];
+    public int current_active_demo_lives = DEMO_MAX_NB_ELEMENTS;
     // Prefabs
     private const string STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH = "Prefabs/StretchableOneMeterTerrainObjects/";
     private const string FIXED_SIZE_TERRAIN_OBJECTS = "Prefabs/FixedSizeTerrainObjects/";
@@ -65,41 +65,39 @@ public class MetaData
         // Mapping of prefab objects to their ID.
         prefab_mapping = new Dictionary<int, List<string>>();
         // English
-        prefab_mapping_add(02, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
-        prefab_mapping_add(03, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
-        prefab_mapping_add(04, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
-        prefab_mapping_add(07, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
-        prefab_mapping_add(08, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
-        prefab_mapping_add(14, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
-        prefab_mapping_add(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
-        prefab_mapping_add(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
-        prefab_mapping_add(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
-        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
-        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
-        prefab_mapping_add(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
-        prefab_mapping_add(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
-        prefab_mapping_add(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
-        prefab_mapping_add(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
+        PrefabMappingAdd(02, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
+        PrefabMappingAdd(03, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
+        PrefabMappingAdd(04, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
+        PrefabMappingAdd(07, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
+        PrefabMappingAdd(08, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        PrefabMappingAdd(14, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
+        PrefabMappingAdd(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
+        PrefabMappingAdd(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
+        PrefabMappingAdd(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
+        PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
+        PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
+        PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
+        PrefabMappingAdd(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        PrefabMappingAdd(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
         // French
-        prefab_mapping_add(42, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
-        prefab_mapping_add(43, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
-        prefab_mapping_add(44, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
-        prefab_mapping_add(47, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
-        prefab_mapping_add(48, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
-        prefab_mapping_add(54, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
-        prefab_mapping_add(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
-        prefab_mapping_add(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
-        prefab_mapping_add(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
-        prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
-        //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
-        //prefab_mapping_add(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
-        prefab_mapping_add(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
-        prefab_mapping_add(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
-        prefab_mapping_add(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
-
-        // TODO Add overlay for path and road re-generation
+        PrefabMappingAdd(42, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
+        PrefabMappingAdd(43, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
+        PrefabMappingAdd(44, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
+        PrefabMappingAdd(47, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
+        PrefabMappingAdd(48, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        PrefabMappingAdd(54, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
+        PrefabMappingAdd(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
+        PrefabMappingAdd(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
+        PrefabMappingAdd(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
+        PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
+        //PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        //PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_04");
+        PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
+        PrefabMappingAdd(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        PrefabMappingAdd(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
 
         // Adding sizes of fixed objects since they have to be copied to fill given size, and not stretched.
         prefab_fixed_size_widths = new Dictionary<int, int>();
@@ -195,7 +193,7 @@ public class MetaData
         icon_mapping.Add("Etang", ICONS_RESOURCES_PATH + "park");
     }
 
-    private void prefab_mapping_add(int id, string value)
+    private void PrefabMappingAdd(int id, string value)
     {
         List<string> values;
 
@@ -207,28 +205,28 @@ public class MetaData
         values.Add(value);
     }
 
-    public void extract_data(Element[] elements)
+    public void ExtractData(Element[] elements)
     {
-        extract_element_name(elements);
-        extract_terrain_flattening(elements);
-        extract_show_interactions(elements);
+        ExtractElementName(elements);
+        ExtractTerrainFlattening(elements);
+        ExtractShowInteractions(elements);
     }
 
-    private void extract_element_name(Element[] elements)
+    private void ExtractElementName(Element[] elements)
     {
         element_name_data = new Dictionary<int, string>();
         foreach(Element element in elements)
             element_name_data.Add(element.id, element.name);
     }
 
-    private void extract_terrain_flattening(Element[] elements)
+    private void ExtractTerrainFlattening(Element[] elements)
     {
         terrain_flattening_data = new Dictionary<int, bool>();
         foreach(Element element in elements)
             terrain_flattening_data.Add(element.id, element.terrain_flattening);
     }
 
-    private void extract_show_interactions(Element[] elements)
+    private void ExtractShowInteractions(Element[] elements)
     {
         show_interactions_data = new Dictionary<int, bool>();
         foreach (Element element in elements)

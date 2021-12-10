@@ -15,8 +15,8 @@ namespace Graphical {
         void OnMouseUpAsButton()
         {
             // Little trick to avoid unselect on camera drag
-            if (Input.mousePosition == mousePosition && UserData.selectedElement != null)
-                UserData.selectedElement.unselect();
+            if (Input.mousePosition == mousePosition && UserData.selected_element != null)
+                UserData.selected_element.unselect();
         }
     }
 }
