@@ -27,13 +27,13 @@ public class BoneRoadPath : MonoBehaviour
     public GameObject Y4 = null;
     [Header("Spring Joint Settings")]
     [Tooltip("Strength of spring")]
-    public float Spring = 100f;
+    public float Spring = 1000f;
     [Tooltip("Higher the value the faster the spring oscillation stops")]
-    public float Damper = 0.2f;
+    public float Damper = 0.5f;
     [Header("Other Settings")]
     public Softbody.ColliderShape Shape = Softbody.ColliderShape.Box;
-    public float ColliderSize = 0.002f;
-    public float RigidbodyMass = 1f; 
+    public float ColliderSize = 0.003f;
+    public float RigidbodyMass = 1e+11f; 
     //public LineRenderer PrefabLine = null;
     //public bool ViewLines = true;
 

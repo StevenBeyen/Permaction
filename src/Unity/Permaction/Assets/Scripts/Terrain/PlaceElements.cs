@@ -117,7 +117,7 @@ public class PlaceElements : MonoBehaviour
                 real_position = base_position + rotation_offset + new Vector3(x,0,z);
                 GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, container.transform);
                 //instantiatedGO.transform.GetChild(0).gameObject.AddComponent<Graphical.GraphicalElement>();
-                instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
+                instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation + Random.Range(0,2) * 180);
             }
         }
         // Changing rotation offset for box collider and billboard
@@ -138,9 +138,10 @@ public class PlaceElements : MonoBehaviour
         rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
         rotation = Random.Range(0,4) * 90;
         GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, container.transform);
-        //instantiatedGO.transform.GetChild(0).gameObject.AddComponent<Graphical.GraphicalElement>();
-        instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation + Random.Range(-10, 10));
-        if(rotation%180 == 0)
+        instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation);
+        // Adding some small random rotation to the container as well
+        container.transform.RotateAround(base_position + rotation_offset, Vector3.up, Random.Range(-10.0f, 10.0f));
+        if (rotation%180 == 0)
             instantiatedGO.transform.localScale = scale;
         else
             instantiatedGO.transform.localScale = new Vector3(scale.z, scale.y, scale.x);
