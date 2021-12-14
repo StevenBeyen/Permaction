@@ -26,7 +26,7 @@ MonoBehaviour:
   Spring: 1000
   Damper: 0.5
   Shape: 0
-  ColliderSize: 0.003
+  ColliderSize: 0.004
   RigidbodyMass: 1e+11
 --- !u!1 &9177775455358506958
 GameObject:

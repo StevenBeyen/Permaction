@@ -81,16 +81,13 @@ namespace API
 
         /*
         ** Used to flatten terrain before placing the element.
-        ** For visual purposes, a value of 2 is added to the ranges so that there is an overlay of 1 on each side.
         */
         public float[,] GetHeights()
         {
-            int extendedXRange = xRange + 2;
-            int extendedZRange = zRange + 2;
-            float[,] heights = new float[extendedZRange, extendedXRange];
-            for (int z = 0; z < extendedZRange; ++z)
+            float[,] heights = new float[zRange, xRange];
+            for (int z = 0; z < zRange; ++z)
             {
-                for (int x = 0; x < extendedXRange; ++x)
+                for (int x = 0; x < xRange; ++x)
                 {
                     heights[z,x] = YValue;
                 }

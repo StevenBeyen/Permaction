@@ -32,7 +32,7 @@ public class BoneRoadPath : MonoBehaviour
     public float Damper = 0.5f;
     [Header("Other Settings")]
     public Softbody.ColliderShape Shape = Softbody.ColliderShape.Box;
-    public float ColliderSize = 0.003f;
+    public float ColliderSize = 0.004f;
     public float RigidbodyMass = 1e+11f; 
     //public LineRenderer PrefabLine = null;
     //public bool ViewLines = true;

@@ -67,7 +67,7 @@ public class PlaceElements : MonoBehaviour
         base_position = new Vector3(base_position.x, base_position.y * terrain.terrainData.size.y, base_position.z);
         // Flattening terrain on the area where the element will be placed
         if (element.terrain_flattening)
-            terrain.terrainData.SetHeights((int) base_position.x - 1, (int) base_position.z - 1, element.GetHeights());
+            terrain.terrainData.SetHeights((int) base_position.x, (int) base_position.z, element.GetHeights());
         // Switch case depending on type of prefab object: fixed size or stretchable
         if (UserData.meta_data.prefab_fixed_size_widths.TryGetValue(element.id, out prefab_fixed_size_width))
         {
@@ -116,7 +116,6 @@ public class PlaceElements : MonoBehaviour
                 prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                 real_position = base_position + rotation_offset + new Vector3(x,0,z);
                 GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, container.transform);
-                //instantiatedGO.transform.GetChild(0).gameObject.AddComponent<Graphical.GraphicalElement>();
                 instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation + Random.Range(0,2) * 180);
             }
         }
@@ -140,7 +139,7 @@ public class PlaceElements : MonoBehaviour
         GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, container.transform);
         instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation);
         // Adding some small random rotation to the container as well
-        container.transform.RotateAround(base_position + rotation_offset, Vector3.up, Random.Range(-10.0f, 10.0f));
+        container.transform.RotateAround(base_position + rotation_offset, Vector3.up, Random.Range(-5.0f, 5.0f));
         if (rotation%180 == 0)
             instantiatedGO.transform.localScale = scale;
         else
