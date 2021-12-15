@@ -10500,10 +10500,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 2018008809}
-  elementsPerSquareMeter: 0.05
-  randomScaleOffset: 0.125
-  randomScaleRange: 0.75
+  grassRocksPerSquareMeter: 0.05
+  grassRocksScaleOffset: 0.125
+  grassRocksScaleRange: 0.75
   grassToRocksRatio: 0.7
+  treesPerSquareMeter: 0.00125
+  treesScaleOffset: 1
+  treesScaleRange: 1
   borderProtection: 3
 --- !u!114 &2018008814
 MonoBehaviour:

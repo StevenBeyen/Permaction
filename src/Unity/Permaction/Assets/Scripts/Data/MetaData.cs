@@ -41,6 +41,7 @@ public class MetaData
     // Terrain
     public List<string> prefab_grass;
     public List<string> prefab_rocks;
+    public List<string> prefab_trees;
     public const string ARC_LINK_CONTAINER = "ArcLinkContainer";
 
     public MetaData()
@@ -51,7 +52,7 @@ public class MetaData
         id_locale_mapping.Add("fr", 2);
 
         // 2. Prefabs
-        // Prefab grass & rocks
+        // Prefab grass, rocks & trees
         prefab_grass = new List<string>();
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_01");
         //prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_02"); // Unpretty grass
@@ -62,6 +63,16 @@ public class MetaData
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_03");
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_04");
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_05");
+        prefab_trees = new List<string>();
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apple_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apricot_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Cherry_01");
+        //prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Large_01"); // Big tree with swing, should be unique
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Lemon_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Orange_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Peach_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Pear_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Plum_01");
         // Mapping of prefab objects to their ID.
         prefab_mapping = new Dictionary<int, List<string>>();
         // English
