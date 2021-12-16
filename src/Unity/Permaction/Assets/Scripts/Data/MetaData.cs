@@ -54,6 +54,9 @@ public class MetaData
         // 2. Prefabs
         // Prefab grass, rocks & trees
         prefab_grass = new List<string>();
+        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Flower_A1_H70cm_01");
+        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Grass_A1_40cm_01");
+        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Grass_A1_50cm_01");
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_01");
         //prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_02"); // Unpretty grass
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_03");
