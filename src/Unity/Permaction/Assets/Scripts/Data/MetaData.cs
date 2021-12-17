@@ -67,6 +67,9 @@ public class MetaData
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_04");
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_05");
         prefab_trees = new List<string>();
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_A1_6.5m_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_B1_9m_01");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_B1_9m_02");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apple_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apricot_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Cherry_01");
