@@ -81,7 +81,7 @@ public class PlaceElements : MonoBehaviour
         {
             GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, container.transform);
             // Saving elements for arc link creation
-            UserData.physical_elements.Add(new PhysicalElement(element.id, container, base_position + rotation_offset));
+            UserData.physical_elements.Add(new PhysicalElement(element.id, container, base_position + rotation_offset, scale));
         }
     }
 
