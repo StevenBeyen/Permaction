@@ -18,12 +18,14 @@ public class PlaceElements : MonoBehaviour
     private Vector3 base_position, real_position, rotation_offset, scale;
     private float rotation;
     private BoxCollider boxCollider;
+    private float height_correction;
 
     // Start is called before the first frame update
     void Start()
     {
         // Cloning the terrain so that all runtime changes are cancelled on exit
         CloneTerrain();
+        height_correction = MetaData.NON_FLATTENING_HEIGHT_MARGIN * terrain.terrainData.size.y;
     }
 
     // Update is called once per frame
@@ -106,7 +108,7 @@ public class PlaceElements : MonoBehaviour
         } else // Non linear element
         {
             rotation = 0;
-            rotation_offset = new Vector3(prefab_fixed_size_width/2.0f, 0, 0);
+            rotation_offset = new Vector3(prefab_fixed_size_width/2.0f, 0, prefab_fixed_size_length/2.0f);
             x_step = prefab_fixed_size_width;
             z_step = prefab_fixed_size_length;
         }
@@ -115,6 +117,8 @@ public class PlaceElements : MonoBehaviour
             for (int z=0; (z+z_step)<=scale.z; z+=z_step) {
                 prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
                 real_position = base_position + rotation_offset + new Vector3(x,0,z);
+                if (!element.terrain_flattening)
+                    real_position.y += height_correction;
                 GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, container.transform);
                 instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation + Random.Range(0,2) * 180);
             }
@@ -126,7 +130,7 @@ public class PlaceElements : MonoBehaviour
             Vector3 center = base_position + rotation_offset;
             // Box collider on container
             boxCollider.center = center;
-            boxCollider.size = new Vector3(scale.x, 1, scale.z);
+            boxCollider.size = new Vector3(scale.x, (scale.x + scale.z) / 2.0f, scale.z);
         }
     }
 
@@ -136,10 +140,13 @@ public class PlaceElements : MonoBehaviour
         prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
         rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
         rotation = Random.Range(0,4) * 90;
-        GameObject instantiatedGO = Instantiate(prefab, base_position + rotation_offset, Quaternion.identity, container.transform);
-        instantiatedGO.transform.RotateAround(base_position + rotation_offset, Vector3.up, rotation);
+        real_position = base_position + rotation_offset;
+        if (!element.terrain_flattening)
+            real_position.y += height_correction;
+        GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, container.transform);
+        instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
         // Adding some small random rotation to the container as well
-        container.transform.RotateAround(base_position + rotation_offset, Vector3.up, Random.Range(-5.0f, 5.0f));
+        container.transform.RotateAround(real_position, Vector3.up, Random.Range(-5.0f, 5.0f));
         if (rotation%180 == 0)
             instantiatedGO.transform.localScale = scale;
         else
@@ -148,8 +155,17 @@ public class PlaceElements : MonoBehaviour
         if (element.show_interactions)
         {
             MeshRenderer renderer = instantiatedGO.GetComponentInChildren<MeshRenderer>();
-            boxCollider.center = renderer.bounds.center;
-            boxCollider.size = renderer.bounds.size;
+            if (renderer != null)
+            {
+                boxCollider.center = renderer.bounds.center;
+                boxCollider.size = renderer.bounds.size;
+            } else // Skinned mesh renderer for deforming objects, with box collider a little higher than object itself to avoid collisions
+            {
+                SkinnedMeshRenderer skinnedRenderer = instantiatedGO.GetComponentInChildren<SkinnedMeshRenderer>();
+                boxCollider.center = new Vector3(skinnedRenderer.bounds.center.x, skinnedRenderer.bounds.center.y + MetaData.EPSILON, skinnedRenderer.bounds.center.z);
+                boxCollider.size = skinnedRenderer.bounds.size;
+            }
+            
         }
     }
 

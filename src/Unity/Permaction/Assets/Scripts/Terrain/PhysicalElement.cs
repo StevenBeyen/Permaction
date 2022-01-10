@@ -21,8 +21,6 @@ public class PhysicalElement
         this.associated_ids = new List<int>();
         this.x_bounds = ComputeBounds(position.x, scale.x);
         this.z_bounds = ComputeBounds(position.z, scale.z);
-        Debug.Log(x_bounds);
-        Debug.Log(z_bounds);
     }
 
     private Vector2 ComputeBounds(float position, float scale)

@@ -34,11 +34,13 @@ public class MetaData
     public Dictionary<string, string> icon_mapping;
     public Dictionary<int, string> element_name_data;
     public Dictionary<int, bool> terrain_flattening_data;
-    public const float non_flattening_height_margin = 1.05f;
+    public const float NON_FLATTENING_HEIGHT_MARGIN = 0.0035f;
+    public const float EPSILON = 0.001f;
     public Dictionary<int, bool> show_interactions_data;
     // Locale
     public Dictionary<string, int> id_locale_mapping;
     // Terrain
+    public static Terrain terrain;
     public List<string> prefab_grass;
     public List<string> prefab_rocks;
     public List<string> prefab_trees;
@@ -91,7 +93,8 @@ public class MetaData
         PrefabMappingAdd(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         PrefabMappingAdd(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         PrefabMappingAdd(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        //PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        PrefabMappingAdd(22, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Medicinal_Plants_01");
+        //PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01"); // Paths should not be straight
         PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
@@ -109,7 +112,8 @@ public class MetaData
         PrefabMappingAdd(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         PrefabMappingAdd(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         PrefabMappingAdd(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
-        //PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01");
+        PrefabMappingAdd(62, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Medicinal_Plants_01");
+        //PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01"); // Paths should not be straight
         PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");

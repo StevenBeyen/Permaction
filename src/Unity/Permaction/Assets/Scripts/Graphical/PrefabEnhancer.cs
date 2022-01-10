@@ -14,6 +14,7 @@ public class PrefabEnhancer : MonoBehaviour
     private System.Random random;
     private Vector3 parentScale, parentPosition;
     private Vector2 effectiveXBounds, effectiveZBounds;
+    private float yCorrection;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class PrefabEnhancer : MonoBehaviour
             effectiveXBounds = xBounds * parentScale.z;
             effectiveZBounds = zBounds * parentScale.x;
         }
+        yCorrection = gameObject.transform.parent.GetComponent<BoxCollider>().bounds.size.y;
     }
 
     private void RenderElements()
@@ -49,6 +51,7 @@ public class PrefabEnhancer : MonoBehaviour
             x_pos = (float) (parentPosition.x + (effectiveXBounds[0] + random.NextDouble() * (effectiveXBounds[1] - effectiveXBounds[0])));
             z_pos = (float) (parentPosition.z + (effectiveZBounds[0] + random.NextDouble() * (effectiveZBounds[1] - effectiveZBounds[0])));
             position = new Vector3(x_pos, parentPosition.y, z_pos);
+            position.y = MetaData.terrain.SampleHeight(position) + yCorrection;
             GameObject instantiatedElement = Instantiate(element, position, Quaternion.identity);
             instantiatedElement.transform.localScale = new Vector3(scale, scale, scale);
             instantiatedElement.transform.Rotate(0, (float) (random.NextDouble() * 360), 0);

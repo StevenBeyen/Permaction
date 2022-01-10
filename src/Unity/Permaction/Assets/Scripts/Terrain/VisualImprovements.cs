@@ -25,6 +25,7 @@ public class VisualImprovements : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MetaData.terrain = terrain;
         Vector3 terrain_size = terrain.terrainData.size;
         width = (int)terrain_size.x; // terrain width
         length = (int)terrain_size.z; // terrain length
