@@ -25,8 +25,8 @@ namespace API
         public void APIRendererCallback(UnityWebRequest webRequest)
         {
             // TODO Add management of error messages
-            this.reply = JsonUtility.FromJson<PlacementReply>(webRequest.downloadHandler.text);
             Debug.Log(webRequest.downloadHandler.text);
+            this.reply = JsonUtility.FromJson<PlacementReply>(webRequest.downloadHandler.text);
         }
 
         public PlacementReply GetReply()

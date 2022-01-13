@@ -56,11 +56,12 @@ public class MetaData
         // 2. Prefabs
         // Prefab grass, rocks & trees
         prefab_grass = new List<string>();
-        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Flower_A1_H70cm_01");
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Grass_A1_40cm_01");
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Grass_A1_50cm_01");
+        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Grass_11");
+        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Grass_12");
+        prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Grass_15");
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_01");
-        //prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_02"); // Unpretty grass
         prefab_grass.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Grass_Patch_03");
         prefab_rocks = new List<string>();
         prefab_rocks.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Generic_Small_Rocks_01");
@@ -72,6 +73,10 @@ public class MetaData
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_A1_6.5m_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_B1_9m_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_B1_9m_02");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Birch_Tree_05");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Birch_Tree_06");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Tree_02");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Tree_10");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apple_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apricot_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Cherry_01");
@@ -89,6 +94,8 @@ public class MetaData
         PrefabMappingAdd(04, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
         PrefabMappingAdd(07, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
         PrefabMappingAdd(08, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        PrefabMappingAdd(11, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Flower_Meadow_01");
+        PrefabMappingAdd(13, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Garden_01");
         PrefabMappingAdd(14, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
         PrefabMappingAdd(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         PrefabMappingAdd(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
@@ -108,6 +115,8 @@ public class MetaData
         PrefabMappingAdd(44, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
         PrefabMappingAdd(47, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
         PrefabMappingAdd(48, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        PrefabMappingAdd(51, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Flower_Meadow_01");
+        PrefabMappingAdd(53, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Garden_01");
         PrefabMappingAdd(54, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
         PrefabMappingAdd(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
         PrefabMappingAdd(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");

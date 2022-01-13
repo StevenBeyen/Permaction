@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrefabEnhancer : MonoBehaviour
 {
     public GameObject element;
+    public bool unique = false;
     public float elementsPerSquareMeter = 1.0f;
     public float scaleRange = 1.25f;
     public float scaleOffset = 0.5f;
@@ -41,7 +42,11 @@ public class PrefabEnhancer : MonoBehaviour
 
     private void RenderElements()
     {
-        int nb_elements = Mathf.RoundToInt((float) (0.9f + random.NextDouble() / 5.0f) * elementsPerSquareMeter * parentScale.x * parentScale.z);
+        int nb_elements;
+        if (unique)
+            nb_elements = 1;
+        else
+            nb_elements = Mathf.RoundToInt((float) (0.9f + random.NextDouble() / 5.0f) * elementsPerSquareMeter * parentScale.x * parentScale.z);
         float scale, x_pos, z_pos;
         Vector3 position;
         for (int i = 0; i < nb_elements; ++i)
