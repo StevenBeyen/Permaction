@@ -161,3 +161,7 @@ update category set show_interactions = 0 where id = 5;
 update category set show_interactions = 0 where id = 11;
 update category set show_interactions = 0 where id = 17;
 
+
+
+update element set default_size = '500-2500' where default_size = '500-5000';
+

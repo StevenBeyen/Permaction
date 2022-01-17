@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 5915775649801123792, guid: f5002d174512c95ebace61e3274f7683, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.0175
+  elementsPerSquareMeter: 0.02
   scaleRange: 1
   scaleOffset: 0.65
   xBounds: {x: -0.45, y: 0.45}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 5319937211475878915, guid: 65e87f23810f5f706a9231e4e68e1f81, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.0175
+  elementsPerSquareMeter: 0.02
   scaleRange: 1
   scaleOffset: 0.65
   xBounds: {x: -0.45, y: 0.45}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 5403595413706532015, guid: 8b3febc2a5d079c4095659bf63978683, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.0175
+  elementsPerSquareMeter: 0.02
   scaleRange: 1
   scaleOffset: 0.65
   xBounds: {x: -0.45, y: 0.45}
@@ -158,9 +158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 2714725977270813760, guid: 35233bca31ece4ccbad00bc7bcc4a309, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.0175
-  scaleRange: 1
-  scaleOffset: 0.65
+  elementsPerSquareMeter: 0.02
+  scaleRange: 0.85
+  scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
 --- !u!114 &5083963825291592928
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 4809216098861627196, guid: 535de25a5d9aaaf1e922b83e0767591a, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.0175
-  scaleRange: 1
-  scaleOffset: 0.65
+  elementsPerSquareMeter: 0.02
+  scaleRange: 0.85
+  scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}

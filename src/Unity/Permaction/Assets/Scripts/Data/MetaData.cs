@@ -101,6 +101,7 @@ public class MetaData
         PrefabMappingAdd(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         PrefabMappingAdd(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
         PrefabMappingAdd(22, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Medicinal_Plants_01");
+        PrefabMappingAdd(24, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Orchard_01");
         //PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01"); // Paths should not be straight
         PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
@@ -123,6 +124,7 @@ public class MetaData
         PrefabMappingAdd(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         PrefabMappingAdd(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
         PrefabMappingAdd(62, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Medicinal_Plants_01");
+        PrefabMappingAdd(64, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Orchard_01");
         //PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01"); // Paths should not be straight
         PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
