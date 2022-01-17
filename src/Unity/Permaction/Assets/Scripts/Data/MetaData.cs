@@ -104,6 +104,7 @@ public class MetaData
         //PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01"); // Paths should not be straight
         PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         PrefabMappingAdd(25, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        PrefabMappingAdd(27, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pine_Trees_01");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
@@ -125,6 +126,7 @@ public class MetaData
         //PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_01"); // Paths should not be straight
         PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_02");
         PrefabMappingAdd(65, FIXED_SIZE_TERRAIN_OBJECTS + "Path_Straight_03");
+        PrefabMappingAdd(67, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pine_Trees_01");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
