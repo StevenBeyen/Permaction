@@ -11,6 +11,7 @@ public class PrefabEnhancer : MonoBehaviour
     public float scaleOffset = 0.5f;
     public Vector2 xBounds = new Vector2(-0.45f, 0.45f);
     public Vector2 zBounds = new Vector2(-0.45f, 0.45f);
+    public bool smallVerticalNoise = true;
 
     private System.Random random;
     private Vector3 parentScale, parentPosition;
@@ -60,6 +61,8 @@ public class PrefabEnhancer : MonoBehaviour
             GameObject instantiatedElement = Instantiate(element, position, Quaternion.identity);
             instantiatedElement.transform.localScale = new Vector3(scale, scale, scale);
             instantiatedElement.transform.Rotate(0, (float) (random.NextDouble() * 360), 0);
+            if (smallVerticalNoise)
+                instantiatedElement.transform.Rotate(Random.Range(-5.0f, 5.0f), 0, 0);
         }
     }
 }
