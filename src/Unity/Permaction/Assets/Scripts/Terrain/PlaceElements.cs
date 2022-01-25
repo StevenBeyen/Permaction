@@ -121,6 +121,9 @@ public class PlaceElements : MonoBehaviour
                     real_position.y += height_correction;
                 GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, container.transform);
                 instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation + Random.Range(0,2) * 180);
+                try {
+                    instantiatedGO.transform.GetComponent<BoxCollider>().enabled = false;
+                } catch(MissingComponentException) {}
             }
         }
         // Changing rotation offset for box collider and billboard
@@ -129,8 +132,14 @@ public class PlaceElements : MonoBehaviour
             rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
             Vector3 center = base_position + rotation_offset;
             // Box collider on container
+            float y_scale;
+            try {
+                y_scale = prefab.transform.GetComponent<BoxCollider>().bounds.size.y;
+            } catch(MissingComponentException) {
+                y_scale = (scale.x + scale.z) / 2.0f;
+            }
             boxCollider.center = center;
-            boxCollider.size = new Vector3(scale.x, (scale.x + scale.z) / 2.0f, scale.z);
+            boxCollider.size = new Vector3(scale.x, y_scale, scale.z);
         }
     }
 

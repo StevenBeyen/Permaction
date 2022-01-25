@@ -112,6 +112,7 @@ public class MetaData
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
         PrefabMappingAdd(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        PrefabMappingAdd(35, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
         PrefabMappingAdd(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
         // French
         PrefabMappingAdd(42, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
@@ -137,6 +138,7 @@ public class MetaData
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
         PrefabMappingAdd(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        PrefabMappingAdd(75, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
         PrefabMappingAdd(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
 
         // Adding sizes of fixed objects since they have to be copied to fill given size, and not stretched.
@@ -144,15 +146,19 @@ public class MetaData
         prefab_fixed_size_widths.Add(04, 1);
         prefab_fixed_size_widths.Add(25, 1);
         prefab_fixed_size_widths.Add(28, 3);
+        prefab_fixed_size_widths.Add(35, 2);
         prefab_fixed_size_widths.Add(44, 1);
         prefab_fixed_size_widths.Add(65, 1);
         prefab_fixed_size_widths.Add(68, 3);
+        prefab_fixed_size_widths.Add(75, 2);
 
         prefab_fixed_size_lengths = new Dictionary<int, int>();
         prefab_fixed_size_lengths.Add(25, 4);
         prefab_fixed_size_lengths.Add(28, 4);
+        prefab_fixed_size_lengths.Add(35, 1);
         prefab_fixed_size_lengths.Add(65, 4);
         prefab_fixed_size_lengths.Add(68, 4);
+        prefab_fixed_size_lengths.Add(75, 1);
 
         // 3. Icons
         // Mapping category names to the icons
