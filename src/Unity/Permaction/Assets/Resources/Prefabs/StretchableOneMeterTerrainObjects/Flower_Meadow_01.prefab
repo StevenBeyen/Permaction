@@ -101,11 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 1810836374240917309, guid: 6c97cb906dbb4d1c5963925635e4f43c, type: 3}
-  elementsPerSquareMeter: 1.25
+  unique: 0
+  elementsPerSquareMeter: 1
   scaleRange: 1.25
   scaleOffset: 1
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
 --- !u!114 &1930691129167913579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,11 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 7955578204922416239, guid: 65df7fb5f5ee0ae09af3d3efc82f9520, type: 3}
-  elementsPerSquareMeter: 1.25
+  unique: 0
+  elementsPerSquareMeter: 1
   scaleRange: 1.5
   scaleOffset: 1.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
 --- !u!114 &1454967816825307995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,11 +141,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 3943806636488351712, guid: cfa22c775c835d649bfd227f61c0ea59, type: 3}
-  elementsPerSquareMeter: 1.25
+  unique: 0
+  elementsPerSquareMeter: 1
   scaleRange: 1.5
   scaleOffset: 2
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
 --- !u!114 &7849390405727973425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,11 +161,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 4400482160171448048, guid: 2ce5e6d01907c65b1a9929adbbda16a0, type: 3}
+  unique: 0
   elementsPerSquareMeter: 1
   scaleRange: 2
   scaleOffset: 2
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
 --- !u!114 &4614871094107644241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,11 +181,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 6218879516889607996, guid: 447e49c6a26a1282d9c59fba42f3b2fb, type: 3}
-  elementsPerSquareMeter: 1
+  unique: 0
+  elementsPerSquareMeter: 0.75
   scaleRange: 0.5
   scaleOffset: 0.25
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
 --- !u!1001 &5506631497025405496
 PrefabInstance:
   m_ObjectHideFlags: 0
