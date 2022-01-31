@@ -94,6 +94,7 @@ public class MetaData
         PrefabMappingAdd(04, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
         PrefabMappingAdd(07, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
         PrefabMappingAdd(08, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        PrefabMappingAdd(09, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Poultry_Feed_Forest_01");
         PrefabMappingAdd(11, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Flower_Meadow_01");
         PrefabMappingAdd(12, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Forest_01");
         PrefabMappingAdd(13, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Garden_01");
@@ -121,6 +122,7 @@ public class MetaData
         PrefabMappingAdd(44, FIXED_SIZE_TERRAIN_OBJECTS + "Beehive_01");
         PrefabMappingAdd(47, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composter_01");
         PrefabMappingAdd(48, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Composting_Toilet_01");
+        PrefabMappingAdd(49, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Poultry_Feed_Forest_01");
         PrefabMappingAdd(51, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Flower_Meadow_01");
         PrefabMappingAdd(52, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Forest_01");
         PrefabMappingAdd(53, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Garden_01");
