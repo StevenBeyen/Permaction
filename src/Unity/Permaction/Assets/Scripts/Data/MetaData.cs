@@ -112,6 +112,7 @@ public class MetaData
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
         PrefabMappingAdd(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        PrefabMappingAdd(33, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Main_Square_01");
         PrefabMappingAdd(35, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
         PrefabMappingAdd(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
         // French
@@ -138,6 +139,7 @@ public class MetaData
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
         PrefabMappingAdd(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
+        PrefabMappingAdd(73, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Main_Square_01");
         PrefabMappingAdd(75, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
         PrefabMappingAdd(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
 
