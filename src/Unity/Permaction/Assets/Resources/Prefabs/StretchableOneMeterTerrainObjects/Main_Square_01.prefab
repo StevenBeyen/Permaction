@@ -162,9 +162,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 4633752604129875665, guid: a52f8752f2b2e804e9ab89f1195dcabe, type: 3}
   unique: 0
-  elementsPerSquareMeter: 10
-  scaleRange: 0.2
-  scaleOffset: 0.9
+  elementsPerSquareMeter: 4
+  scaleRange: 0.25
+  scaleOffset: 1.5
   xBounds: {x: -0.425, y: 0.425}
   zBounds: {x: -0.425, y: 0.425}
   smallVerticalNoise: 1
