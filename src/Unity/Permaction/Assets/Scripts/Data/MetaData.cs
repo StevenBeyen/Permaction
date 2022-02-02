@@ -46,6 +46,7 @@ public class MetaData
     public const float NON_FLATTENING_HEIGHT_MARGIN = 0.0035f;
     public const float EPSILON = 0.001f;
     public const float EMPTY_COLLIDER_HEIGHT_CORRECTION = 10.0f;
+    public const float BOX_COLLIDER_ADDITIONAL_CORRECTION = 0.5f;
 
     public MetaData()
     {

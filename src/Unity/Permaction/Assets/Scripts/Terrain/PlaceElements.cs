@@ -140,7 +140,7 @@ public class PlaceElements : MonoBehaviour
             }
             if (y_scale == 0) {
                 y_scale = MetaData.EMPTY_COLLIDER_HEIGHT_CORRECTION;
-                center.y -= y_scale/2;
+                center.y -= (y_scale/2 - MetaData.BOX_COLLIDER_ADDITIONAL_CORRECTION);
             }
             boxCollider.center = center;
             boxCollider.size = new Vector3(scale.x, y_scale, scale.z);
