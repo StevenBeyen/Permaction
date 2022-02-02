@@ -168,6 +168,8 @@ class NotEnoughSpaceException(Exception):
     pass
 # Max length of linear elements
 max_linear_element_ratio = 0.33
+# Linear element length generation multiple
+linear_element_length_multiple = 5
 # Road and path length generation multiple
 road_path_length_multiple = 4
 # Maximum distance for road and path neighbour computation.

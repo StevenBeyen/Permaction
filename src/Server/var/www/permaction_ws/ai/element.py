@@ -378,12 +378,12 @@ class LinearElement(AbstractElement):
         if (random() <= ga_mutation_rate):
             if (self.horizontal):
                 try:
-                    length = randint(1, max_length - self.position[0])
+                    length = linear_element_length_multiple * randint(1, round((max_length - self.position[0])/linear_element_length_multiple))
                 except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                     pass
             else: # Vertical
                 try:
-                    length = randint(1, max_width - self.position[1])
+                    length = linear_element_length_multiple * randint(1, round((max_width - self.position[1])/linear_element_length_multiple))
                 except ValueError: # empty range means no other possible options, so we better leave it the way it is.
                     pass
 
