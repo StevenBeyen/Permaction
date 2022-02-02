@@ -34,8 +34,6 @@ public class MetaData
     public Dictionary<string, string> icon_mapping;
     public Dictionary<int, string> element_name_data;
     public Dictionary<int, bool> terrain_flattening_data;
-    public const float NON_FLATTENING_HEIGHT_MARGIN = 0.0035f;
-    public const float EPSILON = 0.001f;
     public Dictionary<int, bool> show_interactions_data;
     // Locale
     public Dictionary<string, int> id_locale_mapping;
@@ -45,6 +43,9 @@ public class MetaData
     public List<string> prefab_rocks;
     public List<string> prefab_trees;
     public const string ARC_LINK_CONTAINER = "ArcLinkContainer";
+    public const float NON_FLATTENING_HEIGHT_MARGIN = 0.0035f;
+    public const float EPSILON = 0.001f;
+    public const float EMPTY_COLLIDER_HEIGHT_CORRECTION = 10.0f;
 
     public MetaData()
     {
@@ -159,16 +160,12 @@ public class MetaData
         prefab_fixed_size_widths.Add(65, 1);
         prefab_fixed_size_widths.Add(68, 3);
         prefab_fixed_size_widths.Add(75, 2);
-
+        // Only necessary if != 1
         prefab_fixed_size_lengths = new Dictionary<int, int>();
-        prefab_fixed_size_lengths.Add(17, 1);
         prefab_fixed_size_lengths.Add(25, 4);
         prefab_fixed_size_lengths.Add(28, 4);
-        prefab_fixed_size_lengths.Add(35, 1);
-        prefab_fixed_size_lengths.Add(57, 1);
         prefab_fixed_size_lengths.Add(65, 4);
         prefab_fixed_size_lengths.Add(68, 4);
-        prefab_fixed_size_lengths.Add(75, 1);
 
         // 3. Icons
         // Mapping category names to the icons

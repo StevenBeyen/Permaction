@@ -138,6 +138,10 @@ public class PlaceElements : MonoBehaviour
             } catch(MissingComponentException) {
                 y_scale = (scale.x + scale.z) / 2.0f;
             }
+            if (y_scale == 0) {
+                y_scale = MetaData.EMPTY_COLLIDER_HEIGHT_CORRECTION;
+                center.y -= y_scale/2;
+            }
             boxCollider.center = center;
             boxCollider.size = new Vector3(scale.x, y_scale, scale.z);
         }
