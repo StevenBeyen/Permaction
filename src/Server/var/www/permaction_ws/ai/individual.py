@@ -58,12 +58,12 @@ class Individual(Thread):
                         if (e.id in road_path_ids):
                             e.set_length(road_path_length_multiple * randint(1, round(self.terrain_length*max_linear_element_ratio/road_path_length_multiple)))
                         else:
-                            e.set_length(randint(1, self.terrain_length/max_linear_element_ratio))
+                            e.set_length(randint(1, round(self.terrain_length*max_linear_element_ratio)))
                     else: # Vertical
                         if (e.id in road_path_ids):
                             e.set_length(road_path_length_multiple * randint(1, round(self.terrain_width*max_linear_element_ratio/road_path_length_multiple)))
                         else:
-                            e.set_length(randint(1, self.terrain_width/max_linear_element_ratio))
+                            e.set_length(randint(1, round(self.terrain_width*max_linear_element_ratio)))
                     # Finally, let's put it at a random postion where it doesn't exit the terrain boundaries
                     if (e.horizontal):
                         e.set_position((randint(0, self.terrain_length - e.length), randint(0, self.terrain_width - e.width)))

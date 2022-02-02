@@ -100,6 +100,7 @@ public class MetaData
         PrefabMappingAdd(13, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Garden_01");
         PrefabMappingAdd(14, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
         PrefabMappingAdd(15, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
+        PrefabMappingAdd(17, FIXED_SIZE_TERRAIN_OBJECTS + "Hedge_01");
         PrefabMappingAdd(19, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         PrefabMappingAdd(20, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
         PrefabMappingAdd(22, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Medicinal_Plants_01");
@@ -128,6 +129,7 @@ public class MetaData
         PrefabMappingAdd(53, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Garden_01");
         PrefabMappingAdd(54, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Greenhouse_01");
         PrefabMappingAdd(55, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Sunroom_01");
+        PrefabMappingAdd(57, FIXED_SIZE_TERRAIN_OBJECTS + "Hedge_01");
         PrefabMappingAdd(59, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Henhouse_01");
         PrefabMappingAdd(60, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Farmhouse_01");
         PrefabMappingAdd(62, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Medicinal_Plants_01");
@@ -148,18 +150,22 @@ public class MetaData
         // Adding sizes of fixed objects since they have to be copied to fill given size, and not stretched.
         prefab_fixed_size_widths = new Dictionary<int, int>();
         prefab_fixed_size_widths.Add(04, 1);
+        prefab_fixed_size_widths.Add(17, 5);
         prefab_fixed_size_widths.Add(25, 1);
         prefab_fixed_size_widths.Add(28, 3);
         prefab_fixed_size_widths.Add(35, 2);
         prefab_fixed_size_widths.Add(44, 1);
+        prefab_fixed_size_widths.Add(57, 5);
         prefab_fixed_size_widths.Add(65, 1);
         prefab_fixed_size_widths.Add(68, 3);
         prefab_fixed_size_widths.Add(75, 2);
 
         prefab_fixed_size_lengths = new Dictionary<int, int>();
+        prefab_fixed_size_lengths.Add(17, 1);
         prefab_fixed_size_lengths.Add(25, 4);
         prefab_fixed_size_lengths.Add(28, 4);
         prefab_fixed_size_lengths.Add(35, 1);
+        prefab_fixed_size_lengths.Add(57, 1);
         prefab_fixed_size_lengths.Add(65, 4);
         prefab_fixed_size_lengths.Add(68, 4);
         prefab_fixed_size_lengths.Add(75, 1);
