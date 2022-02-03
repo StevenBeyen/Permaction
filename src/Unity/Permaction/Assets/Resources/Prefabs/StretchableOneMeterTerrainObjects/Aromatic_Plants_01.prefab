@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 9092664977875410525}
   - component: {fileID: 6919329115195019262}
   - component: {fileID: 314283228297984749}
+  - component: {fileID: -3838723217451492062}
+  - component: {fileID: -8064144685307353745}
   m_Layer: 0
   m_Name: Aromatic_Plants_01
   m_TagString: Untagged
@@ -50,10 +52,10 @@ MonoBehaviour:
   element: {fileID: 1596381855083735820, guid: 3626d9f30aecae22ab84b3fb258cdd73, type: 3}
   unique: 0
   elementsPerSquareMeter: 1.25
-  scaleRange: 1.25
+  scaleRange: 2
   scaleOffset: 0.5
-  xBounds: {x: -0.4, y: 0.4}
-  zBounds: {x: -0.4, y: 0.4}
+  xBounds: {x: -0.425, y: 0.425}
+  zBounds: {x: -0.425, y: 0.425}
   smallVerticalNoise: 1
 --- !u!114 &9092664977875410525
 MonoBehaviour:
@@ -69,8 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 6629664383870926481, guid: f1720a47b892f54859896296e0e09281, type: 3}
   unique: 0
-  elementsPerSquareMeter: 2
-  scaleRange: 1.25
+  elementsPerSquareMeter: 5
+  scaleRange: 2
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
@@ -89,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 4894786978310003029, guid: f9fc614d934c84761bb5eb9ef00db5e4, type: 3}
   unique: 0
-  elementsPerSquareMeter: 3
+  elementsPerSquareMeter: 8
   scaleRange: 0.4
   scaleOffset: 0.3
   xBounds: {x: -0.4, y: 0.4}
@@ -114,6 +116,46 @@ MonoBehaviour:
   scaleOffset: 0.3
   xBounds: {x: -0.4, y: 0.4}
   zBounds: {x: -0.4, y: 0.4}
+  smallVerticalNoise: 1
+--- !u!114 &-3838723217451492062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3231568036884727149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 2206160539581568962, guid: 685e3a0f2cbb2d07eb0234c4749ab818, type: 3}
+  unique: 0
+  elementsPerSquareMeter: 3
+  scaleRange: 1.25
+  scaleOffset: 0.5
+  xBounds: {x: -0.45, y: 0.45}
+  zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
+--- !u!114 &-8064144685307353745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3231568036884727149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 1588636706963225090, guid: 1dbb4b3e55086a2e7a708b185aca1512, type: 3}
+  unique: 0
+  elementsPerSquareMeter: 1.25
+  scaleRange: 1
+  scaleOffset: 1
+  xBounds: {x: -0.425, y: 0.425}
+  zBounds: {x: -0.425, y: 0.425}
   smallVerticalNoise: 1
 --- !u!114 &8207690601935656803
 MonoBehaviour:
@@ -195,6 +237,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}
