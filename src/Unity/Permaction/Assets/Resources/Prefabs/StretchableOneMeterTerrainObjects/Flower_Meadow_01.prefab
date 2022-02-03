@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1454967816825307995}
   - component: {fileID: 7849390405727973425}
   - component: {fileID: 4614871094107644241}
+  - component: {fileID: 340768778487873296}
   m_Layer: 0
   m_Name: Flower_Meadow_01
   m_TagString: Untagged
@@ -187,6 +188,26 @@ MonoBehaviour:
   scaleOffset: 0.25
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  smallVerticalNoise: 1
+--- !u!114 &340768778487873296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136385614780368550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  element: {fileID: 8725926245467884597, guid: 49c4aa454f1f4972a8e25fa45fa8d7e7, type: 3}
+  unique: 1
+  elementsPerSquareMeter: 1
+  scaleRange: 0.2
+  scaleOffset: 0.9
+  xBounds: {x: -0.3, y: 0.3}
+  zBounds: {x: -0.3, y: 0.3}
   smallVerticalNoise: 1
 --- !u!1001 &5506631497025405496
 PrefabInstance:
