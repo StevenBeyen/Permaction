@@ -179,3 +179,8 @@ update element set default_size = '250-500' where id = 73;
 update element set default_size = '500-2500' where id = 9;
 update element set default_size = '500-2500' where id = 49;
 
+
+
+update element set default_size = '100-250' where default_size = '50-100';
+
+

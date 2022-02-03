@@ -119,6 +119,7 @@ public class MetaData
         PrefabMappingAdd(33, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Main_Square_01");
         PrefabMappingAdd(35, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
         PrefabMappingAdd(37, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
+        PrefabMappingAdd(40, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Workshop_01");
         // French
         PrefabMappingAdd(42, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Aromatic_Plants_01");
         PrefabMappingAdd(43, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Barn_01");
@@ -148,6 +149,7 @@ public class MetaData
         PrefabMappingAdd(73, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Main_Square_01");
         PrefabMappingAdd(75, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
         PrefabMappingAdd(77, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pond_01");
+        PrefabMappingAdd(80, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Workshop_01");
 
         // Adding sizes of fixed objects since they have to be copied to fill given size, and not stretched.
         prefab_fixed_size_widths = new Dictionary<int, int>();

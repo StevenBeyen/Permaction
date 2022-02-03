@@ -152,7 +152,7 @@ public class PlaceElements : MonoBehaviour
         // Object itself
         prefab = Resources.Load(prefab_names[Random.Range(0,prefab_names.Count)]) as GameObject;
         rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
-        rotation = Random.Range(0,4) * 90;
+        rotation = Random.Range(0,2) * 180;
         real_position = base_position + rotation_offset;
         if (!element.terrain_flattening)
             real_position.y += height_correction;
