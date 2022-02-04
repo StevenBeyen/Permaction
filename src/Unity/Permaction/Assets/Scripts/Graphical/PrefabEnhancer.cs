@@ -11,7 +11,9 @@ public class PrefabEnhancer : MonoBehaviour
     public float scaleOffset = 0.5f;
     public Vector2 xBounds = new Vector2(-0.45f, 0.45f);
     public Vector2 zBounds = new Vector2(-0.45f, 0.45f);
+    public bool freeRotation = true;
     public bool smallVerticalNoise = true;
+    public bool zRotation = false;
 
     private Vector3 parentScale, parentPosition;
     private Vector2 effectiveXBounds, effectiveZBounds;
@@ -63,9 +65,14 @@ public class PrefabEnhancer : MonoBehaviour
             position.y = MetaData.terrain.SampleHeight(position) + yCorrection;
             GameObject instantiatedElement = Instantiate(element, position, Quaternion.identity);
             instantiatedElement.transform.localScale = new Vector3(scale, scale, scale);
-            instantiatedElement.transform.Rotate(0, (float) (Random.Range(0f, 1f) * 360), 0);
+            if (freeRotation)
+                instantiatedElement.transform.Rotate(0, (float) (Random.Range(0f, 1f) * 360), 0);
+            else
+                instantiatedElement.transform.Rotate(0, Random.Range(-5.0f, 5.0f), 0);
             if (smallVerticalNoise)
                 instantiatedElement.transform.Rotate(Random.Range(-5.0f, 5.0f), 0, 0);
+            if (zRotation)
+                instantiatedElement.transform.Rotate(0, 0, (float) (Random.Range(0f, 1f) * 360));
         }
     }
 }
