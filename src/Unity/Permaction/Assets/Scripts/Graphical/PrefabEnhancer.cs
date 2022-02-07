@@ -40,7 +40,7 @@ public class PrefabEnhancer : MonoBehaviour
             effectiveZBounds = zBounds * parentScale.x;
         }
         try {
-            yCorrection = gameObject.transform.GetComponent<BoxCollider>().bounds.size.y;
+            yCorrection = gameObject.transform.GetComponent<BoxCollider>().bounds.size.y * gameObject.transform.localScale.y;
         } catch(MissingComponentException) {
             yCorrection = gameObject.transform.parent.GetComponent<BoxCollider>().bounds.size.y;
         }

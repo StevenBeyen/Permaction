@@ -159,7 +159,7 @@ public class PlaceElements : MonoBehaviour
         GameObject instantiatedGO = Instantiate(prefab, real_position, Quaternion.identity, container.transform);
         instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation);
         // Adding some small random rotation to the container as well
-        container.transform.RotateAround(real_position, Vector3.up, Random.Range(-5.0f, 5.0f));
+        container.transform.RotateAround(real_position, Vector3.up, Random.Range(-3.0f, 3.0f));
         if (rotation%180 == 0)
             instantiatedGO.transform.localScale = scale;
         else
