@@ -16,7 +16,7 @@ namespace Graphical
 
         public void select()
         {
-            transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            transform.GetComponentInChildren<MeshRenderer>().enabled = true;
             foreach (LineRenderer lr in transform.GetComponentsInChildren<LineRenderer>())
             {
                 lr.enabled = true;
@@ -31,7 +31,7 @@ namespace Graphical
             {
                 lr.enabled = false;
             }
-            transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            transform.GetComponentInChildren<MeshRenderer>().enabled = false;
         }
     }
 }

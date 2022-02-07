@@ -11642,7 +11642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 2018008809}
-  billboard: {fileID: 7521197314847124003, guid: d483adfc813b6139ba478f3dcada6d2a,
+  graphicalTitle: {fileID: 3342058100395015956, guid: df3b57bb18ed711cebce72d874dc1f0d,
     type: 3}
   greenArcLink: {fileID: 2971266950148213792, guid: e83e4616564b383ad85f242214cd696e,
     type: 3}

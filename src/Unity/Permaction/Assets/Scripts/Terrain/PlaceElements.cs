@@ -8,7 +8,7 @@ using Graphical;
 public class PlaceElements : MonoBehaviour
 {
     public Terrain terrain;
-    public GameObject billboard;
+    public GameObject graphicalTitle;
     public GameObject greenArcLink;
     public GameObject redArcLink;
 
@@ -78,10 +78,10 @@ public class PlaceElements : MonoBehaviour
         {
             InstantiateStretchableElement(element, container);
         }
-        // Billboard
         if (element.show_interactions)
         {
-            GameObject instantiatedBillboard = Instantiate(billboard, base_position + rotation_offset, Quaternion.identity, container.transform);
+            // Title
+            GameObject instantiatedGraphicalTitle = Instantiate(graphicalTitle, base_position + rotation_offset + new Vector3(0, scale.y, 0), Quaternion.identity, container.transform);
             // Saving elements for arc link creation
             UserData.physical_elements.Add(new PhysicalElement(element.id, container, base_position + rotation_offset, scale));
         }
@@ -126,7 +126,7 @@ public class PlaceElements : MonoBehaviour
                 } catch(MissingComponentException) {}
             }
         }
-        // Changing rotation offset for box collider and billboard
+        // Changing rotation offset for box collider and title
         if (element.show_interactions)
         {
             rotation_offset = new Vector3(scale.x/2.0f, 0, scale.z/2.0f);
