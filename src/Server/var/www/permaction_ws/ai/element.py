@@ -47,16 +47,21 @@ class AbstractElement:
                 max_y = c[1]
         return (min_x, min_y, max_x, max_y)
     
-    def is_neighbour(self, element):
+    def neighbour_value(self, element, fitness_value):
         """ Neighbouring based on Manhattan distance: if distance between two coordinates is less than max Manhattan distance,
         we consider the two elements to be neighbours.
         Example Manhattan distance: dist (0,1), (1,1) = 1 ; dist (0,0), (1,1) = 2."""
         global max_manhattan_distance
+        min_distance = float('inf')
         for coord1 in self.get_edges():
             for coord2 in element.get_edges():
-                if ((abs(coord1[0] - coord2[0]) + abs(coord1[1] - coord2[1])) <= max_manhattan_distance):
-                    return True
-        return False
+                current_distance = (abs(coord1[0] - coord2[0]) + abs(coord1[1] - coord2[1]))
+                if (current_distance <= max_manhattan_distance):
+                    return fitness_value
+                if (current_distance < min_distance):
+                    min_distance = current_distance
+        # Distance higher than max manhattan distance, so we divide highest value by extra distance + 1
+        return (fitness_value / (min_distance - max_manhattan_distance + 1))
     
     def biotope_intersection(self, element):
         """ Computation of the added fitness value based on biotope intersection of two elements.
@@ -78,7 +83,7 @@ class AbstractElement:
     
     def fitness_level(self, element, fitness):
         """Generic method for elements interaction."""
-        return fitness if self.is_neighbour(element) else 0
+        return self.neighbour_value(element, fitness)
     
     def is_equal(self, element):
         return (self.id == element.id and self.coordinates == element.coordinates)
@@ -414,21 +419,26 @@ class RoadPathElement(LinearElement):
         else:
             return super().fitness_level(element, fitness)
     
-    def is_neighbour(self, element):
+    def neighbour_value(self, element, fitness_value):
         if (self.id != element.id):
-            return super().is_neighbour(element)
+            return super().neighbour_value(element, fitness_value)
         #elif (self.horizontal != element.horizontal): # Prettier to alternate horizontal and vertical road/path sections
         else:
             (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
             (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
-            distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
-            distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
+            if (self.horizontal and element.horizontal): # Both horizontal
+                distance = abs(self_min_y - element_min_y) + min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
+            elif (self.horizontal == element.horizontal): # Both vertical
+                distance = abs(self_min_x - element_min_x) + min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
+            else: # One horizontal and one vertical
+                distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
+                distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
             if (distance <= road_path_max_manhattan_distance):
                 # It's a match!
                 self.connected_roads_paths_counter += 1
                 element.connected_roads_paths_counter += 1
-                return True
-        return False
+                return fitness_value
+        return (fitness_value / (distance - road_path_max_manhattan_distance + 1))
     
     def disconnected_road_path(self):
         return (self.connected_roads_paths_counter == 0)
@@ -499,20 +509,20 @@ class RectangleElement(AbstractElement):
             if (self.road_access or element.physical_element_connection):
                 return 0
             else:
-                if (self.is_neighbour(element)):
+                neighbour_value = self.neighbour_value(element, fitness)
+                if (neighbour_value == fitness):
                     self.road_access = True
                     element.physical_element_connection = True
-                    return fitness
-                return 0
+                return neighbour_value
         elif (element.id in path_ids):
             if (self.path_access or element.physical_element_connection):
                 return 0
             else:
-                if (self.is_neighbour(element)):
+                neighbour_value = self.neighbour_value(element, fitness)
+                if (neighbour_value == fitness):
                     self.path_access = True
                     element.physical_element_connection = True
-                    return fitness
-                return 0
+                return neighbour_value
         else: # Not a road or a path, so we raise a value error
             raise ValueError
     
