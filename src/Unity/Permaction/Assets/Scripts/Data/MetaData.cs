@@ -47,6 +47,8 @@ public class MetaData
     public const float EPSILON = 0.001f;
     public const float EMPTY_COLLIDER_HEIGHT_CORRECTION = 10.0f;
     public const float BOX_COLLIDER_ADDITIONAL_CORRECTION = 0.5f;
+    public const string GRAPHICAL_TITLE = "Graphical_Title(Clone)";
+    public const string LINK_DESCRIPTION = "Link_Description(Clone)";
 
     public MetaData()
     {

@@ -11,6 +11,7 @@ public class PlaceElements : MonoBehaviour
     public GameObject graphicalTitle;
     public GameObject greenArcLink;
     public GameObject redArcLink;
+    public GameObject linkDescription;
 
     private List<string> prefab_names;
     private int prefab_fixed_size_width, prefab_fixed_size_length, x_step, z_step;
@@ -81,8 +82,9 @@ public class PlaceElements : MonoBehaviour
         if (element.show_interactions)
         {
             // Title
-            GameObject instantiatedGraphicalTitle = Instantiate(graphicalTitle, base_position + rotation_offset + new Vector3(0, scale.y, 0), Quaternion.identity, container.transform);
-            // Saving elements for arc link creation
+            GameObject instantiatedGraphicalTitle = Instantiate(graphicalTitle, base_position + rotation_offset + new Vector3(0, container.GetComponent<BoxCollider>().size.y, 0), Quaternion.identity, container.transform);
+            instantiatedGraphicalTitle.transform.GetComponentInChildren<TextMesh>().text = element.name;
+            // Saving element for arc link creation
             UserData.physical_elements.Add(new PhysicalElement(element.id, container, base_position + rotation_offset, scale));
         }
     }
@@ -123,7 +125,7 @@ public class PlaceElements : MonoBehaviour
                 instantiatedGO.transform.RotateAround(real_position, Vector3.up, rotation + Random.Range(0,2) * 180);
                 try {
                     instantiatedGO.transform.GetComponent<BoxCollider>().enabled = false;
-                } catch(MissingComponentException) {}
+                } catch (MissingComponentException) {}
             }
         }
         // Changing rotation offset for box collider and title
@@ -135,7 +137,7 @@ public class PlaceElements : MonoBehaviour
             float y_scale;
             try {
                 y_scale = prefab.transform.GetComponent<BoxCollider>().bounds.size.y;
-            } catch(MissingComponentException) {
+            } catch (MissingComponentException) {
                 y_scale = (scale.x + scale.z) / 2.0f;
             }
             if (y_scale == 0) {
@@ -204,8 +206,8 @@ public class PlaceElements : MonoBehaviour
                                 arcLink = redArcLink;
                             }
                             // Create arc link in two directions since each arc is linked to one element only (they can only have one parent!).
-                            CreateArcLink(firstElement, secondElement, arcLink);
-                            CreateArcLink(secondElement, firstElement, arcLink);
+                            CreateArcLink(firstElement, secondElement, arcLink, binaryInteraction.description);
+                            CreateArcLink(secondElement, firstElement, arcLink, binaryInteraction.description);
                         }
                     }
                 }
@@ -214,15 +216,21 @@ public class PlaceElements : MonoBehaviour
     }
 
     // TODO Add description associated with arc link
-    private void CreateArcLink(PhysicalElement firstElement, PhysicalElement secondElement, GameObject arcLink)
+    private void CreateArcLink(PhysicalElement firstElement, PhysicalElement secondElement, GameObject arcLink, string description)
     {
         if (!firstElement.associated_ids.Contains(secondElement.id))
         {
+            // Container
             GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
             arcLinkContainer.transform.SetParent(firstElement.game_object.transform);
-            new ArcLink(Instantiate(arcLink, firstElement.position, Quaternion.identity, arcLinkContainer.transform), firstElement.position, secondElement.position);
+            // ArcLink
+            ArcLink arc = new ArcLink(Instantiate(arcLink, firstElement.position, Quaternion.identity, arcLinkContainer.transform), firstElement.position, secondElement.position);
             arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
             firstElement.associated_ids.Add(secondElement.id);
+            // Description
+            GameObject instantiatedLinkDescription = Instantiate(linkDescription, arc.getTopCoordinates(), Quaternion.identity, arcLinkContainer.transform);
+            // TODO Handle case with multiple descriptions between two elements. Parsing upwards in code maybe?
+            instantiatedLinkDescription.GetComponentInChildren<TextMesh>().text = description;
         }
     }
 }

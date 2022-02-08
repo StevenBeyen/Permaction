@@ -24,9 +24,15 @@ namespace Graphical {
         private float x_direction = 1;
         private float z_direction = 1;
 
+        private float mid_x;
+        private float max_y = 0;
+        private float mid_z;
+
         public ArcLink(GameObject arcLink, Vector3 source, Vector3 destination)
         {
             lr = arcLink.GetComponent<LineRenderer>();
+            mid_x = (source.x + destination.x) / 2.0f;
+            mid_z = (source.z + destination.z) / 2.0f;
             radianAngle = Mathf.Deg2Rad * angle;
             float xDistance = Mathf.Abs(source.x - destination.x);
             float zDistance = Mathf.Abs(source.z - destination.z);
@@ -69,7 +75,14 @@ namespace Graphical {
             float x = x0 + x_direction * currentDistance * xRatio;
             float y = y0 * (1 - t) + y1 * t + currentDistance * Mathf.Tan(radianAngle) - ((gravity * currentDistance * currentDistance)/(2 * velocity * velocity * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle)));
             float z = z0 + z_direction * currentDistance * zRatio;
+            if (y > max_y)
+                max_y = y;
             return new Vector3(x, y, z);
+        }
+
+        public Vector3 getTopCoordinates()
+        {
+            return new Vector3(mid_x, max_y, mid_z);
         }
     }
 }
