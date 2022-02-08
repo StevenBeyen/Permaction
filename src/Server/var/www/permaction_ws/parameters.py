@@ -162,7 +162,7 @@ ga_mutation_rate = 0.05
 ga_elitism = True
 # Maximum manhattan distance for neighbour computation, if you set this to 1 all elements have to touch each other
 # in order for their interaction value to be added. Recommended value is at least 2.
-max_manhattan_distance = 3
+max_manhattan_distance = 2
 # Exception for not enough space on the terrain to fit all requested elements
 class NotEnoughSpaceException(Exception):
     pass
