@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70ea78994da142be6a91b5f831d3a1ff
+guid: a7646d1a4ba2e247e9df70678b1303d8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Waterlily
+  fontName: Apasih
   fontNames:
-  - Waterlily
+  - Apasih
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

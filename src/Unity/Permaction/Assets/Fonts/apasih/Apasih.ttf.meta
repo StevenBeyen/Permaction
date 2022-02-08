@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f0786ab12daf38ef28e516a406afaa44
+guid: 2f356ce9411b8bb90b04e12da761faed
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,10 +8,11 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Lemon Bird
+  fontName: Apasih
   fontNames:
-  - Lemon Bird
-  fallbackFontReferences: []
+  - Apasih
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a7646d1a4ba2e247e9df70678b1303d8, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
