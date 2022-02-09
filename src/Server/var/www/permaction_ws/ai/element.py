@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from math import sqrt, inf
-from random import random, randint, uniform
+from random import random, randint, gauss
 
 from parameters import *
 
@@ -105,7 +105,7 @@ class AbstractElement:
     
     def ternary_fitness_level(self, element, interaction_type_ids, terrain):
         """ Method for ternary interaction fitness computation.
-            Interpretation of this method is : self, interaction, element (e.g. is the pond south of the house?)."""
+            Interpretation of this method is : self, interaction, element (e.g. is the pond south of the greenhouse?)."""
             
         global ternary_interactions_mapping, higher_interaction_type, south_interaction_type, ternary_interaction_added_value
         
@@ -332,41 +332,21 @@ class LinearElement(AbstractElement):
         """Produces the equivalent of a bit mutation with a probability of ga_mutation_rate.
         Mutation is applied on direction (horizontal/vertical), position and length."""
         
-        global ga_mutation_rate
+        global ga_mutation_rate, ga_mutation_sigma
         
         # direction
         if (random() <= ga_mutation_rate):
             self.horizontal = not self.horizontal
         
         # position
-        if (self.horizontal):
-            length_pos = self.position[0]
-            if (random() <= ga_mutation_rate):
-                try:
-                    length_pos = randint(0, max_length - self.length)
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
-            # position: width (y)
-            width_pos = self.position[1]
-            if (random() <= ga_mutation_rate):
-                try:
-                    width_pos = randint(0, max_width - self.width)
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
-        else: # Vertical
-            length_pos = self.position[0]
-            if (random() <= ga_mutation_rate):
-                try:
-                    length_pos = randint(0, max_length - self.width)
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
-            # position: width (y)
-            width_pos = self.position[1]
-            if (random() <= ga_mutation_rate):
-                try:
-                    width_pos = randint(0, max_width - self.length)
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
+        length_pos = self.position[0]
+        if (random() <= ga_mutation_rate):
+            length_pos = int(round(gauss(length_pos, ga_mutation_sigma)))
+        
+        width_pos = self.position[1]
+        if (random() <= ga_mutation_rate):
+            width_pos = int(round(gauss(width_pos, ga_mutation_sigma)))
+        
         self.position = (length_pos, width_pos)
         
         # Multiplying max length and width by max_linear_element_ratio for new length computation
@@ -380,17 +360,24 @@ class LinearElement(AbstractElement):
         self.update()
     
     def length_mutation(self, max_length, max_width):
+        global ga_mutation_sigma
         if (random() <= ga_mutation_rate):
             if (self.horizontal):
-                try:
-                    length = linear_element_length_multiple * randint(1, round((max_length - self.position[0])/linear_element_length_multiple))
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
+                self.length = int(round(gauss(self.length, ga_mutation_sigma * linear_element_length_multiple)))
+                if (self.length > max_length):
+                    self.length = int(max_length)
+                while (self.length % linear_element_length_multiple != 0):
+                    self.length -= 1
+                if (self.length < linear_element_length_multiple):
+                    self.length = linear_element_length_multiple
             else: # Vertical
-                try:
-                    length = linear_element_length_multiple * randint(1, round((max_width - self.position[1])/linear_element_length_multiple))
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
+                self.length = int(round(gauss(self.length, ga_mutation_sigma * linear_element_length_multiple)))
+                if (self.length > max_width):
+                    self.length = int(max_width)
+                while (self.length % linear_element_length_multiple != 0):
+                    self.length -= 1
+                if (self.length < linear_element_length_multiple):
+                    self.length = linear_element_length_multiple
 
 
 class RoadPathElement(LinearElement):
@@ -427,9 +414,13 @@ class RoadPathElement(LinearElement):
             (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
             (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
             if (self.horizontal and element.horizontal): # Both horizontal
-                distance = abs(self_min_y - element_min_y) + min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
+                if (self_min_y != element_min_y):
+                    distance = float('inf')
+                distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
             elif (self.horizontal == element.horizontal): # Both vertical
-                distance = abs(self_min_x - element_min_x) + min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
+                if (self_min_x != element_min_x):
+                    distance = float('inf')
+                distance = min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
             else: # One horizontal and one vertical
                 distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
                 distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
@@ -451,17 +442,24 @@ class RoadPathElement(LinearElement):
             
 
     def length_mutation(self, max_length, max_width):
+        global ga_mutation_sigma
         if (random() <= ga_mutation_rate):
             if (self.horizontal):
-                try:
-                    length = road_path_length_multiple * randint(1, round((max_length - self.position[0])/road_path_length_multiple))
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
+                self.length = int(round(gauss(self.length, ga_mutation_sigma * road_path_length_multiple)))
+                if (self.length > max_length):
+                    self.length = int(max_length)
+                while (self.length % road_path_length_multiple != 0):
+                    self.length -= 1
+                if (self.length < road_path_length_multiple):
+                    self.length = road_path_length_multiple
             else: # Vertical
-                try:
-                    length = road_path_length_multiple * randint(1, round((max_width - self.position[1])/road_path_length_multiple))
-                except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                    pass
+                self.length = int(round(gauss(self.length, ga_mutation_sigma * road_path_length_multiple)))
+                if (self.length > max_width):
+                    self.length = int(max_width)
+                while (self.length % road_path_length_multiple != 0):
+                    self.length -= 1
+                if (self.length < road_path_length_multiple):
+                    self.length = road_path_length_multiple
 
 class RectangleElement(AbstractElement):
 
@@ -574,30 +572,24 @@ class RectangleElement(AbstractElement):
         """Produces the equivalent of a bit mutation with a probability of ga_mutation_rate.
         Mutation is applied on shape and position."""
         
-        global ga_mutation_rate
+        global ga_mutation_rate, ga_mutation_sigma
         
         # shape
         if (random() <= ga_mutation_rate):
         	self.swap_width_length()
-        	self.update()
         
         # position: length (x)
         length_pos = self.position[0]
         if (random() <= ga_mutation_rate):
-            try:
-                length_pos = randint(0, max_length - self.length)
-            except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                pass
-        # position: width (y)
+            length_pos = int(round(gauss(length_pos, ga_mutation_sigma)))
+
         width_pos = self.position[1]
         if (random() <= ga_mutation_rate):
-            try:
-                width_pos = randint(0, max_width - self.width)
-            except ValueError: # empty range means no other possible options, so we better leave it the way it is.
-                pass
+            width_pos = int(round(gauss(width_pos, ga_mutation_sigma)))
+
         self.position = (length_pos, width_pos)
         
-        # Finally, let's reset road and path access variables
+        # Finally, let's reset road and path access variables (necessary between two generations)
         self.road_access = False
         self.path_access = False
         

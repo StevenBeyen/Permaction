@@ -158,8 +158,12 @@ ga_stop_nb_gen_no_improvement = 100
 ga_tournament_rate = 0.95
 # Genetic algorithm mutation rate: probability of mutation on shape and position
 ga_mutation_rate = 0.05
+# Genetic algorithm mutation sigma
+ga_mutation_sigma = 5
 # Genetic algorithm elitism
 ga_elitism = True
+# Genetic algorithm elitism population size
+ga_elitism_size = 5
 # Maximum manhattan distance for neighbour computation, if you set this to 1 all elements have to touch each other
 # in order for their interaction value to be added. Recommended value is at least 2.
 max_manhattan_distance = 2
@@ -173,5 +177,5 @@ linear_element_length_multiple = 5
 # Road and path length generation multiple
 road_path_length_multiple = 4
 # Maximum distance for road and path neighbour computation.
-road_path_max_manhattan_distance = 1
+road_path_max_manhattan_distance = 2
 

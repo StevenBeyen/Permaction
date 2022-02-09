@@ -32,6 +32,7 @@ class Guru:
         self.terrain_element_ids = []
         self.population = []
         self.best_individual = None
+        self.elite = []
         self.best_fitness = -1
         self.stuck_counter = 0
         self.stop_condition = False
@@ -201,6 +202,19 @@ class Guru:
         self.best_fitness = individual.fitness
         self.stuck_counter = 0
     
+    def update_elite(self):
+        global ga_elitism_size
+        self.elite = []
+        for individual in self.population:
+            index = 0
+            place_found = False
+            while (index < len(self.elite) and not place_found):
+                place_found = (individual.fitness >= self.elite[index].fitness)
+                index += 1
+            self.elite.insert(index, individual)
+            if (len(self.elite) > ga_elitism_size):
+                self.elite = self.elite[:ga_elitism_size]
+    
     def update_stop_condition(self):
         global ga_stop_nb_gen_no_improvement, ai_search_stop
         if (self.best_fitness >= self.max_fitness):
@@ -210,7 +224,7 @@ class Guru:
     def create_next_generation(self):
         global ga_elitism, ga_population_size
         next_generation = []
-        parents = [self.best_individual] if (ga_elitism) else []
+        parents = self.elite if (ga_elitism) else []
         # len/2 parents selected by tournament, they will make half of the new population
         for i in range(int(ga_population_size/2)):
             new_individual = choice(self.population).fight(choice(self.population)).copy()
@@ -224,14 +238,17 @@ class Guru:
         # Applying mutations to the new population
         for individual in next_generation:
             individual.apply_mutation()
-        # randomly replacing one individual of next generation by best individual if elitism is active
+        # adding the elite population if elitism is active)
         if (ga_elitism):
+            for individual in self.elite:
+                individual.init_thread()
             self.best_individual.init_thread()
-            next_generation.append(self.best_individual)
+            next_generation += self.elite
         # Finally, the next generation becomes the current one
         self.population = next_generation
     
     def genetic_algorithm_routine(self):
+        global ga_elitism
         while (not self.stop_condition):
             self.stuck_counter += 1
             if (self.stuck_counter == 1):
@@ -244,6 +261,8 @@ class Guru:
             #    individual.join()
                 if (individual.fitness > self.best_fitness):
                     self.update_best_fitness(individual)
+            if (ga_elitism):
+                self.update_elite()
             self.update_stop_condition()
             self.create_next_generation()
     
