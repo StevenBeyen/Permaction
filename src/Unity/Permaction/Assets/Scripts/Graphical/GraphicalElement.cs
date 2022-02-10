@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,25 +17,21 @@ namespace Graphical
         public void select()
         {
             transform.Find(MetaData.GRAPHICAL_TITLE).gameObject.SetActive(true);
-            foreach (LineRenderer lr in transform.GetComponentsInChildren<LineRenderer>())
+            foreach (Transform t in transform)
             {
-                lr.enabled = true;
+                if (t.name == MetaData.ARC_LINK_CONTAINER)
+                    t.gameObject.SetActive(true);
             }
-            try {
-                transform.Find(MetaData.ARC_LINK_CONTAINER).Find(MetaData.LINK_DESCRIPTION).gameObject.SetActive(true);
-            } catch (NullReferenceException) {}
             UserData.selected_element = this;
         }
 
         public void unselect()
         {
             UserData.selected_element = null;
-            try {
-                transform.Find(MetaData.ARC_LINK_CONTAINER).Find(MetaData.LINK_DESCRIPTION).gameObject.SetActive(false);
-            } catch (NullReferenceException) {}
-            foreach (LineRenderer lr in transform.GetComponentsInChildren<LineRenderer>())
+            foreach (Transform t in transform)
             {
-                lr.enabled = false;
+                if (t.name == MetaData.ARC_LINK_CONTAINER)
+                    t.gameObject.SetActive(false);
             }
             transform.Find(MetaData.GRAPHICAL_TITLE).gameObject.SetActive(false);
         }

@@ -223,9 +223,9 @@ public class PlaceElements : MonoBehaviour
             // Container
             GameObject arcLinkContainer = new GameObject(MetaData.ARC_LINK_CONTAINER);
             arcLinkContainer.transform.SetParent(firstElement.game_object.transform);
+            arcLinkContainer.SetActive(false);
             // ArcLink
             ArcLink arc = new ArcLink(Instantiate(arcLink, firstElement.position, Quaternion.identity, arcLinkContainer.transform), firstElement.position, secondElement.position);
-            arcLinkContainer.GetComponentInChildren<LineRenderer>().enabled = false;
             firstElement.associated_ids.Add(secondElement.id);
             // Description
             GameObject instantiatedLinkDescription = Instantiate(linkDescription, arc.getTopCoordinates(), Quaternion.identity, arcLinkContainer.transform);
