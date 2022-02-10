@@ -1,0 +1,23 @@
+https://flask.palletsprojects.com/en/2.0.x/deploying/mod_wsgi/#configuring-apache
+
+
+
+
+.conf file:
+
+
+Listen 13731
+<VirtualHost *:13731>
+    ServerName permaction_ws
+
+    WSGIDaemonProcess permaction_ws home=/var/www/permaction_ws processes=4 threads=16
+    WSGIScriptAlias / /var/www/permaction_ws/permaction_ws.wsgi
+
+    <Directory /var/www/permaction_ws>
+        WSGIProcessGroup permaction_ws
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
+

@@ -1,0 +1,6 @@
+Werkzeug
+flask
+Flask-SQLAlchemy
+flask-login
+flask-paranoid
+Flask-Threads
