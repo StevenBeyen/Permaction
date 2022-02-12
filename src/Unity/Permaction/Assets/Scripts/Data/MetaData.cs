@@ -7,7 +7,8 @@ using API;
 public class MetaData
 {
     // Server
-    public const string API_URI = "http://34.70.70.142:13731";
+    //public const string API_URI = "http://34.70.70.142:13731"; // Google Cloud Computing server
+    public const string API_URI = "permaction.com:13731"; // Hostinger server
     public const string BINARY_INTERACTIONS_URI = API_URI + "/binary_interactions";
     public const string USER_LOGIN_URI = API_URI + "/login";
     public const string PHYSICAL_ELEMENTS_URI = API_URI + "/physical_elements";
