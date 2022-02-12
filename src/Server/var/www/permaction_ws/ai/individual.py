@@ -14,25 +14,25 @@ class Individual(Thread):
     """Genetic algorithm base class: placement of elements on given terrain.
     Evolution of individual based on given rules of selection, mutation and crossover."""
 
-    def __init__(self, elements, terrain, fitness_dict, ternary_fitness_dict, fixed_element_indexes, init_terrain_element_ids, multiple_roads, multiple_paths):
+    def __init__(self, elements, terrain, fitness_dict, ternary_fitness_dict, fixed_element_indexes, multiple_roads, multiple_paths):
         Thread.__init__(self)
         self.elements = [element.copy() for element in elements]
         self.fixed_element_indexes = fixed_element_indexes
         self.terrain = terrain
         self.terrain_length = len(self.terrain)
         self.terrain_width = len(self.terrain[0])
-        self.init_terrain_element_ids = init_terrain_element_ids
+        #self.init_terrain_element_ids = init_terrain_element_ids
         self.fitness_dict = fitness_dict
         self.ternary_fitness_dict = ternary_fitness_dict
         self.multiple_roads = multiple_roads
         self.multiple_paths = multiple_paths
-        self.terrain_element_ids = None
+        #self.terrain_element_ids = None
         self.nb_terrain_overlaps = 0
         self.nb_disconnected_roads_paths = 0
         self.fitness = 0
     
     def copy(self):
-        copy = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids, self.multiple_roads, self.multiple_paths)
+        copy = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.multiple_roads, self.multiple_paths)
         return copy
     
     def init_elements(self):
@@ -73,7 +73,7 @@ class Individual(Thread):
                 else:
                     raise ValueError
     
-    def update_terrain_element_ids(self):
+    """def update_terrain_element_ids(self):
         self.terrain_element_ids = [list(line) for line in self.init_terrain_element_ids]
         self.nb_terrain_overlaps = 0
         for i in range(len(self.elements)):
@@ -86,7 +86,16 @@ class Individual(Thread):
                         else: # Overlap between two elements
                             self.nb_terrain_overlaps += 1
                     except IndexError: # Or out of range !
-                        self.nb_terrain_overlaps += 1
+                        self.nb_terrain_overlaps += 1"""
+    
+    def update_overlaps(self):
+        self.nb_terrain_overlaps = 0
+        for i in range(len(self.elements) - 1):
+            self.nb_terrain_overlaps += self.elements[i].out_of_terrain_level(self.terrain)
+            for j in range(i + 1, len(self.elements)):
+                self.nb_terrain_overlaps += self.elements[i].intersection_level(self.elements[j])
+        # Don't forget last element!
+        self.nb_terrain_overlaps += self.elements[-1].out_of_terrain_level(self.terrain)
     
     def update_fitness(self):
         # Computing fitness based on neighbouring and database binary interactions
@@ -137,8 +146,8 @@ class Individual(Thread):
                 ind2_elements += [individual.elements[i]]
             else:
                 ind2_elements += [self.elements[i]]
-        ind1 = Individual(ind1_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids, self.multiple_roads, self.multiple_paths)
-        ind2 = Individual(ind2_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.init_terrain_element_ids, self.multiple_roads, self.multiple_paths)
+        ind1 = Individual(ind1_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.multiple_roads, self.multiple_paths)
+        ind2 = Individual(ind2_elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.multiple_roads, self.multiple_paths)
         return [ind1, ind2]
     
     def apply_mutation(self):
@@ -146,20 +155,21 @@ class Individual(Thread):
             if (i not in self.fixed_element_indexes):
                 self.elements[i].apply_mutation(self.terrain_length, self.terrain_width)
     
-    def similarity(self, individual):
+    """def similarity(self, individual):
         similarity = 0
         counter = 0
         for i in range(len(self.elements)):
             if (i not in self.fixed_element_indexes):
                  similarity += self.elements[i].similarity(individual.elements[i])
                  counter += 1
-        return (similarity / counter)
+        return (similarity / counter)"""
     
     def init_thread(self):
         Thread.__init__(self)
     
     def run(self):
-        self.update_terrain_element_ids()
+        self.update_overlaps()
+        #self.update_terrain_element_ids()
         self.update_fitness()
     
     def is_equal(self, individual):
@@ -168,8 +178,8 @@ class Individual(Thread):
                 return False
         return True
     
-    def __repr__(self):
-        return(str(self.terrain_element_ids))
+    """def __repr__(self):
+        return(str(self.terrain_element_ids))"""
     
     def to_json(self):
         reply = []

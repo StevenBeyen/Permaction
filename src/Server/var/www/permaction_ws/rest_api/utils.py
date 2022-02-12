@@ -49,10 +49,10 @@ def validate_placement_request(placement_request_data):
 
 def start_placement_request(user_placement_request):
     global ai_nb_placement_requests, ai_fitness_tag, user_placement_ai_responses, ai_optimum_tag, not_enough_space_message
-    user_placement_ais = []
+    """user_placement_ais = []
     user_placement_ai_responses = Queue()
     for i in range(ai_nb_placement_requests):
-        user_placement_ais += [AppContextThread(target=user_placement_ai, args=(user_placement_request.id,current_user.id_locale,))]
+        #user_placement_ais += [AppContextThread(target=user_placement_ai, args=(user_placement_request.id,current_user.id_locale,))]
     for ai in user_placement_ais:
         ai.start()
     # Join on all threads and return best result
@@ -66,5 +66,8 @@ def start_placement_request(user_placement_request):
             break
         elif ((best_result is None) or (result[ai_fitness_tag] > best_result[ai_fitness_tag])):
             best_result = result
-    return best_result
+    return best_result"""
+    ai = AI(user_placement_request.id,current_user.id_locale)
+    ai.run()
+    return ai.make_response()
 

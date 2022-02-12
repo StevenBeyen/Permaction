@@ -15,11 +15,14 @@ class AbstractElement:
     def __init__(self):
         raise NotImplementedError
     
-    def get_edges(self):
+    def get_corners(self):
         raise NotImplementedError
+    
+    """def get_edges(self):
+        raise NotImplementedError"""
         
-    def get_used_coordinates(self):
-        raise NotImplementedError
+    """def get_used_coordinates(self):
+        raise NotImplementedError"""
     
     def is_fixed(self):
         raise NotImplementedError
@@ -28,80 +31,90 @@ class AbstractElement:
         raise NotImplementedError
     
     def get_minmax_coordinates(self):
-    
-        """ Return min & max X & Y values : (min_x, min_y, max_x, max_y).
-        """
+        """ Return min & max X & Y values : (min_x, min_y, max_x, max_y). """
+        length = self.length - 1
+        width = self.width - 1
         
-        min_x = float('inf')
-        max_x = float('-inf')
-        min_y = float('inf')
-        max_y = float('-inf')
-        for c in self.get_edges():
-            if (c[0] < min_x):
-                min_x = c[0]
-            if (c[0] > max_x):
-                max_x = c[0]
-            if (c[1] < min_y):
-                min_y = c[1]
-            if (c[1] > max_y):
-                max_y = c[1]
-        return (min_x, min_y, max_x, max_y)
+        if (isinstance(self, LinearElement)):
+            if (not self.horizontal):
+                length = self.width - 1
+                width = self.length - 1
+                
+        return (self.position + (self.position[0] + length, self.position[1] + width))
     
     def neighbour_value(self, element, fitness_value):
         """ Neighbouring based on Manhattan distance: if distance between two coordinates is less than max Manhattan distance,
         we consider the two elements to be neighbours.
         Example Manhattan distance: dist (0,1), (1,1) = 1 ; dist (0,0), (1,1) = 2."""
         global max_manhattan_distance
-        min_distance = float('inf')
-        for coord1 in self.get_edges():
-            for coord2 in element.get_edges():
-                current_distance = (abs(coord1[0] - coord2[0]) + abs(coord1[1] - coord2[1]))
-                if (current_distance <= max_manhattan_distance):
-                    return fitness_value
-                if (current_distance < min_distance):
-                    min_distance = current_distance
-        # Distance higher than max manhattan distance, so we divide highest value by extra distance + 1
-        return (fitness_value / (min_distance - max_manhattan_distance + 1))
-    
-    def biotope_intersection(self, element):
-        """ Computation of the added fitness value based on biotope intersection of two elements.
-            If elements have the same ID, we return 0 to avoid clustering all multiple elements together
-            (assuming if multiple instances are wanted, they should not be next to each other)."""
-        global biotope_intersection_added_value
-        if (self.id == element.id):
-            added_value = 0
-        elif (self.biotope_killer or element.biotope_killer):
-            added_value = 0
-        # Biotope enhancers should be combined with something else than other enhancers
-        elif (self.biotope_enhancer and element.biotope_enhancer):
-            added_value = 0
+        distance = 0
+        (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
+        (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
+        
+        if (self_max_x < element_min_x): # self left of element, so we need to add this distance to manhattan distance
+            distance = element_min_x - self_max_x
+        elif (element_max_x < self_min_x): # self right of element, same thing but the other way around
+            distance = self_min_x - element_max_x
+        if (self_max_y < element_min_y): # self 'under' element (on y axis)
+            distance += element_min_y - self_max_y
+        elif (element_max_y < self_min_y): # self 'above' element
+            distance += self_min_y - element_max_y
+            
+        if (distance <= max_manhattan_distance):
+            return fitness_value
         else:
-            added_value = biotope_intersection_added_value * len(set(self.biotope_values).intersection(element.biotope_values))
-            if (self.biotope_enhancer or element.biotope_enhancer):
-                added_value += biotope_intersection_added_value
-        return added_value
+            return (fitness_value / (distance - max_manhattan_distance + 1))
+    
+    def intersection_level(self, element):
+        """Computing the number of intersections (square meters) between two elements."""
+        if (isinstance(self, ZoneElement) or isinstance(element, ZoneElement)):
+            return 0
+        min_x = max(self.get_corners()[0][0], element.get_corners()[0][0])
+        min_y = max(self.get_corners()[0][1], element.get_corners()[0][1])
+        max_x = min(self.get_corners()[-1][0], element.get_corners()[-1][0])
+        max_y = min(self.get_corners()[-1][1], element.get_corners()[-1][1])
+        if (max_x > min_x and max_y > min_y):
+            return (max_x - min_x + 1) * (max_y - min_y + 1)
+        else:
+            return 0
+    
+    def out_of_terrain_level(self, terrain):
+        """Computing the number of square meters the element has out of terrain boundaries"""
+        global unallowed_height
+        if (isinstance(self, ZoneElement)):
+            return 0
+        oot_counter = 0
+        (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
+        for i in range(self_min_x, self_max_x + 1):
+            for j in range(self_min_y, self_max_y + 1):
+                try:
+                    if (i < 0 or j < 0 or terrain[i][j] == unallowed_height):
+                        oot_counter += 1
+                except IndexError: # Means we exited terrain boundaries, so simply incrementing counter
+                    oot_counter += 1
+        return oot_counter
     
     def fitness_level(self, element, fitness):
         """Generic method for elements interaction."""
         return self.neighbour_value(element, fitness)
     
     def is_equal(self, element):
-        return (self.id == element.id and self.coordinates == element.coordinates)
+        return (self.id == element.id and self.corners == element.corners)
         
     def to_json(self):
         global ai_x_tag, ai_y_tag, ai_id_tag, ai_coordinates_tag
         coordinates = []
-        for coordinate in self.get_used_coordinates():
+        for coordinate in self.get_corners():
             coordinates.append({ai_x_tag: coordinate[0], ai_y_tag: coordinate[1]})
         reply = {ai_id_tag: self.id, ai_coordinates_tag: coordinates}
         return reply
     
-    def similarity(self, element):
+    """def similarity(self, element):
         if (self.id != element.id):
             return 0
         else:
             size_biggest_element = max(len(self.get_used_coordinates()), len(element.get_used_coordinates()))
-            return len(set(element.get_used_coordinates()).intersection(self.get_used_coordinates())) / size_biggest_element
+            return len(set(element.get_used_coordinates()).intersection(self.get_used_coordinates())) / size_biggest_element"""
     
     def ternary_fitness_level(self, element, interaction_type_ids, terrain):
         """ Method for ternary interaction fitness computation.
@@ -134,27 +147,29 @@ class AbstractElement:
             # Case 2: we check if self is south of the other element
             elif(interaction == south_interaction_type):
                 # First we take the south, east and west limits of the other element
-                element_west_limit = inf
-                element_east_limit = -inf
-                element_south_limit = -inf
-                for c in element.get_edges():
+                (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
+                element_west_limit = element_min_x
+                element_east_limit = element_max_x
+                element_south_limit = element_max_y
+                """for c in element.get_edges():
                     if (c[0] < element_west_limit):
                         element_west_limit = c[0]
                     if (c[0] > element_east_limit):
                         element_east_limit = c[0]
                     if (c[1] > element_south_limit):
-                        element_south_limit = c[1]
+                        element_south_limit = c[1]"""
                 # Now we check for the north, east and west limits of self
-                self_west_limit = inf
-                self_east_limit = -inf
-                self_north_limit = inf
-                for c in self.get_edges():
+                (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
+                self_west_limit = self_min_x
+                self_east_limit = self_max_x
+                self_north_limit = self_min_y
+                """for c in self.get_edges():
                     if (c[0] < self_west_limit):
                         self_west_limit = c[0]
                     if (c[0] > self_east_limit):
                         self_east_limit = c[0]
                     if (c[1] < self_north_limit):
-                        self_north_limit = c[1]
+                        self_north_limit = c[1]"""
                 # If self's most north coordinate is not south of element's most south coordinate, we can already return 0
                 if (self_north_limit <= element_south_limit):
                     return 0
@@ -192,8 +207,25 @@ class FixedElement(AbstractElement):
         else:
             self.biotope_killer = False
             self.biotope_enhancer = False
-        self.coordinates = coordinates
-        self.size = len(coordinates) * squared_square_size
+        self.corners = self.set_corners(coordinates)
+        """self.coordinates = coordinates
+        self.size = len(coordinates) * squared_square_size"""
+    
+    def set_corners(self, coordinates):
+        min_x = float('inf')
+        max_x = float('-inf')
+        min_y = float('inf')
+        max_y = float('-inf')
+        for c in coordinates:
+            if (c[0] < min_x):
+                min_x = c[0]
+            if (c[0] > max_x):
+                max_x = c[0]
+            if (c[1] < min_y):
+                min_y = c[1]
+            if (c[1] > max_y):
+                max_y = c[1]
+        return [(min_x, min_y), (min_x, max_y), (max_x, min_y), (max_x, max_y)]
     
     def fitness_level(self, element, fitness):
         if (isinstance(element, ZoneElement)):
@@ -208,18 +240,21 @@ class FixedElement(AbstractElement):
     def is_fixed(self):
         return True
     
-    def get_edges(self):
-        # TODO Update this with something more clever
-        return self.coordinates
+    def get_corners(self):
+        return self.corners
     
-    def get_used_coordinates(self):
-        return self.coordinates
+    """def get_edges(self):
+        # TODO Update this with something more clever
+        return self.coordinates"""
+    
+    """def get_used_coordinates(self):
+        return self.coordinates"""
         
     def get_size(self):
         return self.size
     
-    def __repr__(self):
-        print(self.coordinates)
+    """def __repr__(self):
+        print(self.coordinates)"""
 
 
 class ZoneElement(FixedElement):
@@ -233,16 +268,25 @@ class ZoneElement(FixedElement):
         if (isinstance(element, ZoneElement)):
             return 0
         else: # Default : we check if the physical element's coordinates are inside the zone's coordinates
-            return (len(set(element.get_used_coordinates()).intersection(self.get_zone_coordinates())) / len(element.get_used_coordinates())) * fitness
+            min_x = max(self.get_corners()[0][0], element.get_corners()[0][0])
+            min_y = max(self.get_corners()[0][1], element.get_corners()[0][1])
+            max_x = min(self.get_corners()[-1][0], element.get_corners()[-1][0])
+            max_y = min(self.get_corners()[-1][1], element.get_corners()[-1][1])
+            if (max_x > min_x and max_y > min_y):
+                (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
+                return ((max_x - min_x + 1) * (max_y - min_y + 1)) / ((element_max_x - element_min_x + 1) * (element_max_y - element_min_y + 1)) * fitness
+            else:
+                return 0
+            #return (len(set(element.get_used_coordinates()).intersection(self.get_zone_coordinates())) / len(element.get_used_coordinates())) * fitness
     
     def get_zone_coordinates(self):
         return self.coordinates
     
-    def get_edges(self):
-        return []
+    """def get_edges(self):
+        return []"""
     
-    def get_used_coordinates(self):
-        return []
+    """def get_used_coordinates(self):
+        return []"""
 
 
 class LinearElement(AbstractElement):
@@ -264,16 +308,18 @@ class LinearElement(AbstractElement):
         self.width = width
         self.position = None
         self.length = None
-        self.edges = None
-        self.coordinates = None
+        self.corners = None
+        #self.edges = None
+        #self.coordinates = None
         self.horizontal = None
         
     def copy(self):
         copy = LinearElement(self.id, self.biotope_values, self.width)
         copy.position = self.position
         copy.length = self.length
-        copy.edges = None if self.edges is None else list(self.edges)
-        copy.coordinates = None if self.coordinates is None else list(self.coordinates)
+        copy.corners = None if self.corners is None else list(self.corners)
+        #copy.edges = None if self.edges is None else list(self.edges)
+        #copy.coordinates = None if self.coordinates is None else list(self.coordinates)
         copy.horizontal = self.horizontal
         return copy
     
@@ -295,17 +341,31 @@ class LinearElement(AbstractElement):
     def set_horizontal(self, horizontal):
         self.horizontal = horizontal
     
-    def get_edges(self):
-        return self.edges
+    def get_corners(self):
+        return self.corners
+    
+    """def get_edges(self):
+        return self.edges"""
         
-    def get_used_coordinates(self):
-        return self.coordinates
+    """def get_used_coordinates(self):
+        return self.coordinates"""
     
     def update(self):
-        self.update_edges()
-        self.update_coordinates()
+        self.update_corners()
+        #self.update_edges()
+        #self.update_coordinates()
     
-    def update_edges(self):
+    def update_corners(self):
+        if (self.horizontal):
+            hor_extr = self.position[0] + self.length - 1
+            vert_extr = self.position[1] + self.width - 1
+        else: # Vertical
+            hor_extr = self.position[0] + self.width - 1
+            vert_extr = self.position[1] + self.length - 1
+        self.corners = [self.position, (hor_extr, self.position[1]), (self.position[0], vert_extr), (hor_extr, vert_extr)]
+        
+    
+    """def update_edges(self):
         edges = []
         if (self.horizontal):
             width_edges = [0, self.width-1] if self.width != 1 else [0]
@@ -315,9 +375,9 @@ class LinearElement(AbstractElement):
             width_edges = [0, self.width-1] if self.width != 1 else [0]
             for i in range(self.length):
                 edges += [(self.position[0] + j, self.position[1] + i) for j in width_edges]
-        self.edges = edges
+        self.edges = edges"""
     
-    def update_coordinates(self):
+    """def update_coordinates(self):
         used_coordinates = []
         if (self.horizontal):
             for i in range(self.width):
@@ -325,7 +385,7 @@ class LinearElement(AbstractElement):
         else: # Vertical: swapping i and j
             for i in range(self.width):
                 used_coordinates += [(self.position[0] + i, self.position[1] + j) for j in range(self.length)] 
-        self.coordinates = used_coordinates
+        self.coordinates = used_coordinates"""
     
     def apply_mutation(self, max_length, max_width):
         
@@ -393,8 +453,8 @@ class RoadPathElement(LinearElement):
         copy = RoadPathElement(self.id, self.biotope_values, self.width)
         copy.position = self.position
         copy.length = self.length
-        copy.edges = None if self.edges is None else list(self.edges)
-        copy.coordinates = None if self.coordinates is None else list(self.coordinates)
+        #copy.edges = None if self.edges is None else list(self.edges)
+        #copy.coordinates = None if self.coordinates is None else list(self.coordinates)
         copy.horizontal = self.horizontal
         copy.connected_roads_paths_counter = self.connected_roads_paths_counter
         copy.physical_element_connection = self.physical_element_connection
@@ -409,18 +469,18 @@ class RoadPathElement(LinearElement):
     def neighbour_value(self, element, fitness_value):
         if (self.id != element.id):
             return super().neighbour_value(element, fitness_value)
-        #elif (self.horizontal != element.horizontal): # Prettier to alternate horizontal and vertical road/path sections
         else:
             (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
             (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
+            distance = 0
             if (self.horizontal and element.horizontal): # Both horizontal
                 if (self_min_y != element_min_y):
-                    distance = float('inf')
-                distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
+                    distance += max(road_path_max_manhattan_distance, abs(self_min_y - element_min_y))
+                distance += min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
             elif (self.horizontal == element.horizontal): # Both vertical
                 if (self_min_x != element_min_x):
-                    distance = float('inf')
-                distance = min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
+                    distance += max(road_path_max_manhattan_distance, abs(self_min_x - element_min_x))
+                distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
             else: # One horizontal and one vertical
                 distance = min(abs(self_min_x - element_max_x), abs(self_max_x - element_min_x))
                 distance += min(abs(self_max_y - element_min_y), abs(self_min_y - element_max_y))
@@ -429,7 +489,7 @@ class RoadPathElement(LinearElement):
                 self.connected_roads_paths_counter += 1
                 element.connected_roads_paths_counter += 1
                 return fitness_value
-        return (fitness_value / (distance - road_path_max_manhattan_distance + 1))
+            return (fitness_value / (distance - road_path_max_manhattan_distance + 1))
     
     def disconnected_road_path(self):
         return (self.connected_roads_paths_counter == 0)
@@ -481,8 +541,9 @@ class RectangleElement(AbstractElement):
         self.position = None
         self.length = phi_ratio_values[size][0]
         self.width = phi_ratio_values[size][1]
-        self.edges = None
-        self.coordinates = None
+        self.corners = None
+        #self.edges = None
+        #self.coordinates = None
         self.road_access = False
         self.path_access = False
     
@@ -491,8 +552,9 @@ class RectangleElement(AbstractElement):
         copy.position = self.position
         copy.length = self.length
         copy.width = self.width
-        copy.edges = None if self.edges is None else list(self.edges)
-        copy.coordinates = None if self.coordinates is None else list(self.coordinates)
+        copy.corners = None if self.corners is None else list(self.corners)
+        #copy.edges = None if self.edges is None else list(self.edges)
+        #copy.coordinates = None if self.coordinates is None else list(self.coordinates)
         copy.road_access = self.road_access
         copy.path_access = self.path_access
         return copy
@@ -544,28 +606,37 @@ class RectangleElement(AbstractElement):
     def get_width(self):
         return self.width
     
-    def get_edges(self):
-        return self.edges
+    def get_corners(self):
+        return self.corners
+    
+    """def get_edges(self):
+        return self.edges"""
         
-    def get_used_coordinates(self):
-        return self.coordinates
+    """def get_used_coordinates(self):
+        return self.coordinates"""
     
     def update(self):
-        self.update_edges()
-        self.update_coordinates()
+        self.update_corners()
+        #self.update_edges()
+        #self.update_coordinates()
     
-    def update_edges(self):
+    def update_corners(self):
+        hor_extr = self.position[0] + self.length - 1
+        vert_extr = self.position[1] + self.width - 1
+        self.corners = [self.position, (hor_extr, self.position[1]), (self.position[0], vert_extr), (hor_extr, vert_extr)]
+    
+    """def update_edges(self):
         edges = []
         length_edges = [0, self.length-1] if self.length != 1 else [0]
         for i in range(self.width):
             edges += [(self.position[0] + j, self.position[1] + i) for j in length_edges]
-        self.edges = edges
+        self.edges = edges"""
     
-    def update_coordinates(self):
+    """def update_coordinates(self):
         used_coordinates = []
         for i in range(self.width):
             used_coordinates += [(self.position[0] + j, self.position[1] + i) for j in range(self.length)]
-        self.coordinates = used_coordinates
+        self.coordinates = used_coordinates"""
     
     def apply_mutation(self, max_length, max_width):
         
@@ -578,7 +649,7 @@ class RectangleElement(AbstractElement):
         if (random() <= ga_mutation_rate):
         	self.swap_width_length()
         
-        # position: length (x)
+        # position
         length_pos = self.position[0]
         if (random() <= ga_mutation_rate):
             length_pos = int(round(gauss(length_pos, ga_mutation_sigma)))

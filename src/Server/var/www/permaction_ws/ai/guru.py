@@ -41,7 +41,7 @@ class Guru:
         self.init_fixed_element_indexes()
         self.fitness_preprocessing()
         self.add_road_path_sections()
-        self.init_terrain_element_ids()
+        #self.init_terrain_element_ids()
         self.create_population()
         self.genetic_algorithm_routine()
         print("Best individual fitness:", self.best_fitness)
@@ -73,23 +73,7 @@ class Guru:
                 self.fitness_dict[key2] += interaction.interaction_level
             else:
                 self.fitness_dict[key2] = interaction.interaction_level
-        # Step 2: biotope intersections
-        for i in range(len(self.elements) - 1):
-            for j in range(i + 1, len(self.elements)):
-                e1 = self.elements[i]
-                e2 = self.elements[j]
-                biotope_intersection = e1.biotope_intersection(e2)
-                key1 = (e1.id, e2.id)
-                if key1 in self.fitness_dict:
-                    self.fitness_dict[key1] += biotope_intersection
-                else:
-                    self.fitness_dict[key1] = biotope_intersection
-                key2 = (e2.id, e1.id)
-                if key2 in self.fitness_dict:
-                    self.fitness_dict[key2] += biotope_intersection
-                else:
-                    self.fitness_dict[key2] = biotope_intersection
-        # Step 3: category interactions to element interactions
+        # Step 2: category interactions to element interactions
         for i in range(len(self.elements) - 1):
             for j in range(i + 1, len(self.elements)):
                 e1 = self.elements[i]
@@ -122,7 +106,7 @@ class Guru:
                         self.fitness_dict[key2] += added_value
                     else:
                         self.fitness_dict[key2] = added_value
-        # Step 4: connect road and path parts with themselves
+        # Step 3: connect road and path parts with themselves
         for road_path_id in road_path_ids:
             self.fitness_dict[(road_path_id, road_path_id)] = biotope_enhancer_value
     
@@ -182,18 +166,18 @@ class Guru:
         for path in self.path_sections[1:]:
             self.elements.append(path)
 
-    def init_terrain_element_ids(self):
+    """def init_terrain_element_ids(self):
         global unallowed_height
         for line in self.terrain:
             self.terrain_element_ids += [[None if i != unallowed_height else i for i in line]]
         for i in self.fixed_element_indexes:
             for coordinate in self.elements[i].get_used_coordinates():
-                self.terrain_element_ids[coordinate[0]][coordinate[1]] = i
+                self.terrain_element_ids[coordinate[0]][coordinate[1]] = i"""
 
     def create_population(self):
         global ga_population_size
         for i in range(ga_population_size):
-            individual = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.terrain_element_ids, self.multiple_roads, self.multiple_paths)
+            individual = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.multiple_roads, self.multiple_paths)
             individual.init_elements()
             self.population += [individual]
     

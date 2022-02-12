@@ -137,7 +137,7 @@ unallowed_height = -999.0
 # Square size received from terrain coordinates (in meters)
 square_size = 1
 # Interaction added value to fitness for biotope intersections 
-biotope_intersection_added_value = 9
+biotope_intersection_added_value = 0
 # Ternary interaction added value to fitness
 ternary_interaction_added_value = 9
 # Biotope value that cannot be combined with any other
