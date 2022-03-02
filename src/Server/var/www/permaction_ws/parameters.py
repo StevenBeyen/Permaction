@@ -133,7 +133,9 @@ roads_mapping[locale_fr] = {road_tag: fr_road_id, path_tag: fr_path_id}
 # AI number of parallel runs for every user request
 ai_nb_placement_requests = 1
 # Reserved height to rule out parts of given terrain
-unallowed_height = -999.0
+unallowed_height = float('-inf')
+# Terrain border protection
+border_protection = 3
 # Square size received from terrain coordinates (in meters)
 square_size = 1
 # Interaction added value to fitness for biotope intersections 
@@ -144,6 +146,8 @@ ternary_interaction_added_value = 9
 biotope_killer_value = 0
 # Biotope value that can be combined with any other (except 0)
 biotope_enhancer_value = 10
+# Epsilon for small optimisations
+epsilon = 0.001
 # Max filled terrain ratio, this is an approximation so in reality we will be somewhere between +-5%
 max_filled_terrain_ratio = 0.8
 # golden ratio values for rectangle elements, with deviation from 1.618... less than 2 percent (except 6 and 15)
@@ -151,22 +155,24 @@ phi_ratio_values = {6: (2, 3), 15: (3, 5), 40: (5, 8), 104: (8, 13), 160: (10, 1
 # Minimal element size
 phi_min_value = 6
 # Genetic algorithm population size
-ga_population_size = 100
+ga_population_size = 500
 # Genetic algorithm stop condition: max. number of generations without improvement
 ga_stop_nb_gen_no_improvement = 100
 # Genetic algorithm tournament rate: probability of best individual to win the fight
-ga_tournament_rate = 0.95
+ga_tournament_rate = 0.99
 # Genetic algorithm mutation rate: probability of mutation on shape and position
-ga_mutation_rate = 0.05
+ga_mutation_rate = 0.025
 # Genetic algorithm mutation sigma
 ga_mutation_sigma = 5
 # Genetic algorithm elitism
 ga_elitism = True
 # Genetic algorithm elitism population size
-ga_elitism_size = 5
+ga_elitism_size = 1
+# Genetic algorithm cluster rate: probability of a cluster element to follow an element
+ga_cluster_rate = 0.99
 # Maximum manhattan distance for neighbour computation, if you set this to 1 all elements have to touch each other
 # in order for their interaction value to be added. Recommended value is at least 2.
-max_manhattan_distance = 2
+max_manhattan_distance = 3
 # Exception for not enough space on the terrain to fit all requested elements
 class NotEnoughSpaceException(Exception):
     pass
@@ -177,5 +183,8 @@ linear_element_length_multiple = 5
 # Road and path length generation multiple
 road_path_length_multiple = 4
 # Maximum distance for road and path neighbour computation.
-road_path_max_manhattan_distance = 2
+road_max_manhattan_distance = 1
+road_width = 3
+path_max_manhattan_distance = 2
+path_width = 1
 

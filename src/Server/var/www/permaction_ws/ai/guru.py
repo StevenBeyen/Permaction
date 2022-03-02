@@ -23,28 +23,26 @@ class Guru:
         self.terrain = terrain
         self.fitness_dict = {}
         self.ternary_fitness_dict = {}
-        self.road_sections = []
-        self.multiple_roads = False
-        self.path_sections = []
-        self.multiple_paths = False
         self.max_fitness = 0
+        self.road_element = None
+        self.path_element = None
         self.fixed_element_indexes = []
         self.terrain_element_ids = []
         self.population = []
         self.best_individual = None
         self.elite = []
-        self.best_fitness = -1
+        self.best_fitness = float('-inf')
         self.stuck_counter = 0
         self.stop_condition = False
 
     def run(self):
         self.init_fixed_element_indexes()
         self.fitness_preprocessing()
-        self.add_road_path_sections()
-        #self.init_terrain_element_ids()
         self.create_population()
         self.genetic_algorithm_routine()
+        self.road_path_postprocessing()
         print("Best individual fitness:", self.best_fitness)
+        print("  Interaction data:", self.best_individual.interaction_data)
 
     def fitness_preprocessing(self):
         # Getting all binary interactions into an easy-to-use dictionary: (e1_id, e2_id) => fitness
@@ -120,6 +118,7 @@ class Guru:
                 self.ternary_fitness_dict[key] = [interaction.interaction_type_id]
 
     def compute_max_fitness(self):
+        elements_to_remove = set()
         for i in range(len(self.elements) - 1):
             for j in range(i + 1, len(self.elements)):
                 e1 = self.elements[i]
@@ -127,44 +126,29 @@ class Guru:
                 try:
                     fitness = self.fitness_dict[(e1.id, e2.id)]
                     if (fitness > 0):
-                        self.max_fitness += fitness
                         if (e1.id in road_ids):
-                            if (not self.road_sections):
-                                self.road_sections = [e1]
-                            else:
-                                self.road_sections += [e1.copy()]
-                                self.multiple_roads = True
-                                self.max_fitness += fitness
+                            elements_to_remove.add(e1)
+                            e2.road_connected_element = True
+                            self.road_element = e1
                         elif (e2.id in road_ids):
-                            if (not self.road_sections):
-                                self.road_sections = [e2]
-                            else:
-                                self.road_sections += [e2.copy()]
-                                self.multiple_roads = True
-                                self.max_fitness += fitness
-                        if (e1.id in path_ids):
-                            if (not self.path_sections):
-                                self.path_sections = [e1]
-                            else:
-                                self.path_sections += [e1.copy()]
-                                self.multiple_paths = True
-                                self.max_fitness += fitness
+                            elements_to_remove.add(e2)
+                            e1.road_connected_element = True
+                            self.road_element = e2
+                        elif (e1.id in path_ids):
+                            elements_to_remove.add(e1)
+                            e2.path_connected_element = True
+                            self.path_element = e1
                         elif (e2.id in path_ids):
-                            if (not self.path_sections):
-                                self.path_sections = [e2]
-                            else:
-                                self.path_sections += [e2.copy()]
-                                self.multiple_paths = True
-                                self.max_fitness += fitness
+                            elements_to_remove.add(e2)
+                            e1.path_connected_element = True
+                            self.path_element = e2
+                        else:
+                            self.max_fitness += fitness
                 except KeyError:
                     pass
-    
-    def add_road_path_sections(self):
-        # Ignoring first element since it's already in list of elements, only adding duplicates
-        for road in self.road_sections[1:]:
-            self.elements.append(road)
-        for path in self.path_sections[1:]:
-            self.elements.append(path)
+        # Removing roads and paths since they're not part of element placement
+        for element in elements_to_remove:
+            self.elements.remove(element)
 
     """def init_terrain_element_ids(self):
         global unallowed_height
@@ -177,7 +161,7 @@ class Guru:
     def create_population(self):
         global ga_population_size
         for i in range(ga_population_size):
-            individual = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes, self.multiple_roads, self.multiple_paths)
+            individual = Individual(self.elements, self.terrain, self.fitness_dict, self.ternary_fitness_dict, self.fixed_element_indexes)
             individual.init_elements()
             self.population += [individual]
     
@@ -206,7 +190,7 @@ class Guru:
         self.stop_condition = (ai_search_stop or (self.stuck_counter == ga_stop_nb_gen_no_improvement))
     
     def create_next_generation(self):
-        global ga_elitism, ga_population_size
+        global ga_elitism, ga_population_size, ga_mutation_rate, epsilon
         next_generation = []
         parents = self.elite if (ga_elitism) else []
         # len/2 parents selected by tournament, they will make half of the new population
@@ -221,13 +205,13 @@ class Guru:
             next_generation += parent1.breed(parent2)
         # Applying mutations to the new population
         for individual in next_generation:
-            individual.apply_mutation()
+            individual.apply_mutation(ga_mutation_rate)
         # adding the elite population if elitism is active)
         if (ga_elitism):
             for individual in self.elite:
                 individual.init_thread()
-            self.best_individual.init_thread()
-            next_generation += self.elite
+                index = randint(0, len(next_generation) - 1)
+                next_generation[index] = individual
         # Finally, the next generation becomes the current one
         self.population = next_generation
     
@@ -249,6 +233,13 @@ class Guru:
                 self.update_elite()
             self.update_stop_condition()
             self.create_next_generation()
+    
+    def road_path_postprocessing(self):
+        self.best_individual.update_road_path_sublists()
+        if (self.road_element is not None):
+            self.best_individual.road_postprocessing(self.road_element)
+        if (self.path_element is not None):
+            self.best_individual.path_postprocessing(self.path_element)
     
     def make_response(self):
         global ai_fitness_tag, ai_result_tag, ai_optimum_tag, ai_yes_tag, ai_no_tag

@@ -16,8 +16,8 @@ class Preprocessing:
         user_placement_request = UserPlacementRequest.query.filter_by(id = request_id).first()
         self.id_locale = id_locale
         self.terrain_data = eval(user_placement_request.terrain_data)
-        self.terrain_low = inf
-        self.terrain_high = -inf
+        self.terrain_low = float('inf')
+        self.terrain_high = float('-inf')
         self.elements_data = eval(user_placement_request.elements_data)
         self.elements = []
         self.average_element_ratio = 0.0
@@ -78,14 +78,14 @@ class Preprocessing:
         else: # Otherwise, let's compute a ratio of all the elements' sizes so that they can all fit inside the terrain.
             self.average_element_ratio = min((terrain_square_meters/max_elements_size*max_filled_terrain_ratio), max_filled_terrain_ratio)
     
-    def create_element(self, id, biotope_values, size = None, width = None, coordinates = None):
+    def create_element(self, id, size = None, width = None, coordinates = None):
         if (size is not None):
-            return RectangleElement(id, biotope_values, size)
+            return RectangleElement(id, size)
         elif (width is not None):
             if (id in road_path_ids):
-                return RoadPathElement(id, biotope_values, width)
+                return RoadPathElement(id, width)
             else:
-                return LinearElement(id, biotope_values, width)
+                return LinearElement(id, width)
         elif (coordinates is not None):
             pass # TODO Add fixed elements creation
     
@@ -94,13 +94,6 @@ class Preprocessing:
         for element_id in self.elements_data:
             element_data = self.elements_data[element_id]
             db_element = Element.query.filter_by(id = element_id).first()
-            try:
-                biotope_values = eval(db_element.biotope_values)
-            except TypeError:
-                biotope_values = [int(db_element.biotope_values)]
-            finally:
-                if (type(biotope_values) == int):
-                    biotope_values = [biotope_values]
             # Variable elements
             for i in range(element_data[0] - (len(element_data) - 1)):
                 # Case 1: elements with default size
@@ -113,19 +106,18 @@ class Preprocessing:
                     while (element_size not in phi_ratio_values):
                         element_size -= 1
                 	# Creating the actual element
-                    self.elements.append(self.create_element(element_id, biotope_values, size=element_size))
+                    self.elements.append(self.create_element(element_id, size=element_size))
                 except IndexError:
-                    fixed_width_elements.append([element_id, db_element, biotope_values])
+                    fixed_width_elements.append([element_id, db_element])
             # Fixed elements
             for i in range(len(element_data[1:])):
                 element_coordinates = element_data[i+1]
-                self.elements.append(self.create_element(element_id, biotope_values, coordinates=element_coordinates))
+                self.elements.append(self.create_element(element_id, coordinates=element_coordinates))
         # Case 2: elements without default size. Those elements should have a fixed width
-        for element in fixed_width_elements: # [ID, DB_ELEMENT, BIOTOPE_VALUES]
+        for element in fixed_width_elements: # [ID, DB_ELEMENT]
             element_id = element[0]
             element_width = int(element[1].default_width)
-            biotope_values = element[2]
-            self.elements.append(self.create_element(element_id, biotope_values, width = element_width))
+            self.elements.append(self.create_element(element_id, width = element_width))
         
     def create_height_zones(self):
         global heights_mapping, low_tag, midheight_tag, heights_tag
@@ -133,8 +125,9 @@ class Preprocessing:
         terrain_midheight_coordinates = []
         terrain_heights_coordinates = []
         # Computing limits for low, mid-height and heights
-        terrain_low_limit = (self.terrain_high - self.terrain_low) / 3.0
-        terrain_midheight_limit = terrain_low_limit * 2
+        terrain_third_height = (self.terrain_high - self.terrain_low) / 3.0
+        terrain_low_limit = self.terrain_low + terrain_third_height
+        terrain_midheight_limit = terrain_low_limit + terrain_third_height * 2
         # Assigning terrain coordinates to different categories
         for i in range(len(self.terrain_data)):
             for j in range(len(self.terrain_data[i])):
@@ -148,16 +141,13 @@ class Preprocessing:
         # Creation of the three height zones (if they are not empty)
         if (terrain_low_coordinates):
             id = heights_mapping[self.id_locale][low_tag]
-            biotope_values = [int(Element.query.filter_by(id = id).first().biotope_values)]
-            self.elements.append(ZoneElement(id, biotope_values, terrain_low_coordinates))
+            self.elements.append(ZoneElement(id, terrain_low_coordinates))
         if (terrain_midheight_coordinates):
             id = heights_mapping[self.id_locale][midheight_tag]
-            biotope_values = [int(Element.query.filter_by(id = id).first().biotope_values)]
-            self.elements.append(ZoneElement(id, biotope_values, terrain_midheight_coordinates))
+            self.elements.append(ZoneElement(id, terrain_midheight_coordinates))
         if (terrain_heights_coordinates):
             id = heights_mapping[self.id_locale][heights_tag]
-            biotope_values = [int(Element.query.filter_by(id = id).first().biotope_values)]
-            self.elements.append(ZoneElement(id, biotope_values, terrain_heights_coordinates))
+            self.elements.append(ZoneElement(id, terrain_heights_coordinates))
     
     def get_elements(self):
         return self.elements
