@@ -44,8 +44,8 @@ public class MetaData
     public List<string> prefab_rocks;
     public List<string> prefab_trees;
     public const string ARC_LINK_CONTAINER = "ArcLinkContainer";
-    public const float NON_FLATTENING_HEIGHT_MARGIN = 0.0035f;
-    public const float EPSILON = 0.001f;
+    public const float NON_FLATTENING_HEIGHT_MARGIN = 0.005f;
+    public const float EPSILON = 0.005f;
     public const float EMPTY_COLLIDER_HEIGHT_CORRECTION = 10.0f;
     public const float BOX_COLLIDER_ADDITIONAL_CORRECTION = 0.5f;
     public const string GRAPHICAL_TITLE = "Graphical_Title(Clone)";
@@ -117,8 +117,8 @@ public class MetaData
         PrefabMappingAdd(26, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Phytopurification_01");
         PrefabMappingAdd(27, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pine_Trees_01");
         PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
-        PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
-        PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
+        //PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
+        //PrefabMappingAdd(28, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
         PrefabMappingAdd(32, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         PrefabMappingAdd(33, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Main_Square_01");
         PrefabMappingAdd(35, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");
@@ -149,8 +149,8 @@ public class MetaData
         PrefabMappingAdd(66, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Phytopurification_01");
         PrefabMappingAdd(67, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Pine_Trees_01");
         PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_01");
-        PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
-        PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
+        //PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_02");
+        //PrefabMappingAdd(68, FIXED_SIZE_TERRAIN_OBJECTS + "Road_Straight_03");
         PrefabMappingAdd(72, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Tool_Shed_01");
         PrefabMappingAdd(73, STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH + "Main_Square_01");
         PrefabMappingAdd(75, FIXED_SIZE_TERRAIN_OBJECTS + "Vegetable_Garden_01");

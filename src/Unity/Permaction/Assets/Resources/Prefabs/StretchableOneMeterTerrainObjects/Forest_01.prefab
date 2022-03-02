@@ -95,7 +95,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0, z: 0.5}
+    m_Extent: {x: 0.45, y: 0, z: 0.45}
   m_DirtyAABB: 0
 --- !u!114 &7498741578188051336
 MonoBehaviour:
@@ -116,7 +116,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &7665875638921225039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +138,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6862904822574689201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +160,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &8409779897392978570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +182,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &5536655750346189559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +204,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6967360112551503447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +226,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &5575827574254997529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +248,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1405948675849570289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +270,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &2556019380931893607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +292,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1681508069360290124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +314,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6007437083110372021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +336,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1375766335621008485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +358,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4633319965923547844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +380,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1405531420162471608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +402,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &3604803921587376252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,4 +424,6 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0

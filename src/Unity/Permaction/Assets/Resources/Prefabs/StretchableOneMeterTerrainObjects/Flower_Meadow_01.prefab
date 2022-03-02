@@ -87,7 +87,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.0000001, z: 0.5}
+    m_Extent: {x: 0.45, y: 0.0000001, z: 0.45}
   m_DirtyAABB: 0
 --- !u!114 &554450886165651148
 MonoBehaviour:
@@ -108,7 +108,9 @@ MonoBehaviour:
   scaleOffset: 1
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1930691129167913579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +130,9 @@ MonoBehaviour:
   scaleOffset: 1.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1454967816825307995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +152,9 @@ MonoBehaviour:
   scaleOffset: 2
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &7849390405727973425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +174,9 @@ MonoBehaviour:
   scaleOffset: 2
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4614871094107644241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +196,9 @@ MonoBehaviour:
   scaleOffset: 0.25
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &340768778487873296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +218,9 @@ MonoBehaviour:
   scaleOffset: 0.9
   xBounds: {x: -0.3, y: 0.3}
   zBounds: {x: -0.3, y: 0.3}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!1001 &5506631497025405496
 PrefabInstance:
   m_ObjectHideFlags: 0

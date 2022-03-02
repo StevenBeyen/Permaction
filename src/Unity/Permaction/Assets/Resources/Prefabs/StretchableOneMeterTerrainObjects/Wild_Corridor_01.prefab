@@ -91,7 +91,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0, z: 0.5}
+    m_Extent: {x: 0.45, y: 0, z: 0.45}
   m_DirtyAABB: 0
 --- !u!114 &1088883082993809162
 MonoBehaviour:
@@ -107,12 +107,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 6559862736282649410, guid: 35e780fb2818ee83795bc4ac1a628082, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.025
+  elementsPerSquareMeter: 0.015
   scaleRange: 0.75
   scaleOffset: 0.75
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &5049633316414990975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,12 +129,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 8230718842112734572, guid: 3cc189f023116fbbd8c01e7831424b59, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.025
+  elementsPerSquareMeter: 0.015
   scaleRange: 0.75
   scaleOffset: 0.75
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &7855694126321067159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,12 +151,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 2616488208853487470, guid: 7bf0b8da2e0cd0807991b2cf0f6d181d, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.025
+  elementsPerSquareMeter: 0.015
   scaleRange: 0.75
   scaleOffset: 0.75
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &8727369345867492167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,12 +173,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 3580294672893046786, guid: 6c865c55bb9395627ba933b251a9ceb6, type: 3}
   unique: 0
-  elementsPerSquareMeter: 2
+  elementsPerSquareMeter: 1
   scaleRange: 1.25
   scaleOffset: 1.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4465497672369135121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,12 +195,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: {fileID: 2132810495828449164, guid: 5d7ec0765ec74885c9a33b3eeb918a1b, type: 3}
   unique: 0
-  elementsPerSquareMeter: 0.5
+  elementsPerSquareMeter: 0.25
   scaleRange: 0.5
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &8748730575640057313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +222,9 @@ MonoBehaviour:
   scaleOffset: 1
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &7697082966302409953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +244,9 @@ MonoBehaviour:
   scaleOffset: 1
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &270147533603377570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +266,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4429213817372723534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +288,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &5780802398114438042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +310,9 @@ MonoBehaviour:
   scaleOffset: 2
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1925957215457749569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,4 +332,6 @@ MonoBehaviour:
   scaleOffset: 2
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
