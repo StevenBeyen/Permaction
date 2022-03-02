@@ -187,3 +187,106 @@ update element set default_size = '100-250' where default_size = '50-100';
 update element set default_size = '500-1000' where id = 38;
 update element set default_size = '500-1000' where id = 78;
 
+
+
+update binary_interaction set description = 'Hedgehogs are nocturnal animals that are very fond of slugs, which can be found in the vegetable garden.' where id = 34;
+update binary_interaction set description = 'The wild corridor and the forest share their biodiversity.' where id = 87;
+update binary_interaction set description = 'The wild corridor provides biodiversity close to the house, in addition to providing a nice view.' where id = 88;
+delete from binary_interaction where id = 12;
+update binary_interaction set description = 'The barn can be used to store animal resources away from the rain.' where id = 6;
+update binary_interaction set description = 'A mid-height housing provides a nice view without dominating the terrain.' where id = 50;
+update binary_interaction set interaction_level = 0 where id = 8;
+delete from binary_interaction where id = 64;
+delete from binary_interaction where id = 79;
+delete from binary_interaction where id = 81;
+update binary_interaction set description = 'The frogs, toads and salamanders that settle in the water point feed among other things on slugs from the vegetable garden.' where id = 84;
+delete from binary_interaction where id = 24;
+update binary_interaction set interaction_level = 0 where id = 44;
+update binary_interaction set interaction_level = 0 where id = 45;
+update binary_interaction set interaction_level = 0 where id = 46;
+update binary_interaction set description = 'The henhouse requires regular care for food and water.' where id = 45;
+update binary_interaction set description = 'The henhouse manure needs to be taken care of every two or three weeks maximum.' where id = 46;
+update binary_interaction set description = 'Chickens protect the bees from the Asian hornet, which attacks them at the exit of the beehive.' where id = 42;
+delete from binary_interaction where id = 21;
+update binary_interaction set description = 'The flower meadow provides a refuge for many beneficial insects in the vegetable garden.' where id = 22;
+update binary_interaction set description = 'The flower meadow attracts pollinating insects, which will also pollinate the vegetable garden and increase fruit production.' where id = 23;
+update binary_interaction set description = 'The flower meadow attracts pollinating insects, which will also pollinate the orchard and increase fruit production.' where id = 20;
+update binary_interaction set interaction_level = 0 where id = 164;
+delete from binary_interaction where id = 14;
+update binary_interaction set description = 'The orchard and the forest share their biodiversity.' where id = 52;
+delete from binary_interaction where id = 53;
+update binary_interaction set description = 'The sunroom provides heat to the adjoining building.' where id = 32;
+update binary_interaction set description = 'The sunroom requires sun.' where id = 33;
+update binary_interaction set interaction_level = 0 where id = 61;
+update binary_interaction set interaction_level = 0 where id = 62;
+delete from binary_interaction where id = 85;
+
+
+update binary_interaction set description = 'Les hérissons sont des animaux nocturnes très friands des limaces, que l’on trouve au potager.' where id = 90;
+update binary_interaction set description = 'Le couloir sauvage et la forêt s’échangent leur biodiversité.' where id = 107;
+update binary_interaction set description = 'Le couloir sauvage fournit de la biodiversité jusqu’à l’habitation, en plus de fournir une belle vue.' where id = 108;
+delete from binary_interaction where id = 111;
+update binary_interaction set description = 'La grange permet de stocker les denrées animales au sec.' where id = 116;
+update binary_interaction set description = 'Une habitation à mi-hauteur fournit une belle vue sur le terrain sans être prédominante.' where id = 117;
+delete from binary_interaction where id = 131;
+delete from binary_interaction where id = 135;
+delete from binary_interaction where id = 139;
+delete from binary_interaction where id = 140;
+update binary_interaction set description = 'Les grenouilles, crapauds et salamandres qui s’établissent dans le point d’eau se nourrissent entre autres des limaces du potager.' where id = 141;
+delete from binary_interaction where id = 142;
+update binary_interaction set interaction_level = 0 where id = 150;
+update binary_interaction set interaction_level = 0 where id = 151;
+update binary_interaction set interaction_level = 0 where id = 152;
+update binary_interaction set description = 'Le poulailler demande une visite régulière pour traiter la nourriture des animaux.' where id = 151;
+update binary_interaction set description = 'Le fumier du poulailler doit être traité toutes les deux à trois semaines maximum.' where id = 152;
+update binary_interaction set description = 'Les poules protègent les abeilles du frelon asiatique, qui les guette en vol stationnaire à la sortie de la ruche.' where id = 155;
+delete from binary_interaction where id = 157;
+update binary_interaction set description = 'La prairie fleurie fournit un refuge pour de nombreux insectes bénéfiques au jardin potager.' where id = 159;
+update binary_interaction set description = 'La prairie fleurie attire les insecte pollinisateurs, qui vont également polliniser le potager et augmenter la production de fruits.' where id = 160;
+update binary_interaction set description = 'La prairie fleurie attire les insecte pollinisateurs, qui vont également polliniser le verger et augmenter la production de fruits.' where id = 161;
+update binary_interaction set interaction_level = 0 where id = 164;
+update binary_interaction set description = 'Les abeilles butinent gaiement dans la prairie fleurie.' where id = 166;
+delete from binary_interaction where id = 174;
+update binary_interaction set description = 'Le verger et la forêt s’échangent leur biodiversité.' where id = 176;
+delete from binary_interaction where id = 177;
+update binary_interaction set interaction_level = 0 where id = 128;
+update binary_interaction set interaction_level = 0 where id = 129;
+
+
+
+update category set physical_category = 1 where id = 5;
+update category set physical_category = 1 where id = 11;
+delete from binary_interaction where id = 158;
+delete from binary_interaction where id = 19;
+update binary_interaction set description = 'Le couloir sauvage fournit de la biodiversité jusqu’à l’habitation.' where id = 108;
+update binary_interaction set description = 'The wild corridor provides biodiversity close to the house.' where id = 88;
+delete from element where id = 15;
+delete from element where id = 55;
+delete from binary_interaction where id = 32;
+delete from binary_interaction where id = 33;
+delete from binary_interaction where id = 169;
+delete from binary_interaction where id = 170;
+
+delete from element where id = 15;
+delete from element where id = 55;
+insert into element values (15,1,'Terrain access',2,NULL,NULL,NULL,NULL,'var.');
+insert into element values (55,2,'Accès au terrain',8,NULL,NULL,NULL,NULL,'var.');
+
+insert into binary_interaction values (12,1,15,28,10,'The road provides motorised access to the terrain.');
+insert into binary_interaction values (14,2,55,68,10,'La route fournit un accès au terrain.');
+
+insert into binary_interaction values (19,1,35,38,9,'The wild corridor provides biodiversity to the vegetable garden.');
+insert into binary_interaction values (21,2,75,78,9,'Le couloir sauvage fournit de la biodiversité au potager.');
+update binary_interaction set interaction_level = 3 where id = 44;
+update binary_interaction set description = 'The henhouse provides eggs and requires regular care for food and water.' where id = 44;
+update binary_interaction set interaction_level = 3 where id = 150;
+update binary_interaction set description = 'Le poulailler fournit des oeufs et demande une visite régulière pour traiter l’eau et la nourriture.' where id = 150;
+insert into binary_interaction values (32,1,14,25,10,'The path provides access to the greenhouse.');
+insert into binary_interaction values (33,2,54,65,10,'Le sentier fournit un accès à la serre.');
+
+insert into binary_interaction values (53,1,14,35,9,'The greenhouse can be used to grow plants for the vegetable garden.');
+insert into binary_interaction values (64,2,54,75,9,'La serre peut être utilisée pour faire pousser des plantes pour le jardin potager.');
+update binary_interaction set element2_id = 75 where id = 64;
+
+update binary_interaction set interaction_level = 9 where id = 64;
+
