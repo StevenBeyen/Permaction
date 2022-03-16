@@ -290,3 +290,8 @@ update binary_interaction set element2_id = 75 where id = 64;
 
 update binary_interaction set interaction_level = 9 where id = 64;
 
+
+
+update category set physical_category = 0 where id = 5;
+update category set physical_category = 0 where id = 11;
+

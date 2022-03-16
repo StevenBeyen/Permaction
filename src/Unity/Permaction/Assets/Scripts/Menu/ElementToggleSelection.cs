@@ -10,7 +10,8 @@ namespace Menu
         public Toggle toggle;
         
         private List<Image> checkmarkImages = new List<Image>();
-        private string[] checkmarkImageNames = new string[] {"CheckmarkUpperLeft", "CheckmarkUpperRight", "CheckmarkLowerLeft", "CheckmarkLowerRight"};
+        private string[] checkmarkImageNames = new string[] {"Checkmark"};
+        //private string[] checkmarkImageNames = new string[] {"CheckmarkUpperLeft", "CheckmarkUpperRight", "CheckmarkLowerLeft", "CheckmarkLowerRight"};
 
         // Start is called before the first frame update
         void Start()

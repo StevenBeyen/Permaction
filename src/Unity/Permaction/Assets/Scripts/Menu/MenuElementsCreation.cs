@@ -41,11 +41,11 @@ namespace Menu {
         private Dictionary<string, List<Element>> categoriesAndElementsDict = new Dictionary<string, List<Element>>();
         
         private List<Sprite> fontsheet001_sprites;
-        private int fontsheet001_letterOffset = 367;
-        private int fontsheet001_letterSpaceAdditionalOffset = 5;
-        private int fontsheet001_spaceIndex;
-        private int fontsheet001_counter0 = 459;
-        private int fontsheet001_counter9 = 468;
+        private Sprite fontsheet001_space;
+        private int fontsheet001_letterOffset = -65;
+        private int fontsheet001_spaceIndex = -33; // 32 (space) - 65 (offset)
+        private int fontsheet001_counter0 = 26;
+        private int fontsheet001_counter9 = 35;
 
         private Coroutine ShowElementTitleCoroutine;
 
@@ -55,8 +55,8 @@ namespace Menu {
         // Start is called before the first frame update
         void Start()
         {
-            fontsheet001_sprites = new List<Sprite>(Resources.LoadAll<Sprite>("fontsheet001"));
-            fontsheet001_spaceIndex = char.ToUpper(' ') + fontsheet001_letterOffset;
+            fontsheet001_sprites = new List<Sprite>(Resources.LoadAll<Sprite>("2108.w032.n003.58B.p51.58(2)"));
+            fontsheet001_space = Resources.Load<Sprite>("space");
             InstantiateDemoLives();
             StartCoroutine(CreateMenuElements());
         }
@@ -306,13 +306,17 @@ namespace Menu {
             // Then we add every letter of selected element
             foreach(char letter in title)
             {
+                Sprite sprite;
                 int fontsheet001_index = char.ToUpper(letter) + fontsheet001_letterOffset;
                 if (fontsheet001_index == fontsheet001_spaceIndex)
                 {
-                    fontsheet001_index += fontsheet001_letterSpaceAdditionalOffset;
+                    sprite = fontsheet001_space;
+                } else
+                {
+                    sprite = fontsheet001_sprites[fontsheet001_index];
                 }
                 GameObject instantiatedLetter = Instantiate(elementTitleLetter);
-                instantiatedLetter.GetComponentInChildren<Image>().sprite = fontsheet001_sprites[fontsheet001_index];
+                instantiatedLetter.GetComponentInChildren<Image>().sprite = sprite;
                 instantiatedLetter.transform.SetParent(elementTitleContainer.transform, false);
             }
             // Let's fade in the whole thing over half a second

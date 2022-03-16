@@ -15,7 +15,7 @@ public class MetaData
     public const string PLACEMENT_REQUEST_URI = API_URI + "/placement_request";
     public const string USER_SIGNUP_URI = API_URI + "/signup";
     // Demo
-    public const int DEMO_MAX_NB_ELEMENTS = 10;
+    public const int DEMO_MAX_NB_ELEMENTS = 7;
     public const string DEMO_TERRAIN_SCENE = "DemoTerrain";
     public GameObject[] demo_lives = new GameObject[DEMO_MAX_NB_ELEMENTS];
     public int current_active_demo_lives = DEMO_MAX_NB_ELEMENTS;
