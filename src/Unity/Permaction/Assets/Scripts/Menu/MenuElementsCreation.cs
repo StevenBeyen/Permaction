@@ -11,6 +11,8 @@ namespace Menu {
     {
         public GameObject background;
 
+        public GameObject homeButton;
+
         public GameObject categoriesGrid;
         private GameObject categoriesTitle;
         private GameObject renderButton;
@@ -24,6 +26,7 @@ namespace Menu {
         
         public GameObject elementsTitle;
         public GameObject elementsGrid;
+        public GameObject elementsGridAlt;
         private GameObject elementsBackButton;
 
         public GameObject elementsBackButtonEN;
@@ -36,6 +39,8 @@ namespace Menu {
         public GameObject demoLivesGrid;
         public GameObject demoLife;
         public GameObject demoOutOfLives;
+
+        private List<GameObject> homeButtonFadeOutList = new List<GameObject>();
 
         private PhysicalElements menu_elements;
         private Dictionary<string, List<Element>> categoriesAndElementsDict = new Dictionary<string, List<Element>>();
@@ -58,6 +63,9 @@ namespace Menu {
             fontsheet001_sprites = new List<Sprite>(Resources.LoadAll<Sprite>("2108.w032.n003.58B.p51.58(2)"));
             fontsheet001_space = Resources.Load<Sprite>("space");
             InstantiateDemoLives();
+            homeButton.GetComponent<Button>().onClick.AddListener(
+                () => homeButtonAction()
+            );
             StartCoroutine(CreateMenuElements());
         }
 
@@ -75,6 +83,12 @@ namespace Menu {
                 instantiatedDemoLife.transform.SetParent(demoLivesGrid.transform, false);
                 UserData.meta_data.demo_lives[i] = instantiatedDemoLife;
             }
+        }
+
+        private void homeButtonAction()
+        {
+            foreach (GameObject go in homeButtonFadeOutList)
+                StartCoroutine(MenuActions.FadeOut(go));
         }
 
         IEnumerator CreateMenuElements()
@@ -130,6 +144,9 @@ namespace Menu {
                 GameObject instantiatedElementsTitle = InstantiateElementsTitle(category, instantiatedCategoryButton);
                 GameObject instantiatedElements = InstantiateElements(category, instantiatedCategoryButton);
                 GameObject instantiatedElementsBackButton = InstantiateElementsBackButton(category, instantiatedCategoryButton, instantiatedElementsTitle, instantiatedElements);
+                homeButtonFadeOutList.Add(instantiatedElementsTitle);
+                homeButtonFadeOutList.Add(instantiatedElements);
+                homeButtonFadeOutList.Add(instantiatedElementsBackButton);
             }
         }
 
@@ -244,14 +261,19 @@ namespace Menu {
 
         private GameObject InstantiateElements(string category, GameObject instantiatedCategoryButton)
         {
-            GameObject instantiatedGrid = Instantiate(elementsGrid);
+            GameObject grid;
+            List<Element> elements;
+            string icon;
+            categoriesAndElementsDict.TryGetValue(category, out elements);
+            if (elements.Count > 6)
+                grid = elementsGridAlt;
+            else
+                grid = elementsGrid;
+            GameObject instantiatedGrid = Instantiate(grid);
             instantiatedGrid.transform.SetParent(background.transform, false);
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
                 () => StartCoroutine(MenuActions.FadeIn(instantiatedGrid))
             );
-            List<Element> elements;
-            string icon;
-            categoriesAndElementsDict.TryGetValue(category, out elements);
             foreach(Element element in elements)
             {
                 GameObject instantiatedElement = Instantiate(elementToggle);

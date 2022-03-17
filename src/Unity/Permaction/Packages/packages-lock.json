@@ -102,6 +102,12 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "studio.beardy.grid-layout-group": {
+      "version": "file:../Assets/Packages/BeardyGridLayout-main",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
