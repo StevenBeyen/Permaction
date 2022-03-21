@@ -9,7 +9,7 @@ using API;
 namespace Menu {
     public class MenuElementsCreation : MonoBehaviour
     {
-        public GameObject background;
+        public GameObject menuContainer;
 
         public GameObject homeButton;
 
@@ -251,7 +251,7 @@ namespace Menu {
         private GameObject InstantiateElementsTitle(string category, GameObject instantiatedCategoryButton)
         {
             GameObject instantiatedTitle = Instantiate(elementsTitle);
-            instantiatedTitle.transform.SetParent(background.transform, false);
+            instantiatedTitle.transform.SetParent(menuContainer.transform, false);
             instantiatedTitle.GetComponentInChildren<Text>().text = category;
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
                 () => StartCoroutine(MenuActions.FadeIn(instantiatedTitle))
@@ -270,7 +270,7 @@ namespace Menu {
             else
                 grid = elementsGrid;
             GameObject instantiatedGrid = Instantiate(grid);
-            instantiatedGrid.transform.SetParent(background.transform, false);
+            instantiatedGrid.transform.SetParent(menuContainer.transform, false);
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
                 () => StartCoroutine(MenuActions.FadeIn(instantiatedGrid))
             );
@@ -360,7 +360,7 @@ namespace Menu {
         private GameObject InstantiateElementsBackButton(string category, GameObject instantiatedCategoryButton, GameObject instantiatedElementsTitle, GameObject instantiatedElements)
         {
             GameObject instantiatedBackButton = Instantiate(elementsBackButton);
-            instantiatedBackButton.transform.SetParent(background.transform, false);
+            instantiatedBackButton.transform.SetParent(menuContainer.transform, false);
             instantiatedCategoryButton.GetComponent<Button>().onClick.AddListener(
                 () => StartCoroutine(MenuActions.FadeIn(instantiatedBackButton))
             );

@@ -8,12 +8,18 @@ using API;
 
 public class MenuActions : MonoBehaviour
 {
+    public GameObject infoPanelEN;
+    public GameObject infoPanelCloseEN;
+    public GameObject infoPanelFR;
+    public GameObject infoPanelCloseFR;
+    public GameObject menuContainer;
     public GameObject mainTitle;
     public GameObject playButtonEN;
     public GameObject playButtonFR;
     public GameObject quitButtonEN;
     public GameObject quitButtonFR;
     public GameObject homeButton;
+    public GameObject infoButton;
     public GameObject demoLivesGrid;
     public GameObject categoriesTitleEN;
     public GameObject categoriesTitleFR;
@@ -22,6 +28,8 @@ public class MenuActions : MonoBehaviour
     public GameObject renderButtonFR;
 
     private int id_locale = -1;
+    private GameObject infoPanel;
+    private GameObject infoPanelClose;
     private GameObject playButton;
     private GameObject quitButton;
     private GameObject categoriesTitle;
@@ -32,15 +40,19 @@ public class MenuActions : MonoBehaviour
         // Waiting for ID locale
         yield return StartCoroutine(WaitForIDLocale());
 
-        // Creating language-dependent menu actions
+        // Creating language-dependent menu variables
         if (id_locale == UserData.meta_data.id_locale_mapping["en"]) // English
         {
+            infoPanel = infoPanelEN;
+            infoPanelClose = infoPanelCloseEN;
             playButton = playButtonEN;
             quitButton = quitButtonEN;
             categoriesTitle = categoriesTitleEN;
             renderButton = renderButtonEN;
         } else if (id_locale == UserData.meta_data.id_locale_mapping["fr"]) // French
         {
+            infoPanel = infoPanelFR;
+            infoPanelClose = infoPanelCloseFR;
             playButton = playButtonFR;
             quitButton = quitButtonFR;
             categoriesTitle = categoriesTitleFR;
@@ -50,6 +62,9 @@ public class MenuActions : MonoBehaviour
             Debug.Log("[Menu Actions] No ID locale?");
             // TODO Add locale selection routine
         }
+        infoPanelClose.GetComponent<Button>().onClick.AddListener(
+            () => infoPanelCloseAction()
+        );
         playButton.GetComponent<Button>().onClick.AddListener(
             () => playButtonAction()
         );
@@ -72,6 +87,9 @@ public class MenuActions : MonoBehaviour
         homeButton.GetComponent<Button>().onClick.AddListener(
             () => homeButtonAction()
         );
+        infoButton.GetComponent<Button>().onClick.AddListener(
+            () => infoButtonAction()
+        );
     }
 
     private IEnumerator WaitForIDLocale()
@@ -80,6 +98,13 @@ public class MenuActions : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         id_locale = UserData.user.id_locale;
+    }
+
+    private void infoPanelCloseAction()
+    {
+        StartCoroutine(FadeOut(infoPanel));
+        StartCoroutine(FadeIn(menuContainer));
+        infoPanel.GetComponentInChildren<Scrollbar>().value = 1;
     }
 
     private void playButtonAction()
@@ -104,6 +129,12 @@ public class MenuActions : MonoBehaviour
         StartCoroutine(FadeIn(mainTitle));
         StartCoroutine(FadeIn(playButton));
         StartCoroutine(FadeIn(quitButton));
+    }
+
+    private void infoButtonAction()
+    {
+        StartCoroutine(FadeOut(menuContainer));
+        StartCoroutine(FadeIn(infoPanel));
     }
 
     private void renderButtonAction()
