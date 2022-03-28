@@ -212,6 +212,7 @@ public class MenuActions : MonoBehaviour
     {
         StartCoroutine(FadeOut(categoriesTitle));
         StartCoroutine(FadeOut(categoriesGrid));
+        StartCoroutine(FadeOut(renderButton));
         StartCoroutine(RenderRoutine());
     }
 
@@ -223,7 +224,7 @@ public class MenuActions : MonoBehaviour
     private IEnumerator RenderRoutine()
     {
         FilterTips();
-        StartCoroutine(FadeOut(renderButton));
+        StartCoroutine(FadeIn(mainTitleContainer));
         StartCoroutine(FadeIn(loadingAnimation));
         StartCoroutine(FadeIn(loadingTipsTitle));
         StartCoroutine(renderTips());
