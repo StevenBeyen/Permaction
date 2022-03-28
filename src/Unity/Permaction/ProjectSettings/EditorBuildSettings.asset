@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DemoTerrain.unity
-    guid: cac4f07f3f44bd797b7af526a147b863
-  - enabled: 1
     path: Assets/Scenes/DemoMenu.unity
     guid: 302feaff0941ca36faec9f0a66dd3feb
+  - enabled: 1
+    path: Assets/Scenes/DemoTerrain.unity
+    guid: cac4f07f3f44bd797b7af526a147b863
   m_configObjects: {}
