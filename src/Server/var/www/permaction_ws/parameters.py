@@ -12,6 +12,7 @@ signup_route = '/signup'
 logout_route = '/logout'
 physical_elements_route = '/physical_elements'
 binary_interactions_route = '/binary_interactions'
+ternary_interactions_route = '/ternary_interactions'
 placement_request_route = '/placement_request'
 # Route methods
 POST_method = 'POST'
@@ -31,8 +32,9 @@ name_tag = 'name'
 category_tag = 'category'
 terrain_flattening_tag = 'terrain_flattening'
 show_interactions_tag = 'show_interactions'
-# JSON binary interactions tags
+# JSON binary & ternary interactions tags
 binary_interactions_tag = 'binary_interactions'
+ternary_interactions_tag = 'ternary_interactions'
 # JSON placement request tags
 terrain_data_tag = 'terrain_data'
 elements_data_tag = 'elements_data'

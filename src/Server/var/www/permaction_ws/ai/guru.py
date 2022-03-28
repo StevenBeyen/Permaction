@@ -118,11 +118,15 @@ class Guru:
                 self.ternary_fitness_dict[key] = [interaction.interaction_type_id]
 
     def compute_max_fitness(self):
+        
+        global ternary_interaction_added_value
+    
         elements_to_remove = set()
         for i in range(len(self.elements) - 1):
             for j in range(i + 1, len(self.elements)):
                 e1 = self.elements[i]
                 e2 = self.elements[j]
+                # Binary interactions
                 try:
                     fitness = self.fitness_dict[(e1.id, e2.id)]
                     if (fitness > 0):
@@ -144,6 +148,18 @@ class Guru:
                             self.path_element = e2
                         else:
                             self.max_fitness += fitness
+                except KeyError:
+                    pass
+                # Ternary interactions in one direction
+                try:
+                    ternary_interaction = self.ternary_fitness_dict[(e1.id, e2.id)]
+                    self.max_fitness += ternary_interaction_added_value
+                except KeyError:
+                    pass
+                # Ternary interactions in the other direction
+                try:
+                    ternary_interaction = self.ternary_fitness_dict[(e2.id, e1.id)]
+                    self.max_fitness += ternary_interaction_added_value
                 except KeyError:
                     pass
         # Removing roads and paths since they're not part of element placement

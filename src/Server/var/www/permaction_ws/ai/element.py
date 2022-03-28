@@ -30,6 +30,14 @@ class AbstractElement:
     def get_minmax_coordinates(self):
         return (self.get_corners()[0] + self.get_corners()[1])
     
+    def get_used_coordinates(self):
+        corners = self.get_corners()
+        coordinates = []
+        for i in range (corners[0][0], corners[-1][0] + 1):
+            for j in range (corners[0][1], corners[-1][1] + 1):
+                coordinates.append([i,j])
+        return coordinates
+    
     def distance(self, element):
         distance = 0
         (self_min_x, self_min_y, self_max_x, self_max_y) = self.get_minmax_coordinates()
@@ -180,7 +188,7 @@ class AbstractElement:
                     for c in self.get_used_coordinates():
                         if (terrain[c[0]][c[1]] > max_element_height):
                             higher_counter += 1
-                    return ternary_interaction_added_value * (higher_counter / len(self.get_used_coordinates()))
+                    return ternary_interaction_added_value * (higher_counter / self.size)
                 # To discourage elements going out of the terrain boundaries, we return 0
                 except IndexError:
                     return 0

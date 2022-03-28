@@ -41,6 +41,13 @@ def binary_interactions():
 	return jsonify({binary_interactions_tag: [binary_interaction.serialize for binary_interaction in binary_interactions]})
 
 
+@app.route(ternary_interactions_route)
+@login_required
+def ternary_interactions():
+	ternary_interactions = TernaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
+	return jsonify({ternary_interactions_tag: [ternary_interaction.serialize for ternary_interaction in ternary_interactions]})
+
+
 @app.route(placement_request_route, methods = [POST_method])
 @login_required
 def placement_request():

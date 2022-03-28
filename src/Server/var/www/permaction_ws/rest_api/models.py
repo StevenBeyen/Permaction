@@ -218,4 +218,16 @@ class TernaryInteraction(db.Model):
     interaction_type_id = db.Column(db.Integer, db.ForeignKey(interaction_type_table_id), nullable=False)
     element2_id = db.Column(db.Integer, db.ForeignKey(element_table_id), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    
+    @property
+    def serialize(self):
+        """Return object data in easily serializable format."""
+        return {
+            'id': self.id,
+            'id_locale': self.id_locale,
+            'element1_id': self.element1_id,
+            'interaction_type_id': interaction_type_id,
+            'element2_id': self.element2_id,
+            'description': self.description
+        }
 

@@ -10,6 +10,9 @@ curl -b 'session=.eJwljztuQzEMBO-iOgVFkRLlyzzwJ8QIYAfPdhX47lGQbpudnf0pxzrz8Vkuz_
 
 curl -b 'session=.eJwljztuQzEMBO-iOgVFkRLlyzzwJ8QIYAfPdhX47lGQbpudnf0pxzrz8Vkuz_OVH-W4RrkUGA1lBAeKoawWkjPnmFzZTJXWiqioKLUONYYW7Cqmi8xIObW3sRNlLOmMjo3q7vflUyx1shiokMKEWsVMOvSkboOCWuNetsi3nnq7X-N43r_ytqX2nDeo5OzJNsGWmgWbgiLMsWiorw5OfZNkdPTtgwHuqlUc_6CvR57_F2t5_wIkkEkJ.XpmQsQ.dYjrhJwbgrKrH5tj82v2SbG0SpQ' -i localhost:13731/physical_elements
 
+curl -i -X POST -H "Content-Type: application/json" -d '{"username":"demouser_fr", "password":"demouser_fr", "id_locale":2, "email":"demo@demo", "private":1, "professional":0}' permaction.com:13731/signup
+curl -i -X POST -H "Content-Type: application/json" -d '{"username":"demouser_en", "password":"demouser_en", "id_locale":1, "email":"demo@demo.en", "private":1, "professional":0}' permaction.com:13731/signup
+
 curl -i -X POST -H "Content-Type: application/json" -d '{"username":"testuser_fr", "password":"testuser_fr"}' http://127.0.0.1:13731/login
 curl -i -X POST -H "Content-Type: application/json" -d '{"username":"testuser_fr", "password":"testuser_fr"}' 34.70.70.142:13731/login
 
