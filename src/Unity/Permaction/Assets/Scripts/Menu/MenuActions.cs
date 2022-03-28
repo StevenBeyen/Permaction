@@ -39,6 +39,7 @@ public class MenuActions : MonoBehaviour
     public GameObject loadingTips;
 
     private int id_locale = -1;
+    private bool activeMainTitle;
     private GameObject infoPanel;
     private GameObject infoPanelClose;
     private GameObject playButton;
@@ -143,8 +144,7 @@ public class MenuActions : MonoBehaviour
         id_locale = UserData.meta_data.id_locale_mapping["en"];
         yield return StartCoroutine(demoUserLogin());
         createMenu();
-        StartCoroutine(FadeOut(mainTitleContainer));
-        StartCoroutine(FadeIn(infoPanel));
+        infoButtonAction();
     }
 
     private IEnumerator languageButtonFRAction()
@@ -152,8 +152,7 @@ public class MenuActions : MonoBehaviour
         id_locale = UserData.meta_data.id_locale_mapping["fr"];
         yield return StartCoroutine(demoUserLogin());
         createMenu();
-        StartCoroutine(FadeOut(mainTitleContainer));
-        StartCoroutine(FadeIn(infoPanel));
+        infoButtonAction();
     }
 
     private IEnumerator demoUserLogin()
@@ -165,7 +164,8 @@ public class MenuActions : MonoBehaviour
     private void infoPanelCloseAction()
     {
         StartCoroutine(FadeOut(infoPanel));
-        StartCoroutine(FadeIn(mainTitleContainer));
+        if (activeMainTitle)
+            StartCoroutine(FadeIn(mainTitleContainer));
         StartCoroutine(FadeIn(menuContainer));
         infoPanel.GetComponentInChildren<Scrollbar>().value = 1;
     }
@@ -203,6 +203,7 @@ public class MenuActions : MonoBehaviour
 
     private void infoButtonAction()
     {
+        activeMainTitle = mainTitleContainer.active;
         StartCoroutine(FadeOut(mainTitleContainer));
         StartCoroutine(FadeOut(menuContainer));
         StartCoroutine(FadeIn(infoPanel));
