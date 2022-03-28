@@ -75,6 +75,20 @@ namespace Menu {
             
         }
 
+        private IEnumerator WaitForCookie()
+        {
+            while (UserData.user == null || UserData.user.cookie == null) {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        private IEnumerator GetBinaryInteractions()
+        {
+            BinaryInteractions binary_interactions = new BinaryInteractions();
+            yield return StartCoroutine(binary_interactions.GetWebRequest(MetaData.BINARY_INTERACTIONS_URI, binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
+            UserData.binary_interactions = binary_interactions;
+        }
+
         private void InstantiateDemoLives()
         {
             for(int i = 0; i < MetaData.DEMO_MAX_NB_ELEMENTS; ++i)
@@ -91,12 +105,9 @@ namespace Menu {
                 StartCoroutine(MenuActions.FadeOut(go));
         }
 
-        IEnumerator CreateMenuElements()
+        private IEnumerator CreateMenuElements()
         {
-            // TMP Login Demo User
-            // TODO remove once login / user account creation is implemented
-            UserData.user = new User();
-            yield return StartCoroutine(UserData.user.PostWebRequest(MetaData.USER_LOGIN_URI, JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
+            yield return StartCoroutine(WaitForCookie());
 
             // TODO Add switch case to generate and manage buttons and titles correctly depending on language
             if (UserData.user.id_locale == UserData.meta_data.id_locale_mapping["en"]) // English
@@ -148,6 +159,9 @@ namespace Menu {
                 homeButtonFadeOutList.Add(instantiatedElements);
                 homeButtonFadeOutList.Add(instantiatedElementsBackButton);
             }
+
+            // Lastly, we can get binary interactions for generation waiting tips & tricks
+            StartCoroutine(GetBinaryInteractions());
         }
 
         private void UpdateCategoryCounter(GameObject categoryButton, bool increment)
@@ -221,7 +235,8 @@ namespace Menu {
         {
             if (value)
             {
-                UserData.selected_elements.Add(element);
+                if (UserData.selected_elements.Count < MetaData.DEMO_MAX_NB_ELEMENTS)
+                    UserData.selected_elements.Add(element);
             } else {
                 UserData.selected_elements.Remove(element);
             }

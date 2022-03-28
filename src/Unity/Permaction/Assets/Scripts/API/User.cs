@@ -8,8 +8,8 @@ namespace API
     [System.Serializable]
     public class User : API
     {
-        private const string TEST_USERNAME = "testuser_fr";
-        private const string TEST_PASSWORD = "testuser_fr";
+        private const string DEMO_USER_EN = "demouser_en";
+        private const string DEMO_USER_FR = "demouser_fr";
 
         public string username;
         public string password;
@@ -21,27 +21,31 @@ namespace API
             // TODO Remove once login/signup is implemented
             if((username == null) && (password == null))
             {
-                this.username = TEST_USERNAME;
-                this.password = TEST_PASSWORD;
+                if (id_locale == UserData.meta_data.id_locale_mapping["en"])
+                {
+                    username = DEMO_USER_EN;
+                    password = DEMO_USER_EN;
+                } else if (id_locale == UserData.meta_data.id_locale_mapping["fr"])
+                {
+                    username = DEMO_USER_FR;
+                    password = DEMO_USER_FR;
+                }
             }
             else if((username == null) || (password == null))
             {
                 // TODO Change this for a pop-up
                 Debug.LogError("Cannot specify username without password.");
             }
-            else
-            {
-                this.username = username;
-                this.password = password;      
-                this.id_locale = id_locale;
-                this.cookie = cookie;
-            }
+            this.username = username;
+            this.password = password;      
+            this.id_locale = id_locale;
+            this.cookie = cookie;
         }
 
         public void LoginCallback(UnityWebRequest webRequest)
         {
-            cookie = webRequest.GetResponseHeader("Set-Cookie");
-            id_locale = JsonUtility.FromJson<User>(webRequest.downloadHandler.text).id_locale;
+            this.cookie = webRequest.GetResponseHeader("Set-Cookie");
+            this.id_locale = JsonUtility.FromJson<User>(webRequest.downloadHandler.text).id_locale;
         }
     }
 }

@@ -16,6 +16,7 @@ public class MetaData
     public const string USER_SIGNUP_URI = API_URI + "/signup";
     // Demo
     public const int DEMO_MAX_NB_ELEMENTS = 7;
+    public const string DEMO_MENU_SCENE = "DemoMenu";
     public const string DEMO_TERRAIN_SCENE = "DemoTerrain";
     public GameObject[] demo_lives = new GameObject[DEMO_MAX_NB_ELEMENTS];
     public int current_active_demo_lives = DEMO_MAX_NB_ELEMENTS;
@@ -39,7 +40,7 @@ public class MetaData
     // Locale
     public Dictionary<string, int> id_locale_mapping;
     // Terrain
-    public static Terrain terrain;
+    public Terrain terrain;
     public List<string> prefab_grass;
     public List<string> prefab_rocks;
     public List<string> prefab_trees;
@@ -50,6 +51,7 @@ public class MetaData
     public const float BOX_COLLIDER_ADDITIONAL_CORRECTION = 0.5f;
     public const string GRAPHICAL_TITLE = "Graphical_Title(Clone)";
     public const string LINK_DESCRIPTION = "Link_Description(Clone)";
+    public const int LINK_DESCRIPTION_LINE_WRAP = 35;
 
     public MetaData()
     {

@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestMenu.unity
-    guid: 233bc8bc582ad8a998377ff6801541a8
-  - enabled: 1
-    path: Assets/Scenes/TestWaitingScreen.unity
-    guid: 1dcf38c570666192a8f8b1eff4e2e545
-  - enabled: 1
     path: Assets/Scenes/DemoTerrain.unity
     guid: cac4f07f3f44bd797b7af526a147b863
+  - enabled: 1
+    path: Assets/Scenes/DemoMenu.unity
+    guid: 302feaff0941ca36faec9f0a66dd3feb
   m_configObjects: {}

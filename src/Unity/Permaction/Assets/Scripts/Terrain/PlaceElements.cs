@@ -230,6 +230,16 @@ public class PlaceElements : MonoBehaviour
             // Description
             GameObject instantiatedLinkDescription = Instantiate(linkDescription, arc.getTopCoordinates(), Quaternion.identity, arcLinkContainer.transform);
             // TODO Handle case with multiple descriptions between two elements. Parsing upwards in code maybe?
+            // Break on multiple lines when over X characters:
+            int nextSpaceIndex;
+            char[] descriptionChar = description.ToCharArray();
+            for (int i  = 0; i < description.Length / MetaData.LINK_DESCRIPTION_LINE_WRAP; ++i)
+            {
+                nextSpaceIndex = description.IndexOf(' ', MetaData.LINK_DESCRIPTION_LINE_WRAP * (i + 1));
+                if (nextSpaceIndex != -1)
+                    descriptionChar[nextSpaceIndex] = '\n';
+            }
+            description = new string(descriptionChar);
             instantiatedLinkDescription.GetComponentInChildren<TextMesh>().text = description;
         }
     }

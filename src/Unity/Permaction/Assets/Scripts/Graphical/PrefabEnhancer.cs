@@ -62,7 +62,7 @@ public class PrefabEnhancer : MonoBehaviour
             x_pos = (float) (parentPosition.x + (effectiveXBounds[0] + Random.Range(0f, 1f) * (effectiveXBounds[1] - effectiveXBounds[0])));
             z_pos = (float) (parentPosition.z + (effectiveZBounds[0] + Random.Range(0f, 1f) * (effectiveZBounds[1] - effectiveZBounds[0])));
             position = new Vector3(x_pos, parentPosition.y, z_pos);
-            position.y = MetaData.terrain.SampleHeight(position) + yCorrection;
+            position.y = UserData.meta_data.terrain.SampleHeight(position) + yCorrection;
             GameObject instantiatedElement = Instantiate(element, position, Quaternion.identity);
             instantiatedElement.transform.localScale = new Vector3(scale, scale, scale);
             if (freeRotation)
