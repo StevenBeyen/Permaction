@@ -4,3 +4,5 @@ Flask-SQLAlchemy
 flask-login
 flask-paranoid
 Flask-Threads
+flask-cors
+markupsafe==2.0.1
