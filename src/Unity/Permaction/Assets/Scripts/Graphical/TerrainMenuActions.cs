@@ -75,46 +75,6 @@ public class TerrainMenuActions : MonoBehaviour
         noVolumeButton.SetActive(false);
     }
 
-    private IEnumerator GetBinaryInteractions()
-    {
-        BinaryInteractions binary_interactions = new BinaryInteractions();
-        yield return StartCoroutine(binary_interactions.GetWebRequest(MetaData.BINARY_INTERACTIONS_URI, binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
-        UserData.binary_interactions = binary_interactions;
-    }
-
-    private IEnumerator SetTerrainHeightmap()
-    {
-        SceneManager.LoadScene(MetaData.DEMO_TERRAIN_SCENE, LoadSceneMode.Additive);
-        while (!UserData.terrain_loaded)
-            yield return new WaitForSeconds(0.1f);
-    }
-
-    private IEnumerator RenderElements()
-    {
-        PlacementRequest placement_request = new PlacementRequest(UserData.terrain_heightmap, UserData.selected_elements.ToArray());
-        yield return StartCoroutine(placement_request.PostWebRequest(MetaData.PLACEMENT_REQUEST_URI, JsonUtility.ToJson(placement_request), placement_request.APIRendererCallback, UserData.user.cookie));
-        UserData.reply = placement_request.GetReply();
-    }
-
-    private void ShowResult()
-    {
-        // TODO V1 Change with user terrain
-        SceneManager.LoadScene(MetaData.DEMO_TERRAIN_SCENE);
-    }
-
-    private IEnumerator RenderButtonFadeIn(GameObject renderButton)
-        {
-            if (UserData.selected_elements.Count > 0)
-            {
-                renderButton.GetComponent<Button>().interactable = true;
-                StartCoroutine(FadeIn(renderButton));
-            } else {
-                renderButton.GetComponent<Button>().interactable = false;
-                StartCoroutine(FadeIn(renderButton, 0f, 0.5f));
-            }
-            yield return null;
-        }
-
     /*
         Public static methods.
     */
@@ -199,26 +159,5 @@ public class TerrainMenuActions : MonoBehaviour
             gameObject.transform.localPosition.y,
             gameObject.transform.localPosition.z
         );
-    }
-
-    public static IEnumerator FadeIn(GameObject gameObject, float startValue = 0.5f, float stopValue = 1f)
-    {
-        yield return new WaitForSeconds(0.25f);
-        gameObject.SetActive(true);
-        for (float i = startValue; i <= stopValue; i += Time.deltaTime)
-        {
-            gameObject.GetComponent<CanvasGroup>().alpha = i;
-            yield return null;
-        }
-    }
-
-    public static IEnumerator FadeOut(GameObject gameObject, float startValue = 0.5f, float stopValue = 0.25f)
-    {
-        for (float i = startValue; i >= stopValue; i -= Time.deltaTime)
-        {
-            gameObject.GetComponent<CanvasGroup>().alpha = i*2;
-            yield return null;
-        }
-        gameObject.SetActive(false);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 using API;
 
@@ -158,7 +159,15 @@ public class MenuActions : MonoBehaviour
     private IEnumerator demoUserLogin()
     {
         UserData.user = new User(null, null, id_locale, null);
-        yield return StartCoroutine(UserData.user.PostWebRequest(MetaData.USER_LOGIN_URI, JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
+        yield return new WaitForSeconds(0.01f);
+        // Switching to JS login for WebGL export...
+        /*UnityWebRequest.ClearCookieCache(); // Clear cache to avoid using old cookie
+        JSLogin.login(MetaData.USER_LOGIN_URI, JsonUtility.ToJson(UserData.user));
+        Debug.Log(UserData.user.id_locale);
+        UserData.user.cookie = JSLogin.getCookie("session");
+        Debug.Log(UserData.user.cookie);*/
+        //UserData.user = new User(null, null, id_locale, null);
+        //yield return StartCoroutine(UserData.user.PostWebRequest(MetaData.USER_LOGIN_URI, JsonUtility.ToJson(UserData.user), UserData.user.LoginCallback));
     }
 
     private void infoPanelCloseAction()
@@ -203,7 +212,7 @@ public class MenuActions : MonoBehaviour
 
     private void infoButtonAction()
     {
-        activeMainTitle = mainTitleContainer.active;
+        activeMainTitle = mainTitleContainer.active; // isActive ?
         StartCoroutine(FadeOut(mainTitleContainer));
         StartCoroutine(FadeOut(menuContainer));
         StartCoroutine(FadeIn(infoPanel));
@@ -241,8 +250,11 @@ public class MenuActions : MonoBehaviour
             element_ids.Add(element.id);
         foreach (BinaryInteraction bi in UserData.binary_interactions)
         {
-            if (element_ids.Contains(bi.element1_id) || element_ids.Contains(bi.element2_id))
-                UserData.tips.Add(bi.description);
+            if (!UserData.meta_data.road_path_ids.Contains(bi.element1_id) && !UserData.meta_data.road_path_ids.Contains(bi.element2_id))
+            {
+                if (element_ids.Contains(bi.element1_id) || element_ids.Contains(bi.element2_id))
+                    UserData.tips.Add(bi.description);
+            }
         }
     }
 
@@ -262,14 +274,15 @@ public class MenuActions : MonoBehaviour
     private IEnumerator SetTerrainHeightmap()
     {
         //yield return new WaitForSeconds(0.0f);
-        SceneManager.LoadScene(MetaData.DEMO_TERRAIN_SCENE, LoadSceneMode.Additive);
-        while (!UserData.terrain_loaded)
+        UserData.DEMO_TERRAIN_ASYNC_SCENE = SceneManager.LoadSceneAsync(MetaData.DEMO_TERRAIN_SCENE, LoadSceneMode.Additive);
+        UserData.DEMO_TERRAIN_ASYNC_SCENE.allowSceneActivation = false;
+        while (UserData.DEMO_TERRAIN_ASYNC_SCENE.progress < 0.9f)
             yield return new WaitForSeconds(0.01f);
     }
 
     private IEnumerator RenderElements()
     {
-        PlacementRequest placement_request = new PlacementRequest(UserData.terrain_heightmap, UserData.selected_elements.ToArray());
+        PlacementRequest placement_request = new PlacementRequest(id_locale, UserData.terrain_heightmap, UserData.selected_elements.ToArray());
         yield return StartCoroutine(placement_request.PostWebRequest(MetaData.PLACEMENT_REQUEST_URI, JsonUtility.ToJson(placement_request), placement_request.APIRendererCallback, UserData.user.cookie));
         UserData.reply = placement_request.GetReply();
         // Resetting user selection
@@ -281,6 +294,8 @@ public class MenuActions : MonoBehaviour
     {
         // TODO V1 Change with user terrain
         SceneManager.LoadScene(MetaData.DEMO_TERRAIN_SCENE);
+        //UserData.DEMO_TERRAIN_ASYNC_SCENE.allowSceneActivation = true;
+        //SceneManager.UnloadScene(MetaData.DEMO_MENU_SCENE);
     }
 
     private IEnumerator RenderButtonFadeIn(GameObject renderButton)

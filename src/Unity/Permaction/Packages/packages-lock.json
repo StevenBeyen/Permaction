@@ -114,9 +114,9 @@
       }
     },
     "studio.beardy.grid-layout-group": {
-      "version": "file:../Assets/Packages/BeardyGridLayout-main",
+      "version": "file:BeardyGridLayout-main",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {}
     },
     "com.unity.modules.ai": {

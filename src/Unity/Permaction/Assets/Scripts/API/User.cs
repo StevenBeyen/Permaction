@@ -44,7 +44,16 @@ namespace API
 
         public void LoginCallback(UnityWebRequest webRequest)
         {
+            // TODO update when cookie problem for WebGL version is solved (JSLogin.jslib)
+            /*Debug.Log("User login reply :");
+            Debug.Log(webRequest.downloadHandler.text);
+            Debug.Log(webRequest.GetResponseHeader("Set-Cookie"));
             this.cookie = webRequest.GetResponseHeader("Set-Cookie");
+            if (this.cookie == null)
+            {
+                Debug.Log(HttpCookies.getHttpCookies());
+                this.cookie = HttpCookies.getHttpCookies();
+            }*/
             this.id_locale = JsonUtility.FromJson<User>(webRequest.downloadHandler.text).id_locale;
         }
     }

@@ -7,8 +7,7 @@ using API;
 public class MetaData
 {
     // Server
-    //public const string API_URI = "http://34.70.70.142:13731"; // Google Cloud Computing server
-    public const string API_URI = "permaction.com:13731"; // Hostinger server
+    public const string API_URI = "https://stevenbeyen.com:13731"; // Web service server host
     public const string BINARY_INTERACTIONS_URI = API_URI + "/binary_interactions";
     public const string USER_LOGIN_URI = API_URI + "/login";
     public const string PHYSICAL_ELEMENTS_URI = API_URI + "/physical_elements";
@@ -20,6 +19,7 @@ public class MetaData
     public const string DEMO_TERRAIN_SCENE = "DemoTerrain";
     public GameObject[] demo_lives = new GameObject[DEMO_MAX_NB_ELEMENTS];
     public int current_active_demo_lives = DEMO_MAX_NB_ELEMENTS;
+    public List<int> road_path_ids =  new List<int>(); // For removing road/path tips on loading screen.
     // Prefabs
     private const string STRETCHABLE_ONE_METER_PREFAB_RESOURCES_PATH = "Prefabs/StretchableOneMeterTerrainObjects/";
     private const string FIXED_SIZE_TERRAIN_OBJECTS = "Prefabs/FixedSizeTerrainObjects/";
@@ -55,6 +55,12 @@ public class MetaData
 
     public MetaData()
     {
+        // Road & path ids
+        road_path_ids.Add(25);
+        road_path_ids.Add(28);
+        road_path_ids.Add(65);
+        road_path_ids.Add(68);
+
         // 1. ID locale
         id_locale_mapping = new Dictionary<string, int>();
         id_locale_mapping.Add("en", 1);
@@ -225,7 +231,7 @@ public class MetaData
         icon_mapping.Add("Pond", ICONS_RESOURCES_PATH + "park");
         // Categories FR
         icon_mapping.Add("Abris pour animaux", ICONS_RESOURCES_PATH + "dog-house");
-        icon_mapping.Add("Batiments", ICONS_RESOURCES_PATH + "barn");
+        icon_mapping.Add("Bâtiments", ICONS_RESOURCES_PATH + "barn");
         icon_mapping.Add("Chemins", ICONS_RESOURCES_PATH + "road");
         icon_mapping.Add("Plantes", ICONS_RESOURCES_PATH + "seedling");
         icon_mapping.Add("Arbres & arbustes", ICONS_RESOURCES_PATH + "trees");
@@ -285,20 +291,29 @@ public class MetaData
     {
         element_name_data = new Dictionary<int, string>();
         foreach(Element element in elements)
-            element_name_data.Add(element.id, element.name);
+        {
+            if (element.id_locale == UserData.user.id_locale)
+                element_name_data.Add(element.id, element.name);
+        }
     }
 
     private void ExtractTerrainFlattening(Element[] elements)
     {
         terrain_flattening_data = new Dictionary<int, bool>();
         foreach(Element element in elements)
-            terrain_flattening_data.Add(element.id, element.terrain_flattening);
+        {
+            if (element.id_locale == UserData.user.id_locale)
+                terrain_flattening_data.Add(element.id, element.terrain_flattening);
+        }
     }
 
     private void ExtractShowInteractions(Element[] elements)
     {
         show_interactions_data = new Dictionary<int, bool>();
         foreach (Element element in elements)
-            show_interactions_data.Add(element.id, element.show_interactions);
+        {
+            if (element.id_locale == UserData.user.id_locale)
+                show_interactions_data.Add(element.id, element.show_interactions);
+        }
     }
 }

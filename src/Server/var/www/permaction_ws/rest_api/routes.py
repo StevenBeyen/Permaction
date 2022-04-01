@@ -19,13 +19,15 @@ def root():
 
 
 @app.route(physical_elements_route)
-@login_required
+#@login_required
 def get_physical_elements():
     global physical_elements_tag
-    physical_categories = Category.query.filter_by(id_locale = current_user.id_locale, physical_category = True).all()
+    #physical_categories = Category.query.filter_by(id_locale = current_user.id_locale, physical_category = True).all()
+    physical_categories = Category.query.filter_by(physical_category = True).all()
     physical_category_ids = [category.id for category in physical_categories]
     physical_category_names = [category.name for category in physical_categories]
-    physical_elements = Element.query.filter_by(id_locale = current_user.id_locale).all()
+    #physical_elements = Element.query.filter_by(id_locale = current_user.id_locale).all()
+    physical_elements = Element.query.all()
     physical_elements_dict = {physical_elements_tag: []}
     for element in physical_elements:
         if (element.name not in physical_category_names and element.category_id in physical_category_ids):
@@ -35,30 +37,33 @@ def get_physical_elements():
 
 
 @app.route(binary_interactions_route)
-@login_required
+#@login_required
 def binary_interactions():
-	binary_interactions = BinaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
+	#binary_interactions = BinaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
+	binary_interactions = BinaryInteraction.query.all()
 	return jsonify({binary_interactions_tag: [binary_interaction.serialize for binary_interaction in binary_interactions]})
 
 
 @app.route(ternary_interactions_route)
-@login_required
+#@login_required
 def ternary_interactions():
-	ternary_interactions = TernaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
+	#ternary_interactions = TernaryInteraction.query.filter_by(id_locale = current_user.id_locale).all()
+	ternary_interactions = TernaryInteraction.query.all()
 	return jsonify({ternary_interactions_tag: [ternary_interaction.serialize for ternary_interaction in ternary_interactions]})
 
 
 @app.route(placement_request_route, methods = [POST_method])
-@login_required
+#@login_required
 def placement_request():
     # First of all, we have to check for the request consistency
     user_placement_request = validate_placement_request(request.get_json())
+    id_locale = request.get_json()[id_locale_tag]
     # The request is valid, let's add it to the database
     db.session.add(user_placement_request)
     db.session.commit()
     # TODO Add check for payment/tokens
     # Start AI and pick best result to give back to the user
-    best_result = start_placement_request(user_placement_request)
+    best_result = start_placement_request(user_placement_request, id_locale)
     # TODO Save result to database
     # Return best found result
     return jsonify(best_result)

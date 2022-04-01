@@ -10,6 +10,7 @@ namespace API
     public class Element : IComparable<Element>
     {
         public int id;
+        public int id_locale;
         public string name;
         public string category;
         public bool terrain_flattening;

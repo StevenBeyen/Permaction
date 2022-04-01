@@ -27,19 +27,22 @@ def user_placement_ai(request_id, id_locale):
 def validate_placement_request(placement_request_data):
     global terrain_data_tag, elements_data_tag, error_evaluating_message, error_converting_message, error_verifying_message
     try:
+        id_locale = placement_request_data[id_locale_tag]
         terrain_data = placement_request_data[terrain_data_tag]
         elements_data = placement_request_data[elements_data_tag]
     except:
         abort(400, error_evaluating_message) # bad syntax for terrain or elements data
     # Now we create the placement request in the database, and make a preprocessing to convert the data to a format more suitable to its handling
-    user_placement_request = UserPlacementRequest(user_id = current_user.id, terrain_data = '', elements_data = '', requested = dt.now())
+    #user_placement_request = UserPlacementRequest(user_id = current_user.id, terrain_data = '', elements_data = '', requested = dt.now())
+    # TODO remove temporary solution when login will work correctly...
+    user_placement_request = UserPlacementRequest(user_id=1, terrain_data = '', elements_data = '', requested = dt.now())
     try:
         terrain_data = user_placement_request.terrain_preprocessing(terrain_data)
         elements_data = user_placement_request.elements_preprocessing(elements_data)
     except:
         abort(400, error_converting_message) # bad syntax for terrain or elements data
     # Finally, we check the data consistency
-    if (user_placement_request.check_terrain_data(terrain_data) and user_placement_request.check_elements_data(elements_data, terrain_data)):
+    if (user_placement_request.check_terrain_data(terrain_data) and user_placement_request.check_elements_data(id_locale, elements_data, terrain_data)):
         user_placement_request.terrain_data = str(terrain_data)
         user_placement_request.elements_data = str(elements_data)
     else:
@@ -47,7 +50,7 @@ def validate_placement_request(placement_request_data):
     return user_placement_request
 
 
-def start_placement_request(user_placement_request):
+def start_placement_request(user_placement_request, id_locale):
     global ai_nb_placement_requests, ai_fitness_tag, user_placement_ai_responses, ai_optimum_tag, not_enough_space_message
     """user_placement_ais = []
     user_placement_ai_responses = Queue()
@@ -67,7 +70,7 @@ def start_placement_request(user_placement_request):
         elif ((best_result is None) or (result[ai_fitness_tag] > best_result[ai_fitness_tag])):
             best_result = result
     return best_result"""
-    ai = AI(user_placement_request.id,current_user.id_locale)
+    ai = AI(user_placement_request.id, id_locale)
     ai.run()
     return ai.make_response()
 

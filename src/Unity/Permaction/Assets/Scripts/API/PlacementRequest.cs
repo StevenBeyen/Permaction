@@ -8,12 +8,14 @@ namespace API
     [System.Serializable]
     public class PlacementRequest : API
     {
+        public int id_locale;
         public TerrainLine[] terrain_data;
         public Element[] elements_data;
         private PlacementReply reply;
 
-        public PlacementRequest(string[][] terrain_data, Element[] elements_data)
+        public PlacementRequest(int id_locale, string[][] terrain_data, Element[] elements_data)
         {
+            this.id_locale = id_locale;
             this.terrain_data = new TerrainLine[terrain_data.Length];
             for (int i=0; i<terrain_data.Length;++i)
             {

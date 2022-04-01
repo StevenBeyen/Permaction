@@ -11,5 +11,5 @@ if (__name__ == '__main__'):
     app.env = 'development'
     app.config['PROFILE'] = True
     app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[30])
-    app.run(debug=True, port='13731')
+    app.run(debug=True, port='13731', ssl_context='adhoc')
 

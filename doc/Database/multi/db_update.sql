@@ -300,3 +300,8 @@ update category set physical_category = 0 where id = 11;
 update binary_interaction set description = 'The feed forest provides food and shelter to the poultry.' where id = 17;
 update binary_interaction set description = 'La forêt nourricière sert de garde-manger et d’abri pour la volaille.' where id = 115;
 
+
+
+update category set name = 'Bâtiments' where id = 9;
+update element set name = 'Bâtiments' where id = 45;
+

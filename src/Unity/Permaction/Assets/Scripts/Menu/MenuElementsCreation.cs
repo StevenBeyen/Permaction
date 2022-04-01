@@ -82,6 +82,13 @@ namespace Menu {
             }
         }
 
+        private IEnumerator WaitForIDLocale()
+        {
+            while (UserData.user == null || UserData.user.id_locale == null) {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
         private IEnumerator GetBinaryInteractions()
         {
             BinaryInteractions binary_interactions = new BinaryInteractions();
@@ -107,7 +114,9 @@ namespace Menu {
 
         private IEnumerator CreateMenuElements()
         {
-            yield return StartCoroutine(WaitForCookie());
+            // TODO uncomment when cookie problem for WebGL version is solved (JSLogin.jslib)
+            //yield return StartCoroutine(WaitForCookie());
+            yield return StartCoroutine(WaitForIDLocale());
 
             // TODO Add switch case to generate and manage buttons and titles correctly depending on language
             if (UserData.user.id_locale == UserData.meta_data.id_locale_mapping["en"]) // English
@@ -136,15 +145,18 @@ namespace Menu {
             List<Element> elements;
             foreach(Element element in menu_elements.physical_elements)
             {
-                element.counter = 1;
-                if(categoriesAndElementsDict.TryGetValue(element.category, out elements))
+                if (element.id_locale == UserData.user.id_locale)
                 {
-                    elements.Add(element);
-                } else
-                {
-                    elements = new List<Element>();
-                    elements.Add(element);
-                    categoriesAndElementsDict.Add(element.category, elements);
+                    element.counter = 1;
+                    if(categoriesAndElementsDict.TryGetValue(element.category, out elements))
+                    {
+                        elements.Add(element);
+                    } else
+                    {
+                        elements = new List<Element>();
+                        elements.Add(element);
+                        categoriesAndElementsDict.Add(element.category, elements);
+                    }
                 }
             }
 

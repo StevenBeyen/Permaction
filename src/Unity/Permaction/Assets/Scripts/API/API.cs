@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 namespace API {
 
     public class API
-    {
+    {   
         public IEnumerator GetWebRequest(string url, Action<UnityWebRequest> callback = null, string cookie = null)
         {
             UnityWebRequest webRequest = UnityWebRequest.Get(url);
@@ -31,7 +31,7 @@ namespace API {
                 webRequest.SetRequestHeader("Cookie", cookie);
             yield return webRequest.SendWebRequest();
             
-            if (webRequest.isNetworkError)
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError)
                 Debug.LogError(webRequest.error);
             else if (callback != null)
                 callback(webRequest);

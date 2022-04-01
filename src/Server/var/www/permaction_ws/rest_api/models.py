@@ -56,7 +56,7 @@ class Element(db.Model):
     default_size = db.Column(db.Text)
     
     def to_dict(self, category = None):
-        reply = {id_tag: self.id, name_tag: self.name}
+        reply = {id_tag: self.id, id_locale_tag: self.id_locale, name_tag: self.name}
         if (category is not None):
             reply[category_tag] = category.name
             reply[terrain_flattening_tag] = category.terrain_flattening
@@ -140,11 +140,11 @@ class UserPlacementRequest(db.Model):
             return False # inconsistent data type
         return True
     
-    def check_elements_data(self, elements_data, terrain_data):
+    def check_elements_data(self, id_locale, elements_data, terrain_data):
         """Checking constistency of data structure: {element_id: [amount, [(fixed, coordinates)], [other, fixed, coordinates]]}.
         The fixed coordinates are a list of tuples representing the coordinates of the element (all squares that are used).
         Fixed coordinates are optional."""
-        allowed_element_ids = [element.id for element in Element.query.filter_by(id_locale = current_user.id_locale).all()]
+        allowed_element_ids = [element.id for element in Element.query.filter_by(id_locale = id_locale).all()]
         global unallowed_height
         try:
             for key in elements_data:
