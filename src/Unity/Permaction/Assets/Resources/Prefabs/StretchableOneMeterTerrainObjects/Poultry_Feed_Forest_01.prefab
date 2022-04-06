@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2796866121467417102}
   - component: {fileID: 808860228975957498}
   - component: {fileID: 13539092078744350}
+  - component: {fileID: 6626190588373207497}
   m_Layer: 0
   m_Name: Poultry_Feed_Forest_01
   m_TagString: Untagged
@@ -52,6 +53,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -220,3 +222,16 @@ MonoBehaviour:
   freeRotation: 1
   smallVerticalNoise: 1
   zRotation: 0
+--- !u!65 &6626190588373207497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676732576313778853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0, z: 0.9}
+  m_Center: {x: 0, y: 0, z: 0}

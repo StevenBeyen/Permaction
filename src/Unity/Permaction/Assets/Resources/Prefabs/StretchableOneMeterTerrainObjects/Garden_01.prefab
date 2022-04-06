@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4297017543721475229}
   - component: {fileID: 4361817100757307092}
   - component: {fileID: 6041534177499142868}
+  - component: {fileID: 5476725364069390799}
   m_Layer: 0
   m_Name: Garden_01
   m_TagString: Untagged
@@ -52,6 +53,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -220,3 +222,16 @@ MonoBehaviour:
   freeRotation: 1
   smallVerticalNoise: 1
   zRotation: 0
+--- !u!65 &5476725364069390799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053846285887864372}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0, z: 0.9}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 314283228297984749}
   - component: {fileID: -3838723217451492062}
   - component: {fileID: -8064144685307353745}
+  - component: {fileID: 5358283127261235226}
   m_Layer: 0
   m_Name: Aromatic_Plants_01
   m_TagString: Untagged
@@ -56,7 +57,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.425, y: 0.425}
   zBounds: {x: -0.425, y: 0.425}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &9092664977875410525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +79,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6919329115195019262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +101,9 @@ MonoBehaviour:
   scaleOffset: 0.3
   xBounds: {x: -0.4, y: 0.4}
   zBounds: {x: -0.4, y: 0.4}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &314283228297984749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +123,9 @@ MonoBehaviour:
   scaleOffset: 0.3
   xBounds: {x: -0.4, y: 0.4}
   zBounds: {x: -0.4, y: 0.4}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &-3838723217451492062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +145,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.45, y: 0.45}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &-8064144685307353745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,33 +167,22 @@ MonoBehaviour:
   scaleOffset: 1
   xBounds: {x: -0.425, y: 0.425}
   zBounds: {x: -0.425, y: 0.425}
+  freeRotation: 1
   smallVerticalNoise: 1
---- !u!114 &8207690601935656803
-MonoBehaviour:
+  zRotation: 0
+--- !u!65 &5358283127261235226
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8207690602623526031}
+  m_GameObject: {fileID: 3231568036884727149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1082f90373affd1dd9fa22d10e2fc2d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XY00: {fileID: 8567917495039880191}
-  XY01: {fileID: 7490581356662412268}
-  XY02: {fileID: 1809332523051438900}
-  XY10: {fileID: 5565000303962534033}
-  XY11: {fileID: 5328004742458842357}
-  XY12: {fileID: 2627703081360191265}
-  XY20: {fileID: 27312436737858451}
-  XY21: {fileID: 5932642612927916091}
-  XY22: {fileID: 1273591705591920500}
-  Spring: 1000
-  Damper: 0.5
-  Shape: 0
-  ColliderSize: 0.001
-  RigidbodyMass: 1e+11
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8207690602623427119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,6 +193,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
       propertyPath: m_Name
       value: SM_Prop_PlantBox_Large_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -207,6 +215,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -217,14 +229,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -238,20 +242,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
-    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
-        type: 3}
-      propertyPath: m_RootBone
-      value: 
-      objectReference: {fileID: 3348284446182722809}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}
       propertyPath: m_Enabled
@@ -259,8 +249,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 3348284446182722809}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
       propertyPath: m_AABB.m_Center.x
       value: -0.0003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.004853178
       objectReference: {fileID: 0}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}
@@ -274,19 +274,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.0063419295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.0064334283
       objectReference: {fileID: 0}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: 0.004853178
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.y
-      value: 0.0063419295
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8209a5322a73a48478b493302003a9cd, type: 3}
 --- !u!4 &8207690602623039663 stripped
@@ -361,3 +361,29 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8207690602623427119}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8207690601935656803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207690602623526031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1082f90373affd1dd9fa22d10e2fc2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XY00: {fileID: 8567917495039880191}
+  XY01: {fileID: 7490581356662412268}
+  XY02: {fileID: 1809332523051438900}
+  XY10: {fileID: 5565000303962534033}
+  XY11: {fileID: 5328004742458842357}
+  XY12: {fileID: 2627703081360191265}
+  XY20: {fileID: 27312436737858451}
+  XY21: {fileID: 5932642612927916091}
+  XY22: {fileID: 1273591705591920500}
+  Spring: 1000
+  Damper: 0.5
+  Shape: 0
+  ColliderSize: 0.001
+  RigidbodyMass: 1e+11
