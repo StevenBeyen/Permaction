@@ -13,10 +13,17 @@ public class TerrainMenuActions : MonoBehaviour
     public GameObject homeButton;
     public GameObject volumeButton;
     public GameObject noVolumeButton;
+    public GameObject zoomInButton;
+    public GameObject zoomOutButton;
 
     public GameObject audio;
+    public Camera camera;
 
     private bool menuHandleOpen = false;
+
+    private float zoomSpeed = 2.5f;
+    private float zoomMinBound = 20f;
+    private float zoomMaxBound = 75f;
 
     private void Start()
     {
@@ -31,6 +38,12 @@ public class TerrainMenuActions : MonoBehaviour
         );
         noVolumeButton.GetComponent<Button>().onClick.AddListener(
             () => NoVolumeButtonAction()
+        );
+        zoomInButton.GetComponent<Button>().onClick.AddListener(
+            () => ZoomInButtonAction()
+        );
+        zoomOutButton.GetComponent<Button>().onClick.AddListener(
+            () => ZoomOutButtonAction()
         );
     }
 
@@ -73,6 +86,24 @@ public class TerrainMenuActions : MonoBehaviour
         audio.SetActive(false);
         volumeButton.SetActive(true);
         noVolumeButton.SetActive(false);
+    }
+
+    private void ZoomInButtonAction()
+    {
+        camera.fieldOfView -= zoomSpeed;
+        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, zoomMinBound, zoomMaxBound);
+        if (camera.fieldOfView == zoomMinBound)
+            zoomInButton.GetComponent<Button>().interactable = false;
+        zoomOutButton.GetComponent<Button>().interactable = true;
+    }
+
+    private void ZoomOutButtonAction()
+    {
+        camera.fieldOfView += zoomSpeed;
+        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, zoomMinBound, zoomMaxBound);
+        if (camera.fieldOfView == zoomMaxBound)
+            zoomOutButton.GetComponent<Button>().interactable = false;
+        zoomInButton.GetComponent<Button>().interactable = true;
     }
 
     /*

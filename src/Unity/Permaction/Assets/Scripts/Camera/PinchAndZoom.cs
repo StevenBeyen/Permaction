@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PinchAndZoom : MonoBehaviour
 {
-    float MouseZoomSpeed = 15.0f;
+    float MouseZoomSpeed = 2.5f;
     float TouchZoomSpeed = 0.1f;
     float ZoomMinBound = 20f;
     float ZoomMaxBound = 75f;
@@ -41,8 +41,7 @@ public class PinchAndZoom : MonoBehaviour
         }
         else
         {
-
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            float scroll = Input.mouseScrollDelta.y;
             Zoom(scroll, MouseZoomSpeed);
         }
 

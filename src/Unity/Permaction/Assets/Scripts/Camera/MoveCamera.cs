@@ -37,11 +37,12 @@ public class MoveCamera : MonoBehaviour
 	void Update () 
 	{	
 		// Get the left mouse button
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1))
 		{
 			// Get mouse origin
 			mouseOrigin = Input.mousePosition;
 			isPanning = true;
+			isRotating = false;
 		}
 
 		// Get the right mouse button
@@ -50,16 +51,17 @@ public class MoveCamera : MonoBehaviour
 			// Get mouse origin
 			mouseOrigin = Input.mousePosition;
 			isRotating = true;
+			isPanning = false;
 		}
 		
 		// Disable movements on button release
 		if (!Input.GetMouseButton(0))
 		{
-			isPanning=false;
+			isPanning = false;
 		}
 		if (!Input.GetMouseButton(1))
 		{
-			isRotating=false;
+			isRotating = false;
 		}
 		
 		// Move the camera on its XZ plane
