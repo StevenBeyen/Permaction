@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3448494977883211370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3448494977838158123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c2a2dadb05501baa29f15776f6960f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Root: {fileID: 2329858971072378684}
-  X0: {fileID: 3788247013158893782}
-  X1: {fileID: 7852480208069933270}
-  X2: {fileID: 7894559552633212295}
-  X3: {fileID: 8735417238556898334}
-  X4: {fileID: 2290298745209734144}
-  Y0: {fileID: 5655511824033970301}
-  Y1: {fileID: 6270961546189665928}
-  Y2: {fileID: 3098079208218913217}
-  Y3: {fileID: 5311066792994938755}
-  Y4: {fileID: 6449237308746577581}
-  Spring: 1000
-  Damper: 0.5
-  Shape: 0
-  ColliderSize: 0.004
-  RigidbodyMass: 1e+11
 --- !u!1 &7172467507332011616
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7804389162395872198}
+  - component: {fileID: 1310572487209531062}
   m_Layer: 0
   m_Name: Road_Straight_01
   m_TagString: Untagged
@@ -59,6 +32,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &1310572487209531062
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172467507332011616}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &3448494977838126987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,12 +65,36 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7767335657938525274, guid: 48e6a9b5d13f6f3439f4905ccdbf6223,
         type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7767335657938525274, guid: 48e6a9b5d13f6f3439f4905ccdbf6223,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7767335657938525274, guid: 48e6a9b5d13f6f3439f4905ccdbf6223,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7767335657938525274, guid: 48e6a9b5d13f6f3439f4905ccdbf6223,
+        type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7767335657938525274, guid: 48e6a9b5d13f6f3439f4905ccdbf6223,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
     - target: {fileID: 100000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_Gravel_Straight_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +109,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -97,14 +122,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 48e6a9b5d13f6f3439f4905ccdbf6223, type: 3}
@@ -199,3 +216,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3448494977838126987}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3448494977883211370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448494977838158123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c2a2dadb05501baa29f15776f6960f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Root: {fileID: 2329858971072378684}
+  X0: {fileID: 3788247013158893782}
+  X1: {fileID: 7852480208069933270}
+  X2: {fileID: 7894559552633212295}
+  X3: {fileID: 8735417238556898334}
+  X4: {fileID: 2290298745209734144}
+  Y0: {fileID: 5655511824033970301}
+  Y1: {fileID: 6270961546189665928}
+  Y2: {fileID: 3098079208218913217}
+  Y3: {fileID: 5311066792994938755}
+  Y4: {fileID: 6449237308746577581}
+  Spring: 1000
+  Damper: 0.5
+  Shape: 0
+  ColliderSize: 0.004
+  RigidbodyMass: 1e+11

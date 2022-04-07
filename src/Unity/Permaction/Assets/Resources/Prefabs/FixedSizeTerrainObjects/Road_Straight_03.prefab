@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1673330915938079683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673330916630732415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c2a2dadb05501baa29f15776f6960f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Root: {fileID: 1780623969107425384}
-  X0: {fileID: 896727484575397762}
-  X1: {fileID: 6060371023008380802}
-  X2: {fileID: 6155367792509551315}
-  X3: {fileID: 4744878388277607242}
-  X4: {fileID: 2822517679570078548}
-  Y0: {fileID: 8547608312607668009}
-  Y1: {fileID: 8063044488990554588}
-  Y2: {fileID: 1305420276332127893}
-  Y3: {fileID: 8167257484090740951}
-  Y4: {fileID: 7017476123394980345}
-  Spring: 1000
-  Damper: 0.5
-  Shape: 0
-  ColliderSize: 0.004
-  RigidbodyMass: 1e+11
 --- !u!1 &7191519961584558486
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6404536308350482741}
+  - component: {fileID: -7934735877199658554}
   m_Layer: 0
   m_Name: Road_Straight_03
   m_TagString: Untagged
@@ -59,6 +32,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &-7934735877199658554
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191519961584558486}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &1673330916630829279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,12 +65,36 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7059604654895320198, guid: ced09524717810e418483fca830b23b7,
         type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7059604654895320198, guid: ced09524717810e418483fca830b23b7,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7059604654895320198, guid: ced09524717810e418483fca830b23b7,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7059604654895320198, guid: ced09524717810e418483fca830b23b7,
+        type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7059604654895320198, guid: ced09524717810e418483fca830b23b7,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
     - target: {fileID: 100000, guid: ced09524717810e418483fca830b23b7, type: 3}
       propertyPath: m_Name
       value: SM_Env_Road_Gravel_Swerve_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +109,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -97,14 +122,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ced09524717810e418483fca830b23b7, type: 3}
@@ -199,3 +216,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1673330916630829279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1673330915938079683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673330916630732415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c2a2dadb05501baa29f15776f6960f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Root: {fileID: 1780623969107425384}
+  X0: {fileID: 896727484575397762}
+  X1: {fileID: 6060371023008380802}
+  X2: {fileID: 6155367792509551315}
+  X3: {fileID: 4744878388277607242}
+  X4: {fileID: 2822517679570078548}
+  Y0: {fileID: 8547608312607668009}
+  Y1: {fileID: 8063044488990554588}
+  Y2: {fileID: 1305420276332127893}
+  Y3: {fileID: 8167257484090740951}
+  Y4: {fileID: 7017476123394980345}
+  Spring: 1000
+  Damper: 0.5
+  Shape: 0
+  ColliderSize: 0.004
+  RigidbodyMass: 1e+11

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5671560608178178324}
   - component: {fileID: 5462304458411207491}
   - component: {fileID: 6579772693697288049}
+  - component: {fileID: 2444582423712250180}
   m_Layer: 0
   m_Name: Medicinal_Plants_01
   m_TagString: Untagged
@@ -206,6 +207,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!205 &2444582423712250180
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3231568036884727149}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &8207690602623427119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,6 +337,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.0064334283
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
+        type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3448281072720040978, guid: 8209a5322a73a48478b493302003a9cd,
         type: 3}

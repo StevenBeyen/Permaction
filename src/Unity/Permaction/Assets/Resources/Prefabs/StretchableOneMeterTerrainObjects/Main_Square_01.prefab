@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5922791841224795265}
   - component: {fileID: 5684584423507396451}
   - component: {fileID: 1813780989363902535}
+  - component: {fileID: -2185665801283563816}
   m_Layer: 0
   m_Name: Main_Square_01
   m_TagString: Untagged
@@ -213,6 +214,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!205 &-2185665801283563816
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256028909156064486}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &2492717502553728683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +303,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4187834345423590, guid: 07f1cb66f92cc884f811a47abb580688, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23687773866774576, guid: 07f1cb66f92cc884f811a47abb580688,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23687773866774576, guid: 07f1cb66f92cc884f811a47abb580688,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23687773866774576, guid: 07f1cb66f92cc884f811a47abb580688,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23687773866774576, guid: 07f1cb66f92cc884f811a47abb580688,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4614871094107644241}
   - component: {fileID: 340768778487873296}
   - component: {fileID: 6235516942218807349}
+  - component: {fileID: -7561044026157343392}
   m_Layer: 0
   m_Name: Flower_Meadow_01
   m_TagString: Untagged
@@ -236,6 +237,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!205 &-7561044026157343392
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136385614780368550}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &5506631497025405496
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3831914135318538750}
   - component: {fileID: 4135938508261403394}
   - component: {fileID: 8816382456438439669}
+  - component: {fileID: 5433932580325238020}
   m_Layer: 0
   m_Name: Hedge_01
   m_TagString: Untagged
@@ -66,7 +67,9 @@ MonoBehaviour:
   scaleOffset: 0.75
   xBounds: {x: -0.35, y: 0.35}
   zBounds: {x: -1.35, y: 1.35}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4135938508261403394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +89,9 @@ MonoBehaviour:
   scaleOffset: 0.75
   xBounds: {x: -0.35, y: 0.35}
   zBounds: {x: -1.35, y: 1.35}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &8816382456438439669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,4 +111,30 @@ MonoBehaviour:
   scaleOffset: 0.75
   xBounds: {x: -0.35, y: 0.35}
   zBounds: {x: -1.35, y: 1.35}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
+--- !u!205 &5433932580325238020
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418770165613278582}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092708491409015283}
   - component: {fileID: 8914886332326998425}
+  - component: {fileID: 4508413316293787192}
   m_Layer: 0
   m_Name: Henhouse_01
   m_TagString: Untagged
@@ -46,6 +47,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!205 &4508413316293787192
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859754339927206224}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &4741382600193461697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,6 +137,26 @@ PrefabInstance:
     - target: {fileID: 4284009731098648, guid: 52e093bb864612f4c98975d0e2a0c302, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.184
+      objectReference: {fileID: 0}
+    - target: {fileID: 23682897137274704, guid: 52e093bb864612f4c98975d0e2a0c302,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23682897137274704, guid: 52e093bb864612f4c98975d0e2a0c302,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23682897137274704, guid: 52e093bb864612f4c98975d0e2a0c302,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23682897137274704, guid: 52e093bb864612f4c98975d0e2a0c302,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52e093bb864612f4c98975d0e2a0c302, type: 3}
@@ -187,6 +232,26 @@ PrefabInstance:
     - target: {fileID: 4691361886534474, guid: 0e28755527b4f184bb5912a593aad860, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.184
+      objectReference: {fileID: 0}
+    - target: {fileID: 23876411289502976, guid: 0e28755527b4f184bb5912a593aad860,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23876411289502976, guid: 0e28755527b4f184bb5912a593aad860,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23876411289502976, guid: 0e28755527b4f184bb5912a593aad860,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23876411289502976, guid: 0e28755527b4f184bb5912a593aad860,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e28755527b4f184bb5912a593aad860, type: 3}

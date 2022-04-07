@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 1464133563982511333}
   - component: {fileID: 281857160441260798}
   - component: {fileID: 4163858204333040450}
+  - component: {fileID: -7885283838475287943}
   m_Layer: 0
   m_Name: Orchard_01
   m_TagString: Untagged
@@ -534,3 +535,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!205 &-7885283838475287943
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154105313593930101}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1

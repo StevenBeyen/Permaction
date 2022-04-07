@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2523541090706089331}
   - component: {fileID: 6868324603596497748}
   - component: {fileID: 5852007371813240842}
+  - component: {fileID: 6551734466114555643}
   m_Layer: 0
   m_Name: Phytopurification_01
   m_TagString: Untagged
@@ -171,6 +172,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!205 &6551734466114555643
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037117734944409550}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &515182292585860041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +261,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571616329875302, guid: 99b63ef4e69fac741a5ca3698dc602da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -313,6 +358,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99b63ef4e69fac741a5ca3698dc602da, type: 3}
 --- !u!4 &4045383628613218539 stripped
@@ -388,6 +453,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99b63ef4e69fac741a5ca3698dc602da, type: 3}
 --- !u!4 &6041599826822257575 stripped
@@ -461,6 +546,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571616329875302, guid: 99b63ef4e69fac741a5ca3698dc602da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23869462068862642, guid: 99b63ef4e69fac741a5ca3698dc602da,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -540,6 +645,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4286729230084488, guid: 5cbd5cdc2d2636d4d8aba89f256a10c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23266158495632070, guid: 5cbd5cdc2d2636d4d8aba89f256a10c2,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23266158495632070, guid: 5cbd5cdc2d2636d4d8aba89f256a10c2,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23266158495632070, guid: 5cbd5cdc2d2636d4d8aba89f256a10c2,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23266158495632070, guid: 5cbd5cdc2d2636d4d8aba89f256a10c2,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

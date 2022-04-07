@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 4125149584583350559}
   - component: {fileID: 5200509453122769801}
   - component: {fileID: 6855754859600028149}
+  - component: {fileID: -4722947277492337829}
   m_Layer: 0
   m_Name: Vegetable_Garden_01
   m_TagString: Untagged
@@ -82,7 +83,9 @@ MonoBehaviour:
   scaleOffset: 0.9
   xBounds: {x: -0.05, y: 0.05}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &7216882448084193478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +105,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &3398519528540955639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +127,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &2379287662573554543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +149,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4756935583842525493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +171,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &5901300472276654390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +193,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6820785550824565978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +215,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1238746225961061500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +237,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &660164110155583970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +259,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1282307467711138274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +281,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6569667934069918833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +303,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4093903765167818961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +325,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4025438452642761670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +347,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4512652038451683711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +369,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &1886226640921375273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +391,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6619460076924463815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +413,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &4125149584583350559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +435,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &5200509453122769801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +457,9 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
 --- !u!114 &6855754859600028149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,4 +479,30 @@ MonoBehaviour:
   scaleOffset: 0.5
   xBounds: {x: -0.1, y: 0.1}
   zBounds: {x: -0.45, y: 0.45}
+  freeRotation: 1
   smallVerticalNoise: 1
+  zRotation: 0
+--- !u!205 &-4722947277492337829
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880841273656432746}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
