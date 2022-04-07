@@ -26,7 +26,7 @@ mergeInto(LibraryManager.library, {
 	    var buffer = _malloc(length);
 	    stringToUTF8(cookies, buffer, length);
 	    return buffer;
-    },
+    },*/
 
     getCookie : function(nameArg)
     {
@@ -55,7 +55,7 @@ mergeInto(LibraryManager.library, {
 	    var buffer = _malloc(length);
 	    stringToUTF8(setStr, buffer, length);
 	    return buffer;
-    },*/
+    },
     
 });
 
