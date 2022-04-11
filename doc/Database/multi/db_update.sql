@@ -305,3 +305,8 @@ update binary_interaction set description = 'La forêt nourricière sert de gard
 update category set name = 'Bâtiments' where id = 9;
 update element set name = 'Bâtiments' where id = 45;
 
+
+
+update binary_interaction set description = 'The chickens can kill the pests of the vegetable garden.' where id = 48;
+update binary_interaction set description = 'Les poules peuvent éliminer les ravageurs du potager.' where id = 154;
+
