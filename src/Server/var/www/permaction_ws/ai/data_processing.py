@@ -132,9 +132,9 @@ class Preprocessing:
         for i in range(len(self.terrain_data)):
             for j in range(len(self.terrain_data[i])):
                 terrain_ij = self.terrain_data[i][j]
-                if (terrain_ij <= terrain_low_limit):
+                if (terrain_ij < terrain_low_limit):
                     terrain_low_coordinates.append((i,j))
-                elif (terrain_ij <= terrain_midheight_limit):
+                elif (terrain_ij < terrain_midheight_limit):
                     terrain_midheight_coordinates.append((i,j))
                 else: # Heights
                     terrain_heights_coordinates.append((i,j))
