@@ -304,12 +304,12 @@ class ZoneElement(FixedElement):
         if (isinstance(element, ZoneElement)):
             return 0
         else: # Default : we check if the physical element's coordinates are inside the zone's coordinates
-            (element_min_x, element_min_y, element_max_x, element_max_y) = element.get_minmax_coordinates()
             element_coordinates = []
-            for x in range(element_min_x, element_max_x + 1):
-                for y in range(element_min_y, element_max_y + 1):
-                    element_coordinates.append((x,y))
-            return (len(set(element_coordinates).intersection(self.get_zone_coordinates())) / element.size) * fitness
+            corners = element.get_corners()
+            for i in range (corners[0][0], corners[-1][0] + 1):
+                for j in range (corners[0][1], corners[-1][1] + 1):
+                    element_coordinates.append((i,j))
+            return (len(set(element_coordinates).intersection(self.get_zone_coordinates())) / len(element_coordinates)) * fitness
     
     def get_zone_coordinates(self):
         return self.coordinates
