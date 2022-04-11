@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 6350426368580503657, guid: fc45f72a009fd3e959a1962310d9a7c1, type: 3}
+  element: {fileID: 2382482181070227159, guid: fc45f72a009fd3e959a1962310d9a7c1, type: 3}
   unique: 0
   elementsPerSquareMeter: 0.8
   scaleRange: 0.75
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 93982639942483221, guid: d6b6bf44b0f6f75338668bf40e862e78, type: 3}
+  element: {fileID: 3263188204113297838, guid: d6b6bf44b0f6f75338668bf40e862e78, type: 3}
   unique: 0
   elementsPerSquareMeter: 0.8
   scaleRange: 0.75
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 167286055118327315, guid: 27bddd81558e416daa0041a50a6c52ec, type: 3}
+  element: {fileID: 1268588098671031137, guid: 27bddd81558e416daa0041a50a6c52ec, type: 3}
   unique: 0
   elementsPerSquareMeter: 0.8
   scaleRange: 0.75
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba303a4cfe0e095ebb50b2b1fca74959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: {fileID: 7031074919894435179, guid: d5295d8325382f9469dcf13b35d0fe35, type: 3}
+  element: {fileID: 7694283811576740153, guid: d5295d8325382f9469dcf13b35d0fe35, type: 3}
   unique: 0
   elementsPerSquareMeter: 0.8
   scaleRange: 0.75
@@ -205,7 +205,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0, z: 1}
+  m_Size: {x: 1, y: 0.08, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!205 &2444582423712250180
 LODGroup:

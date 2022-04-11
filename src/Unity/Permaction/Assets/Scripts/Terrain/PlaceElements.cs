@@ -169,7 +169,15 @@ public class PlaceElements : MonoBehaviour
         // Box collider on container
         if (element.show_interactions)
         {
-            MeshRenderer renderer = instantiatedGO.GetComponentInChildren<MeshRenderer>();
+            MeshRenderer renderer = instantiatedGO.GetComponent<MeshRenderer>();
+            int childCount, index;
+            childCount = instantiatedGO.transform.childCount;
+            index = 0;
+            while (renderer == null && index < childCount)
+            {
+                renderer = instantiatedGO.transform.GetChild(index).gameObject.GetComponent<MeshRenderer>();
+                index += 1;
+            }
             if (renderer != null)
             {
                 boxCollider.center = renderer.bounds.center;

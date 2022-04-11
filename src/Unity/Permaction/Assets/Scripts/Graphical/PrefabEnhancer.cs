@@ -26,8 +26,20 @@ public class PrefabEnhancer : MonoBehaviour
     {
         GetParentData();
         RenderElements();
-        /*if (nb_elements > 1)
-            CombineMesh();*/
+        if (parentGO != null && nb_elements > 1)
+        {
+            try
+            {
+                Mesh mesh = parentGO.transform.GetComponent<MeshFilter>().mesh;
+                MeshRenderer meshRenderer = element.transform.GetComponent<MeshRenderer>();
+                if (meshRenderer.sharedMaterials.Length == 1)
+                    CombineMesh();
+            }
+            catch (MissingComponentException)
+            {
+                // If parent GO doesn't have a mesh filter, we simply don't combine them.
+            }
+        }
     }
 
     private void GetParentData()
@@ -66,7 +78,7 @@ public class PrefabEnhancer : MonoBehaviour
             x_pos = (float) (parentPosition.x + (effectiveXBounds[0] + Random.Range(0f, 1f) * (effectiveXBounds[1] - effectiveXBounds[0])));
             z_pos = (float) (parentPosition.z + (effectiveZBounds[0] + Random.Range(0f, 1f) * (effectiveZBounds[1] - effectiveZBounds[0])));
             position = new Vector3(x_pos, parentPosition.y, z_pos);
-            position.y = UserData.meta_data.terrain.SampleHeight(position) + yCorrection;
+            position.y = element.transform.position.y + UserData.meta_data.terrain.SampleHeight(position) + yCorrection;
             parentGO = Instantiate(element, position, Quaternion.identity);
             parentGO.transform.localScale = new Vector3(scale, scale, scale);
             if (freeRotation)
@@ -86,7 +98,7 @@ public class PrefabEnhancer : MonoBehaviour
             x_pos = (float) (parentPosition.x + (effectiveXBounds[0] + Random.Range(0f, 1f) * (effectiveXBounds[1] - effectiveXBounds[0])));
             z_pos = (float) (parentPosition.z + (effectiveZBounds[0] + Random.Range(0f, 1f) * (effectiveZBounds[1] - effectiveZBounds[0])));
             position = new Vector3(x_pos, parentPosition.y, z_pos);
-            position.y = UserData.meta_data.terrain.SampleHeight(position) + yCorrection;
+            position.y = element.transform.position.y + UserData.meta_data.terrain.SampleHeight(position) + yCorrection;
             GameObject instantiatedElement = Instantiate(element, position, Quaternion.identity);
             instantiatedElement.transform.localScale = new Vector3(scale, scale, scale);
             if (freeRotation)
@@ -120,6 +132,7 @@ public class PrefabEnhancer : MonoBehaviour
         parentGO.transform.GetComponent<MeshFilter>().mesh = new Mesh();
         parentGO.transform.GetComponent<MeshFilter>().mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
         parentGO.transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        parentGO.transform.GetComponent<MeshRenderer>().enabled = true;
         parentGO.transform.gameObject.SetActive(true);
     }
 }

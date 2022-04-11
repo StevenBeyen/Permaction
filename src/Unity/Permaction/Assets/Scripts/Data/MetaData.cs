@@ -86,8 +86,8 @@ public class MetaData
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_A1_6.5m_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_B1_9m_01");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "LPW_Tree_B1_9m_02");
-        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Birch_Tree_05");
-        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Birch_Tree_06");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Birch_Tree_05b");
+        prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Birch_Tree_06b");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Tree_02");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "PP_Tree_10");
         prefab_trees.Add(FIXED_SIZE_TERRAIN_OBJECTS + "SM_Env_Tree_Apple_01");
