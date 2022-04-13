@@ -1,0 +1,10 @@
+Chers amis et autres connaissances,
+Vus hier ou perdus de vue depuis trop longtemps,
+
+C'est avec une profonde fierté, et un immense plaisir, que je vous annonce la publication de la version prototype de mon projet d'aide au design de terrains en permaculture !
+Si le coeur vous en dit, allez y faire un tour et laissez votre avis via le petit formulaire. La récolte d'avis est pour moi la partie la plus importante, car elle me permettra de savoir quelle direction prendre pour la suite du développement !
+Le site est utilisable sur mobile, mais son utilisation est plus agréable sur un ordinateur.
+
+Merci d'avance pour vos retours, et prenez bien soin de vous.
+
+https://www.permaction.com
