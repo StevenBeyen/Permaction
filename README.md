@@ -69,9 +69,9 @@ Le serveur est composé d'une API REST écrite en Python qui régule l'accès (a
 
 Afin de fournir des résultats graphiques de qualité, l'interface a été créée avec Unity. Les projets Unity peuvent également être exportés comme sites web ou applications mobiles, ce qui permet de concentrer les efforts sur la réalisation d'une seule interface utilisateur.
 
-### Objectifs actuels et prototype
+### Version prototype
 
-La version de démonstration (prototype) a été publiée ! Cette version fournit un terrain préconstruit et limite la sélection à dix éléments, l'objectif principal étant de montrer le potentiel du projet ainsi que l'interface graphique attractive.
+La version prototype du projet a été publiée ! Cette version fournit un terrain fictif et limite la sélection à dix éléments, l'objectif principal étant de montrer le potentiel du projet ainsi que l'interface graphique attractive.
 
 ### Suggestions ouvertes
 
