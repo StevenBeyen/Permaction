@@ -46,7 +46,7 @@ The public version of the project would then add the remaining features in order
 - allowing selection of multiple instances of the same element ;
 - relevant suggestions made on the demo version.
 
-Any contribution or suggestion is very welcome and will be appreciated!
+*Any contribution or suggestion is very welcome and will be appreciated!*
 
 ## *Version française*
 
@@ -92,4 +92,4 @@ La version publique du projet ajouterait les fonctionnalités restantes afin de 
 - la possibilité de sélectionner plusieurs instances du même élément ;
 - les suggestions pertinentes faites sur la version prototype.
 
-Toute contribution ou suggestion est la bienvenue et sera appréciée !
+*Toute contribution ou suggestion est la bienvenue et sera appréciée !*
