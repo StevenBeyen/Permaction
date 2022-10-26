@@ -7,7 +7,7 @@ using API;
 public class MetaData
 {
     // Server
-    public const string API_URI = "https://stevenbeyen.com:13731"; // Web service server host
+    public const string API_URI = "https://stevenbeyen.com:8080"; // Web service server host
     public const string BINARY_INTERACTIONS_URI = API_URI + "/binary_interactions";
     public const string USER_LOGIN_URI = API_URI + "/login";
     public const string PHYSICAL_ELEMENTS_URI = API_URI + "/physical_elements";

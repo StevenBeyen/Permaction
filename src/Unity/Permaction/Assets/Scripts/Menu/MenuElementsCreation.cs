@@ -92,7 +92,7 @@ namespace Menu {
         private IEnumerator GetBinaryInteractions()
         {
             BinaryInteractions binary_interactions = new BinaryInteractions();
-            yield return StartCoroutine(binary_interactions.GetWebRequest(MetaData.BINARY_INTERACTIONS_URI, binary_interactions.BinaryInteractionsCallback, UserData.user.cookie));
+            yield return StartCoroutine(binary_interactions.GetWebRequest(MetaData.BINARY_INTERACTIONS_URI, binary_interactions.BinaryInteractionsCallback, UserData.user.cookie, MenuActions.showNetworkErrorPanel));
             UserData.binary_interactions = binary_interactions;
         }
 
@@ -137,7 +137,7 @@ namespace Menu {
 
             // Getting all physical elements
             menu_elements = new PhysicalElements();
-            yield return StartCoroutine(menu_elements.GetWebRequest(MetaData.PHYSICAL_ELEMENTS_URI, menu_elements.PhysicalElementsCallback, UserData.user.cookie));
+            yield return StartCoroutine(menu_elements.GetWebRequest(MetaData.PHYSICAL_ELEMENTS_URI, menu_elements.PhysicalElementsCallback, UserData.user.cookie, MenuActions.showNetworkErrorPanel));
             // Let's store some data for the end visual result
             UserData.meta_data.ExtractData(menu_elements.physical_elements);
 

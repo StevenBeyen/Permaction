@@ -8,15 +8,16 @@ namespace API {
 
     public class API
     {   
-        public IEnumerator GetWebRequest(string url, Action<UnityWebRequest> callback = null, string cookie = null)
+        public IEnumerator GetWebRequest(string url, Action<UnityWebRequest> callback = null, string cookie = null, Action<UnityWebRequest> errorCallback = null)
         {
             UnityWebRequest webRequest = UnityWebRequest.Get(url);
+            webRequest.timeout = 3;
             if  (cookie != null)
                 webRequest.SetRequestHeader("Cookie", cookie);
             yield return webRequest.SendWebRequest();
 
-            if (webRequest.isNetworkError)
-                Debug.LogError(webRequest.error);
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError && errorCallback != null)
+                errorCallback(webRequest);
             else if (callback != null)
                 callback(webRequest);
         }

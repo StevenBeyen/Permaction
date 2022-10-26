@@ -38,6 +38,8 @@ public class MenuActions : MonoBehaviour
     public GameObject loadingTipsTitleEN;
     public GameObject loadingTipsTitleFR;
     public GameObject loadingTips;
+    public GameObject networkErrorPanelEN;
+    public GameObject networkErrorPanelFR;
 
     private int id_locale = -1;
     private bool activeMainTitle;
@@ -49,9 +51,13 @@ public class MenuActions : MonoBehaviour
     private GameObject categoriesTitle;
     private GameObject renderButton;
     private GameObject loadingTipsTitle;
+    private static GameObject networkErrorPanel;
+
+    private static MonoBehaviour instance;
 
     private void Start()
     {
+        instance = this;
         // Language selection buttons
         languageButtonEN.GetComponent<Button>().onClick.AddListener(
             () => StartCoroutine(languageButtonENAction())
@@ -91,6 +97,7 @@ public class MenuActions : MonoBehaviour
             categoriesTitle = categoriesTitleEN;
             renderButton = renderButtonEN;
             loadingTipsTitle = loadingTipsTitleEN;
+            networkErrorPanel = networkErrorPanelEN;
         } else if (id_locale == UserData.meta_data.id_locale_mapping["fr"]) // French
         {
             infoPanel = infoPanelFR;
@@ -101,6 +108,7 @@ public class MenuActions : MonoBehaviour
             categoriesTitle = categoriesTitleFR;
             renderButton = renderButtonFR;
             loadingTipsTitle = loadingTipsTitleFR;
+            networkErrorPanel = networkErrorPanelFR;
         } else // ERROR
         {
             Debug.Log("[Menu Actions] No ID locale?");
@@ -334,5 +342,10 @@ public class MenuActions : MonoBehaviour
             yield return null;
         }
         gameObject.SetActive(false);
+    }
+
+    public static void showNetworkErrorPanel(UnityWebRequest webRequest)
+    {
+        instance.StartCoroutine(FadeIn(networkErrorPanel));
     }
 }
