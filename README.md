@@ -27,12 +27,20 @@ In order to provide quality visual results, Unity has been chosen to create the 
 
 The demo version has been released! This version provides a prebuilt piece of land and limits selection to a maximum of ten elements, the main goal being to show future capabilities of the project as well as the appealing visual results.
 
+### Next development steps
+
+In order to enhance user experience, here are the next development steps for the project :
+- adding a background light for selected elements ;
+- adding a name/description when mouse hovers an icon (computer version) ;
+- adding an information pop-up when arriving on 3D results page ;
+- enhancing 3D interaction descriptions display ;
+- adding a progression bar when generating result.
+
 ### Open suggestions
 
 Here is a list of the suggestions that have been made and that are yet to be discussed or thought before being included to the project:
 - generation of roads and paths ;
 - possibility to move 3D elements with dynamic update of fitness score ;
-- extraction of detailed plans (topography, distances, ...) ;
 - selection of interaction priorities between elements, in an advanced user mode ;
 - possibility to parameter permaculture sectors (hot/cold winds, fire risk, undesirable view, ...) during land selection on map ;
 - adding temporal maintenance notion in order to follow land evolution and attention points.
@@ -43,6 +51,7 @@ The public version of the project would then add the remaining features in order
 - user account management ;
 - selection of the land on a map as well as its digitalisation ;
 - placement of fixed elements on the land ;
+- extraction of detailed plans (topography, distances, ...) ;
 - allowing selection of multiple instances of the same element ;
 - relevant suggestions made on the demo version.
 
@@ -73,23 +82,31 @@ Afin de fournir des résultats graphiques de qualité, l'interface a été cré�
 
 La version prototype du projet a été publiée ! Cette version fournit un terrain fictif et limite la sélection à dix éléments, l'objectif principal étant de montrer le potentiel du projet ainsi que l'interface graphique attractive.
 
+### Prochaines étapes de développement
+
+Afin de rendre l'expérience utilisateur plus agréable, voici les prochaines priorités de développement pour le projet :
+- ajout d'un halo lumineux autour des éléments sélectionnés ;
+- affichage d'un nom/descriptif au passage de la souris sur une icône (version ordinateur) ;
+- affichage d'un panneau d'informations lors du passage en vue résultat 3D ;
+- rendre les descriptions d'interactions plus lisibles ;
+- ajout d'une barre de progression du calcul.
+
 ### Suggestions ouvertes
 
 Voici une liste des suggestions qui ont actuellement été faites et qui doivent encore être discutées avant d'être incluses au projet:
 - la génération des routes et chemins ;
 - la possibilité de déplacer les éléments 3D avec mise à jour dynamique du score de placement ;
-- l'extraction de plans/schémas détaillés (coupes de terrain, distances, ...) ;
 - la sélection de priorités d'interaction entre les éléments, dans un mode d'utilisation avancé ;
 - la possibilité de paramétrer les différents secteurs (vents chauds/froids, risque d'incendie, vue indésirable, ...) lors de la sélection du terrain ;
 - l'ajout d'une notion de maintenance temporelle afin de suivre l'évolution du terrain et les points d'attention.
 
-### Version définitive
+### Version publique
 
-La version publique du projet ajouterait les fonctionnalités restantes afin de fournir l'expérience utilisateur complète telle que décrite dans l'introduction:
+La version publique du projet ajoutera les fonctionnalités restantes afin de fournir l'expérience utilisateur complète telle que décrite dans l'introduction:
 - la gestion des comptes utilisateur ;
 - la sélection du terrain sur une carte ainsi que sa digitalisation ;
 - le placement des éléments fixes sur le terrain ;
-- la possibilité de sélectionner plusieurs instances du même élément ;
-- les suggestions pertinentes faites sur la version prototype.
+- l'extraction de plans/schémas détaillés (coupes de terrain, distances, ...) ;
+- la possibilité de sélectionner plusieurs instances du même élément.
 
 *Toute contribution ou suggestion est la bienvenue et sera appréciée !*
