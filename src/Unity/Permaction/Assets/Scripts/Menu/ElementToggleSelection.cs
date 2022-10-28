@@ -10,7 +10,9 @@ namespace Menu
         public Toggle toggle;
         
         private List<Image> checkmarkImages = new List<Image>();
+        private List<Image> backgroundImages = new List<Image>();
         private string[] checkmarkImageNames = new string[] {"Checkmark"};
+        private string[] backgroundImageNames = new string[] {"Background"};
         //private string[] checkmarkImageNames = new string[] {"CheckmarkUpperLeft", "CheckmarkUpperRight", "CheckmarkLowerLeft", "CheckmarkLowerRight"};
 
         // Start is called before the first frame update
@@ -19,9 +21,9 @@ namespace Menu
             toggle = GetComponent<Toggle>();
             // First we get the Images that need to be (un)selected on toggle.
             foreach (string checkmarkImageName in checkmarkImageNames)
-            {
                 checkmarkImages.Add(GetChildComponentByName<Image>(checkmarkImageName));
-            }
+            foreach (string backgroundImageName in backgroundImageNames)
+                backgroundImages.Add(GetChildComponentByName<Image>(backgroundImageName));
             // Now we can add the listener
             toggle.onValueChanged.AddListener(
                 (value) => toggleSelection(toggle.isOn)
@@ -49,9 +51,9 @@ namespace Menu
         private void toggleSelection(bool value)
         {
             foreach (Image checkmarkImage in checkmarkImages)
-            {
                 checkmarkImage.gameObject.SetActive(value);
-            }
+            foreach (Image backgroundImage in backgroundImages)
+                backgroundImage.gameObject.GetComponent<Image>().enabled = !value;
         }
     }
 }

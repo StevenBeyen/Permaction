@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 8912320}
   - component: {fileID: 8912319}
   - component: {fileID: 8912318}
+  - component: {fileID: 8912322}
   m_Layer: 5
   m_Name: RenderButtonFR
   m_TagString: Untagged
@@ -334,6 +335,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8912316}
   m_CullTransparentMesh: 0
+--- !u!114 &8912322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &14181452
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +683,7 @@ GameObject:
   - component: {fileID: 30673164}
   - component: {fileID: 30673163}
   - component: {fileID: 30673162}
+  - component: {fileID: 30673166}
   m_Layer: 5
   m_Name: LanguageFR
   m_TagString: Untagged
@@ -785,6 +804,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30673160}
   m_CullTransparentMesh: 0
+--- !u!114 &30673166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30673160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &37704082
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +912,7 @@ GameObject:
   - component: {fileID: 42642183}
   - component: {fileID: 42642182}
   - component: {fileID: 42642181}
+  - component: {fileID: 42642187}
   m_Layer: 5
   m_Name: CategoriesTitleFR
   m_TagString: Untagged
@@ -1000,6 +1037,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42642179}
   m_CullTransparentMesh: 0
+--- !u!114 &42642187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42642179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &65979320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +2042,7 @@ GameObject:
   - component: {fileID: 238068015}
   - component: {fileID: 238068014}
   - component: {fileID: 238068013}
+  - component: {fileID: 238068017}
   m_Layer: 5
   m_Name: PatreonButton
   m_TagString: Untagged
@@ -2122,6 +2177,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238068011}
   m_CullTransparentMesh: 0
+--- !u!114 &238068017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238068011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &243009660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,6 +2207,7 @@ GameObject:
   - component: {fileID: 243009664}
   - component: {fileID: 243009663}
   - component: {fileID: 243009662}
+  - component: {fileID: 243009666}
   m_Layer: 5
   m_Name: GitHubButton
   m_TagString: Untagged
@@ -2269,6 +2342,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243009660}
   m_CullTransparentMesh: 0
+--- !u!114 &243009666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243009660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &249384857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,6 +2511,7 @@ GameObject:
   - component: {fileID: 276021532}
   - component: {fileID: 276021531}
   - component: {fileID: 276021530}
+  - component: {fileID: 276021534}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -2542,6 +2633,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276021528}
   m_CullTransparentMesh: 0
+--- !u!114 &276021534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276021528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &276978987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3403,7 @@ GameObject:
   - component: {fileID: 332343551}
   - component: {fileID: 332343550}
   - component: {fileID: 332343549}
+  - component: {fileID: 332343553}
   m_Layer: 5
   m_Name: InfoButton
   m_TagString: Untagged
@@ -3416,6 +3525,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332343547}
   m_CullTransparentMesh: 0
+--- !u!114 &332343553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332343547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &344236042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3850,6 +3976,7 @@ GameObject:
   - component: {fileID: 388587926}
   - component: {fileID: 388587925}
   - component: {fileID: 388587924}
+  - component: {fileID: 388587923}
   m_Layer: 5
   m_Name: PatreonButton
   m_TagString: Untagged
@@ -3876,6 +4003,23 @@ RectTransform:
   m_AnchoredPosition: {x: -276, y: 817}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &388587923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388587921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!225 &388587924
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5214,6 +5358,7 @@ GameObject:
   - component: {fileID: 568435758}
   - component: {fileID: 568435757}
   - component: {fileID: 568435756}
+  - component: {fileID: 568435755}
   m_Layer: 5
   m_Name: GitHubButton
   m_TagString: Untagged
@@ -5240,6 +5385,23 @@ RectTransform:
   m_AnchoredPosition: {x: -148, y: 892}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &568435755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568435753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!225 &568435756
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5442,6 +5604,7 @@ GameObject:
   - component: {fileID: 591463281}
   - component: {fileID: 591463280}
   - component: {fileID: 591463279}
+  - component: {fileID: 591463283}
   m_Layer: 5
   m_Name: InfoPanelClose
   m_TagString: Untagged
@@ -5564,6 +5727,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591463277}
   m_CullTransparentMesh: 0
+--- !u!114 &591463283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591463277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &598884484
 GameObject:
   m_ObjectHideFlags: 0
@@ -7490,6 +7670,7 @@ GameObject:
   - component: {fileID: 886364975}
   - component: {fileID: 886364974}
   - component: {fileID: 886364973}
+  - component: {fileID: 886364977}
   m_Layer: 5
   m_Name: RenderButtonEN
   m_TagString: Untagged
@@ -7612,6 +7793,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886364971}
   m_CullTransparentMesh: 0
+--- !u!114 &886364977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886364971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &905464469
 GameObject:
   m_ObjectHideFlags: 0
@@ -7625,6 +7823,7 @@ GameObject:
   - component: {fileID: 905464473}
   - component: {fileID: 905464472}
   - component: {fileID: 905464471}
+  - component: {fileID: 905464475}
   m_Layer: 5
   m_Name: OpinionButtonFR
   m_TagString: Untagged
@@ -7759,6 +7958,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905464469}
   m_CullTransparentMesh: 0
+--- !u!114 &905464475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905464469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &910283585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8754,6 +8970,7 @@ GameObject:
   - component: {fileID: 1117830112}
   - component: {fileID: 1117830111}
   - component: {fileID: 1117830110}
+  - component: {fileID: 1117830109}
   m_Layer: 5
   m_Name: FreepikButton
   m_TagString: Untagged
@@ -8780,6 +8997,23 @@ RectTransform:
   m_AnchoredPosition: {x: -266, y: 531}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1117830109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117830107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!225 &1117830110
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9224,6 +9458,7 @@ GameObject:
   - component: {fileID: 1144694344}
   - component: {fileID: 1144694343}
   - component: {fileID: 1144694348}
+  - component: {fileID: 1144694349}
   m_Layer: 5
   m_Name: CategoriesTitleEN
   m_TagString: Untagged
@@ -9348,6 +9583,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1144694349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144694341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1149125515
 GameObject:
   m_ObjectHideFlags: 0
@@ -9589,6 +9841,7 @@ GameObject:
   - component: {fileID: 1169299513}
   - component: {fileID: 1169299512}
   - component: {fileID: 1169299515}
+  - component: {fileID: 1169299516}
   m_Layer: 5
   m_Name: CategoriesBackButtonEN
   m_TagString: Untagged
@@ -9710,6 +9963,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1169299516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169299510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1177941537
 GameObject:
   m_ObjectHideFlags: 0
@@ -10758,6 +11028,7 @@ GameObject:
   - component: {fileID: 1297689237}
   - component: {fileID: 1297689236}
   - component: {fileID: 1297689235}
+  - component: {fileID: 1297689239}
   m_Layer: 5
   m_Name: LanguageEN
   m_TagString: Untagged
@@ -10878,6 +11149,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297689233}
   m_CullTransparentMesh: 0
+--- !u!114 &1297689239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297689233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1308850235
 GameObject:
   m_ObjectHideFlags: 0
@@ -11135,6 +11423,7 @@ GameObject:
   - component: {fileID: 1328171010}
   - component: {fileID: 1328171009}
   - component: {fileID: 1328171012}
+  - component: {fileID: 1328171013}
   m_Layer: 5
   m_Name: OpinionButtonEN
   m_TagString: Untagged
@@ -11269,6 +11558,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1328171013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328171007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1331926997
 GameObject:
   m_ObjectHideFlags: 0
@@ -12563,6 +12869,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467314766}
   m_CullTransparentMesh: 0
+--- !u!1 &1492966872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7068460717574215842, guid: 02c784b581cb402ada4f190917be66e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7068460717643720847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492966873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492966872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1498617238
 GameObject:
   m_ObjectHideFlags: 0
@@ -12730,6 +13059,7 @@ GameObject:
   - component: {fileID: 1506003382}
   - component: {fileID: 1506003383}
   - component: {fileID: 1506003384}
+  - component: {fileID: 1506003385}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12912,6 +13242,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee54273381cb1ff78b7386be5bbde8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1506003385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506003377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1508086276
 GameObject:
   m_ObjectHideFlags: 0
@@ -13505,6 +13852,7 @@ GameObject:
   - component: {fileID: 1557144817}
   - component: {fileID: 1557144816}
   - component: {fileID: 1557144819}
+  - component: {fileID: 1557144820}
   m_Layer: 5
   m_Name: PlayButtonEN
   m_TagString: Untagged
@@ -13627,6 +13975,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1557144820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557144814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1569604623
 GameObject:
   m_ObjectHideFlags: 0
@@ -14241,6 +14606,7 @@ GameObject:
   - component: {fileID: 1657524682}
   - component: {fileID: 1657524681}
   - component: {fileID: 1657524680}
+  - component: {fileID: 1657524684}
   m_Layer: 5
   m_Name: PlayButtonFR
   m_TagString: Untagged
@@ -14363,6 +14729,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657524678}
   m_CullTransparentMesh: 0
+--- !u!114 &1657524684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657524678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1679098365
 GameObject:
   m_ObjectHideFlags: 0
@@ -15835,6 +16218,7 @@ GameObject:
   - component: {fileID: 2020379227}
   - component: {fileID: 2020379226}
   - component: {fileID: 2020379225}
+  - component: {fileID: 2020379224}
   m_Layer: 5
   m_Name: UpklyakButton
   m_TagString: Untagged
@@ -15861,6 +16245,23 @@ RectTransform:
   m_AnchoredPosition: {x: -684.7, y: 379}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2020379224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020379222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8bf442cbdd139468a8e1e4a1297bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 8d32d1ba0dd45cf46a8e0670f54c9f63, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: c52f390ca0874dfe89d2ddbd78a8a9c9,
+    type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!225 &2020379225
 CanvasGroup:
   m_ObjectHideFlags: 0

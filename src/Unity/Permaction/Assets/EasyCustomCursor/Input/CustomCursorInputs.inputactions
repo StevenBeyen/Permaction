@@ -1,0 +1,102 @@
+{
+    "name": "CustomCursorInputs",
+    "maps": [
+        {
+            "name": "CustomCursor",
+            "id": "a980fff6-23f8-40c3-8c04-d287cd85c454",
+            "actions": [
+                {
+                    "name": "LeftClicking",
+                    "type": "Button",
+                    "id": "56bcdab5-0a66-426d-9be4-76c3e5f5196a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightClicking",
+                    "type": "Button",
+                    "id": "cdc4ac72-903a-4410-a7f7-7725b2444f20",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ScrollClicking",
+                    "type": "Button",
+                    "id": "e9964703-a3e1-47cc-bb70-01b280735325",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scrolling",
+                    "type": "Value",
+                    "id": "4991527a-3a69-4dc6-8f3f-a9b19a9b005b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e97148ee-fde6-47bd-97c4-2787d1753c93",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "LeftClicking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fcc3086-c006-4be2-b0f2-8e3284332b71",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "RightClicking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85d9aa88-ce59-4f80-9131-2935c168dab6",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "ScrollClicking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f330ba3f-dd96-4ab2-8aac-0f406e104e59",
+                    "path": "<Mouse>/Scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Scrolling",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
